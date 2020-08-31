@@ -1,30 +1,31 @@
 <template>
     <div class="container">
         <div>
-            <router-link to="/staff"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Add Staff</router-link>
+            <!-- <router-link to="/staff"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Add Staff</router-link> -->
+            <router-link to="/staff"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Tạo tài khoản</router-link>
         </div> <br><br>
         <div class="row justify-content-center">            
             <div class="card" style="width:100%;">
             <div class="card-header">
-              <h3 class="card-title">All Staff</h3>
+              <h3 class="card-title">Danh sách người dùng</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">            
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Name</th>
+                  <th>Họ tên</th>
                   <th>Email</th>
-                  <th>Role </th>
-                  <th>Date oF Registration</th>
-                  <th>Action</th>
+                  <th>Chức vụ</th>
+                  <th>Ngày đăng ký</th>
+                  <th>Tác vụ</th>
                 </tr>
                 </thead>                
                 <tbody>                                                                                         
                 <tr v-for="staff in staffs" :key="staff.id">
                   <td>{{staff.title}}  {{staff.name}}</td>
                   <td>{{staff.email}}</td>
-                  <td v-if = "staff.role == 'recept'">Medical Record Officer</td>
+                  <td v-if = "staff.role == 'recept'">Nhân viên quản lý bệnh án điện tử</td>
                   <td v-else>{{staff.role}}</td>                  
                   <td>{{staff.created_at | humanDate}}</td>                                    
                   <td>
@@ -47,7 +48,7 @@
                       <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                           <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Edit Staff</h5>
+                              <h5 class="modal-title" id="exampleModalLongTitle">Điều chỉnh</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                               </button>
@@ -55,48 +56,54 @@
                           <div class="modal-body">
                              <form @submit.prevent="updateStaff" id="add-biodata">
                            <div class="form-group">
-                        <label>Edit Title</label>                
+                        <!-- <label>Edit Title</label>                 -->
+                        <label>Chỉnh sửa chức danh</label>                
                         <select v-model="form.title" class="form-control" :class="{ 'is-invalid': form.errors.has('title') }" name="title">
-                        <option value="nul" style="font-weight:700;">Select Title</option>
+                        <!-- <option value="nul" style="font-weight:700;">Select Title</option> -->
+                        <option value="nul" style="font-weight:700;">Chọn chức danh</option>
                         <option value="Dr">Dr</option>
-                        <option value="Miss">Miss</option>
-                        <option value="Mrs">Mrs</option>
-                        <option value="Mr">Mr</option>
+                        <option value="Cô">Cô</option>
+                        <option value="Bà">Bà</option>
+                        <option value="Ông">Ông</option>
                         </select>  
                         <has-error :form="form" field="title"></has-error>
                         </div>
                         <div class="form-group">
-                          <label>Edit Full Name</label>                         
-                        <input v-model="form.name" type="text" name="name" placeholder="Enter Full Name"
+                          <label>Chỉnh sửa họ tên</label>                         
+                        <input v-model="form.name" type="text" name="name" placeholder="Nhập tên đầy đủ"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
                         <has-error :form="form" field="name"></has-error>
                         </div>
                         <div class="form-group">  
-                          <label>Edit Email</label>                                               
-                        <input v-model="form.email" type="email" name="email" placeholder="Enter Email"
+                          <!-- <label>Edit Email</label>                                                -->
+                          <label>Chỉnh sửa Email</label>                                               
+                        <input v-model="form.email" type="email" name="email" placeholder="Nhập Email"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
                         <has-error :form="form" field="email"></has-error>
                         </div>
                         <div class="form-group">
                           <label>Edit Role</label>                         
                       <select  v-model="form.role" class="form-control" :class="{ 'is-invalid': form.errors.has('role') }" name="role">
-                            <option value="nul" style="font-weight:700;">Edit Role</option>
-                            <option value="recept">Medical Record Officer</option>
-                            <option value="nurse">Nurse</option>
-                            <option value="doc">Doctor</option>
-                            <option value="lab">Laboratory</option>
-                            <option value="pharm">Pharmacy</option>
-                            <option value="admin">Admin</option>
+                            <!-- <option value="nul" style="font-weight:700;">Edit Role</option> -->
+                            <option value="nul" style="font-weight:700;">Điều chỉnh chức vụ</option>
+                            <option value="recept">Nhân viên quản lý bệnh án điện tử</option>
+                            <option value="nurse">Y tá/Điều dưỡng</option>
+                            <option value="doc">Bác sĩ</option>
+                            <option value="lab">Nhân viên xét nghiệm</option>
+                            <option value="pharm">Dược sĩ</option>
+                            <option value="admin">Quản trị viên</option>
                         </select>
                         <has-error :form="form" field="role"></has-error>
                         </div>                                                  
                             <center>
-                            <button type="submit" class="updatestaff btn-block btn btn-info" style="color:#fff;">Update Staff</button>
+                            <!-- <button type="submit" class="updatestaff btn-block btn btn-info" style="color:#fff;">Update Staff</button> -->
+                            <button type="submit" class="updatestaff btn-block btn btn-info" style="color:#fff;">Cập nhật nhân viên</button>
                             </center>
                             </form>
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                           </div>
                           </div>
                       </div>
@@ -105,11 +112,11 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Name</th>
+                  <th>Họ tên</th>
                   <th>Email</th>
-                  <th>Role </th>
-                  <th>Date oF Registration</th>
-                  <th>Action</th>
+                  <th>Chức vụ</th>
+                  <th>Ngày đăng ký</th>
+                  <th>Tác vụ</th>
                 </tr>
                 </tfoot>
               </table>   

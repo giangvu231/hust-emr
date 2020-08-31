@@ -1,37 +1,44 @@
 <template>
     <div class="container"> 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymodal">
-        Add Payment
-        </button>
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymodal">Add Payment</button> -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymodal">Thêm</button>
         <div class="modal fade" id="paymodal" tabindex="-1" role="dialog" aria-labelledby="biodataTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Make Payment</h5>
+                <!-- <h5 class="modal-title" id="exampleModalLongTitle">Make Payment</h5> -->
+                <h5 class="modal-title" id="exampleModalLongTitle">Tạo thanh toán</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div style="display: none;" class="paybutton">Your details are being processed, click the pay button below to continue <br> <button type="button" class="btn btn-success pay-pay" @click="payWithPaystack()"> Pay </button>   </div>         
+                <!-- <div style="display: none;" class="paybutton">Your details are being processed, click the pay button below to continue <br> <button type="button" class="btn btn-success pay-pay" @click="payWithPaystack()"> Pay </button>   </div>  -->
+                <div style="display: none;" class="paybutton">Hóa đơn của bạn đang được xử lý, bấm chọn nút thanh toán bên dưới để tiếp tục<br> <button type="button" class="btn btn-success pay-pay" @click="payWithPaystack()"> Pay </button>   </div>         
             <div class="messages-saving"></div>
             <div class="almost_done"></div>            
             <div class="done"></div> 
             <form @submit.prevent="paymentSave" id="addpayment">
             <div class="form-group">
-            <label>Select Patient</label>                
+            <!-- <label>Select Patient</label>                 -->
+            <label>Chọn bệnh nhấn</label>                
             <select v-model="form.patient_id" class="form-control" :class="{ 'is-invalid': form.errors.has('patient_id') }" name="patient_id">
             <option v-for="patient in patients" :key="patient.id" :value="patient.id">{{patient.full_name}}</option>
             </select>  
             <has-error :form="form" field="patient_id"></has-error>
             </div> 
             <div class="form-group">
-            <label>Select Type of Payment</label>                
+            <!-- <label>Select Type of Payment</label>                 -->
+            <label>Chọn loại thanh toán</label>                
             <select v-model="form.type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }" name="type">
-            <option value="Consultation">Consultation Fee</option>
+            <!-- <option value="Consultation">Consultation Fee</option>
             <option value="Observation">Observation Fee</option>
             <option value="Service">Service Fee</option>
-            <option value="Medication">Medication Fee</option>
+            <option value="Medication">Medication Fee</option> -->
+            <option value="Phí tư vấn">Phí tư vấn</option>
+            <option value="Phí theo dõi">Phí theo dõi</option>
+            <option value="Phí dịch vụ">Phí dịch vụ</option>
+            <option value="Phí thuốc">Phí thuốc</option>
             </select>  
             <has-error :form="form" field="type"></has-error>
             </div>               
@@ -46,7 +53,7 @@
             <has-error :form="form" field="amount"></has-error>
             </div>                                                                                
             <center>
-            <button type="submit" class="pay btn-block btn btn-info" style="color:#fff;">Submit</button>
+            <button type="submit" class="pay btn-block btn btn-info" style="color:#fff;">Gửi đi</button>
             </center>
             </form>
             </div>
@@ -57,36 +64,48 @@
         <div class="row justify-content-center">            
             <div class="card" style="width:100%;">
             <div class="card-header">
-              <h3 class="card-title">Payments</h3>
+              <!-- <h3 class="card-title">Payments</h3> -->
+              <h3 class="card-title">Hóa đơn</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Unique ID</th>
+                  <!-- <th>Unique ID</th>
                   <th>Name</th>
                   <th>Type of Payment</th>                
                   <th>Amount</th>
-                  <th>Date of Payment</th>                  
+                  <th>Date of Payment</th>    -->
+                  <th>Mã HSBA</th>
+                  <th>Họ tên</th>
+                  <th>Loại thanh toán</th>                
+                  <th>Số lượng</th>
+                  <th>Ngày thanh toán</th>               
                 </tr>
                 </thead>
                 <tbody>              
                 <tr v-for="payment in payments" :key="payment.id">
                   <td>{{payment.patient.unique_id}}</td>
                   <td>{{payment.patient.title}} {{payment.patient.full_name}}</td>
-                  <td>{{payment.type}} Fee</td>
+                  <!-- <td>{{payment.type}} Fee</td> -->
+                  <td>{{payment.type}} Chi phí</td>
                   <td>{{payment.amount}}</td>
                   <td>{{payment.created_at | humanDate}}</td>    
                 </tr>                   
                 </tbody>
                 <tfoot>
                 <tr>
-                <th>Unique ID</th>
-                  <th>Name</th>
-                  <th>Type of Payment</th>                
-                  <th>Amount</th>
-                  <th>Date of Payment</th> 
+                    <!-- <th>Unique ID</th>
+                    <th>Name</th>
+                    <th>Type of Payment</th>                
+                    <th>Amount</th>
+                    <th>Date of Payment</th>  -->
+                    <th>Mã HSBA</th>
+                    <th>Họ tên</th>
+                    <th>Loại thanh toán</th>                
+                    <th>Số lượng</th>
+                    <th>Ngày thanh toán</th>    
                 </tr>
                 </tfoot>
               </table>   

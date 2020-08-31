@@ -1,13 +1,12 @@
 <template>
     <div class="container"> 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addappointmentmodal">
-        Add Appointment
-        </button>
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addappointmentmodal">Add Appointment</button> -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addappointmentmodal">Thêm cuộc hẹn mới</button>
         <div class="modal fade" id="addappointmentmodal" tabindex="-1" role="dialog" aria-labelledby="biodataTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Appointment</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Cuộc hẹn</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -18,25 +17,27 @@
             <div class="done"></div> 
             <form @submit.prevent="addAppointment" id="addappointmentform">
             <div class="form-group">
-            <label>Select Patient</label>                
+            <!-- <label>Select Patient</label>                 -->
+            <label>Chọn bệnh nhân</label>                
             <select v-model="form.patient_id" class="form-control" :class="{ 'is-invalid': form.errors.has('patient_id') }" name="patient_id">
             <option v-for="patient in patients" :key="patient.id" :value="patient.id">{{patient.full_name}}</option>
             </select>  
             <has-error :form="form" field="patient_id"></has-error>
             </div>                           
             <div class="form-group">                        
-            <input v-model="form.reason" type="text" name="reason" placeholder="Enter Reason"
+            <input v-model="form.reason" type="text" name="reason" placeholder="Nhập nguyên nhân"
                 class="form-control" :class="{ 'is-invalid': form.errors.has('reason') }">
             <has-error :form="form" field="reason"></has-error>
             </div>
             <div class="form-group"> 
-            <label>Select Date and Time</label>                          
-            <input v-model="form.date" type="date" name="date" placeholder="Enter Date"
+            <label>Chọn thời gian</label>                          
+            <input v-model="form.date" type="date" name="date" placeholder="Nhập thời gian"
                 class="form-control" :class="{ 'is-invalid': form.errors.has('date') }">
             <has-error :form="form" field="date"></has-error>
             </div>                                                                                
             <center>
-            <button type="submit" class="appoint btn-block btn btn-info" style="color:#fff;">Add Appointment</button>
+            <!-- <button type="submit" class="appoint btn-block btn btn-info" style="color:#fff;">Add Appointment</button> -->
+            <button type="submit" class="appoint btn-block btn btn-info" style="color:#fff;">Thêm cuộc hẹn</button>
             </center>
             </form>
             </div>
@@ -47,17 +48,18 @@
         <div class="row justify-content-center">            
             <div class="card" style="width:100%;">
             <div class="card-header">
-              <h3 class="card-title">Appoinment</h3>
+              <!-- <h3 class="card-title">Appoinment</h3> -->
+              <h3 class="card-title">Cuộc hẹn</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Unique ID</th>
-                  <th>Name</th>
-                  <th>Reason</th>                
-                  <th>Date</th>                  
+                  <th>Mã HSBA</th>
+                  <th>Họ tên</th>
+                  <th>Nguyên nhân đặt lịch</th>                
+                  <th>Ngày tháng</th>                  
                 </tr>
                 </thead>
                 <tbody>              
@@ -70,10 +72,10 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                <th>Unique ID</th>
-                  <th>Name</th>
-                  <th>Reason</th>                
-                  <th>Date</th>
+                <th>Mã HSBA</th>
+                  <th>Họ tên</th>
+                  <th>Nguyên nhân đặt lịch</th>                
+                  <th>Ngày tháng</th>
                 </tr>
                 </tfoot>
               </table>   

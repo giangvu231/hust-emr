@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Electronic Patients Medical Record System</title>
+        <title>{{ __('Electronic Patients Medical Record System') }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -68,12 +68,18 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/patients') }}">Home</a>
+                        <a href="{{ url('/patients') }}">
+                        {{ __('Home') }}
+                        </a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">
+                        {{ __('Login') }}
+                        </a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">
+                            {{ __('Register') }}
+                            </a>
                         @endif
                     @endauth
                 </div>
@@ -81,10 +87,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    EMR
+                {{ __('Electronic Patients Medical Record System') }}
                 </div>
                 <div class="links">
-                   <p>Electronic Patients Medical Record System</p>
+                   <p>
+                    V20.08.26
+                   </p>
                 </div>
             </div>
         </div>

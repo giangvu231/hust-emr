@@ -1,25 +1,36 @@
 <template>
     <div class="container">       
         <div>
-            <router-link to="/add-surgery"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Add Surgery History</router-link>
+            <router-link to="/add-surgery"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Thêm lịch sử phẫu thuật</router-link>
         </div> <br><br>
         <div class="row justify-content-center">            
             <div class="card" style="width:100%;">
             <div class="card-header">
-              <h3 class="card-title">Patients Surgery History</h3>
+              <!-- <h3 class="card-title">Patients Surgery History</h3> -->
+              <h3 class="card-title">Lịch sử phẫu thuật</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                <tr>
+                <!-- <tr>
                   <th>Unique ID</th>
                   <th>Name</th>
                   <th>Operation Details</th>
                   <th>Date of Operation</th>
                   <th>Surgeon</th>
                   <th>Action</th>
+                </tr> -->
+
+                <tr>
+                  <th>Mã HSBA</th>
+                  <th>Họ tên</th>
+                  <th>Chi tiết phẫu thuật</th>
+                  <th>Ngày phẫu thuật</th>
+                  <th>Bác sĩ phẫu thuật</th>
+                  <th>Tác vụ</th>
                 </tr>
+
                 </thead>
                 <tbody>              
                 <tr v-for="surgery in surgeries" :key="surgery.id">
@@ -48,7 +59,8 @@
                       <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                           <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Edit Patient Surgery History</h5>
+                              <!-- <h5 class="modal-title" id="exampleModalLongTitle">Edit Patient Surgery History</h5> -->
+                              <h5 class="modal-title" id="exampleModalLongTitle">Sửa lịch sử phẫu thuật của bệnh nhân</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                               </button>
@@ -56,29 +68,34 @@
                           <div class="modal-body">
                              <form @submit.prevent="updateSurgery" id="edit-surgery">                         
                         <div class="form-group"> 
-                        <label>Edit Operation Details</label> 
+                        <!-- <label>Edit Operation Details</label>  -->
+                        <label>Sửa thông tin phẫu thuật</label> 
                         <textarea v-model="form.operations"  placeholder="Operation Details" name="operations" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('operations') }"></textarea>                       
                         <has-error :form="form" field="operations"></has-error>                       
                         </div>  
                         <div class="form-group"> 
-                        <label>Edit Date of Operation</label>                        
-                        <input v-model="form.date_of_operation" type="date" name="date_of_operation" placeholder="Enter Date Attented"
+                        <!-- <label>Edit Date of Operation</label>                         -->
+                        <label>Sửa ngày phẫu thuật</label>                        
+                        <input v-model="form.date_of_operation" type="date" name="date_of_operation" placeholder="Nhập ngày có mặt"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('date_of_operation') }">
                         <has-error :form="form" field="date_of_operation"></has-error>
                         </div>                         
                         <div class="form-group"> 
-                        <label>Edit Surgeon</label>                        
-                        <input v-model="form.surgeon" type="text" name="surgeon" placeholder="Surgeon"
+                        <!-- <label>Edit Surgeon</label>                         -->
+                        <label>Sửa bác sĩ phẫu thuật</label>                        
+                        <input v-model="form.surgeon" type="text" name="surgeon" placeholder="Bác sĩ phẫu thuật"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('surgeon') }">
                         <has-error :form="form" field="surgeon"></has-error>
                         </div>   
                             <center>
-                            <button type="submit" class="updatesurgery btn-block btn btn-info" style="color:#fff;">Update Patient Surgery History</button>
+                            <!-- <button type="submit" class="updatesurgery btn-block btn btn-info" style="color:#fff;">Update Patient Surgery History</button> -->
+                            <button type="submit" class="updatesurgery btn-block btn btn-info" style="color:#fff;">Cập nhật lịch sử phẫu thuật</button>
                             </center>
                             </form>
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                           </div>
                           </div>
                       </div>
@@ -86,14 +103,24 @@
                               
                 </tbody>
                 <tfoot>
-                <tr>
+                <!-- <tr>
                  <th>Unique ID</th>
                   <th>Name</th>
                   <th>Operation Details</th>
                   <th>Date of Operation</th>
                   <th>Surgeon</th>
                   <th>Action</th>
+                </tr> -->
+
+                <tr>
+                 <th>Mã HSBA</th>
+                  <th>Họ tên</th>
+                  <th>Chi tiết phẫu thuật</th>
+                  <th>Ngày phẫu thuật</th>
+                  <th>Bác sĩ phẫu thuật</th>
+                  <th>Tác vụ</th>
                 </tr>
+
                 </tfoot>
               </table>   
               

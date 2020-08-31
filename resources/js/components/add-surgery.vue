@@ -3,33 +3,37 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Add Patient Surgery History</div>
+                    <!-- <div class="card-header">Add Patient Surgery History</div> -->
+                    <div class="card-header">Thêm lịch sử phẫu thuật</div>
                     <div class="card-body">
                         <form @submit.prevent="addSurgery" id="add-surgery">
                         <div class="form-group">
-                        <label>Select Patient</label>                
+                        <!-- <label>Select Patient</label>                 -->
+                        <label>Chọn bệnh nhân</label>                
                         <select v-model="form.patient_id" class="form-control" :class="{ 'is-invalid': form.errors.has('patient_id') }" name="patient_id">
                         <option v-for="patient in patients" :key="patient.id" :value="patient.id">{{patient.full_name}}</option>
                         </select>  
                         <has-error :form="form" field="patient_id"></has-error>
                         </div>                                                     
                         <div class="form-group"> 
-                        <textarea v-model="form.operations"  placeholder="Operation Details" name="operations" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('operations') }"></textarea>                       
+                        <textarea v-model="form.operations"  placeholder="Thông tin phẫu thuật" name="operations" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('operations') }"></textarea>                       
                         <has-error :form="form" field="operations"></has-error>                       
                         </div>  
                         <div class="form-group"> 
-                        <label>Date of Operation</label>                        
-                        <input v-model="form.date_of_operation" type="date" name="date_of_operation" placeholder="Enter Date Attented"
+                        <!-- <label>Date of Operation</label>                         -->
+                        <label>Ngày phẫu thuật</label>                        
+                        <input v-model="form.date_of_operation" type="date" name="date_of_operation" placeholder="Nhập ngày vào viện"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('date_of_operation') }">
                         <has-error :form="form" field="date_of_operation"></has-error>
                         </div>                         
                         <div class="form-group">                        
-                        <input v-model="form.surgeon" type="text" name="surgeon" placeholder="Surgeon"
+                        <input v-model="form.surgeon" type="text" name="surgeon" placeholder="Bác sĩ phẫu thuật"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('surgeon') }">
                         <has-error :form="form" field="surgeon"></has-error>
                         </div>                                                                                
                         <center>
-                        <button type="submit" class="surgery btn-block btn btn-info" style="color:#fff;">Add Patient Surgery History</button>
+                        <!-- <button type="submit" class="surgery btn-block btn btn-info" style="color:#fff;">Add Patient Surgery History</button> -->
+                        <button type="submit" class="surgery btn-block btn btn-info" style="color:#fff;">Thêm lịch sử phẫu thuật</button>
                         </center>
                         </form>
                     </div>

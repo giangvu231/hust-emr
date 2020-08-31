@@ -6,21 +6,30 @@
         <div class="row justify-content-center">            
             <div class="card" style="width:100%;">
             <div class="card-header">
-              <h3 class="card-title">Diagonised Patient</h3>
+              <!-- <h3 class="card-title">Diagonised Patient</h3> -->
+              <h3 class="card-title">Danh sách bệnh nhân đã chẩn đoán</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Unique ID</th>
+                  <!-- <th>Unique ID</th>
                   <th>Name</th>
                   <th>Dianoses Details</th>
                   <th>Doctor Comment</th>                  
                   <th>Symtoms</th>  
                   <th>Refer to Lab.</th>
                   <th>Refer to Pharm.</th>
-                  <th>Action</th>
+                  <th>Action</th> -->
+                  <th>Mã HSBA</th>
+                  <th>Họ tên</th>
+                  <th>Thông tin chẩn đoán</th>
+                  <th>Nhận xét của bác sĩ</th>                  
+                  <th>Các triệu chứng</th>  
+                  <th>Dựa trên xét nghiệm</th>
+                  <th>Dựa trên thuốc</th>
+                  <th>Tác vụ</th>
                 </tr>
                 </thead>
                 <tbody>              
@@ -31,16 +40,24 @@
                   <td>{{diagnose.comment}}</td>
                   <td>{{diagnose.hospital.symptoms}}</td>                
                   <td>
-                      <p v-if="diagnose.refer_lab == 1"> Already Refered</p>
-                      <button v-else type="button" class="btn btn-primary" @click="toLab(diagnose)">
+                      <!-- <p v-if="diagnose.refer_lab == 1"> Already Refered</p> -->
+                      <p v-if="diagnose.refer_lab == 1"> Đã yêu cầu</p>
+                      <!-- <button v-else type="button" class="btn btn-primary" @click="toLab(diagnose)">
                       Refer to Lab
-                      </button>                      
+                      </button>   -->
+                      <button v-else type="button" class="btn btn-primary" @click="toLab(diagnose)">
+                      Yêu cầu xét nghiệm
+                      </button>                     
                   </td>
                   <td>
-                    <p v-if="diagnose.refer_pham == 1"> Already Refered</p>
+                    <!-- <p v-if="diagnose.refer_pham == 1"> Already Refered</p>
                     <button v-else type="button" class="btn btn-primary" @click="toPham(diagnose)">
                     Refer to Pham
-                    </button>  
+                    </button>   -->
+                    <p v-if="diagnose.refer_pham == 1"> Đã yêu cầu</p>
+                    <button v-else type="button" class="btn btn-primary" @click="toPham(diagnose)">
+                    Yêu cầu thuốc
+                    </button> 
                   </td>                                  
                   <td>
                   <div class="row">
@@ -62,24 +79,32 @@
                       <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                           <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5>
+                              <!-- <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5> -->
+                              <h5 class="modal-title" id="exampleModalLongTitle">Xác nhận</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                               </button>
                           </div>
                           <div class="modal-body">
-                             <form @submit.prevent="referToLab" id="edit-diagnoses">  
+                             <!-- <form @submit.prevent="referToLab" id="edit-diagnoses">  
                                 <input v-model="form.refer_lab" 
                                   :value="1" 
                                   type="radio" 
-                                  name="refer_lab" /> Confirm Action First
+                                  name="refer_lab" /> Confirm Action First -->
+                               <form @submit.prevent="referToLab" id="edit-diagnoses">  
+                                <input v-model="form.refer_lab" 
+                                  :value="1" 
+                                  type="radio" 
+                                  name="refer_lab" /> Xác nhận tác vụ trước
                             <center>
-                            <button type="submit" class="tolab btn-block btn btn-info" style="color:#fff;">Refer to Labouratory</button>
+                            <!-- <button type="submit" class="tolab btn-block btn btn-info" style="color:#fff;">Refer to Labouratory</button> -->
+                            <button type="submit" class="tolab btn-block btn btn-info" style="color:#fff;">Yêu cầu xét nghiệm</button>
                             </center>
                             </form>
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                           </div>
                           </div>
                       </div>
@@ -90,24 +115,31 @@
                       <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                           <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5>
+                              <!-- <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5> -->
+                              <h5 class="modal-title" id="exampleModalLongTitle">Xác nhận</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                               </button>
                           </div>
                           <div class="modal-body">
                              <form @submit.prevent="referToPham" id="edit-diagnoses">  
+                                <!-- <input v-model="form.refer_pham" 
+                                  :value="1" 
+                                  type="radio" 
+                                  name="refer_pham" /> Confirm Action First -->
                                 <input v-model="form.refer_pham" 
                                   :value="1" 
                                   type="radio" 
-                                  name="refer_pham" /> Confirm Action First
+                                  name="refer_pham" /> Xác nhận tác vụ trước
                             <center>
-                            <button type="submit" class="topham btn-block btn btn-info" style="color:#fff;">Refer to Pharmacy</button>
+                            <!-- <button type="submit" class="topham btn-block btn btn-info" style="color:#fff;">Refer to Pharmacy</button> -->
+                            <button type="submit" class="topham btn-block btn btn-info" style="color:#fff;">Yêu cầu thuốc</button>
                             </center>
                             </form>
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                           </div>
                           </div>
                       </div>
@@ -117,7 +149,8 @@
                       <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                           <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Edit Patient Diagnoses</h5>
+                              <!-- <h5 class="modal-title" id="exampleModalLongTitle">Edit Patient Diagnoses</h5> -->
+                              <h5 class="modal-title" id="exampleModalLongTitle">Sửa thông tin chẩn đoán của bệnh nhân</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                               </button>
@@ -125,23 +158,27 @@
                           <div class="modal-body">
                              <form @submit.prevent="updateDiagnoses" id="edit-diagnoses">                         
                                 <div class="form-group"> 
-                                  <label for="Diadnoses"> Edit Diagnosis</label>
-                                <textarea v-model="form.diagnosis"  placeholder="Diagnosis" name="diagnosis" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('diagnosis') }"></textarea>                       
+                                  <!-- <label for="Diadnoses"> Edit Diagnosis</label> -->
+                                  <label for="Diadnoses">Sửa chẩn đoán</label>
+                                <textarea v-model="form.diagnosis"  placeholder="Chẩn đoán" name="diagnosis" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('diagnosis') }"></textarea>                       
                                 <has-error :form="form" field="diagnosis"></has-error>                       
                                 </div>                                                 
                                 <div class="form-group"> 
-                                  <label for="comment">Edit Comment</label>                       
-                                <input v-model="form.comment" type="text" name="comment" placeholder="Comment"
+                                  <!-- <label for="comment">Edit Comment</label>                        -->
+                                  <label for="comment">Sửa nhận xét</label>                       
+                                <input v-model="form.comment" type="text" name="comment" placeholder="Nhận xét"
                                     class="form-control" :class="{ 'is-invalid': form.errors.has('comment') }">
                                 <has-error :form="form" field="comment"></has-error>
                                 </div>   
                             <center>
-                            <button type="submit" class="updatediagnoses btn-block btn btn-info" style="color:#fff;">Update Patient Diagnoses</button>
+                            <!-- <button type="submit" class="updatediagnoses btn-block btn btn-info" style="color:#fff;">Update Patient Diagnoses</button> -->
+                            <button type="submit" class="updatediagnoses btn-block btn btn-info" style="color:#fff;">Cập nhật chẩn đoán</button>
                             </center>
                             </form>
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                           </div>
                           </div>
                       </div>
@@ -149,7 +186,7 @@
                               
                 </tbody>
                 <tfoot>
-                <tr>
+                <!-- <tr>
                 <th>Unique ID</th>
                 <th>Name</th>
                 <th>Dianoses Details</th>
@@ -158,6 +195,16 @@
                 <th>Refer to Lab.</th>
                 <th>Refer to Pharm.</th>
                 <th>Action</th>
+                </tr> -->
+                <tr>
+                <th>Mã HSBA</th>
+                <th>Họ tên</th>
+                <th>Thông tin chẩn đoán</th>
+                <th>Nhận xét của bác sĩ</th>  
+                <th>Các triệu chứng</th>                  
+                <th>Dựa trên xét nghiệm</th>
+                <th>Dựa trên thuốc</th>
+                <th>Tác vụ</th>
                 </tr>
                 </tfoot>
               </table>   

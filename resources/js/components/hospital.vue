@@ -1,18 +1,22 @@
 <template>
     <div class="container">
         <div>
-            <router-link to="/add-biodata"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Add New</router-link>
+            <!-- <router-link to="/add-biodata"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Add New</router-link> -->
+
+            <router-link to="/add-biodata"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Thêm mới</router-link>
+
         </div> <br><br>
         <div class="row justify-content-center">            
             <div class="card" style="width:100%;">
             <div class="card-header">
-              <h3 class="card-title">Patients Hospital History</h3>
+              <!-- <h3 class="card-title">Patients Hospital History</h3> -->
+              <h3 class="card-title">Tiền sử của bệnh nhân</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                <tr>
+                <!-- <tr>
                   <th>Unique ID</th>
                   <th>Name</th>
                   <th>Date Attended</th>
@@ -21,7 +25,19 @@
                   <th>Discharged To</th>
                   <th>All Details</th>
                   <th>Action</th>
+                </tr> -->
+
+                <tr>
+                  <th>Mã HSBA</th>
+                  <th>Họ tên</th>
+                  <th>Ngày đến viện</th>
+                  <th>Ngày nhập viện</th>
+                  <th>Ngày thanh toán</th>
+                  <th>Thu ngân</th>
+                  <th>Thông tin đầy đủ</th>
+                  <th>Tác vụ</th>
                 </tr>
+
                 </thead>
                 <tbody>              
                 <tr v-for="hospital in hospitals" :key="hospital.id">
@@ -32,20 +48,26 @@
                   <td>{{hospital.date_discharged | humanDate}}</td>
                   <td>{{hospital.discharged_to}}</td>                  
                   <td>
-                     <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#' + hospital.modal_id">
+                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#' + hospital.modal_id">
                         All Info.
+                        </button> -->
+                    
+                    <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#' + hospital.modal_id">
+                        Hiển thị
                         </button>
+
                       <div class="modal fade" :id="hospital.modal_id" tabindex="-1" role="dialog" aria-labelledby="biodataTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                           <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">More Details</h5>
+                              <!-- <h5 class="modal-title" id="exampleModalLongTitle">More Details</h5> -->
+                              <h5 class="modal-title" id="exampleModalLongTitle">Thêm thông tin</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                               </button>
                           </div>
                           <div class="modal-body">
-                             <p><b>Date Attended: </b>{{hospital.date_attented | humanDate}}</p> 
+                             <!-- <p><b>Date Attended: </b>{{hospital.date_attented | humanDate}}</p> 
                              <p><b>Date Admitted: </b>{{hospital.date_admitted | humanDate}}</p> 
                              <p><b>Refered by: </b>{{hospital.refered_by}}</p> 
                              <p><b>Ward: </b>{{hospital.ward}}</p> 
@@ -53,10 +75,24 @@
                              <p><b>Discharged To: </b>{{hospital.discharged_to}}</p> 
                              <p><b>Outcome of Care: </b>{{hospital.outcome_of_care}}</p> 
                              <p><b>Comment: </b>{{hospital.comment_box}}</p> 
-                             <p><b>Symptoms and Complains: </b>{{hospital.symptoms}}</p>                     
+                             <p><b>Symptoms and Complains: </b>{{hospital.symptoms}}</p>    -->
+
+                             <p><b>Ngày đến viện: </b>{{hospital.date_attented | humanDate}}</p> 
+                             <p><b>Ngày nhập viện: </b>{{hospital.date_admitted | humanDate}}</p> 
+                             <p><b>Bác sĩ điều trị: </b>{{hospital.refered_by}}</p> 
+                             <p><b>Người giám hộ: </b>{{hospital.ward}}</p> 
+                             <p><b>Ngày thanh toán: </b>{{hospital.date_discharged | humanDate}}</p> 
+                             <p><b>Thu ngân: </b>{{hospital.discharged_to}}</p> 
+                             <p><b>Tình trạng chăm sóc: </b>{{hospital.outcome_of_care}}</p> 
+                             <p><b>Nhận xét: </b>{{hospital.comment_box}}</p> 
+                             <p><b>Các triệu chứng & phản hồi của người bệnh: </b>{{hospital.symptoms}}</p>   
+                                               
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+
+                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+
                           </div>
                           </div>
                       </div>
@@ -82,7 +118,8 @@
                       <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                           <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Edit Patient Hospital History</h5>
+                              <!-- <h5 class="modal-title" id="exampleModalLongTitle">Edit Patient Hospital History</h5> -->
+                              <h5 class="modal-title" id="exampleModalLongTitle">Sửa lịch sử khám</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                               </button>
@@ -90,69 +127,81 @@
                           <div class="modal-body">
                              <form @submit.prevent="updateHospital" id="edit-hospital">                        
                         <div class="form-group"> 
-                        <label>Enter Date Attented</label>                        
+                        <!-- <label>Enter Date Attented</label>                         -->
+                        <label>Nhập ngày có mặt</label>                        
                         <input v-model="form.date_attented" type="date" name="date_attented" placeholder="Enter Date Attented"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('date_attented') }">
                         <has-error :form="form" field="date_attented"></has-error>
                         </div>                       
                         <div class="form-group">   
-                        <label>Enter Date Admitted</label>                      
+                        <!-- <label>Enter Date Admitted</label>   -->
+                        <label>Điền ngày nhập viện</label>  
+
                         <input v-model="form.date_admitted" type="date" name="date_admitted" placeholder="Enter Date Admitted"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('date_admitted') }">
                         <has-error :form="form" field="date_admitted"></has-error>
                         </div>
                         <div class="form-group"> 
-                        <label>Refered By</label>                       
-                        <input v-model="form.refered_by" type="text" name="refered_by" placeholder="Enter Refered By"
+                        <!-- <label>Refered By</label>                        -->
+                        <label>Bác sĩ điều trị</label>                       
+                        <input v-model="form.refered_by" type="text" name="refered_by" placeholder="Nhập bác sĩ điều trị"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('refered_by') }">
                         <has-error :form="form" field="refered_by"></has-error>
                         </div>
                         <div class="form-group"> 
-                        <label>Physician</label>                       
-                        <input v-model="form.physician" type="text" name="physician" placeholder="Enter Physician"
+                        <!-- <label>Physician</label>                        -->
+                        <label>Điều dưỡng</label>                       
+                        <input v-model="form.physician" type="text" name="physician" placeholder="Nhập điều dưỡng"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('physician') }">
                         <has-error :form="form" field="physician"></has-error>
                         </div>
                         <div class="form-group">  
-                        <label>Ward</label>                                             
-                        <input v-model="form.ward" type="text" name="ward" placeholder="Enter Ward"
+                        <label>Người giám hộ</label>                                             
+                        <input v-model="form.ward" type="text" name="ward" placeholder="Nhập người giám hộ"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('ward') }">
                         <has-error :form="form" field="ward"></has-error>
                         </div>
                         <div class="form-group">  
-                        <label>Enter Date Discharge</label>                       
-                        <input v-model="form.date_discharged" type="date" name="date_discharged" placeholder="Enter Date Discharged"
+                        <!-- <label>Enter Date Discharge</label>                        -->
+                        <label>Ngày thanh toán</label>                       
+                        <input v-model="form.date_discharged" type="date" name="date_discharged" placeholder="Nhập ngày thanh toán"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('date_discharged') }">
                         <has-error :form="form" field="date_discharged"></has-error>
                         </div>
                         <div class="form-group">   
-                        <label>Discharge To</label>                                            
-                        <input v-model="form.discharged_to" type="text" name="discharged_to" placeholder="Enter Discharged To"
+                        <!-- <label>Discharge To</label>                                             -->
+                        <label>Thu ngân</label>                                            
+                        <input v-model="form.discharged_to" type="text" name="discharged_to" placeholder="Nhập thu ngân"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('discharged_to') }">
                         <has-error :form="form" field="discharged_to"></has-error>
                         </div>
                         <div class="form-group"> 
-                        <label>Outcome of Care</label>                       
-                        <textarea v-model="form.outcome_of_care"  placeholder="Enter Outcome of Care" name="outcome_of_care" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('outcome_of_care') }"></textarea>                       
+                        <!-- <label>Outcome of Care</label>                        -->
+                        <label>Tình trạng chăm sóc</label>                       
+                        <textarea v-model="form.outcome_of_care"  placeholder="Nhập tình trạng chăm sóc" name="outcome_of_care" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('outcome_of_care') }"></textarea>                       
                         <has-error :form="form" field="outcome_of_care"></has-error>                       
                         </div>   
                         <div class="form-group"> 
-                        <label>Symptoms</label>                       
-                        <textarea v-model="form.symptoms"  placeholder="Enter Symptoms" name="symptoms" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('symptoms') }"></textarea>                       
+                        <!-- <label>Symptoms</label>                        -->
+                        <label>Các triệu chứng</label>                       
+                        <textarea v-model="form.symptoms"  placeholder="Nhập triệu chứng" name="symptoms" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('symptoms') }"></textarea>                       
                         <has-error :form="form" field="symptoms"></has-error>                       
                         </div> 
                         <div class="form-group"> 
-                        <label>Comment</label>                       
-                        <textarea v-model="form.comment_box"  placeholder="Enter Comment" name="comment_box" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('comment_box') }"></textarea>                       
+                        <!-- <label>Comment</label>                        -->
+                        <label>Nhận xét</label>                       
+                        <textarea v-model="form.comment_box"  placeholder="Nhập triệu chứng" name="comment_box" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('comment_box') }"></textarea>                       
                         <has-error :form="form" field="comment_box"></has-error>                       
                         </div> 
                             <center>
-                            <button type="submit" class="updatehospital btn-block btn btn-info" style="color:#fff;">Update Patient Hospital History</button>
+                            <!-- <button type="submit" class="updatehospital btn-block btn btn-info" style="color:#fff;">Update Patient Hospital History</button> -->
+                            <button type="submit" class="updatehospital btn-block btn btn-info" style="color:#fff;">Cập nhật lịch sử khám bệnh</button>
                             </center>
                             </form>
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                           </div>
                           </div>
                       </div>
@@ -160,7 +209,7 @@
                               
                 </tbody>
                 <tfoot>
-                <tr>
+                <!-- <tr>
                  <th>Unique ID</th>
                   <th>Name</th>
                   <th>Date Attended</th>
@@ -169,7 +218,19 @@
                   <th>Discharged To</th>
                   <th>All Details</th>
                   <th>Action</th>
+                </tr> -->
+
+                <tr>
+                 <th>Mã HSBA</th>
+                  <th>Họ tên</th>
+                  <th>Ngày vào viện</th>
+                  <th>Ngày nhập viện</th>
+                  <th>Ngày thanh toán</th>
+                  <th>Thu ngân</th>
+                  <th>Thông tin đầy đủ</th>
+                  <th>Tác vụ</th>
                 </tr>
+
                 </tfoot>
               </table>   
               

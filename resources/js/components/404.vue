@@ -3,12 +3,17 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Page Not Found</div>
+                    <div class="card-header">
+                        <!-- Page Not Found -->
+                        Không tìm thấy trang!
+                    </div>
 
                     <div class="card-body">
                     <center>
-                        Error! <br>
-                        PAGE NOT FOUND
+                        <!-- Error! <br> -->
+                        Lỗi! <br>
+                        <!-- PAGE NOT FOUND -->
+                        KHÔNG TÌM THẤY TRANG
                     </center>
                     </div>
                 </div>

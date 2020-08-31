@@ -11,7 +11,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>Electronic Patients Medical Record System</title>
+  <title>{{ __('Electronic Patients Medical Record System') }}</title>
   
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/fSelect.css">
@@ -65,7 +65,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/patients" class="nav-link">
               <i class="nav-icon fas fa-procedures"></i>
               <p>
-                All Patients             
+              {{ __('All Patients') }}          
               </p>
             </router-link>
           </li>
@@ -76,7 +76,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/add-biodata" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
               <p>
-                Add Patient Biodata             
+              {{ __('Add Patient Biodata') }}             
               </p>
             </router-link>
           </li>         
@@ -84,7 +84,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/vitals" class="nav-link">
               <i class="nav-icon fas fa-heartbeat"></i>
               <p>
-                Patient Vitals             
+              {{ __('Patient Vitals') }}             
               </p>
             </router-link>
           </li>
@@ -92,7 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/add-vital" class="nav-link">
               <i class="nav-icon fas fa-heartbeat"></i>
               <p>
-                Add Patient Vitals             
+              {{ __('Add Patient Vitals') }}             
               </p>
             </router-link>
           </li>
@@ -100,7 +100,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/hospital" class="nav-link">
               <i class="nav-icon fas fa-hospital-symbol"></i>
               <p>
-                Hospital History            
+              {{ __('Hospital History') }}            
               </p>
             </router-link>
           </li>
@@ -108,7 +108,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/add-hospital" class="nav-link">
               <i class="nav-icon fas fa-hospital-symbol"></i>
               <p>
-                Add Hospital History            
+              {{ __('Add Hospital History') }}            
               </p>
             </router-link>
           </li>
@@ -116,7 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/add-surgery" class="nav-link">
               <i class="nav-icon fas fa-user-md"></i>
               <p>
-                Add Surgery History            
+              {{ __('Add Surgery History') }}            
               </p>
             </router-link>
           </li>
@@ -124,7 +124,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/surgery" class="nav-link">
               <i class="nav-icon fas fa-user-md"></i>
               <p>
-                Surgery History            
+              {{ __('Surgery History') }}            
               </p>
             </router-link>
           </li>
@@ -132,7 +132,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/give-injection" class="nav-link">
               <i class="nav-icon fas fa-syringe"></i>
               <p>
-                Give Injection
+              {{ __('Give Injection') }}
               </p>
             </router-link>
           </li>         
@@ -140,7 +140,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/complain" class="nav-link">
               <i class="nav-icon fas fa-diagnoses"></i>
               <p>
-                Fill Patient Diagnosis             
+              {{ __('Fill Patient Diagnosis') }}            
               </p>
             </router-link>
           </li>        
@@ -148,7 +148,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/diagnosed" class="nav-link">
               <i class="nav-icon fas fa-vials"></i>
               <p>
-                Diagnosed Patient
+              {{ __('Diagnosed Patient') }}
               </p>
             </router-link>
           </li>                           
@@ -156,7 +156,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/appointment" class="nav-link">
               <i class="nav-icon fas fa-calendar-check"></i>
               <p>
-                Schedule Appointment
+              {{ __('Schedule Appointment') }}
               </p>
             </router-link>
           </li>     
@@ -164,7 +164,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/lab-test" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
-                Refered Details from Doctor
+              {{ __('Refered Details from Doctor') }}
               </p>
             </router-link>
           </li>
@@ -172,7 +172,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/labresult" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
-               Lab Result
+              {{ __('Lab Result') }}
               </p>
             </router-link>
           </li>                        
@@ -180,7 +180,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/pham-test" class="nav-link">
               <i class="nav-icon fas fa-info-circle"></i>
               <p>
-                  Get Refered Details             
+              {{ __('Get Refered Details') }}             
               </p>
             </router-link>
           </li>         
@@ -188,7 +188,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/medication" class="nav-link">
               <i class="nav-icon fas fa-comment-medical"></i>
               <p>
-                  Patients on medication
+              {{ __('Patients on medication') }}
               </p>
             </router-link>
           </li>         
@@ -196,7 +196,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/staff" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
-                Add Staff
+              {{ __('Add Staff') }}
               </p>
             </router-link>
           </li>
@@ -204,7 +204,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/all-staffs" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                All Staffs
+              {{ __('All Staffs') }}
               </p>
             </router-link>
           </li>
@@ -218,7 +218,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/add-biodata" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
               <p>
-                Add Patient Biodata             
+              {{ __('Add Patient Biodata') }}             
               </p>
             </router-link>
           </li>
@@ -231,7 +231,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/vitals" class="nav-link">
               <i class="nav-icon fas fa-heartbeat"></i>
               <p>
-                Patient Vitals             
+              {{ __('Patient Vitals') }}             
               </p>
             </router-link>
           </li>
@@ -239,7 +239,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/add-vital" class="nav-link">
               <i class="nav-icon fas fa-heartbeat"></i>
               <p>
-                Add Patient Vitals             
+              {{ __('Add Patient Vitals') }}             
               </p>
             </router-link>
           </li>
@@ -247,7 +247,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/hospital" class="nav-link">
               <i class="nav-icon fas fa-hospital-symbol"></i>
               <p>
-                Hospital History            
+              {{ __('Hospital History') }}            
               </p>
             </router-link>
           </li>
@@ -255,7 +255,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/add-hospital" class="nav-link">
               <i class="nav-icon fas fa-hospital-symbol"></i>
               <p>
-                Add Hospital History            
+              {{ __('Add Hospital History') }}            
               </p>
             </router-link>
           </li>
@@ -263,7 +263,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/add-surgery" class="nav-link">
               <i class="nav-icon fas fa-user-md"></i>
               <p>
-                Add Surgery History            
+              {{ __('Add Surgery History') }}            
               </p>
             </router-link>
           </li>
@@ -271,7 +271,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/surgery" class="nav-link">
               <i class="nav-icon fas fa-user-md"></i>
               <p>
-                Surgery History            
+              {{ __('Surgery History') }}            
               </p>
             </router-link>
           </li>
@@ -279,7 +279,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/give-injection" class="nav-link">
               <i class="nav-icon fas fa-syringe"></i>
               <p>
-                Give Injection
+              {{ __('Give Injection') }}
               </p>
             </router-link>
           </li>         
@@ -292,7 +292,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <router-link to="/vitals" class="nav-link">
                 <i class="nav-icon fas fa-heartbeat"></i>
                 <p>
-                  Patient Vitals             
+                {{ __('Patient Vitals') }}             
                 </p>
               </router-link>
             </li>        
@@ -300,7 +300,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <router-link to="/hospital" class="nav-link">
                 <i class="nav-icon fas fa-hospital-symbol"></i>
                 <p>
-                  Hospital History            
+                {{ __('Hospital History') }}            
                 </p>
               </router-link>
             </li>            
@@ -308,7 +308,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <router-link to="/surgery" class="nav-link">
                 <i class="nav-icon fas fa-user-md"></i>
                 <p>
-                  Surgery History            
+                {{ __('Surgery History') }}            
                 </p>
               </router-link>
             </li>   
@@ -316,7 +316,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <router-link to="/complain" class="nav-link">
                   <i class="nav-icon fas fa-diagnoses"></i>
                   <p>
-                    Fill Patient Diagnosis             
+                  {{ __('Fill Patient Diagnosis') }}             
                   </p>
                 </router-link>
               </li>     
@@ -324,7 +324,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/diagnosed" class="nav-link">
               <i class="nav-icon fas fa-vials"></i>
               <p>
-                Diagnosed Patient
+              {{ __('Diagnosed Patient') }}
               </p>
             </router-link>
           </li>                           
@@ -332,7 +332,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/appointment" class="nav-link">
               <i class="nav-icon fas fa-calendar-check"></i>
               <p>
-                Schedule Appointment
+              {{ __('Schedule Appointment') }}
               </p>
             </router-link>
           </li>
@@ -340,7 +340,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <router-link to="/labresult" class="nav-link">
                 <i class="nav-icon fas fa-vial"></i>
                 <p>
-                 Lab Result
+                {{ __('Lab Result') }}
                 </p>
               </router-link>
             </li>          
@@ -353,7 +353,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/lab-test" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
-                Refered Details from Doctor
+              {{ __('Refered Details from Doctor') }}
               </p>
             </router-link>
           </li>
@@ -361,7 +361,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/labresult" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
-               Lab Result
+              {{ __('Lab Result') }}
               </p>
             </router-link>
           </li>                   
@@ -374,7 +374,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/pham-test" class="nav-link">
               <i class="nav-icon fas fa-info-circle"></i>
               <p>
-                  Get Refered Details             
+              {{ __('Get Refered Details') }}             
               </p>
             </router-link>
           </li>         
@@ -382,7 +382,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/medication" class="nav-link">
               <i class="nav-icon fas fa-comment-medical"></i>
               <p>
-                  Patients on medication
+              {{ __('Patients on medication') }}
               </p>
             </router-link>
           </li>         
@@ -394,7 +394,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/profile" class="nav-link">
               <i class="nav-icon fas fa-user-circle"></i>
               <p>
-               Profile Details             
+              {{ __('Profile Details') }}             
               </p>
             </router-link>
           </li>
@@ -440,10 +440,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Electronic Patients Medical Record System
+    {{ __('Electronic Patients Medical Record System') }}
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2019 <a href="#">EMR</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2020 <a href="#">EMR</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->
