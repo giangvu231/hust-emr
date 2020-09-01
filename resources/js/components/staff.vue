@@ -78,7 +78,7 @@
                     ()=>{
                         toast.fire({
                         type: 'success',
-                        title: 'Staff Added Successfully'
+                        title: 'Thêm thành công người dùng vào hệ thống!'
                         })   
                         $('.addstaff').html('Add Staff'); 
                         $('#add-staff').trigger('reset'); 
@@ -86,7 +86,7 @@
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed'
+                        title: 'Dữ liệu nhập vào chưa đúng!'
                         })   
                         $('.addstaff').html('Add Staff');
                         });                                      

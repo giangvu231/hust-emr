@@ -248,14 +248,14 @@
                         $('#injectiongive').modal('hide');
                         toast.fire({
                         type: 'success',
-                        title: 'Injection Given'
+                        title: 'Đã yêu cầu tiêm chủng!'
                         })   
                         $('.injectiongive').html('Give Injection'); 
                     }).catch(
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Error Encontered'
+                        title: 'Đã xảy ra lỗi!'
                         })   
                         $('.injectiongive').html('Give Injection');
                         });                                      
@@ -272,14 +272,14 @@
                         $('#editmedications').modal('hide');
                         toast.fire({
                         type: 'success',
-                        title: 'Medication Updated Successfully'
+                        title: 'Đã cập nhật thuốc thành công!'
                         })   
                         $('.updatemedications').html('Update Lab Result'); 
                     }).catch(
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed'
+                        title: 'Dữ liệu nhập vào không đúng!'
                         })   
                         $('.updatemedications').html('Update Lab Result');
                         });                                      

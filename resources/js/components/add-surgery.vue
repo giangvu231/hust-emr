@@ -63,7 +63,7 @@
                     ()=>{
                         toast.fire({
                         type: 'success',
-                        title: 'Patient Surgery History Added Successfully'
+                        title: 'Lịch sử phẫu thuật của bệnh nhân được thêm thành công!'
                         })   
                         $('.surgery').html('Add Patient Surgery History '); 
                         $('#add-surgery').trigger('reset'); 
@@ -71,7 +71,7 @@
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed'
+                        title: 'Dữ liệu thêm vào không đúng!'
                         })   
                         $('.surgery').html('Add Patient surgery History ');
                         });                                      

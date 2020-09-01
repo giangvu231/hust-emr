@@ -209,14 +209,14 @@
                         $('#editstaff').modal('hide');
                         toast.fire({
                         type: 'success',
-                        title: 'Staff Updated Successfully'
+                        title: 'Tài khoản đã được điều chỉnh!'
                         })   
                         $('.updatestaff').html('Update Staff'); 
                     }).catch(
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed'
+                        title: 'Thông tin nhập vào chưa đúng!'
                         })   
                         $('.updatestaff').html('Update Staff');
                         });                                      

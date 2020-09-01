@@ -174,7 +174,7 @@
 
             callback: function(response){
                 $('.paybutton').hide();     
-                $('.almost_done').html(' <p><i class="fa fa-spin fa-spinner"></i> <br><b>Saving</b>.... <br> Please wait </p>');                         
+                $('.almost_done').html(' <p><i class="fa fa-spin fa-spinner"></i> <br><b>Đang lưu thông tin</b>.... <br> Vui lòng đợi </p>');                         
                 let ref =   response.reference;
                 var url = 'api/paymentsave';
                 var post = 'POST';                                     
@@ -187,7 +187,7 @@
                         console.log(data);                
                         // $('.info_s').html();
                         $('.almost_done').hide();  
-                        $('.done').html('<div>Payment Succesful, Make another payment</div>');
+                        $('.done').html('<div>Thanh toán thành công, Tạo thanh toán khác</div>');
                         $('#addpayment').show(); 
                         $('.pay').html('Submit');                        
                                         

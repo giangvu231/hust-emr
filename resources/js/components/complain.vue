@@ -153,7 +153,7 @@
                     ()=>{
                         toast.fire({
                         type: 'success',
-                        title: 'Patient Diagnose Successfully'
+                        title: 'Thông tin chẩn đoán được thêm thành công!'
                         })   
                         $('.diagnose').html('Diagnose Patient'); 
                         $('#add-diagnosis').trigger('reset'); 
@@ -161,7 +161,7 @@
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed <br> Or <br> Data already exist'
+                        title: 'Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!'
                         })   
                         $('.diagnose').html('Diagnose Patient');
                         });                                      

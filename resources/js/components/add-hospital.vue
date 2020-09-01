@@ -123,7 +123,7 @@
                         toast.fire({
                         type: 'error',
                         // title: 'Data not correctly inputed'
-                        title: 'Thông tin nhập chưa đúng'
+                        title: 'Thông tin nhập chưa đúng!'
                         })   
                         $('.hospital').html('Add Patient Hospital History ');
                         });                                      

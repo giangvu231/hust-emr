@@ -188,14 +188,14 @@
                         $('#editlabresults').modal('hide');
                         toast.fire({
                         type: 'success',
-                        title: 'Lab Results Updated Successfully'
+                        title: 'Kết quả xét nghiệm đã cập nhật thành công!'
                         })   
                         $('.updatelabresults').html('Update Lab Result'); 
                     }).catch(
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed'
+                        title: 'Dữ liệu nhập vào chưa đúng!'
                         })   
                         $('.updatelabresults').html('Update Lab Result');
                         });                                      

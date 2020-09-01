@@ -198,14 +198,14 @@
                         $('#editmedications').modal('hide');
                         toast.fire({
                         type: 'success',
-                        title: 'Medication Updated Successfully'
+                        title: 'Cập nhật thuốc thành công!'
                         })   
                         $('.updatemedications').html('Update Lab Result'); 
                     }).catch(
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed'
+                        title: 'Dữ liệu nhập vào chưa đúng!'
                         })   
                         $('.updatemedications').html('Update Lab Result');
                         });                                      

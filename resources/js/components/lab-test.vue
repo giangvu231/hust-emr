@@ -205,7 +205,7 @@
                     ()=>{
                         toast.fire({
                         type: 'success',
-                        title: 'Test Result Uploaded Successfully'
+                        title: 'Kết quả xét nghiệm đã cập nhật thành công!'
                         })   
                         $('.labtestresult').html('Upload Test Result'); 
                         $('#lap-result').modal('hide');
@@ -213,7 +213,7 @@
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed <br> Or <br> Data already exist'
+                        title: 'Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!'
                         })   
                         $('.labtestresult').html('Upload Test Result ');
                         });                                      

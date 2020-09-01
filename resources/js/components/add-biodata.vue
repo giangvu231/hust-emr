@@ -196,7 +196,7 @@
                     ()=>{
                         toast.fire({
                         type: 'success',
-                        title: 'Patient Biodata Added Successfully'
+                        title: 'Lý lịch của bệnh nhân được thêm thành công!'
                         })   
                         $('.addpatient').html('Add Patient'); 
                         $('#add-biodata').trigger('reset'); 
@@ -204,7 +204,7 @@
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed'
+                        title: 'Thông tin thêm vào chưa đúng!'
                         })   
                         $('.addpatient').html('Add Patient');
                         });                                      

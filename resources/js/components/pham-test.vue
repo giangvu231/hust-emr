@@ -199,7 +199,7 @@
                     ()=>{
                         toast.fire({
                         type: 'success',
-                        title: 'Test Result Uploaded Successfully'
+                        title: 'Thuốc được cập nhật thành công!'
                         })   
                         $('.labtestresult').html('Give Prescription'); 
                         $('#lab-test').trigger('reset'); 
@@ -207,7 +207,7 @@
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed <br> Or <br> Data already exist'
+                        title: 'Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!'
                         })   
                         $('.labtestresult').html('Give Prescription');
                         });                                      

@@ -1,21 +1,31 @@
-# INTRODUCTION
+# Tech
 
 Laravel Framework 5.8.15
+VueJS 2.6.12
 
-## DEPLOYMENT
+## Deployment
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ```bash
-bước 1: git clone + link git
-bước 2: cd vào thư mục vừa clone về
-bước 3: composer install
-bước 4: npm install
-bước 5: cp .env.example .env ( copy file env )
-bước 6: chỉnh sửa file .env để kết nối db
-bước 7: php artisan key:generate
-bước 8: php artisan storage:link
-bước 9: php artisan serve
+(1) git clone https://github.com/giangvu231/hust-emr
+(2) cd vào thư mục vừa clone về
+(3) composer install
+(4) npm install
+(5) Cài đặt MySQL -> Vào MySQL Command Line -> type: create database emr -> ;
+(6) cp .env.example .env ( copy file env )
+(7) chỉnh sửa file .env để kết nối db
+    DB_CONNECTION=mysql          
+	DB_HOST=127.0.0.1            
+	DB_PORT=3306                 
+	DB_DATABASE=emr     
+	DB_USERNAME=root             
+	DB_PASSWORD=<pass tài khoản root của mysql>
+(8) php artisan key:generate
+(9) php artisan migrate:refresh --seed
+(10) php artisan storage:link
+(11) npm run watch / npm run dev
+(12) php artisan serve
 ```
 
 ## License

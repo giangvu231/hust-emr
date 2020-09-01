@@ -120,7 +120,7 @@
                     ()=>{
                         toast.fire({
                         type: 'success',
-                        title: 'Appointment Added Successfully'
+                        title: 'Đặt lịch thành công!'
                         })   
                         $('#addappointmentform').trigger('reset');
                         $('.appoint').html('Add Appointment'); 
@@ -130,7 +130,7 @@
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed <br> Or <br> Data already exist'
+                        title: 'Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!'
                         })   
                         $('.appoint').html('Add Appointment'); 
                         });                                      

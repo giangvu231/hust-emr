@@ -98,7 +98,7 @@
                     ()=>{
                         toast.fire({
                         type: 'success',
-                        title: 'Patient Vitals Added Successfully'
+                        title: 'Sinh hiệu của bệnh nhân được thêm thành công!'
                         })   
                         $('.vital').html('Add Patient Vital'); 
                         $('#add-vital').trigger('reset'); 
@@ -106,7 +106,7 @@
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed'
+                        title: 'Dữ liệu nhập vào chưa đúng!'
                         })   
                         $('.vital').html('Add Patient Vital');
                         });                                      

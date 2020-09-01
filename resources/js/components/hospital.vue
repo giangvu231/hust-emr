@@ -284,28 +284,28 @@
             },
             deleteHospital(id){
                 swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
+                        title: 'Bạn đã chắc chắn muốn xóa?',
+                        text: "Bạn sẽ không được phép hoàn tác sau khi thực hiện!",
                         type: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
+                        confirmButtonText: 'Đồng ý, hãy xóa!'
                         }).then((result) => {
                             //delete qury below
                             if (result.value) {
                                 swal.fire({
                                 position: 'center',
                                 type: 'info',
-                                title: 'Processing Delete',
+                                title: 'Đang xóa',
                                 showConfirmButton: false,
                                 timer: 1000
                                 })
                         this.form.delete('api/hospital/'+id).then(
                             ()=>{
                                 swal.fire(
-                                'Deleted!',
-                                'Deleted Successfully.',
+                                'Đã xóa!',
+                                'Đã xóa thành công.',
                                 'success'
                                 )
                                 Fire.$emit('afterAction');
@@ -314,7 +314,7 @@
                                 swal.fire({
                                 type: 'error',
                                 title: 'Oops...',
-                                text: 'Something went wrong!',
+                                text: 'Đã xảy ra sự cố!',
                                 })  
                                 }); 
                             }                       
@@ -328,14 +328,14 @@
                         $('#edithospital').modal('hide');
                         toast.fire({
                         type: 'success',
-                        title: 'Patient Biodata Update Successfully'
+                        title: 'Cập nhật tiền sử bệnh nhân thành công!'
                         })   
                         $('.updatehospital').html('Add Patient'); 
                     }).catch(
                         ()=>{
                         toast.fire({
                         type: 'error',
-                        title: 'Data not correctly inputed'
+                        title: 'Dữ liệu nhập vào chưa đúng!'
                         })   
                         $('.updatehospital').html('Add Patient');
                         });                                      
