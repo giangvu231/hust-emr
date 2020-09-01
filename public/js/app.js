@@ -1986,14 +1986,14 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post('api/patient').then(function () {
         toast.fire({
           type: 'success',
-          title: 'Patient Biodata Added Successfully'
+          title: 'Lý lịch của bệnh nhân được thêm thành công!'
         });
         $('.addpatient').html('Add Patient');
         $('#add-biodata').trigger('reset');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Thông tin thêm vào chưa đúng!'
         });
         $('.addpatient').html('Add Patient');
       });
@@ -2140,7 +2140,7 @@ __webpack_require__.r(__webpack_exports__);
         toast.fire({
           type: 'error',
           // title: 'Data not correctly inputed'
-          title: 'Thông tin nhập chưa đúng'
+          title: 'Thông tin nhập chưa đúng!'
         });
         $('.hospital').html('Add Patient Hospital History ');
       });
@@ -2236,14 +2236,14 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post('api/surgery').then(function () {
         toast.fire({
           type: 'success',
-          title: 'Patient Surgery History Added Successfully'
+          title: 'Lịch sử phẫu thuật của bệnh nhân được thêm thành công!'
         });
         $('.surgery').html('Add Patient Surgery History ');
         $('#add-surgery').trigger('reset');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Dữ liệu thêm vào không đúng!'
         });
         $('.surgery').html('Add Patient surgery History ');
       });
@@ -2375,14 +2375,14 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post('api/vital').then(function () {
         toast.fire({
           type: 'success',
-          title: 'Patient Vitals Added Successfully'
+          title: 'Sinh hiệu của bệnh nhân được thêm thành công!'
         });
         $('.vital').html('Add Patient Vital');
         $('#add-vital').trigger('reset');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Dữ liệu nhập vào chưa đúng!'
         });
         $('.vital').html('Add Patient Vital');
       });
@@ -2623,13 +2623,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#editstaff').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Staff Updated Successfully'
+          title: 'Tài khoản đã được điều chỉnh!'
         });
         $('.updatestaff').html('Update Staff');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Thông tin nhập vào chưa đúng!'
         });
         $('.updatestaff').html('Update Staff');
       });
@@ -2781,7 +2781,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post('api/appointment').then(function () {
         toast.fire({
           type: 'success',
-          title: 'Appointment Added Successfully'
+          title: 'Đặt lịch thành công!'
         });
         $('#addappointmentform').trigger('reset');
         $('.appoint').html('Add Appointment');
@@ -2790,7 +2790,7 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed <br> Or <br> Data already exist'
+          title: 'Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!'
         });
         $('.appoint').html('Add Appointment');
       });
@@ -2993,7 +2993,7 @@ __webpack_require__.r(__webpack_exports__);
         // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you            
         callback: function callback(response) {
           $('.paybutton').hide();
-          $('.almost_done').html(' <p><i class="fa fa-spin fa-spinner"></i> <br><b>Saving</b>.... <br> Please wait </p>');
+          $('.almost_done').html(' <p><i class="fa fa-spin fa-spinner"></i> <br><b>Đang lưu thông tin</b>.... <br> Vui lòng đợi </p>');
           var ref = response.reference;
           var url = 'api/paymentsave';
           var post = 'POST';
@@ -3008,7 +3008,7 @@ __webpack_require__.r(__webpack_exports__);
               console.log(data); // $('.info_s').html();
 
               $('.almost_done').hide();
-              $('.done').html('<div>Payment Succesful, Make another payment</div>');
+              $('.done').html('<div>Thanh toán thành công, Tạo thanh toán khác</div>');
               $('#addpayment').show();
               $('.pay').html('Submit');
             }
@@ -3197,14 +3197,14 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post('api/diagnose').then(function () {
         toast.fire({
           type: 'success',
-          title: 'Patient Diagnose Successfully'
+          title: 'Thông tin chẩn đoán được thêm thành công!'
         });
         $('.diagnose').html('Diagnose Patient');
         $('#add-diagnosis').trigger('reset');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed <br> Or <br> Data already exist'
+          title: 'Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!'
         });
         $('.diagnose').html('Diagnose Patient');
       });
@@ -3496,32 +3496,32 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Bạn đã chắc chắn muốn xóa?',
+        text: "Bạn sẽ không được phép hoàn tác sau khi thực hiện!",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Đồng ý, hãy xóa!'
       }).then(function (result) {
         //delete qury below
         if (result.value) {
           swal.fire({
             position: 'center',
             type: 'info',
-            title: 'Processing Delete',
+            title: 'Đang xóa',
             showConfirmButton: false,
             timer: 1000
           });
 
           _this2.form["delete"]('api/diagnose/' + id).then(function () {
-            swal.fire('Deleted!', 'Deleted Successfully.', 'success');
+            swal.fire('Đã xóa!', 'Đã xóa thành công.', 'success');
             Fire.$emit('afterAction');
           })["catch"](function () {
             swal.fire({
               type: 'error',
               title: 'Oops...',
-              text: 'Something went wrong!'
+              text: 'Đã xảy ra sự cố!'
             });
           });
         }
@@ -3534,13 +3534,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#editdiagnoses').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Patient Diagnoses Updated Successfully'
+          title: 'Cập nhật thông tin chẩn đoán thành công!'
         });
         $('.updatediagnoses').html('Update Patient Diagnoses');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Dữ liệu nhập vào chưa đúng!'
         });
         $('.updatediagnoses').html('Update Patient Diagnoses');
       });
@@ -3552,13 +3552,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#tolab').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Refered to Labouratory'
+          title: 'Đã yêu cầu xét nghiệm'
         });
         $('.tolab').html('Refer to Labouratory');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Error Encontered'
+          title: 'Đã xảy ra lỗi!'
         });
         $('.tolab').html('Refer to Labouratory');
       });
@@ -3570,13 +3570,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#topham').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Refered to Pharmacy'
+          title: 'Đã yêu cầu lấy thuốc!'
         });
         $('.topham').html('Refer to Pharmacy');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Error Encontered'
+          title: 'Đã xảy ra lỗi!'
         });
         $('.topham').html('Refer to Pharmacy');
       });
@@ -3853,13 +3853,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#injectiongive').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Injection Given'
+          title: 'Đã yêu cầu tiêm chủng!'
         });
         $('.injectiongive').html('Give Injection');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Error Encontered'
+          title: 'Đã xảy ra lỗi!'
         });
         $('.injectiongive').html('Give Injection');
       });
@@ -3875,13 +3875,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#editmedications').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Medication Updated Successfully'
+          title: 'Đã cập nhật thuốc thành công!'
         });
         $('.updatemedications').html('Update Lab Result');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Dữ liệu nhập vào không đúng!'
         });
         $('.updatemedications').html('Update Lab Result');
       });
@@ -4197,32 +4197,32 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Bạn đã chắc chắn muốn xóa?',
+        text: "Bạn sẽ không được phép hoàn tác sau khi thực hiện!",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Đồng ý, hãy xóa!'
       }).then(function (result) {
         //delete qury below
         if (result.value) {
           swal.fire({
             position: 'center',
             type: 'info',
-            title: 'Processing Delete',
+            title: 'Đang xóa',
             showConfirmButton: false,
             timer: 1000
           });
 
           _this2.form["delete"]('api/hospital/' + id).then(function () {
-            swal.fire('Deleted!', 'Deleted Successfully.', 'success');
+            swal.fire('Đã xóa!', 'Đã xóa thành công.', 'success');
             Fire.$emit('afterAction');
           })["catch"](function () {
             swal.fire({
               type: 'error',
               title: 'Oops...',
-              text: 'Something went wrong!'
+              text: 'Đã xảy ra sự cố!'
             });
           });
         }
@@ -4235,13 +4235,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#edithospital').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Patient Biodata Update Successfully'
+          title: 'Cập nhật tiền sử bệnh nhân thành công!'
         });
         $('.updatehospital').html('Add Patient');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Dữ liệu nhập vào chưa đúng!'
         });
         $('.updatehospital').html('Add Patient');
       });
@@ -4475,14 +4475,14 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post('api/uploadtest').then(function () {
         toast.fire({
           type: 'success',
-          title: 'Test Result Uploaded Successfully'
+          title: 'Kết quả xét nghiệm đã cập nhật thành công!'
         });
         $('.labtestresult').html('Upload Test Result');
         $('#lap-result').modal('hide');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed <br> Or <br> Data already exist'
+          title: 'Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!'
         });
         $('.labtestresult').html('Upload Test Result ');
       });
@@ -4699,13 +4699,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#editlabresults').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Lab Results Updated Successfully'
+          title: 'Kết quả xét nghiệm đã cập nhật thành công!'
         });
         $('.updatelabresults').html('Update Lab Result');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Dữ liệu nhập vào chưa đúng!'
         });
         $('.updatelabresults').html('Update Lab Result');
       });
@@ -4932,13 +4932,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#editmedications').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Medication Updated Successfully'
+          title: 'Cập nhật thuốc thành công!'
         });
         $('.updatemedications').html('Update Lab Result');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Dữ liệu nhập vào chưa đúng!'
         });
         $('.updatemedications').html('Update Lab Result');
       });
@@ -5348,32 +5348,32 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Bạn đã chắc chắn muốn xóa?',
+        text: "Bạn sẽ không được phép hoàn tác sau khi thực hiện!",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Đồng ý, hãy xóa!'
       }).then(function (result) {
         //delete qury below
         if (result.value) {
           swal.fire({
             position: 'center',
             type: 'info',
-            title: 'Processing Delete',
+            title: 'Đang xóa',
             showConfirmButton: false,
             timer: 1000
           });
 
           _this3.form["delete"]('api/patient/' + id).then(function () {
-            swal.fire('Deleted!', 'Deleted Successfully.', 'success');
+            swal.fire('Đã xóa!', 'Đã xóa thành công.', 'success');
             Fire.$emit('afterAction');
           })["catch"](function () {
             swal.fire({
               type: 'error',
               title: 'Oops...',
-              text: 'Something went wrong!'
+              text: 'Đã xảy ra sự cố!'
             });
           });
         }
@@ -5386,13 +5386,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#editpatient').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Patient Biodata Updated Successfully'
+          title: 'Lý lịch của bệnh nhân được cập nhật thành công!'
         });
         $('.updatepatient').html('Update Patient');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Dữ liệu nhập vào chưa đúng!'
         });
         $('.updatepatient').html('Update Patient');
       });
@@ -5621,14 +5621,14 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post('api/uploadpham').then(function () {
         toast.fire({
           type: 'success',
-          title: 'Test Result Uploaded Successfully'
+          title: 'Thuốc được cập nhật thành công!'
         });
         $('.labtestresult').html('Give Prescription');
         $('#lab-test').trigger('reset');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed <br> Or <br> Data already exist'
+          title: 'Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!'
         });
         $('.labtestresult').html('Give Prescription');
       });
@@ -5838,13 +5838,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#editstaff').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Staff Updated Successfully'
+          title: 'Tài khoản được cập nhật thành công!'
         });
         $('.updatestaff').html('Update Staff');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Dữ liệu nhập vào chưa đúng!'
         });
         $('.updatestaff').html('Update Staff');
       });
@@ -5950,14 +5950,14 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post('api/staff').then(function () {
         toast.fire({
           type: 'success',
-          title: 'Staff Added Successfully'
+          title: 'Thêm thành công người dùng vào hệ thống!'
         });
         $('.addstaff').html('Add Staff');
         $('#add-staff').trigger('reset');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Dữ liệu nhập vào chưa đúng!'
         });
         $('.addstaff').html('Add Staff');
       });
@@ -6153,13 +6153,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Bạn đã chắc chắn muốn xóa?',
+        text: "Bạn sẽ không được phép hoàn tác sau khi thực hiện!",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Đồng ý, hãy xóa!'
       }).then(function (result) {
         //delete qury below
         if (result.value) {
@@ -6172,13 +6172,13 @@ __webpack_require__.r(__webpack_exports__);
           });
 
           _this2.form["delete"]('api/surgery/' + id).then(function () {
-            swal.fire('Deleted!', 'Deleted Successfully.', 'success');
+            swal.fire('Đã xóa!', 'Đã xóa thành công.', 'success');
             Fire.$emit('afterAction');
           })["catch"](function () {
             swal.fire({
               type: 'error',
               title: 'Oops...',
-              text: 'Something went wrong!'
+              text: 'Đã xảy ra sự cố!'
             });
           });
         }
@@ -6191,13 +6191,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#editsurgery').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Patient Surgery History Update Successfully'
+          title: 'Lịch sử phẫu thuật của bệnh nhân được cập nhật thành công!'
         });
         $('.updatesurgery').html('Add Patient');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Dữ liệu nhập vào chưa đúng!'
         });
         $('.updatesurgery').html('Add Patient');
       });
@@ -6489,32 +6489,32 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Bạn đã chắc chắn muốn xóa?',
+        text: "Bạn sẽ không được phép hoàn tác sau khi thực hiện!",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Đồng ý, hãy xóa!'
       }).then(function (result) {
         //delete qury below
         if (result.value) {
           swal.fire({
             position: 'center',
             type: 'info',
-            title: 'Processing Delete',
+            title: 'Đang xóa',
             showConfirmButton: false,
             timer: 1000
           });
 
           _this2.form["delete"]('api/vital/' + id).then(function () {
-            swal.fire('Deleted!', 'Deleted Successfully.', 'success');
+            swal.fire('Đã xóa!', 'Đã xóa thành công.', 'success');
             Fire.$emit('afterAction');
           })["catch"](function () {
             swal.fire({
               type: 'error',
               title: 'Oops...',
-              text: 'Something went wrong!'
+              text: 'Đã xảy ra sự cố!'
             });
           });
         }
@@ -6527,13 +6527,13 @@ __webpack_require__.r(__webpack_exports__);
         $('#editvital').modal('hide');
         toast.fire({
           type: 'success',
-          title: 'Patient Biodata Update Successfully'
+          title: 'Sinh hiệu được cập nhật thành công!'
         });
         $('.updatevital').html('Add Patient');
       })["catch"](function () {
         toast.fire({
           type: 'error',
-          title: 'Data not correctly inputed'
+          title: 'Dữ liệu nhập vào chưa đúng'
         });
         $('.updatevital').html('Add Patient');
       });
