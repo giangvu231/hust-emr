@@ -18,7 +18,7 @@ window.swal = swal;
 window.NProgress = NProgress;
 window.Fire = new Vue();
 
- 
+
 const toast = swal.mixin({
   toast: true,
   position: 'top-end',
@@ -45,7 +45,7 @@ Vue.filter('humanDate', function(created){
 
 const routes = [
     { name: '404', path: '*', component: require('./components/404.vue').default },
-    { name: 'all-patients', path: '/patients', component: require('./components/patients.vue').default },    
+    { name: 'all-patients', path: '/patients', component: require('./components/patients.vue').default },
     { name: 'add-biodata', path: '/add-biodata', component: require('./components/add-biodata.vue').default },
     { name: 'add-vital', path: '/add-vital', component: require('./components/add-vitals.vue').default },
     { name: 'vitals', path: '/vitals', component: require('./components/vitals.vue').default },
@@ -71,7 +71,7 @@ const routes = [
     mode: 'history',
     routes // short for `routes: routes`
   })
-  
+
 
   router.beforeResolve((to, from, next) => {
     if (to.name) {
@@ -83,10 +83,10 @@ const routes = [
     }
     next()
   })
-  
-  
+
+
   router.afterEach((to, from) => {
-       
+
   })
 
 
@@ -110,7 +110,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({    
+const app = new Vue({
     el: '#app',
     router,
     // data: {

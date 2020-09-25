@@ -14,6 +14,7 @@ use App\Pham;
 use App\SurgeryHistory;
 use App\Vital;
 use App\Appointment;
+use PDF;
 
 class PatientController extends Controller
 {
@@ -23,7 +24,7 @@ class PatientController extends Controller
         $this->middleware('auth:api');
     }
 
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -40,12 +41,12 @@ class PatientController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */ 
+     */
 
-    
+
     public function store(Request $request)
     {
-        
+
         $this->validate($request, [
             'unique_id' => 'required | unique:add_patients',
             'full_name' => 'required | string | max:191',
@@ -63,7 +64,7 @@ class PatientController extends Controller
             'home_next_of_kin' => 'required',
             'phone_next_of_kin' => 'required',
         ]);
-                   
+
         return addPatient::create($request->all());
     }
 
@@ -107,9 +108,9 @@ class PatientController extends Controller
             'home_next_of_kin' => 'required',
             'phone_next_of_kin' => 'required',
         ]);
-        
+
         $patient->update($request->all());
-        
+
     }
 
     /**
@@ -131,10 +132,10 @@ class PatientController extends Controller
         SurgeryHistory::where('patient_id',$id)->delete();
         Vital::where('patient_id',$id)->delete();
         Appointment::where('patient_id',$id)->delete();
-      
-        $patient->delete();     
-            
-               
+
+        $patient->delete();
+
+
     }
 
     public function search()
@@ -147,5 +148,13 @@ class PatientController extends Controller
         }
 
         // echo $patients;
+    }
+
+    public function pdfexport($id)
+    {
+        $add_patients = AddPatients::findOrFail($id);
+        $pdf = PDF::loadView("pdf.emr", ['add_patients' => $add_patients])->setPaper('A4', 'Portrait');
+        $pdf->save(public_path("pdf_export/test.pdf"));
+        return $pdf->stream("test.pdf");
     }
 }

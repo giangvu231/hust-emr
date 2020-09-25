@@ -5266,32 +5266,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5300,7 +5274,7 @@ __webpack_require__.r(__webpack_exports__);
       //   loading: false,
       form: new Form({
         id: '',
-        unique_id: 'EMR' + Math.floor(Math.random() * 10000000000 + 1),
+        unique_id: 'BA' + Math.floor(Math.random() * 10000000000 + 1),
         title: '',
         full_name: '',
         email: '',
@@ -5396,12 +5370,19 @@ __webpack_require__.r(__webpack_exports__);
         });
         $('.updatepatient').html('Update Patient');
       });
+    },
+    pdfExport: function pdfExport() {
+      axios.get("pdf_export/5").then(function (data) {
+        window.open("/pdf_export/5");
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     }
   },
   mounted: function mounted() {
     var _this4 = this;
 
-    console.log('Component mounted.'); // this.loading = true;                       
+    console.log('Component mounted.'); // this.loading = true;
 
     this.loadPatients();
     Fire.$on('afterAction', function () {
@@ -75595,6 +75576,17 @@ var render = function() {
             attrs: { to: "/add-biodata", type: "button" }
           },
           [_vm._v("Thêm mới")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-rounded btn-info",
+            staticStyle: { color: "#fff" },
+            attrs: { type: "button" },
+            on: { click: _vm.pdfExport }
+          },
+          [_vm._v("Print TEST")]
         )
       ],
       1

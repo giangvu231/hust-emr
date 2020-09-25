@@ -30,7 +30,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         'staff' => 'API\StaffController',
         'appointment' => 'API\AppointmentController',
     ]);
-    
+
     Route::get('labtest', 'API\DiagnoseController@labtest');
     Route::get('phamtest', 'API\DiagnoseController@phamtest');
     Route::get('give-injection', 'API\phamController@giveInjection');
@@ -38,5 +38,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('profile', 'API\StaffController@profile');
     Route::get('findPatient', 'API\PatientController@search');
 
-
-
+    Route::get('/pdf_export/{id}', 'API\PatientController@pdfexport');
