@@ -2,7 +2,7 @@
     <div class="container">
         <div>
             <router-link to="/add-biodata"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Thêm mới</router-link>
-            <button type="button" v-on:click="pdfExport" class="btn btn-rounded btn-info"  style="color:#fff;">Print TEST</button>
+            <button type="button" @click="pdfExport()" class="btn btn-rounded btn-info"  style="color:#fff;">Print TEST</button>
         </div> <br><br>
         <div class="row justify-content-center">
             <div class="card" style="width:100%;">
@@ -412,12 +412,15 @@
                         $('.updatepatient').html('Update Patient');
                         });
             },
-            pdfExport (){
-                axios.get("pdf_export/5")
-                .then(data => {
-                    window.open("/pdf_export/5")
-                    })
-                .catch(err => console.log(err))
+            pdfExport(){
+                axios
+                .get("/pdf_export")
+                .then(response => {
+                    window.open("/pdf_export/");
+                })
+                .catch(error => {
+                    this.errors = "Lỗi in";
+                });
             },
         },
         mounted() {

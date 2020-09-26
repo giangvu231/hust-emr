@@ -5372,21 +5372,23 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     pdfExport: function pdfExport() {
-      axios.get("pdf_export/5").then(function (data) {
-        window.open("/pdf_export/5");
-      })["catch"](function (err) {
-        return console.log(err);
+      var _this4 = this;
+
+      axios.get("/pdf_export").then(function (response) {
+        window.open("/pdf_export/");
+      })["catch"](function (error) {
+        _this4.errors = "Lỗi in";
       });
     }
   },
   mounted: function mounted() {
-    var _this4 = this;
+    var _this5 = this;
 
     console.log('Component mounted.'); // this.loading = true;
 
     this.loadPatients();
     Fire.$on('afterAction', function () {
-      _this4.loadPatients();
+      _this5.loadPatients();
     });
   }
 });
@@ -75584,7 +75586,11 @@ var render = function() {
             staticClass: "btn btn-rounded btn-info",
             staticStyle: { color: "#fff" },
             attrs: { type: "button" },
-            on: { click: _vm.pdfExport }
+            on: {
+              click: function($event) {
+                return _vm.pdfExport()
+              }
+            }
           },
           [_vm._v("Print TEST")]
         )
@@ -96896,8 +96902,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\hust-emr\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\hust-emr\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Work\Telemed\hust-emr\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Work\Telemed\hust-emr\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

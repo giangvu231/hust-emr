@@ -21,8 +21,9 @@ Auth::routes(['register'=>false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('pdf_export', 'PdfController@index');
+
 Route::get('/{vue_capture?}', function () {
     return view('layouts.master');
 })->where('vue_capture', '[\/\w\.-]*')->middleware('auth');
 
-Route::get('/pdf_export/{id}', 'API\PatientController@pdfexport')->name('get.print.pdf');

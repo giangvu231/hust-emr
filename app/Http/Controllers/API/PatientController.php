@@ -149,12 +149,4 @@ class PatientController extends Controller
 
         // echo $patients;
     }
-
-    public function pdfexport($id)
-    {
-        $add_patients = AddPatients::findOrFail($id);
-        $pdf = PDF::loadView("pdf.emr", ['add_patients' => $add_patients])->setPaper('A4', 'Portrait');
-        $pdf->save(public_path("pdf_export/test.pdf"));
-        return $pdf->stream("test.pdf");
-    }
 }
