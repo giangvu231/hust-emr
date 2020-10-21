@@ -28,6 +28,7 @@
         "admin-lte": "^3.0.5",
         "jspdf": "^2.1.1",
         "moment": "^2.27.0",
+        "node-forge": "^0.10.0",
         "nprogress": "^0.2.0",
         "object-path": "^0.11.5",
         "sweetalert2": "^8.19.0",
