@@ -99,15 +99,20 @@
                   </td>
                   <td>
                   <div class="row">
-                  <div class="col-sm-6">
-                    <button  @click="editModal(patient)" class="text-primary">
-                      <i class="fa fa-edit"></i>
-                    </button>
+                    <div class="col-sm-4">
+                        <button  @click="editModal(patient)" class="text-primary">
+                        <i class="fa fa-edit"></i>
+                        </button>
                     </div>
-                    <div class="col-sm-6">
-                    <button  @click="deletePatient(patient.id)" class="text-danger">
-                      <i class="fa fa-trash"></i>
-                    </button>
+                    <div class="col-sm-4">
+                        <button  @click="deletePatient(patient.id)" class="text-danger">
+                        <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-4">
+                        <button  @click="xmlExport(patient.id)" class="text-primary">
+                        <i class="fas fa-file-export"></i>
+                        </button>
                     </div>
                     </div>
                 </td>
@@ -422,6 +427,22 @@
                     this.errors = "Lỗi in";
                 });
             },
+            xmlExport(id){
+                axios
+                .get("/xml_export/" + id)
+                .then(response => {
+                    toast.fire({
+                        type: 'success',
+                        title: 'Dữ liệu được xuất thành công!'
+                    })
+                })
+                .catch(err => {
+                    toast.fire({
+                        type: 'error',
+                        title: 'Xuất dữ liệu thất bại!'
+                    })
+                })
+            }
         },
         mounted() {
             console.log('Component mounted.')

@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('pdf_export', 'PdfController@index');
 
+Route::get('xml_export/{id}', 'XMLController@index');
+
 Route::get('/{vue_capture?}', function () {
     return view('layouts.master');
 })->where('vue_capture', '[\/\w\.-]*')->middleware('auth');

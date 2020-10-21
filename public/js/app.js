@@ -5266,6 +5266,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5378,6 +5383,19 @@ __webpack_require__.r(__webpack_exports__);
         window.open("/pdf_export/");
       })["catch"](function (error) {
         _this4.errors = "Lỗi in";
+      });
+    },
+    xmlExport: function xmlExport(id) {
+      axios.get("/xml_export/" + id).then(function (response) {
+        toast.fire({
+          type: 'success',
+          title: 'Dữ liệu được xuất thành công!'
+        });
+      })["catch"](function (err) {
+        toast.fire({
+          type: 'error',
+          title: 'Xuất dữ liệu thất bại!'
+        });
       });
     }
   },
@@ -75847,7 +75865,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("td", [
                           _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-sm-6" }, [
+                            _c("div", { staticClass: "col-sm-4" }, [
                               _c(
                                 "button",
                                 {
@@ -75862,7 +75880,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "col-sm-6" }, [
+                            _c("div", { staticClass: "col-sm-4" }, [
                               _c(
                                 "button",
                                 {
@@ -75874,6 +75892,21 @@ var render = function() {
                                   }
                                 },
                                 [_c("i", { staticClass: "fa fa-trash" })]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-sm-4" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "text-primary",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.xmlExport(patient.id)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fas fa-file-export" })]
                               )
                             ])
                           ])
@@ -96902,8 +96935,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\hust-emr\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\hust-emr\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Work\Telemed\hust-emr\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Work\Telemed\hust-emr\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
