@@ -1,9 +1,9 @@
 <template>
-    <div class="container">       
+    <div class="container">
         <!-- <div>
             <router-link to="/add-biodata"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Add New</router-link>
         </div> <br><br>  -->
-        <div class="row justify-content-center">            
+        <div class="row justify-content-center">
             <div class="card" style="width:100%;">
             <div class="card-header">
               <!-- <h3 class="card-title">Patient Medications</h3> -->
@@ -16,30 +16,30 @@
                 <!-- <tr>
                   <th>Unique ID</th>
                   <th>Name</th>
-                  <th>Dianoses Details</th>                
+                  <th>Dianoses Details</th>
                   <th>Date of  Medication</th>
                   <th>Medication Details</th>
                   <th v-if="user.role == 'pharm'">Action</th>
                 </tr> -->
 
                 <tr>
-                  <th>Mã HSBA</th>
+                  <th>Mã bệnh nhân</th>
                   <th>Họ tên</th>
-                  <th>Thông tin chỉ định</th>                
+                  <th>Thông tin chỉ định</th>
                   <th>Ngày dùng thuốc</th>
                   <th>Thông tin thuốc</th>
                   <th v-if="user.role == 'pharm'">Tác vụ</th>
                 </tr>
 
                 </thead>
-                <tbody>              
+                <tbody>
                 <tr v-for="medication in medications" :key="medication.id">
                   <td>{{medication.patient.unique_id}}</td>
                   <td>{{medication.patient.title}} {{medication.patient.full_name}}</td>
                   <td>{{medication.diagnose.diagnosis}}</td>
                   <td>{{medication.created_at | humanDate}}</td>
                   <!-- <td>{{medication.type}} <br> {{medication.unit}} unit <br> {{medication.comment}}</td>                                                                   -->
-                  <td>{{medication.type}} <br> {{medication.unit}} đơn vị <br> {{medication.comment}}</td>                                                                  
+                  <td>{{medication.type}} <br> {{medication.unit}} đơn vị <br> {{medication.comment}}</td>
                   <td v-if="user.role == 'pharm'">
                   <div class="row">
                   <div class="col-sm-6">
@@ -53,8 +53,8 @@
                     </a>
                     </div>
                     </div>
-                </td>                            
-                </tr>                   
+                </td>
+                </tr>
 
                  <!--Biodata Modal -->
                       <div class="modal fade" id="editmedications" tabindex="-1" role="dialog" aria-labelledby="biodataTitle" aria-hidden="true">
@@ -68,10 +68,10 @@
                               </button>
                           </div>
                           <div class="modal-body">
-                             <form @submit.prevent="updatemedications" id="edit-medications">                         
+                             <form @submit.prevent="updatemedications" id="edit-medications">
                                 <div class="form-group">
                                 <!-- <label>Select Type of Medicine</label>                 -->
-                                <label>Chọn loại thuốc</label>                
+                                <label>Chọn loại thuốc</label>
                                 <select v-model="form.type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }" name="type">
                                 <!-- <option value="Tablet">Tablet</option>
                                 <option value="Capsule">Capsule</option>
@@ -83,32 +83,32 @@
                                 <option value="Vitamin tổng hợp">Vitamin tổng hợp</option>
                                 <option value="Xi-rô">Xi-rô</option>
 
-                                </select>  
+                                </select>
                                 <has-error :form="form" field="type"></has-error>
-                                </div>   
-                                <div class="form-group"> 
+                                </div>
+                                <div class="form-group">
                                   <!-- <label>Edit Unit</label>   -->
-                                  <label>Sửa đơn vị</label>  
+                                  <label>Sửa đơn vị</label>
                                 <input v-model="form.unit" type="number" name="unit" placeholder="Nhập đơn vị"
                                     class="form-control" :class="{ 'is-invalid': form.errors.has('unit') }">
                                 <has-error :form="form" field="unit"></has-error>
-                                </div>                           
-                                <div class="form-group"> 
+                                </div>
+                                <div class="form-group">
                                   <!-- <label>Edit Comment</label>   -->
-                                  <label>Sửa nhận xét</label>  
-                                <textarea v-model="form.comment"  placeholder="Nhận xét" name="comment" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('comment') }"></textarea>                       
-                                <has-error :form="form" field="comment"></has-error>                       
-                                </div> 
-                                 <!-- <input v-model="form.nurse" 
-                                :value="1" 
-                                type="checkbox" 
+                                  <label>Sửa nhận xét</label>
+                                <textarea v-model="form.comment"  placeholder="Nhận xét" name="comment" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('comment') }"></textarea>
+                                <has-error :form="form" field="comment"></has-error>
+                                </div>
+                                 <!-- <input v-model="form.nurse"
+                                :value="1"
+                                type="checkbox"
                                 name="nurse" /> Edit Refer Patient for injection -->
 
-                                <input v-model="form.nurse" 
-                                :value="1" 
-                                type="checkbox" 
+                                <input v-model="form.nurse"
+                                :value="1"
+                                type="checkbox"
                                 name="nurse" /> Sửa chỉ định tiêm
-                                
+
                             <center>
                             <!-- <button type="submit" class="updatemedications btn-block btn btn-info" style="color:#fff;">Update Lab Result</button> -->
                             <button type="submit" class="updatemedications btn-block btn btn-info" style="color:#fff;">Cập nhật kết quả xét nghiệm</button>
@@ -122,31 +122,31 @@
                           </div>
                       </div>
                       </div>
-                              
+
                 </tbody>
                 <tfoot>
                 <!-- <tr>
                 <th>Unique ID</th>
                   <th>Name</th>
-                  <th>Dianoses Details</th>                
+                  <th>Dianoses Details</th>
                   <th>Date of  Medication</th>
                   <th>Medication Details</th>
                 <th v-if="user.role == 'pharm'">Action</th>
                 </tr> -->
 
                 <tr>
-                <th>Mã HSBA</th>
-                  <th>Họ tên</th>
-                  <th>Thông tin chỉ định</th>                
-                  <th>Ngày cấp thuốc</th>
-                  <th>Thông tin thuốc</th>
+                    <th>Mã bệnh nhân</th>
+                    <th>Họ tên</th>
+                    <th>Thông tin chỉ định</th>
+                    <th>Ngày cấp thuốc</th>
+                    <th>Thông tin thuốc</th>
                 <th v-if="user.role == 'pharm'">Tác vụ</th>
                 </tr>
 
                 </tfoot>
-              </table>   
-              
-                                         
+              </table>
+
+
             </div>
             <!-- /.card-body -->
           </div>
@@ -168,10 +168,10 @@
                 unit: '',
                 nurse: '',
                 injection: ''
-                })              
+                })
             }
         },
-        methods:{                      
+        methods:{
             LoadLabresult(){
               axios.get("api/uploadpham")
                 .then((response)  =>  {
@@ -184,12 +184,12 @@
                  axios.get('api/user').then(response => {
                      console.log(response.data);
                      this.user = response.data
-                 })                 
-            },             
+                 })
+            },
             editModal(medication){
               $('#editmedications').modal('show');
-              this.form.fill(medication);              
-            },        
+              this.form.fill(medication);
+            },
             updatemedications(){
                 $('.updatemedications').html('<i class="fa fa-spin fa-spinner"></i>');
                 this.form.put('api/uploadpham/'+this.form.id).then(
@@ -199,24 +199,24 @@
                         toast.fire({
                         type: 'success',
                         title: 'Cập nhật thuốc thành công!'
-                        })   
-                        $('.updatemedications').html('Update Lab Result'); 
+                        })
+                        $('.updatemedications').html('Update Lab Result');
                     }).catch(
                         ()=>{
                         toast.fire({
                         type: 'error',
                         title: 'Dữ liệu nhập vào chưa đúng!'
-                        })   
+                        })
                         $('.updatemedications').html('Update Lab Result');
-                        });                                      
-            },            
-        },        
+                        });
+            },
+        },
         mounted() {
-            console.log('Component mounted.')            
-            this.LoadLabresult(); 
-            Fire.$on('afterAction', () => {this.LoadLabresult()})                                   
+            console.log('Component mounted.')
+            this.LoadLabresult();
+            Fire.$on('afterAction', () => {this.LoadLabresult()})
         }
-        
+
     }
 </script>
 

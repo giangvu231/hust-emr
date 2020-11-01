@@ -1,9 +1,9 @@
 <template>
-    <div class="container">       
+    <div class="container">
         <div>
             <router-link to="/add-surgery"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Thêm lịch sử phẫu thuật</router-link>
         </div> <br><br>
-        <div class="row justify-content-center">            
+        <div class="row justify-content-center">
             <div class="card" style="width:100%;">
             <div class="card-header">
               <!-- <h3 class="card-title">Patients Surgery History</h3> -->
@@ -23,7 +23,7 @@
                 </tr> -->
 
                 <tr>
-                  <th>Mã HSBA</th>
+                  <th>Mã bệnh nhân</th>
                   <th>Họ tên</th>
                   <th>Chi tiết phẫu thuật</th>
                   <th>Ngày phẫu thuật</th>
@@ -32,13 +32,13 @@
                 </tr>
 
                 </thead>
-                <tbody>              
+                <tbody>
                 <tr v-for="surgery in surgeries" :key="surgery.id">
                   <td>{{surgery.patient.unique_id}}</td>
                   <td>{{surgery.patient.title}} {{surgery.patient.full_name}}</td>
                   <td>{{surgery.operations}}</td>
                   <td>{{surgery.date_of_operation | humanDate}}</td>
-                  <td>{{surgery.surgeon}}</td>                                  
+                  <td>{{surgery.surgeon}}</td>
                   <td>
                   <div class="row">
                   <div class="col-sm-6">
@@ -52,8 +52,8 @@
                     </button>
                     </div>
                     </div>
-                </td>                            
-                </tr>                
+                </td>
+                </tr>
                  <!--Biodata Modal -->
                       <div class="modal fade" id="editsurgery" tabindex="-1" role="dialog" aria-labelledby="biodataTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -66,27 +66,27 @@
                               </button>
                           </div>
                           <div class="modal-body">
-                             <form @submit.prevent="updateSurgery" id="edit-surgery">                         
-                        <div class="form-group"> 
+                             <form @submit.prevent="updateSurgery" id="edit-surgery">
+                        <div class="form-group">
                         <!-- <label>Edit Operation Details</label>  -->
-                        <label>Sửa thông tin phẫu thuật</label> 
-                        <textarea v-model="form.operations"  placeholder="Operation Details" name="operations" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('operations') }"></textarea>                       
-                        <has-error :form="form" field="operations"></has-error>                       
-                        </div>  
-                        <div class="form-group"> 
+                        <label>Sửa thông tin phẫu thuật</label>
+                        <textarea v-model="form.operations"  placeholder="Operation Details" name="operations" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('operations') }"></textarea>
+                        <has-error :form="form" field="operations"></has-error>
+                        </div>
+                        <div class="form-group">
                         <!-- <label>Edit Date of Operation</label>                         -->
-                        <label>Sửa ngày phẫu thuật</label>                        
+                        <label>Sửa ngày phẫu thuật</label>
                         <input v-model="form.date_of_operation" type="date" name="date_of_operation" placeholder="Nhập ngày có mặt"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('date_of_operation') }">
                         <has-error :form="form" field="date_of_operation"></has-error>
-                        </div>                         
-                        <div class="form-group"> 
+                        </div>
+                        <div class="form-group">
                         <!-- <label>Edit Surgeon</label>                         -->
-                        <label>Sửa bác sĩ phẫu thuật</label>                        
+                        <label>Sửa bác sĩ phẫu thuật</label>
                         <input v-model="form.surgeon" type="text" name="surgeon" placeholder="Bác sĩ phẫu thuật"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('surgeon') }">
                         <has-error :form="form" field="surgeon"></has-error>
-                        </div>   
+                        </div>
                             <center>
                             <!-- <button type="submit" class="updatesurgery btn-block btn btn-info" style="color:#fff;">Update Patient Surgery History</button> -->
                             <button type="submit" class="updatesurgery btn-block btn btn-info" style="color:#fff;">Cập nhật lịch sử phẫu thuật</button>
@@ -100,7 +100,7 @@
                           </div>
                       </div>
                       </div>
-                              
+
                 </tbody>
                 <tfoot>
                 <!-- <tr>
@@ -113,7 +113,7 @@
                 </tr> -->
 
                 <tr>
-                 <th>Mã HSBA</th>
+                 <th>Mã bệnh nhân</th>
                   <th>Họ tên</th>
                   <th>Chi tiết phẫu thuật</th>
                   <th>Ngày phẫu thuật</th>
@@ -122,9 +122,9 @@
                 </tr>
 
                 </tfoot>
-              </table>   
-              
-                                         
+              </table>
+
+
             </div>
             <!-- /.card-body -->
           </div>
@@ -143,12 +143,12 @@
                 patient_id: '',
                 operations: '',
                 date_of_operation: '',
-                surgeon: '',  
-                })              
+                surgeon: '',
+                })
             }
         },
         methods:{
-          LoadSurgeries(){                                            
+          LoadSurgeries(){
                 // this.loading = true;
                 axios.get("api/surgery")
                 .then((response)  =>  {
@@ -156,14 +156,14 @@
                     NProgress.done()
                     }, 1000);
                     this.staff = response.data;
-                })              
-            },           
+                })
+            },
             // LoadSurgeries(){
             //      axios.get('api/surgery').then(({data}) => (this.surgeries = data));
             // },
             editModal(surgery){
               $('#editsurgery').modal('show');
-              this.form.fill(surgery);              
+              this.form.fill(surgery);
             },
              deleteSurgery(id){
                 swal.fire({
@@ -198,9 +198,9 @@
                                 type: 'error',
                                 title: 'Oops...',
                                 text: 'Đã xảy ra sự cố!',
-                                })  
-                                }); 
-                            }                       
+                                })
+                                });
+                            }
                         })
             },
             updateSurgery(){
@@ -212,24 +212,24 @@
                         toast.fire({
                         type: 'success',
                         title: 'Lịch sử phẫu thuật của bệnh nhân được cập nhật thành công!'
-                        })   
-                        $('.updatesurgery').html('Add Patient'); 
+                        })
+                        $('.updatesurgery').html('Add Patient');
                     }).catch(
                         ()=>{
                         toast.fire({
                         type: 'error',
                         title: 'Dữ liệu nhập vào chưa đúng!'
-                        })   
+                        })
                         $('.updatesurgery').html('Add Patient');
-                        });                                      
+                        });
             }
-        },        
+        },
         mounted() {
-            console.log('Component mounted.')            
-            this.LoadSurgeries(); 
-            Fire.$on('afterAction', () => {this.LoadSurgeries()})                                   
+            console.log('Component mounted.')
+            this.LoadSurgeries();
+            Fire.$on('afterAction', () => {this.LoadSurgeries()})
         }
-        
+
     }
 </script>
 

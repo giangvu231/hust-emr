@@ -8,7 +8,7 @@
             <div class="card" style="width:100%;">
             <div class="row card-header">
                 <div class="col-sm-6">
-              <h3 class="card-title">Danh sách bệnh án</h3>
+              <h3 class="card-title">Danh sách lý lịch bệnh nhân</h3>
               </div>
               <div class="col-sm-6">
                    <div class="input-group input-group-sm">
@@ -28,19 +28,8 @@
                 </center>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                <!-- <tr>
-                  <th>Unique ID</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone Number</th>
-                  <th>Occupation </th>
-                  <th>Sex</th>
-                  <th>All</th>
-                  <th>Action</th>
-                </tr> -->
-
                 <tr>
-                  <th>Mã HSBA</th>
+                  <th>Mã bệnh nhân</th>
                   <th>Họ tên</th>
                   <th>Email</th>
                   <th>Số điện thoại</th>
@@ -49,7 +38,6 @@
                   <th>Thông tin đầy đủ</th>
                   <th>Tác vụ</th>
                 </tr>
-
                 </thead>
                 <tbody>
                 <tr v-for="patient in patients" :key="patient.id">
@@ -281,7 +269,7 @@
                 </tr> -->
 
                 <tr>
-                  <th>Mã HSBA</th>
+                  <th>Mã bệnh nhân</th>
                   <th>Họ tên</th>
                   <th>Email</th>
                   <th>Số điện thoại</th>
@@ -312,7 +300,7 @@
             //   loading: false,
               form: new Form({
                     id: '',
-                    unique_id: 'BA' + Math.floor((Math.random() * 10000000000) + 1),
+                    unique_id: 'PID' + Math.floor((Math.random() * 10000000000) + 1),
                     title: '',
                     full_name: '',
                     email: '',

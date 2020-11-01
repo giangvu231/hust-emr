@@ -3,7 +3,7 @@
         <div>
             <router-link to="/add-vital"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Add Vital</router-link>
         </div> <br><br>
-        <div class="row justify-content-center">            
+        <div class="row justify-content-center">
             <div class="card" style="width:100%;">
             <div class="card-header">
               <!-- <h3 class="card-title">All Patients Vitals</h3> -->
@@ -25,7 +25,7 @@
                 </tr> -->
 
                 <tr>
-                  <th>Mã HSBA</th>
+                  <th>Mã bệnh nhân</th>
                   <th>Họ tên</th>
                   <th>Thân nhiệt (°C)</th>
                   <th>Huyết áp (mmHg)</th>
@@ -36,14 +36,14 @@
                 </tr>
 
                 </thead>
-                <tbody>              
+                <tbody>
                 <tr v-for="vital in vitals" :key="vital.id">
                   <td>{{vital.patient.unique_id}}</td>
                   <td>{{vital.patient.title}} {{vital.patient.full_name}}</td>
                   <td>{{vital.temperature}}</td>
                   <td>{{vital.blood_pressure}}</td>
                   <td>{{vital.height}}</td>
-                  <td>{{vital.weight}}</td>                  
+                  <td>{{vital.weight}}</td>
                   <td>
                      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#' + vital.patient.unique_id">
                         All Info.
@@ -67,13 +67,13 @@
                              <!-- <p><b>Blood Group: </b>{{vital.blood_group}}</p>
                              <p><b>Blood Type(Rhesus Type): </b> {{vital.blood_type}}</p>
                              <h4>Immunization Status</h4>
-                             <i>Immunization status consist of Small Pox, Yellow Fever, TAB, Tetanus, Poliomyelitis, Dysthera <br> The ones listed are positive</i>                                                  
+                             <i>Immunization status consist of Small Pox, Yellow Fever, TAB, Tetanus, Poliomyelitis, Dysthera <br> The ones listed are positive</i>
                              <p v-for="vite in vital.immunization" :key="vite"> <b>{{vite}}</b> </p> -->
 
                              <p><b>Nhóm máu: </b>{{vital.blood_group}}</p>
                              <p><b>Loại máu (Phân loại theo hệ thống Rhesus): </b> {{vital.blood_type}}</p>
                              <h4>Tình trạng tiêm chủng</h4>
-                             <i>Đã tiêm phòng: đậu mùa, sốt vàng, TAB, uốn ván, bại liệt, bạch hầu <br> Danh sách đã tiêm phòng bên dưới</i>                                                  
+                             <i>Đã tiêm phòng: đậu mùa, sốt vàng, TAB, uốn ván, bại liệt, bạch hầu <br> Danh sách đã tiêm phòng bên dưới</i>
                              <p v-for="vite in vital.immunization" :key="vite"> <b>{{vite}}</b> </p>
 
                              <!-- <div v-for="vite in vital.immunization" :key="vite">
@@ -86,8 +86,8 @@
                           </div>
                           </div>
                       </div>
-                      </div> 
-                  </td> 
+                      </div>
+                  </td>
                   <td>
                   <div class="row">
                   <div class="col-sm-6">
@@ -101,8 +101,8 @@
                     </button>
                     </div>
                     </div>
-                </td>                            
-                </tr>                
+                </td>
+                </tr>
                  <!--Biodata Modal -->
                       <div class="modal fade" id="editvital" tabindex="-1" role="dialog" aria-labelledby="biodataTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -115,52 +115,52 @@
                               </button>
                           </div>
                           <div class="modal-body">
-                             <form @submit.prevent="updateVital" id="add-biodata">                                               
-                        <div class="form-group"> 
+                             <form @submit.prevent="updateVital" id="add-biodata">
+                        <div class="form-group">
                         <!-- <label>Temperature</label>                        -->
-                        <label>Thân nhiệt (°C)(</label>                       
+                        <label>Thân nhiệt (°C)(</label>
                         <input v-model="form.temperature" type="text" name="temperature" placeholder="Nhập nhiệt độ (°C)"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('temperature') }">
                         <has-error :form="form" field="temperature"></has-error>
-                        </div>                       
-                        <div class="form-group">  
-                        <label>Huyết áp (mmHg)</label>                                             
+                        </div>
+                        <div class="form-group">
+                        <label>Huyết áp (mmHg)</label>
                         <input v-model="form.blood_pressure" type="text" name="blood_pressure" placeholder="Nhập Huyết áp (mmHg)"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('blood_pressure') }">
                         <has-error :form="form" field="blood_pressure"></has-error>
                         </div>
-                        <div class="form-group">  
-                        <label>Chiều cao (cm)</label>                                             
+                        <div class="form-group">
+                        <label>Chiều cao (cm)</label>
                         <input v-model="form.height" type="text" name="height" placeholder="Nhập Chiều cao (cm)"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('height') }">
                         <has-error :form="form" field="height"></has-error>
                         </div>
-                        <div class="form-group">  
-                        <label>Cân nặng (kg)</label>                                             
+                        <div class="form-group">
+                        <label>Cân nặng (kg)</label>
                         <input v-model="form.weight" type="text" name="weight" placeholder="Nhập Cân nặng (kg)"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('weight') }">
                         <has-error :form="form" field="weight"></has-error>
                         </div>
-                        <div class="form-group">  
-                        <label>Nhịp tim (nhịp/phút)</label>                                             
+                        <div class="form-group">
+                        <label>Nhịp tim (nhịp/phút)</label>
                         <input v-model="form.pulse" type="text" name="pulse" placeholder="Nhập Nhịp tim (nhịp/phút)"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('pulse') }">
                         <has-error :form="form" field="pulse"></has-error>
                         </div>
-                        <div class="form-group">   
-                        <label>Nhóm máu</label>                                            
+                        <div class="form-group">
+                        <label>Nhóm máu</label>
                         <input v-model="form.blood_group" type="text" name="blood_group" placeholder="Nhập nhóm máu (O, A, B, AB)"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('blood_group') }">
                         <has-error :form="form" field="blood_group"></has-error>
                         </div>
-                        <div class="form-group"> 
-                        <label>Loại máu</label>                                              
+                        <div class="form-group">
+                        <label>Loại máu</label>
                         <input v-model="form.blood_type" type="text" name="blood_type" placeholder="Nhập loại máu (O+, O-, A+, A-, B+, B-, AB+, AB- )"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('blood_type') }">
                         <has-error :form="form" field="blood_type"></has-error>
                         </div>
                         <div class="form-group">
-                        <label>Tình trạng tiêm chủng</label> <br>               
+                        <label>Tình trạng tiêm chủng</label> <br>
                         <select v-model="form.immunization" class="form-control immunization" multiple :class="{ 'is-invalid': form.errors.has('immunization') }" name="immunization[]">
                         <option value="Đậu mùa">Đậu mùa</option>
                         <option value="Sốt vàng">Sốt vàng</option>
@@ -168,9 +168,9 @@
                         <option value="Uốn ván">Uốn ván</option>
                         <option value="Bại liệt">Bại liệt</option>
                         <option value="Bạch hầu">Bạch hầu</option>
-                        </select>  
+                        </select>
                         <has-error :form="form" field="immunization"></has-error>
-                        </div>   
+                        </div>
                             <center>
                             <!-- <button type="submit" class="updatevital btn-block btn btn-info" style="color:#fff;">Update Patient Vitals</button> -->
                             <button type="submit" class="updatevital btn-block btn btn-info" style="color:#fff;">Cập nhật thông tin sinh hiệu</button>
@@ -184,7 +184,7 @@
                           </div>
                       </div>
                       </div>
-                              
+
                 </tbody>
                 <tfoot>
                 <!-- <tr>
@@ -199,7 +199,7 @@
                 </tr> -->
 
                  <tr>
-                  <th>Mã HSBA</th>
+                  <th>Mã bệnh nhân</th>
                   <th>Họ tên</th>
                   <th>Thân nhiệt (°C)</th>
                   <th>Huyết áp (mmHg)</th>
@@ -210,9 +210,9 @@
                 </tr>
 
                 </tfoot>
-              </table>   
-              
-                                         
+              </table>
+
+
             </div>
             <!-- /.card-body -->
           </div>
@@ -236,12 +236,12 @@
                     pulse: '',
                     blood_group: '',
                     blood_type: '',
-                    immunization: []    
-                })              
+                    immunization: []
+                })
             }
         },
         methods:{
-            loadVitals(){                                            
+            loadVitals(){
                 // this.loading = true;
                 axios.get("api/vital")
                 .then((response)  =>  {
@@ -249,14 +249,14 @@
                     NProgress.done()
                     }, 1000);
                     this.vitals = response.data;
-                })              
-            },           
+                })
+            },
             // loadVitals(){
             //      axios.get('api/vital').then(({data}) => (this.vitals = data));
-            // },           
+            // },
             editModal(vital){
               $('#editvital').modal('show');
-              this.form.fill(vital);              
+              this.form.fill(vital);
             },
             deleteVital(id){
                 swal.fire({
@@ -291,9 +291,9 @@
                                 type: 'error',
                                 title: 'Oops...',
                                 text: 'Đã xảy ra sự cố!',
-                                })  
-                                }); 
-                            }                       
+                                })
+                                });
+                            }
                         })
             },
             updateVital(){
@@ -305,24 +305,24 @@
                         toast.fire({
                         type: 'success',
                         title: 'Sinh hiệu được cập nhật thành công!'
-                        })   
-                        $('.updatevital').html('Add Patient'); 
+                        })
+                        $('.updatevital').html('Add Patient');
                     }).catch(
                         ()=>{
                         toast.fire({
                         type: 'error',
                         title: 'Dữ liệu nhập vào chưa đúng'
-                        })   
+                        })
                         $('.updatevital').html('Add Patient');
-                        });                                      
+                        });
             }
-        },        
+        },
         mounted() {
-            console.log('Component mounted.')            
-            this.loadVitals(); 
-            Fire.$on('afterAction', () => {this.loadVitals()})                                   
+            console.log('Component mounted.')
+            this.loadVitals();
+            Fire.$on('afterAction', () => {this.loadVitals()})
         }
-        
+
     }
 </script>
 

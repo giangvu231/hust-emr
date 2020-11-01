@@ -1,6 +1,6 @@
 <template>
-    <div class="container">       
-        <div class="row justify-content-center">            
+    <div class="container">
+        <div class="row justify-content-center">
             <div class="card" style="width:100%;">
             <div class="card-header">
               <!-- <h3 class="card-title">Diagnose: Patients Symptoms and Complaints</h3> -->
@@ -15,17 +15,17 @@
                   <th>Name</th>
                   <th>Complain</th>
                   <th>Diagnose</th> -->
-                  <th>Mã HSBA</th>
+                  <th>Mã bệnh nhân</th>
                   <th>Họ tên</th>
                   <th>Phản hồi của bệnh nhân</th>
                   <th>Chẩn đoán</th>
                 </tr>
                 </thead>
-                <tbody>              
+                <tbody>
                 <tr v-for="hospital in hospitals" :key="hospital.id">
                   <td>{{hospital.patient.unique_id}}</td>
                   <td>{{hospital.patient.title}} {{hospital.patient.full_name}}</td>
-                  <td>{{hospital.symptoms}}</td>                  
+                  <td>{{hospital.symptoms}}</td>
                   <td>
                      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#' + hospital.modal_id">
                         Diagnose
@@ -44,47 +44,47 @@
                               </button>
                           </div>
                           <div class="modal-body">
-                              <form @submit.prevent="addDiagnosis" id="add-diagnosis">                       
-                                <!-- <input v-model="form.diagnosis" :value = hospital.patient.unique_id type="hidden" name="patient_id" >   
+                              <form @submit.prevent="addDiagnosis" id="add-diagnosis">
+                                <!-- <input v-model="form.diagnosis" :value = hospital.patient.unique_id type="hidden" name="patient_id" >
                                 <input  :value = hospital.patient.unique_id type="hidden" name="hospital_id">                                -->
-                                            <!-- <input v-model="form.patient_id" 
-                                            :value="hospital.patient.id" 
+                                            <!-- <input v-model="form.patient_id"
+                                            :value="hospital.patient.id"
                                             type="radio"
                                             name="patient_id" /> Confirm Action First <br> -->
-                                            <input v-model="form.patient_id" 
-                                            :value="hospital.patient.id" 
+                                            <input v-model="form.patient_id"
+                                            :value="hospital.patient.id"
                                             type="radio"
                                             name="patient_id" /> Xác nhận tác vụ trước <br>
 
-                                         <!-- <input v-model="form.hospital_id" 
-                                        :value="hospital.id" 
-                                        type="radio" 
+                                         <!-- <input v-model="form.hospital_id"
+                                        :value="hospital.id"
+                                        type="radio"
                                         name="hospital_id" /> Confirm Hospital Details -->
-                                        <input v-model="form.hospital_id" 
-                                        :value="hospital.id" 
-                                        type="radio" 
+                                        <input v-model="form.hospital_id"
+                                        :value="hospital.id"
+                                        type="radio"
                                         name="hospital_id" /> Xác nhận thông tin bệnh viện
-                                <!-- <input v-model="hospital.patient.id" type="hidden" name="patient_id">                                            
+                                <!-- <input v-model="hospital.patient.id" type="hidden" name="patient_id">
                                 <input v-model="hospital.id" type="hidden" name="hospital_id" > -->
-                                <!-- <div class="form-group"> 
+                                <!-- <div class="form-group">
                                 <textarea v-model="form.diagnosis"  placeholder="Diagnosis" name="diagnosis" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('diagnosis') }"></textarea>   -->
-                                 <div class="form-group"> 
-                                <textarea v-model="form.diagnosis"  placeholder="Chẩn đoán" name="diagnosis" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('diagnosis') }"></textarea>                       
-                                <has-error :form="form" field="diagnosis"></has-error>                       
-                                </div>                                                 
-                                <div class="form-group">                        
+                                 <div class="form-group">
+                                <textarea v-model="form.diagnosis"  placeholder="Chẩn đoán" name="diagnosis" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('diagnosis') }"></textarea>
+                                <has-error :form="form" field="diagnosis"></has-error>
+                                </div>
+                                <div class="form-group">
                                 <!-- <input v-model="form.comment" type="text" name="comment" placeholder="Comment"
                                     class="form-control" :class="{ 'is-invalid': form.errors.has('comment') }">
                                 <has-error :form="form" field="comment"></has-error> -->
                                 <input v-model="form.comment" type="text" name="comment" placeholder="Nhận xét"
                                     class="form-control" :class="{ 'is-invalid': form.errors.has('comment') }">
                                 <has-error :form="form" field="comment"></has-error>
-                                </div>                                                                               
+                                </div>
                                 <center>
                                 <!-- <button type="submit" class="diagnose btn-block btn btn-info" style="color:#fff;">Diagnose Patient</button> -->
                                  <button type="submit" class="diagnose btn-block btn btn-info" style="color:#fff;">Chẩn đoán của bệnh nhân</button>
                                 </center>
-                                </form>                   
+                                </form>
                           </div>
                           <div class="modal-footer">
                               <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
@@ -92,9 +92,9 @@
                           </div>
                           </div>
                       </div>
-                      </div> 
-                  </td>                                             
-            </tr>                                                              
+                      </div>
+                  </td>
+            </tr>
                 </tbody>
                 <tfoot>
                  <tr>
@@ -102,15 +102,15 @@
                   <th>Name</th>
                   <th>Complain</th>
                   <th>Diagnose</th> -->
-                  <th>Mã HSBA</th>
+                  <th>Mã bệnh nhân</th>
                   <th>Họ tên</th>
                   <th>Phản hồi của bệnh nhân</th>
                   <th>Chẩn đoán</th>
                 </tr>
                 </tfoot>
-              </table>   
-              
-                                         
+              </table>
+
+
             </div>
             <!-- /.card-body -->
           </div>
@@ -125,16 +125,16 @@
             return {
               hospitals: {},
               // checked: true,
-              form: new Form({  
-                patient_id: '', 
-                hospital_id: '',              
+              form: new Form({
+                patient_id: '',
+                hospital_id: '',
                 diagnosis: '',
-                comment: '',                  
-                })              
+                comment: '',
+                })
             }
         },
         methods:{
-          LoadHospitals(){                                            
+          LoadHospitals(){
                 // this.loading = true;
                 axios.get("api/hospital")
                 .then((response)  =>  {
@@ -142,11 +142,11 @@
                     NProgress.done()
                     }, 1000);
                     this.hospitals = response.data;
-                })              
-            },           
+                })
+            },
             // LoadHospitals(){
             //      axios.get('api/hospital').then(({data}) => (this.hospitals = data));
-            // },    
+            // },
              addDiagnosis(){
                 $('.diagnose').html('<i class="fa fa-spin fa-spinner"></i>');
                 this.form.post('api/diagnose').then(
@@ -154,25 +154,25 @@
                         toast.fire({
                         type: 'success',
                         title: 'Thông tin chẩn đoán được thêm thành công!'
-                        })   
-                        $('.diagnose').html('Diagnose Patient'); 
-                        $('#add-diagnosis').trigger('reset'); 
+                        })
+                        $('.diagnose').html('Diagnose Patient');
+                        $('#add-diagnosis').trigger('reset');
                     }).catch(
                         ()=>{
                         toast.fire({
                         type: 'error',
                         title: 'Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!'
-                        })   
+                        })
                         $('.diagnose').html('Diagnose Patient');
-                        });                                      
-            },       
-        },        
+                        });
+            },
+        },
         mounted() {
-            console.log('Component mounted.')            
-            this.LoadHospitals(); 
-            Fire.$on('afterAction', () => {this.LoadHospitals()})                                             
+            console.log('Component mounted.')
+            this.LoadHospitals();
+            Fire.$on('afterAction', () => {this.LoadHospitals()})
         }
-        
+
     }
 </script>
 
