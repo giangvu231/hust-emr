@@ -61,6 +61,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+          <!-- <li class="nav-item">
+            <router-link to="/patients" class="nav-link">
+              <i class="nav-icon fas fa-procedures"></i>
+              <p>
+              {{ __('All Patients') }}
+              </p>
+            </router-link>
+          </li> -->
+
+          {{-- Condition to show for admin --}}
+          @if (Auth::user()->role == "admin")
+          <!-- Quản lý Hồ sơ bệnh án (HSBA) -->
+          <li class="nav-item">
+            <router-link to="/emr-mngt" class="nav-link">
+              <i class="nav-icon fas fa-database"></i>
+              <p>
+              Quản lý HSBA
+              </p>
+            </router-link>
+          </li>
+
           <li class="nav-item">
             <router-link to="/patients" class="nav-link">
               <i class="nav-icon fas fa-procedures"></i>
@@ -70,8 +91,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
           </li>
 
-          {{-- Condition to show for admin --}}
-          @if (Auth::user()->role == "admin")
           <li class="nav-item">
             <router-link to="/add-biodata" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
@@ -214,6 +233,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           {{-- Condition to show for receptionist --}}
           @if (Auth::user()->role == "recept" )
+
+          <li class="nav-item">
+            <router-link to="/patients" class="nav-link">
+              <i class="nav-icon fas fa-procedures"></i>
+              <p>
+              {{ __('All Patients') }}
+              </p>
+            </router-link>
+          </li>
+
           <li class="nav-item">
             <router-link to="/add-biodata" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
@@ -227,6 +256,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           {{-- Condition to show for nurse --}}
           @if (Auth::user()->role == "nurse" )
+          <li class="nav-item">
+            <router-link to="/patients" class="nav-link">
+              <i class="nav-icon fas fa-procedures"></i>
+              <p>
+              {{ __('All Patients') }}
+              </p>
+            </router-link>
+          </li>
+
           <li class="nav-item">
             <router-link to="/vitals" class="nav-link">
               <i class="nav-icon fas fa-heartbeat"></i>
@@ -289,6 +327,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
           {{-- Condition to show for doctor --}}
           @if (Auth::user()->role == "doc"  )
           <li class="nav-item">
+            <router-link to="/patients" class="nav-link">
+              <i class="nav-icon fas fa-procedures"></i>
+              <p>
+              {{ __('All Patients') }}
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
               <router-link to="/vitals" class="nav-link">
                 <i class="nav-icon fas fa-heartbeat"></i>
                 <p>
@@ -350,6 +397,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
            {{-- Condition to show for lab --}}
            @if (Auth::user()->role == "lab" )
            <li class="nav-item">
+            <router-link to="/patients" class="nav-link">
+              <i class="nav-icon fas fa-procedures"></i>
+              <p>
+              {{ __('All Patients') }}
+              </p>
+            </router-link>
+          </li>
+
+           <li class="nav-item">
             <router-link to="/lab-test" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
@@ -370,6 +426,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           {{-- Condition to show for pharmacy --}}
           @if (Auth::user()->role == "pharm" )
+          <li class="nav-item">
+            <router-link to="/patients" class="nav-link">
+              <i class="nav-icon fas fa-procedures"></i>
+              <p>
+              {{ __('All Patients') }}
+              </p>
+            </router-link>
+          </li>
+
           <li class="nav-item">
             <router-link to="/pham-test" class="nav-link">
               <i class="nav-icon fas fa-info-circle"></i>
