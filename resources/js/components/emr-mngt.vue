@@ -69,19 +69,19 @@
                               </button>
                           </div>
                           <div class="modal-body">
-                             <p><b>Bệnh án: </b> Click here </p>
-                             <p><b>Phiếu chăm sóc: </b> Click here </p>
-                             <p><b>Phiếu truyền dịch: </b> Click here </p>
-                             <p><b>Phiếu truyền máu: </b> Click here </p>
-                             <p><b>Giấy chứng nhận nằm viện: </b> Click here </p>
-                             <p><b>Giấy hẹn khám lại: </b> Click here </p>
-                             <p><b>Giấy ra viện: </b> Click here </p>
-                             <p><b>Giấy chuyển tuyến: </b> Click here </p>
-                             <p><b>Phiếu sơ kết 15 ngày: </b> Click here </p>
-                             <p><b>Trích biên bản hội chẩn phẫu thuật: </b> Click here </p>
-                             <p><b>Giấy cam đoan PTTT/ Gây mê hồi sức: </b> Click here </p>
-                             <p><b>Phiếu công khai dịch vụ: </b> Click here </p>
-                             <p><b>Phiếu công khai thuốc: </b> Click here </p>
+                             <p><b>Bệnh án: </b> <button type="submit">Click here</button> -> open PDF</p>
+                             <p><b>Phiếu chăm sóc: </b> <button type="submit">Click here</button> </p>
+                             <p><b>Phiếu truyền dịch: </b> <button type="submit">Click here</button> </p>
+                             <p><b>Phiếu truyền máu: </b> <button type="submit">Click here</button> </p>
+                             <p><b>Giấy chứng nhận nằm viện: </b> <button type="submit">Click here</button> </p>
+                             <p><b>Giấy hẹn khám lại: </b> <button type="submit">Click here</button> </p>
+                             <p><b>Giấy ra viện: </b> <button type="submit">Click here</button> </p>
+                             <p><b>Giấy chuyển tuyến: </b> <button type="submit">Click here</button> </p>
+                             <p><b>Phiếu sơ kết 15 ngày: </b> <button type="submit">Click here</button> </p>
+                             <p><b>Trích biên bản hội chẩn phẫu thuật: </b> <button type="submit">Click here</button> </p>
+                             <p><b>Giấy cam đoan PTTT/ Gây mê hồi sức: </b> <button type="submit">Click here</button> </p>
+                             <p><b>Phiếu công khai dịch vụ: </b> <button type="submit">Click here</button> </p>
+                             <p><b>Phiếu công khai thuốc: </b> <button type="submit">Click here</button> </p>
 
                           </div>
                           <div class="modal-footer">

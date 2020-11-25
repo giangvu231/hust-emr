@@ -74703,66 +74703,109 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "modal-body" }, [
-            _c("p", [_c("b", [_vm._v("Bệnh án: ")]), _vm._v(" Click here ")]),
+            _c("p", [
+              _c("b", [_vm._v("Bệnh án: ")]),
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ]),
+              _vm._v(" -> open PDF")
+            ]),
             _vm._v(" "),
             _c("p", [
               _c("b", [_vm._v("Phiếu chăm sóc: ")]),
-              _vm._v(" Click here ")
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ])
             ]),
             _vm._v(" "),
             _c("p", [
               _c("b", [_vm._v("Phiếu truyền dịch: ")]),
-              _vm._v(" Click here ")
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ])
             ]),
             _vm._v(" "),
             _c("p", [
               _c("b", [_vm._v("Phiếu truyền máu: ")]),
-              _vm._v(" Click here ")
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ])
             ]),
             _vm._v(" "),
             _c("p", [
               _c("b", [_vm._v("Giấy chứng nhận nằm viện: ")]),
-              _vm._v(" Click here ")
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ])
             ]),
             _vm._v(" "),
             _c("p", [
               _c("b", [_vm._v("Giấy hẹn khám lại: ")]),
-              _vm._v(" Click here ")
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ])
             ]),
             _vm._v(" "),
             _c("p", [
               _c("b", [_vm._v("Giấy ra viện: ")]),
-              _vm._v(" Click here ")
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ])
             ]),
             _vm._v(" "),
             _c("p", [
               _c("b", [_vm._v("Giấy chuyển tuyến: ")]),
-              _vm._v(" Click here ")
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ])
             ]),
             _vm._v(" "),
             _c("p", [
               _c("b", [_vm._v("Phiếu sơ kết 15 ngày: ")]),
-              _vm._v(" Click here ")
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ])
             ]),
             _vm._v(" "),
             _c("p", [
               _c("b", [_vm._v("Trích biên bản hội chẩn phẫu thuật: ")]),
-              _vm._v(" Click here ")
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ])
             ]),
             _vm._v(" "),
             _c("p", [
               _c("b", [_vm._v("Giấy cam đoan PTTT/ Gây mê hồi sức: ")]),
-              _vm._v(" Click here ")
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ])
             ]),
             _vm._v(" "),
             _c("p", [
               _c("b", [_vm._v("Phiếu công khai dịch vụ: ")]),
-              _vm._v(" Click here ")
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ])
             ]),
             _vm._v(" "),
             _c("p", [
               _c("b", [_vm._v("Phiếu công khai thuốc: ")]),
-              _vm._v(" Click here ")
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [
+                _vm._v("Click here")
+              ])
             ])
           ]),
           _vm._v(" "),

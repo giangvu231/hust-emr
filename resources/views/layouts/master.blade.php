@@ -18,6 +18,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
   {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> --}}
 
 </head>
+
+<style>
+    .mt-2 ul li ul {
+        display: none;
+        list-style: none;
+        margin-left: -35px;
+        background-color: grey;
+    }
+
+    .mt-2 ul li ul li:hover{
+        background-color: #ffff66;
+    }
+
+</style>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper" id="app">
 
@@ -61,81 +76,115 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-          <!-- <li class="nav-item">
-            <router-link to="/patients" class="nav-link">
-              <i class="nav-icon fas fa-procedures"></i>
-              <p>
-              {{ __('All Patients') }}
-              </p>
-            </router-link>
-          </li> -->
-
           {{-- Condition to show for admin --}}
           @if (Auth::user()->role == "admin")
-          <!-- Quản lý Hồ sơ bệnh án (HSBA) -->
-          <li class="nav-item">
-            <router-link to="/emr-mngt" class="nav-link">
-              <i class="nav-icon fas fa-database"></i>
-              <p>
-              Quản lý HSBA
-              </p>
-            </router-link>
-          </li>
 
           <li class="nav-item">
-            <router-link to="/patients" class="nav-link">
-              <i class="nav-icon fas fa-procedures"></i>
-              <p>
-              {{ __('All Patients') }}
-              </p>
-            </router-link>
-          </li>
-
-          <li class="nav-item">
-            <router-link to="/add-biodata" class="nav-link">
+            <router-link to="/*" class="nav-link _click1" >
               <i class="nav-icon fas fa-database"></i>
               <p>
-              {{ __('Add Patient Biodata') }}
+                1. Quản lý HSBA
               </p>
             </router-link>
+
+              <ul id="_drop1" data-tongle="1">
+                <li class="nav-item" >
+                    <router-link to="/emr-mngt" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>
+                    Danh sách HSBA
+                    </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/**" class="nav-link">
+                    <i class="nav-icon fas fa-hospital-symbol"></i>
+                    <p>
+                    Báo cáo
+                    </p>
+                    </router-link>
+                </li>
+              </ul>
           </li>
-          <li class="nav-item">
-            <router-link to="/vitals" class="nav-link">
-              <i class="nav-icon fas fa-heartbeat"></i>
+
+            <li class="nav-item" >
+                <router-link to="/*hanhchinh" class="nav-link _click2">
+                <i class="nav-icon fas fa-procedures"></i>
+                <p>
+                2. Thông tin hành chính
+                </p>
+                </router-link>
+
+            <ul id="_drop2" data-tongle="1">
+            <li class="nav-item" >
+                <router-link to="/patients" class="nav-link">
+                <i class="nav-icon fas fa-procedures"></i>
+                <p>
+                Danh sách bệnh nhân
+                </p>
+                </router-link>
+                <li>
+
+                <li class="nav-item" >
+                    <router-link to="/add-biodata" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>
+                    Thêm mới thông tin bệnh nhân
+                    </p>
+                    </router-link>
+                </li>
+
+                <li class="nav-item">
+                    <router-link to="/add-hospital" class="nav-link">
+                    <i class="nav-icon fas fa-hospital-symbol"></i>
+                    <p>
+                    Thêm tiền sử bệnh
+                    </p>
+                    </router-link>
+                </li>
+
+            </ul>
+        </li>
+
+            <li class="nav-item">
+            <router-link to="/hospital" class="nav-link _click3" >
+              <i class="nav-icon fas fa-database"></i>
               <p>
-              {{ __('Patient Vitals') }}
+                3. Điều trị
               </p>
             </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/add-vital" class="nav-link">
-              <i class="nav-icon fas fa-heartbeat"></i>
-              <p>
-              {{ __('Add Patient Vitals') }}
-              </p>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/hospital" class="nav-link">
-              <i class="nav-icon fas fa-hospital-symbol"></i>
-              <p>
-              {{ __('Hospital History') }}
-              </p>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/add-hospital" class="nav-link">
-              <i class="nav-icon fas fa-hospital-symbol"></i>
-              <p>
-              {{ __('Add Hospital History') }}
-              </p>
-            </router-link>
-          </li>
-          <li class="nav-item">
+
+            <ul id="_drop3" data-tongle="1">
+                <li class="nav-item">
+                    <router-link to="/hospital" class="nav-link">
+                    <i class="nav-icon fas fa-hospital-symbol"></i>
+                    <p>
+                    Quản lý tiền sử bệnh
+                    </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                <router-link to="/vitals" class="nav-link">
+                <i class="nav-icon fas fa-heartbeat"></i>
+                <p>
+                Quản lý sinh hiệu
+                </p>
+                </router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/add-vital" class="nav-link">
+                    <i class="nav-icon fas fa-heartbeat"></i>
+                    <p>
+                    Nhập sinh hiệu
+                    </p>
+                    </router-link>
+                </li>
+
+                <li class="nav-item">
             <router-link to="/add-surgery" class="nav-link">
               <i class="nav-icon fas fa-user-md"></i>
               <p>
-              {{ __('Add Surgery History') }}
+              Thêm lịch sử phẫu thuật
               </p>
             </router-link>
           </li>
@@ -143,7 +192,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/surgery" class="nav-link">
               <i class="nav-icon fas fa-user-md"></i>
               <p>
-              {{ __('Surgery History') }}
+              Quản lý lịch sử phẫu thuật
               </p>
             </router-link>
           </li>
@@ -172,14 +221,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/appointment" class="nav-link">
-              <i class="nav-icon fas fa-calendar-check"></i>
-              <p>
-              {{ __('Schedule Appointment') }}
-              </p>
-            </router-link>
-          </li>
-           <li class="nav-item">
             <router-link to="/lab-test" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
@@ -195,7 +236,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </router-link>
           </li>
+            </ul>
+            </li>
+
+            <li class="nav-item">
+            <router-link to="/appointment" class="nav-link">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>
+              4. Quản lý lịch hẹn
+              </p>
+            </router-link>
+          </li>
+
           <li class="nav-item">
+            <router-link to="/*pharm" class="nav-link _click5" >
+              <i class="nav-icon fas fa-database"></i>
+              <p>
+                5. Nhà thuốc
+              </p>
+            </router-link>
+
+              <ul id="_drop5" data-tongle="1">
+              <li class="nav-item">
             <router-link to="/pham-test" class="nav-link">
               <i class="nav-icon fas fa-info-circle"></i>
               <p>
@@ -207,7 +269,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/medication" class="nav-link">
               <i class="nav-icon fas fa-comment-medical"></i>
               <p>
-              {{ __('Patients on medication') }}
+              Quản lý thuốc
+              </p>
+            </router-link>
+          </li>
+              </ul>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/*staff" class="nav-link _click6" >
+              <i class="nav-icon fas fa-database"></i>
+              <p>
+                6. Quản lý nhân viên
+              </p>
+            </router-link>
+
+              <ul id="_drop6" data-tongle="1">
+              <li class="nav-item">
+            <router-link to="/all-staffs" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+              Quản lý người dùng
               </p>
             </router-link>
           </li>
@@ -215,18 +297,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/staff" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
-              {{ __('Add Staff') }}
+              Thêm người dùng
               </p>
             </router-link>
           </li>
-          <li class="nav-item">
-            <router-link to="/all-staffs" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-              {{ __('All Staffs') }}
-              </p>
-            </router-link>
+              </ul>
           </li>
+
+
+
           @endif
           {{-- End Condition to show for admin --}}
 
@@ -524,7 +603,78 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 <script>
-
-  </script>
+    $('._click1').click(function(){
+        var status = $('#_drop1').attr('data-tongle');
+        //console.log(status);
+        if(status == 1){
+            $('#_drop1').css('display','block');
+            $('#_drop1').attr('data-tongle',"0");
+        }
+        if(status == 0){
+            $('#_drop1').css('display','none');
+            $('#_drop1').attr('data-tongle',"1");
+        }
+    })
+    $('._click2').click(function(){
+        var status = $('#_drop2').attr('data-tongle');
+        //console.log(status);
+        if(status == 1){
+            $('#_drop2').css('display','block');
+            $('#_drop2').attr('data-tongle',"0");
+        }
+        if(status == 0){
+            $('#_drop2').css('display','none');
+            $('#_drop2').attr('data-tongle',"1");
+        }
+    })
+    $('._click3').click(function(){
+        var status = $('#_drop3').attr('data-tongle');
+        //console.log(status);
+        if(status == 1){
+            $('#_drop3').css('display','block');
+            $('#_drop3').attr('data-tongle',"0");
+        }
+        if(status == 0){
+            $('#_drop3').css('display','none');
+            $('#_drop3').attr('data-tongle',"1");
+        }
+    })
+    $('._click4').click(function(){
+        var status = $('#_drop4').attr('data-tongle');
+        //console.log(status);
+        if(status == 1){
+            $('#_drop4').css('display','block');
+            $('#_drop4').attr('data-tongle',"0");
+        }
+        if(status == 0){
+            $('#_drop4').css('display','none');
+            $('#_drop4').attr('data-tongle',"1");
+        }
+    })
+    $('._click5').click(function(){
+        var status = $('#_drop5').attr('data-tongle');
+        //console.log(status);
+        if(status == 1){
+            $('#_drop5').css('display','block');
+            $('#_drop5').attr('data-tongle',"0");
+        }
+        if(status == 0){
+            $('#_drop5').css('display','none');
+            $('#_drop5').attr('data-tongle',"1");
+        }
+    })
+    $('._click6').click(function(){
+        var status = $('#_drop6').attr('data-tongle');
+        //console.log(status);
+        if(status == 1){
+            $('#_drop6').css('display','block');
+            $('#_drop6').attr('data-tongle',"0");
+        }
+        if(status == 0){
+            $('#_drop6').css('display','none');
+            $('#_drop6').attr('data-tongle',"1");
+        }
+    })
+</script>
 </body>
 </html>
