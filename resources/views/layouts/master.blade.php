@@ -162,7 +162,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </router-link>
 
+
+
             <ul id="_drop3" data-tongle="1">
+
+            <li class="nav-item">
+                <router-link to="/add-vital" class="nav-link">
+                    <i class="nav-icon fas fa-heartbeat"></i>
+                    <p>
+                        Nhập sinh hiệu
+                    </p>
+                </router-link>
+            </li>
+
+            <li class="nav-item">
+                <router-link to="/soap" class="nav-link">
+                    <i class="nav-icon fas fa-heartbeat"></i>
+                    <p>
+                        Nhập SOAP
+                    </p>
+                </router-link>
+            </li>
+
+            <li class="nav-item">
+                <router-link to="/add_diagnosis" class="nav-link">
+                    <i class="nav-icon fas fa-heartbeat"></i>
+                    <p>
+                        Nhập chẩn đoán
+                    </p>
+                </router-link>
+            </li>
+
                 <li class="nav-item">
                     <router-link to="/hospital" class="nav-link">
                     <i class="nav-icon fas fa-hospital-symbol"></i>
@@ -179,14 +209,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </p>
                 </router-link>
                 </li>
-                <li class="nav-item">
-                    <router-link to="/add-vital" class="nav-link">
-                    <i class="nav-icon fas fa-heartbeat"></i>
-                    <p>
-                    Nhập sinh hiệu
-                    </p>
-                    </router-link>
-                </li>
+
 
                 <li class="nav-item">
             <router-link to="/add-surgery" class="nav-link">
