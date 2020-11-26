@@ -23,6 +23,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('pdf_export', 'PdfController@index');
 
+Route::get('vital_pdf_export/{id}', 'PdfController@vitalPDF');
+
+Route::get('add_patient_pdf_export/{id}', 'PdfController@addPatientPDF');
+
 Route::get('xml_export/{id}', 'XMLController@index');
 
 Route::get('/{vue_capture?}', function () {

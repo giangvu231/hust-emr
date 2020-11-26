@@ -14,8 +14,8 @@ use App\Pham;
 use App\SurgeryHistory;
 use App\Vital;
 use App\Appointment;
-use PDF;
 use App\EmrMngt;
+use PDF;
 
 class EmrController extends Controller
 {

@@ -132,7 +132,7 @@
                                                 <div class="modal-body">
                                                     <p>
                                                         <b>Bệnh án: </b>
-                                                        <button type="submit">
+                                                        <button type="submit" @click="addPatientPDF(patient.id)">
                                                             Click here
                                                         </button>
                                                         -> open PDF
@@ -142,7 +142,7 @@
                                                             >Phiếu theo dõi sinh
                                                             hiệu:
                                                         </b>
-                                                        <button type="submit">
+                                                        <button type="submit" @click="vitalPDF(patient.id)">
                                                             Click here
                                                         </button>
                                                         -> open PDF
@@ -823,6 +823,26 @@ export default {
                 .get("/pdf_export")
                 .then(response => {
                     window.open("/pdf_export/");
+                })
+                .catch(error => {
+                    this.errors = "Lỗi in";
+                });
+        },
+        vitalPDF(id) {
+            axios
+                .get("/vital_pdf_export/" + id)
+                .then(response => {
+                    window.open("/vital_pdf_export/" + id);
+                })
+                .catch(error => {
+                    this.errors = "Lỗi in";
+                });
+        },
+        addPatientPDF(id) {
+            axios
+                .get("/add_patient_pdf_export/" + id)
+                .then(response => {
+                    window.open("/add_patient_pdf_export/" + id);
                 })
                 .catch(error => {
                     this.errors = "Lỗi in";

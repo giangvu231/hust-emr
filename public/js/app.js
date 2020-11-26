@@ -4426,6 +4426,24 @@ __webpack_require__.r(__webpack_exports__);
         _this4.errors = "Lỗi in";
       });
     },
+    vitalPDF: function vitalPDF(id) {
+      var _this5 = this;
+
+      axios.get("/vital_pdf_export/" + id).then(function (response) {
+        window.open("/vital_pdf_export/" + id);
+      })["catch"](function (error) {
+        _this5.errors = "Lỗi in";
+      });
+    },
+    addPatientPDF: function addPatientPDF(id) {
+      var _this6 = this;
+
+      axios.get("/add_patient_pdf_export/" + id).then(function (response) {
+        window.open("/add_patient_pdf_export/" + id);
+      })["catch"](function (error) {
+        _this6.errors = "Lỗi in";
+      });
+    },
     xmlExport: function xmlExport(id) {
       axios.get("/xml_export/" + id).then(function (response) {
         toast.fire({
@@ -4441,14 +4459,14 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this7 = this;
 
     console.log("Component mounted."); // this.loading = true;
 
     this.loadPatients();
     this.fakeData();
     Fire.$on("afterAction", function () {
-      _this5.loadPatients();
+      _this7.loadPatients();
     });
   }
 });
@@ -73521,7 +73539,79 @@ var render = function() {
                                 "aria-hidden": "true"
                               }
                             },
-                            [_vm._m(2, true)]
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "modal-dialog modal-dialog-centered",
+                                  attrs: { role: "document" }
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _vm._m(2, true),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "modal-body" }, [
+                                      _c("p", [
+                                        _c("b", [_vm._v("Bệnh án: ")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            attrs: { type: "submit" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.addPatientPDF(
+                                                  patient.id
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                        Click here\n                                                    "
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(
+                                          "\n                                                    -> open PDF\n                                                "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _c("b", [
+                                          _vm._v(
+                                            "Phiếu theo dõi sinh\n                                                        hiệu:\n                                                    "
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            attrs: { type: "submit" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.vitalPDF(patient.id)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                        Click here\n                                                    "
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(
+                                          "\n                                                    -> open PDF\n                                                "
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._m(3, true)
+                                  ])
+                                ]
+                              )
+                            ]
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "row" }, [
@@ -73597,7 +73687,7 @@ var render = function() {
                           },
                           [
                             _c("div", { staticClass: "modal-content" }, [
-                              _vm._m(3),
+                              _vm._m(4),
                               _vm._v(" "),
                               _c("div", { staticClass: "modal-body" }, [
                                 _c(
@@ -74696,7 +74786,7 @@ var render = function() {
                                 )
                               ]),
                               _vm._v(" "),
-                              _vm._m(4)
+                              _vm._m(5)
                             ])
                           ]
                         )
@@ -74706,7 +74796,7 @@ var render = function() {
                   2
                 ),
                 _vm._v(" "),
-                _vm._m(5)
+                _vm._m(6)
               ]
             )
           ],
@@ -74753,83 +74843,44 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal-dialog modal-dialog-centered",
-        attrs: { role: "document" }
-      },
-      [
-        _c("div", { staticClass: "modal-content" }, [
-          _c("div", { staticClass: "modal-header" }, [
-            _c("h5", {
-              staticClass: "modal-title",
-              attrs: { id: "exampleModalLongTitle" }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "close",
-                attrs: {
-                  type: "button",
-                  "data-dismiss": "modal",
-                  "aria-label": "Close"
-                }
-              },
-              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-body" }, [
-            _c("p", [
-              _c("b", [_vm._v("Bệnh án: ")]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ]),
-              _vm._v(
-                "\n                                                    -> open PDF\n                                                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("b", [
-                _vm._v(
-                  "Phiếu theo dõi sinh\n                                                        hiệu:\n                                                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ]),
-              _vm._v(
-                "\n                                                    -> open PDF\n                                                "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-footer" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-secondary",
-                attrs: { type: "button", "data-dismiss": "modal" }
-              },
-              [
-                _vm._v(
-                  "\n                                                    Đóng\n                                                "
-                )
-              ]
-            )
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", {
+        staticClass: "modal-title",
+        attrs: { id: "exampleModalLongTitle" }
+      }),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [
+          _vm._v(
+            "\n                                                    Đóng\n                                                "
+          )
+        ]
+      )
+    ])
   },
   function() {
     var _vm = this
