@@ -15,6 +15,11 @@ class addPatient extends Model
         'unique_id', 'title', 'full_name', 'email', 'phone_number',  'occupation', 'sex', 'dob', 'role', 'religion',  'nationality', 'state_of_origin', 'home_address', 'place_of_birth', 'marital_status', 'home_next_of_kin', 'phone_next_of_kin',
     ];
 
+    public function emrs()
+    {
+        return $this->hasMany('App\Emr', 'patient_id', 'id');
+    }
+
     public function vitals(){
         return $this->hasOne('App\Vital');
     }

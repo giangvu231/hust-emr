@@ -185,7 +185,6 @@
                     marital_status: '',
                     home_next_of_kin: '',
                     phone_next_of_kin: ''
-
                 })
             }
         },
@@ -193,7 +192,7 @@
             addPatient(){
                 $('.addpatient').html('<i class="fa fa-spin fa-spinner"></i>');
                 this.form.post('api/patient').then(
-                    ()=>{
+                    (response)=>{
                         toast.fire({
                         type: 'success',
                         title: 'Lý lịch của bệnh nhân được thêm thành công!'
@@ -201,7 +200,8 @@
                         $('.addpatient').html('Add Patient'); 
                         $('#add-biodata').trigger('reset'); 
                     }).catch(
-                        ()=>{
+                        (err)=>{
+                            console.log(err);
                         toast.fire({
                         type: 'error',
                         title: 'Thông tin thêm vào chưa đúng!'

@@ -17,7 +17,7 @@ use App\Appointment;
 use PDF;
 use App\EmrMngt;
 
-class PatientController extends Controller
+class EmrController extends Controller
 {
 
     public function __construct()
@@ -33,8 +33,23 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
-        return addPatient::all();
+        $appointment = Appointment::all();
+        $addPatient = addPatient::all();
+        $vital = Vital::all();
+        $phams = Pham::all();
+        $payment = Payment::all();
+        $diagnose = Diagnose::all();
+        $labResult = LabResult::all();
+        
+        return response()->json([
+            'appointment' => $appointment,
+            'addPatient' => $addPatient,
+            'vital' => $vital,
+            'phams' => $phams,
+            'payment' => $payment,
+            'diagnose' => $diagnose,
+            'labResult' => $labResult
+        ]);
     }
 
     /**

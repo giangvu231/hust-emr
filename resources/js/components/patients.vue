@@ -330,6 +330,7 @@
                     NProgress.done()
                     }, 1000);
                     this.patients = response.data;
+                    console.log(response);
                 })
             },
             searchit(){

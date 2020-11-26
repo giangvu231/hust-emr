@@ -14,6 +14,7 @@ use App\Pham;
 use App\SurgeryHistory;
 use App\Vital;
 use App\Appointment;
+use App\Emr;
 use PDF;
 
 class PatientController extends Controller
@@ -32,7 +33,6 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
         return addPatient::all();
     }
 
@@ -46,7 +46,6 @@ class PatientController extends Controller
 
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'unique_id' => 'required | unique:add_patients',
             'full_name' => 'required | string | max:191',
@@ -64,8 +63,13 @@ class PatientController extends Controller
             'home_next_of_kin' => 'required',
             'phone_next_of_kin' => 'required',
         ]);
-
-        return addPatient::create($request->all());
+        
+        $data = addPatient::create($request->all());
+        Emr::create([
+            'emr_id' => $data->unique_id,
+            'patient_id' => $data->id,
+        ]);
+        return response()->json(['data' => $data], 200);
     }
 
     /**
