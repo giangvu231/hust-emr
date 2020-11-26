@@ -31,9 +31,9 @@
                 <tr>
                   <th>Mã bệnh nhân</th>
                   <th>Họ tên</th>
-                  <th>Email</th>
-                  <th>Số điện thoại</th>
-                  <th>Nghề nghiệp</th>
+                  <th>Tình trạng</th>
+                  <!-- <th>Số điện thoại</th>
+                  <th>Nghề nghiệp</th> -->
                   <th>Giới tính</th>
                   <th>Thông tin đầy đủ</th>
                   <th>Tác vụ</th>
@@ -41,11 +41,11 @@
                 </thead>
                 <tbody>
                 <tr v-for="patient in patients" :key="patient.id">
-                  <td>{{patient.unique_id}}</td>
-                  <td>{{patient.title}}  {{patient.full_name}}</td>
-                  <td>{{patient.email}}</td>
-                  <td>{{patient.phone_number}}</td>
-                  <td>{{patient.occupation}}</td>
+                  <td>{{patient.id}}</td>
+                  <td>{{patient.full_name}}</td>
+                  <td>{{patient.reason}}</td>
+                  <!-- <td>{{patient.phone_number}}</td>
+                  <td>{{patient.occupation}}</td> -->
                   <td>{{patient.sex}}</td>
                   <td>
                     <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#' + patient.unique_id">
@@ -257,23 +257,13 @@
 
                 </tbody>
                 <tfoot>
-                <!-- <tr>
-                  <th>Unique ID</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone Number</th>
-                  <th>Occupation </th>
-                  <th>Sex</th>
-                  <th>All</th>
-                  <th>Action</th>
-                </tr> -->
 
                 <tr>
                   <th>Mã bệnh nhân</th>
                   <th>Họ tên</th>
-                  <th>Email</th>
-                  <th>Số điện thoại</th>
-                  <th>Nghề nghiệp</th>
+                  <th>Tình trạng</th>
+                  <!-- <th>Số điện thoại</th>
+                  <th>Nghề nghiệp</th> -->
                   <th>Giới tính</th>
                   <th>Thông tin đầy đủ</th>
                   <th>Tác vụ</th>

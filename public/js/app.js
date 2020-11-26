@@ -1961,7 +1961,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: new Form({
-        unique_id: 'EMR' + Math.floor(Math.random() * 10000000000 + 1),
+        unique_id: 'BA' + Math.floor(Math.random() * 10000000000 + 1),
         title: '',
         full_name: '',
         email: '',
@@ -4306,95 +4306,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5915,16 +5826,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -73578,15 +73479,15 @@ var render = function() {
                   [
                     _vm._l(_vm.patients, function(patient) {
                       return _c("tr", { key: patient.id }, [
-                        _c("td", [_vm._v(_vm._s(patient.unique_id))]),
+                        _c("td", [_vm._v(_vm._s(patient.id))]),
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(patient.full_name))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(patient.phone_number))]),
+                        _c("td", [_vm._v(_vm._s(patient.unique_id))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(patient.phone_number))]),
+                        _c("td", [_vm._v(_vm._s(patient.created_at))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(patient.phone_number))]),
+                        _c("td", [_vm._v(_vm._s(patient.reason))]),
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(patient.sex))]),
                         _vm._v(" "),
@@ -73599,11 +73500,6 @@ var render = function() {
                                 type: "button",
                                 "data-toggle": "modal",
                                 "data-target": "#" + patient.unique_id
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.showModel(patient)
-                                }
                               }
                             },
                             [
@@ -74900,19 +74796,9 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("p", [
-              _c("b", [_vm._v("Phiếu chăm sóc: ")]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
               _c("b", [
                 _vm._v(
-                  "Phiếu truyền dịch:\n                                                    "
+                  "Phiếu theo dõi sinh\n                                                        hiệu:\n                                                    "
                 )
               ]),
               _vm._v(" "),
@@ -74920,143 +74806,10 @@ var staticRenderFns = [
                 _vm._v(
                   "\n                                                        Click here\n                                                    "
                 )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("b", [
-                _vm._v(
-                  "Phiếu truyền máu:\n                                                    "
-                )
               ]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("b", [
-                _vm._v(
-                  "Giấy chứng nhận nằm\n                                                        viện:\n                                                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("b", [
-                _vm._v(
-                  "Giấy hẹn khám lại:\n                                                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("b", [_vm._v("Giấy ra viện: ")]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("b", [
-                _vm._v(
-                  "Giấy chuyển tuyến:\n                                                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("b", [
-                _vm._v(
-                  "Phiếu sơ kết 15\n                                                        ngày:\n                                                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("b", [
-                _vm._v(
-                  "Trích biên bản hội\n                                                        chẩn phẫu thuật:\n                                                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("b", [
-                _vm._v(
-                  "Giấy cam đoan PTTT/\n                                                        Gây mê hồi sức:\n                                                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("b", [
-                _vm._v(
-                  "Phiếu công khai\n                                                        dịch vụ:\n                                                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("b", [
-                _vm._v(
-                  "Phiếu công khai\n                                                        thuốc:\n                                                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v(
-                  "\n                                                        Click here\n                                                    "
-                )
-              ])
+              _vm._v(
+                "\n                                                    -> open PDF\n                                                "
+              )
             ])
           ]),
           _vm._v(" "),
@@ -78346,21 +78099,11 @@ var render = function() {
                   [
                     _vm._l(_vm.patients, function(patient) {
                       return _c("tr", { key: patient.id }, [
-                        _c("td", [_vm._v(_vm._s(patient.unique_id))]),
+                        _c("td", [_vm._v(_vm._s(patient.id))]),
                         _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            _vm._s(patient.title) +
-                              "  " +
-                              _vm._s(patient.full_name)
-                          )
-                        ]),
+                        _c("td", [_vm._v(_vm._s(patient.full_name))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(patient.email))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(patient.phone_number))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(patient.occupation))]),
+                        _c("td", [_vm._v(_vm._s(patient.reason))]),
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(patient.sex))]),
                         _vm._v(" "),
@@ -79682,11 +79425,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Họ tên")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Số điện thoại")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nghề nghiệp")]),
+        _c("th", [_vm._v("Tình trạng")]),
         _vm._v(" "),
         _c("th", [_vm._v("Giới tính")]),
         _vm._v(" "),
@@ -79786,11 +79525,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Họ tên")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Số điện thoại")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nghề nghiệp")]),
+        _c("th", [_vm._v("Tình trạng")]),
         _vm._v(" "),
         _c("th", [_vm._v("Giới tính")]),
         _vm._v(" "),
