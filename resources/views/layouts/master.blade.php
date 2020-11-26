@@ -96,14 +96,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </p>
                     </router-link>
                 </li>
-                <li class="nav-item">
-                    <router-link to="/**" class="nav-link">
-                    <i class="nav-icon fas fa-hospital-symbol"></i>
-                    <p>
-                    Báo cáo
-                    </p>
-                    </router-link>
-                </li>
               </ul>
           </li>
 
@@ -129,16 +121,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <router-link to="/add-biodata" class="nav-link">
                     <i class="nav-icon fas fa-database"></i>
                     <p>
-                    Thêm mới thông tin bệnh nhân
+                    Nhập bệnh nhân mới
                     </p>
                     </router-link>
                 </li>
 
                 <li class="nav-item">
+                    <router-link to="/tiencan" class="nav-link">
+                    <i class="nav-icon fas fa-hospital-symbol"></i>
+                    <p>
+                    Nhập tiền căn
+                    </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
                     <router-link to="/add-hospital" class="nav-link">
                     <i class="nav-icon fas fa-hospital-symbol"></i>
                     <p>
-                    Thêm tiền sử bệnh
+                    Nhập tiền sử
+                    </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/taophieukham" class="nav-link">
+                    <i class="nav-icon fas fa-hospital-symbol"></i>
+                    <p>
+                    Tạo phiếu khám
                     </p>
                     </router-link>
                 </li>

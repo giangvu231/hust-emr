@@ -48,11 +48,11 @@
                 </thead>
                 <tbody>
                 <tr v-for="patient in patients" :key="patient.id">
-                  <td>{{patient.unique_id}}</td> <!-- col 1 -->
+                  <td>{{patient.id}}</td> <!-- col 1 -->
                   <td>{{patient.full_name}}</td> <!-- col 2 -->
-                  <td>{{patient.phone_number}}</td> <!-- col 3 -->
-                  <td>{{patient.phone_number}}</td> <!-- col 4 -->
-                  <td>{{patient.phone_number}}</td> <!-- col 4 -->
+                  <td>{{patient.unique_id}}</td> <!-- col 3 -->
+                  <td>{{patient.created_at}}</td> <!-- col 4 -->
+                  <td>{{patient.reason}}</td> <!-- col 4 -->
                   <td>{{patient.sex}}</td>
                   <td>
                     <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#' + patient.unique_id">
@@ -70,18 +70,8 @@
                           </div>
                           <div class="modal-body">
                              <p><b>Bệnh án: </b> <button type="submit">Click here</button> -> open PDF</p>
-                             <p><b>Phiếu chăm sóc: </b> <button type="submit">Click here</button> </p>
-                             <p><b>Phiếu truyền dịch: </b> <button type="submit">Click here</button> </p>
-                             <p><b>Phiếu truyền máu: </b> <button type="submit">Click here</button> </p>
-                             <p><b>Giấy chứng nhận nằm viện: </b> <button type="submit">Click here</button> </p>
-                             <p><b>Giấy hẹn khám lại: </b> <button type="submit">Click here</button> </p>
-                             <p><b>Giấy ra viện: </b> <button type="submit">Click here</button> </p>
-                             <p><b>Giấy chuyển tuyến: </b> <button type="submit">Click here</button> </p>
-                             <p><b>Phiếu sơ kết 15 ngày: </b> <button type="submit">Click here</button> </p>
-                             <p><b>Trích biên bản hội chẩn phẫu thuật: </b> <button type="submit">Click here</button> </p>
-                             <p><b>Giấy cam đoan PTTT/ Gây mê hồi sức: </b> <button type="submit">Click here</button> </p>
-                             <p><b>Phiếu công khai dịch vụ: </b> <button type="submit">Click here</button> </p>
-                             <p><b>Phiếu công khai thuốc: </b> <button type="submit">Click here</button> </p>
+                             <p><b>Phiếu theo dõi sinh hiệu: </b> <button type="submit">Click here</button> -> open PDF</p>
+
 
                           </div>
                           <div class="modal-footer">
