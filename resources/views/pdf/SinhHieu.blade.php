@@ -33,7 +33,7 @@
 </style>
 
 <body>
-
+	{{ $data->temperature }}
 </body>
-{{ $data->temperature }}
+
 </html>
