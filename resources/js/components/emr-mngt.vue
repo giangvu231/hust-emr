@@ -61,7 +61,7 @@
                     >
                         <thead>
                             <tr>
-                                <th>Mã bệnh nhân</th>
+                                <th>Mã BN</th>
                                 <!-- col 1 -->
                                 <th>Họ tên</th>
                                 <!-- col 2 -->
@@ -69,7 +69,9 @@
                                 <!-- col 3 -->
                                 <th>Ngày khám</th>
                                 <!-- col 4 -->
-                                <th>Lý do vào viện</th>
+                                <th>
+                                    Lý do
+                                </th>
                                 <!-- col 5 -->
                                 <th>Giới tính</th>
                                 <!-- col 6 -->
@@ -132,20 +134,33 @@
                                                 <div class="modal-body">
                                                     <p>
                                                         <b>Bệnh án: </b>
-                                                        <button type="submit" @click="addPatientPDF(patient.id)">
-                                                            Click here
+                                                        <button
+                                                            type="submit"
+                                                            @click="
+                                                                addPatientPDF(
+                                                                    patient.id
+                                                                )
+                                                            "
+                                                        >
+                                                            Xem bệnh án
                                                         </button>
-                                                        -> open PDF
                                                     </p>
                                                     <p>
                                                         <b
                                                             >Phiếu theo dõi sinh
                                                             hiệu:
                                                         </b>
-                                                        <button type="submit" @click="vitalPDF(patient.id)">
-                                                            Click here
+                                                        <button
+                                                            type="submit"
+                                                            @click="
+                                                                vitalPDF(
+                                                                    patient.id
+                                                                )
+                                                            "
+                                                        >
+                                                            Xem phiếu theo dõi
+                                                            sinh hiệu
                                                         </button>
-                                                        -> open PDF
                                                     </p>
                                                 </div>
                                                 <div class="modal-footer">
@@ -681,13 +696,22 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Mã bệnh nhân</th>
+                                <th>Mã BN</th>
+                                <!-- col 1 -->
                                 <th>Họ tên</th>
+                                <!-- col 2 -->
                                 <th>Mã HSBA</th>
+                                <!-- col 3 -->
                                 <th>Ngày khám</th>
-                                <th>Lý do vào viện</th>
+                                <!-- col 4 -->
+                                <th>
+                                    Lý do
+                                </th>
+                                <!-- col 5 -->
                                 <th>Giới tính</th>
+                                <!-- col 6 -->
                                 <th>Tác vụ</th>
+                                <!-- col 7 -->
                             </tr>
                         </tfoot>
                     </table>
