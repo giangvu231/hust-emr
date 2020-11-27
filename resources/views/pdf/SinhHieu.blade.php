@@ -8,8 +8,7 @@
 </head>
 <body>
     <div>test</div>
-    <div>{{ $patientInfo->temperature }}</div>
-    <!-- <div>{{ $vitalData->temperature }}</div> -->
+    <div>{{ $data -> temperature }}</div>
     <div></div>
     <div></div>
     <div></div>
