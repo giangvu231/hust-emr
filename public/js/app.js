@@ -2371,7 +2371,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    addVital: function addVital() {
+    addVital: function addVital(id) {
       $('.vital').html('<i class="fa fa-spin fa-spinner"></i>');
       this.form.post('api/vital').then(function () {
         toast.fire({
@@ -70465,7 +70465,7 @@ var render = function() {
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    return _vm.addVital($event)
+                    return _vm.addVital()
                   }
                 }
               },
@@ -70516,7 +70516,7 @@ var render = function() {
                         return _c(
                           "option",
                           { key: patient.id, domProps: { value: patient.id } },
-                          [_vm._v(_vm._s(patient.full_name))]
+                          [_vm._v(_vm._s(patient.full_name + patient.id))]
                         )
                       }),
                       0
