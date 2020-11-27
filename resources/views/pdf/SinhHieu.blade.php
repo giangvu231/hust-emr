@@ -1,16 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+	<title>Phieu sinh hieu</title>
+	<meta charset="utf-8">
 </head>
-<body>
-    <div>test</div>
-    <div>{{ $data -> temperature }}</div>
-    <div></div>
-    <div></div>
-    <div></div>
+<style>
+	@font-face{
+		font-family: "Times New Roman" !important;
+		src: url('/fonts/times.ttf');
+		font-style: normal;
+	}
+	@font-face{
+		font-family: "Times New Roman" !important;
+		src: url('fonts/timesbd.ttf');
+		font-weight: bold;
+	}
+	@font-face{
+		font-family: "Times New Roman" !important;
+		src: url('fonts/timesi.ttf');
+		font-style: italic;
+	}
+	@font-face{
+		font-family: "Times New Roman" !important;
+		src: url('fonts/timesbi.ttf');
+		font-style: italic;
+		font-weight: bold;
+	}
+	* {
+		font-family: "Times New Roman" !important;
+	}
+    .font-bold {
+		font-weight: bold;
+	}
+	.font-italic {
+		font-style: italic;
+	}
+</style>
+
+<body style="font-family: Times New Roman">
+
 </body>
+{{ $data -> temperature }}
 </html>
