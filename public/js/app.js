@@ -4330,6 +4330,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -73964,7 +73995,7 @@ var render = function() {
                                     _vm._v(" "),
                                     _c("div", { staticClass: "modal-body" }, [
                                       _c("p", [
-                                        _c("b", [_vm._v("Bệnh án: ")]),
+                                        _c("b", [_vm._v("[1] Bệnh án: ")]),
                                         _vm._v(" "),
                                         _c(
                                           "button",
@@ -73985,6 +74016,8 @@ var render = function() {
                                           ]
                                         )
                                       ]),
+                                      _vm._v(" "),
+                                      _vm._m(3, true),
                                       _vm._v(" "),
                                       _c("p", [
                                         _c("b", [
@@ -74008,11 +74041,38 @@ var render = function() {
                                               "\n                                                        Xem phiếu theo dõi\n                                                        sinh hiệu\n                                                    "
                                             )
                                           ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("b", [
+                                          _vm._v(
+                                            "Bảng kế hoạch chăm\n                                                        sóc:\n                                                    "
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            attrs: { type: "submit" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.vitalPDF(patient.id)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", [
+                                              _vm._v(
+                                                '"Currently\n                                                            under\n                                                            development!"'
+                                              )
+                                            ])
+                                          ]
                                         )
-                                      ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _vm._m(4, true)
                                     ]),
                                     _vm._v(" "),
-                                    _vm._m(3, true)
+                                    _vm._m(5, true)
                                   ])
                                 ]
                               )
@@ -74092,7 +74152,7 @@ var render = function() {
                           },
                           [
                             _c("div", { staticClass: "modal-content" }, [
-                              _vm._m(4),
+                              _vm._m(6),
                               _vm._v(" "),
                               _c("div", { staticClass: "modal-body" }, [
                                 _c(
@@ -75191,7 +75251,7 @@ var render = function() {
                                 )
                               ]),
                               _vm._v(" "),
-                              _vm._m(5)
+                              _vm._m(7)
                             ])
                           ]
                         )
@@ -75201,7 +75261,7 @@ var render = function() {
                   2
                 ),
                 _vm._v(" "),
-                _vm._m(6)
+                _vm._m(8)
               ]
             )
           ],
@@ -75270,6 +75330,30 @@ var staticRenderFns = [
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("b", [
+        _vm._v(
+          "[2] Giấy tờ lâm\n                                                        sàng"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("b", [
+        _vm._v(
+          "[2] Giấy tờ cận lâm\n                                                        sàng"
+        )
+      ])
     ])
   },
   function() {

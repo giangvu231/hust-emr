@@ -133,7 +133,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>
-                                                        <b>Bệnh án: </b>
+                                                        <b>[1] Bệnh án: </b>
                                                         <button
                                                             type="submit"
                                                             @click="
@@ -144,6 +144,12 @@
                                                         >
                                                             Xem bệnh án
                                                         </button>
+                                                    </p>
+                                                    <p>
+                                                        <b
+                                                            >[2] Giấy tờ lâm
+                                                            sàng</b
+                                                        >
                                                     </p>
                                                     <p>
                                                         <b
@@ -161,6 +167,31 @@
                                                             Xem phiếu theo dõi
                                                             sinh hiệu
                                                         </button>
+                                                        <b
+                                                            >Bảng kế hoạch chăm
+                                                            sóc:
+                                                        </b>
+                                                        <button
+                                                            type="submit"
+                                                            @click="
+                                                                vitalPDF(
+                                                                    patient.id
+                                                                )
+                                                            "
+                                                        >
+                                                            <i
+                                                                >"Currently
+                                                                under
+                                                                development!"</i
+                                                            >
+                                                        </button>
+                                                    </p>
+
+                                                    <p>
+                                                        <b
+                                                            >[2] Giấy tờ cận lâm
+                                                            sàng</b
+                                                        >
                                                     </p>
                                                 </div>
                                                 <div class="modal-footer">
