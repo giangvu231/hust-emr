@@ -78,7 +78,7 @@
     'normal' => $rootDir . '/lib/fonts/DejaVuSerif',
   ),
   'times new roman' => array(
-    'normal' => $fontDir . '/times-new-roman-normal_ada3855b7066c37ddfcc7159fc8014ee',
+    'normal' => $fontDir . '/times-new-roman-normal_43c874f3179d570384c856b57157e61b',
     'bold' => $fontDir . '/times-new-roman-bold_55a1248b560b98db314c92aabb55bbbd',
     'italic' => $fontDir . '/times-new-roman-italic_a6e1758e2219a9ed519fe7e9ff84d7da',
     'bold_italic' => $fontDir . '/times-new-roman-bold-italic_25e8440c788f4a3d524510842051de08',

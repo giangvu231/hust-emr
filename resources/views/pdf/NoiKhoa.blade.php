@@ -5,10 +5,10 @@
 	<title>mẫu bệnh án</title>
 	<meta charset="utf-8">
 </head>
-<style>
+<style type="text/css">
 	@font-face{
 		font-family: "Times New Roman" !important;
-		src: url('/fonts/times.ttf');
+		src: url('fonts/times.ttf');
 		font-style: normal; 
 	}
 	@font-face{
@@ -48,7 +48,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Bệnh viện:
+				<td>Bệnh viện: {{ $data->temperature }}
 				<td>
 			</tr>
 			<tr>
