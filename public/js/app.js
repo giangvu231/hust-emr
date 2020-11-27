@@ -4306,6 +4306,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -73956,12 +73980,9 @@ var render = function() {
                                           },
                                           [
                                             _vm._v(
-                                              "\n                                                        Click here\n                                                    "
+                                              "\n                                                        Xem bệnh án\n                                                    "
                                             )
                                           ]
-                                        ),
-                                        _vm._v(
-                                          "\n                                                    -> open PDF\n                                                "
                                         )
                                       ]),
                                       _vm._v(" "),
@@ -73984,12 +74005,9 @@ var render = function() {
                                           },
                                           [
                                             _vm._v(
-                                              "\n                                                        Click here\n                                                    "
+                                              "\n                                                        Xem phiếu theo dõi\n                                                        sinh hiệu\n                                                    "
                                             )
                                           ]
-                                        ),
-                                        _vm._v(
-                                          "\n                                                    -> open PDF\n                                                "
                                         )
                                       ])
                                     ]),
@@ -75210,7 +75228,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Mã bệnh nhân")]),
+        _c("th", [_vm._v("Mã BN")]),
         _vm._v(" "),
         _c("th", [_vm._v("Họ tên")]),
         _vm._v(" "),
@@ -75218,7 +75236,11 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Ngày khám")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Lý do vào viện")]),
+        _c("th", [
+          _vm._v(
+            "\n                                Lý do\n                            "
+          )
+        ]),
         _vm._v(" "),
         _c("th", [_vm._v("Giới tính")]),
         _vm._v(" "),
@@ -75323,7 +75345,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("tfoot", [
       _c("tr", [
-        _c("th", [_vm._v("Mã bệnh nhân")]),
+        _c("th", [_vm._v("Mã BN")]),
         _vm._v(" "),
         _c("th", [_vm._v("Họ tên")]),
         _vm._v(" "),
@@ -75331,7 +75353,11 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Ngày khám")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Lý do vào viện")]),
+        _c("th", [
+          _vm._v(
+            "\n                                Lý do\n                            "
+          )
+        ]),
         _vm._v(" "),
         _c("th", [_vm._v("Giới tính")]),
         _vm._v(" "),

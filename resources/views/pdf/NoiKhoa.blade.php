@@ -2,37 +2,43 @@
 <html>
 
 <head>
-	<title>mẫu bệnh án</title>
+	<title>Bệnh án Nội khoa</title>
 	<meta charset="utf-8">
 </head>
 <style>
 	@font-face{
 		font-family: "Times New Roman" !important;
 		src: url('/fonts/times.ttf');
-		font-style: normal; 
+		font-style: normal;
 	}
 	@font-face{
 		font-family: "Times New Roman" !important;
 		src: url('fonts/timesbd.ttf');
-		font-weight: bold; 
+		font-weight: bold;
 	}
 	@font-face{
 		font-family: "Times New Roman" !important;
 		src: url('fonts/timesi.ttf');
-		font-style: italic; 
+		font-style: italic;
 	}
 	@font-face{
 		font-family: "Times New Roman" !important;
 		src: url('fonts/timesbi.ttf');
-		font-style: italic; 
+		font-style: italic;
 		font-weight: bold;
 	}
 	* {
 		font-family: "Times New Roman" !important;
 	}
+    .font-bold {
+		font-weight: bold;
+	}
+	.font-italic {
+		font-style: italic;
+	}
 </style>
 
-<body>
+<body style="font-family: Times New Roman">
 	<!-- header -->
 	<div class="header">
 		<table width="100%">
@@ -78,7 +84,7 @@
 					Giới tính : {{ $patientInfo->sex }}
 				</td>
 				<td>
-					Nghề nghiệp :
+					Nghề nghiệp : {{ $patientInfo->occupation }}
 				</td>
 				<td></td>
 			</tr>
@@ -95,7 +101,7 @@
 		<table width="100%">
 			<tr>
 				<td colspan="2">
-					Địa chỉ :
+					Địa chỉ : {{ $patientInfo->home_address }}
 				</td>
 			</tr>
 			<tr>
@@ -116,12 +122,13 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					Họ tên, địa chỉ người nhà khi cần báo tên
+                    Họ tên, địa chỉ người nhà khi cần báo tên:
+                    {{ $patientInfo->home_next_of_kin }}
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					Số điện thoại người nhà :
+					Số điện thoại người nhà : {{ $patientInfo->phone_next_of_kin }}
 				</td>
 			</tr>
 		</table>
