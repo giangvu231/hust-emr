@@ -38,9 +38,9 @@ class PdfController extends Controller
         $datetime = str_replace(":", "", $datetime);
 
         $name = $datetime;
-        $pdf = PDF::loadView("pdf.SinhHieu", ['data' => $vitalData->vitals, 'patientInfo' => $patientInfo])->setPaper('A4', 'Portrait');
+        $pdf = PDF::loadView("pdf.SinhHieu", ['data' => $vitalData->vital, 'patientInfo' => $patientInfo])->setPaper('A4', 'Portrait');
         $pdf->save(public_path("pdf/" . $name . ".pdf"));
-        return $pdf->stream($name . '.pdf');
+        return response()->file(public_path("pdf/" . $name . ".pdf"));
     }
 
     public function addPatientPDF($id)
@@ -56,6 +56,6 @@ class PdfController extends Controller
         $name = $datetime;
         $pdf = PDF::loadView("pdf.NoiKhoa", ['data' => $data, 'patientInfo' => $patientInfo])->setPaper('A4', 'Portrait');
         $pdf->save(public_path("pdf/" . $name . ".pdf"));
-        return $pdf->stream($name . '.pdf');
+        return response()->file(public_path("pdf/" . $name . ".pdf"));
     }
 }

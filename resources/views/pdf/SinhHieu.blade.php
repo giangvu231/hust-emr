@@ -30,16 +30,10 @@
 	* {
 		font-family: "Times New Roman" !important;
 	}
-    .font-bold {
-		font-weight: bold;
-	}
-	.font-italic {
-		font-style: italic;
-	}
 </style>
 
-<body style="font-family: Times New Roman">
-
+<body>
+	{{ $data->temperature }}
 </body>
-{{ $data -> temperature }}
+
 </html>
