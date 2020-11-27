@@ -8,13 +8,8 @@
 <style type="text/css">
 	@font-face{
 		font-family: "Times New Roman" !important;
-<<<<<<< HEAD
 		src: url('fonts/times.ttf');
 		font-style: normal; 
-=======
-		src: url('/fonts/times.ttf');
-		font-style: normal;
->>>>>>> 371110f3cfde3997320a1b16ab8268215e136018
 	}
 	@font-face{
 		font-family: "Times New Roman" !important;
