@@ -17,13 +17,17 @@ class CreateVitalsTable extends Migration
             $table->bigIncrements('id');
             $table->string('patient_id');
             $table->string('temperature');
-            $table->string('blood_pressure');            
+            $table->string('blood_pressure');
             $table->string('height');
-            $table->string('weight');  
-            $table->string('pulse');  
-            $table->string('blood_group');  
-            $table->string('blood_type');  
-            $table->string('immunization');               
+            $table->string('weight');
+            $table->string('pulse');
+            $table->string('blood_group');
+            $table->string('blood_type');
+            $table->string('immunization');
+            $table->string('systolic');
+            $table->string('diastolic');
+            $table->string('respiration');
+            $table->string('note');
             $table->timestamps();
         });
     }

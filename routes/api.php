@@ -29,7 +29,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         'payment' => 'API\PaymentController',
         'staff' => 'API\StaffController',
         'appointment' => 'API\AppointmentController',
-        'emr-mngt' => 'API\EmrController'
+        'emr-mngt' => 'API\EmrController',
+        'soap' => 'API\EmrController'
     ]);
 
     Route::get('labtest', 'API\DiagnoseController@labtest');

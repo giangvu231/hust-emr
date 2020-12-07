@@ -2304,7 +2304,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2514,6 +2513,191 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/add-soap.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/add-soap.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      patients: {},
+      form: new Form({
+        patient_id: "",
+        subjective: "",
+        objective: "",
+        assessment: "",
+        plan: ""
+      })
+    };
+  },
+  methods: {
+    addSoap: function addSoap(id) {
+      $(".soap").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.post("api/soap").then(function () {
+        toast.fire({
+          type: "success",
+          title: "SOAP của bệnh nhân được thêm thành công!"
+        });
+        $(".soap").html("Add Patient Vital");
+        $("#add-soap").trigger("reset");
+      })["catch"](function () {
+        toast.fire({
+          type: "error",
+          title: "Dữ liệu nhập vào chưa đúng!"
+        });
+        $(".soap").html("Add Patient Vital");
+      });
+    },
+    loadPatients: function loadPatients() {
+      var _this = this;
+
+      // this.loading = true;
+      axios.get("api/patient").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.patients = response.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    console.log("Component mounted.");
+    this.loadPatients();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/add-surgery.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/add-surgery.vue?vue&type=script&lang=js& ***!
@@ -2627,6 +2811,76 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -71281,6 +71535,301 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/add-soap.vue?vue&type=template&id=32d7b1fc&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/add-soap.vue?vue&type=template&id=32d7b1fc& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("Nhap sinh hieu cua nguoi benh")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "form",
+              {
+                attrs: { id: "add-soap" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.addSoap()
+                  }
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Chọn bệnh nhân")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.patient_id,
+                            expression: "form.patient_id"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid": _vm.form.errors.has("patient_id")
+                        },
+                        attrs: { name: "patient_id" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.form,
+                              "patient_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      _vm._l(_vm.patients, function(patient) {
+                        return _c(
+                          "option",
+                          { key: patient.id, domProps: { value: patient.id } },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                "BN: " +
+                                  patient.full_name +
+                                  "Ma BN: " +
+                                  patient.id
+                              )
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "patient_id" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.subjective,
+                          expression: "form.subjective"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("subjective")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "subjective",
+                        placeholder: "Nhập dau chung chu quan"
+                      },
+                      domProps: { value: _vm.form.subjective },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "subjective", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "subjective" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.objective,
+                          expression: "form.objective"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("objective")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "objective",
+                        placeholder: "Nhập dau chung khach quan"
+                      },
+                      domProps: { value: _vm.form.objective },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "objective", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "objective" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.assessment,
+                          expression: "form.assessment"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("assessment")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "assessment",
+                        placeholder: "Nhập huong chan doan"
+                      },
+                      domProps: { value: _vm.form.assessment },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "assessment", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "assessment" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.plan,
+                          expression: "form.plan"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("plan")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "plan",
+                        placeholder: "Nhập huong dieu tri"
+                      },
+                      domProps: { value: _vm.form.plan },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "plan", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "plan" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("center", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "soap btn-block btn btn-info",
+                      staticStyle: { color: "#fff" },
+                      attrs: { type: "submit" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                Thêm SOAP\n                            "
+                      )
+                    ]
+                  )
+                ])
+              ],
+              1
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/add-surgery.vue?vue&type=template&id=16755964&":
 /*!**************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/add-surgery.vue?vue&type=template&id=16755964& ***!
@@ -71982,6 +72531,166 @@ var render = function() {
                     _vm._v(" "),
                     _c("has-error", {
                       attrs: { form: _vm.form, field: "immunization" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.systolic,
+                          expression: "form.systolic"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("systolic")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "systolic",
+                        placeholder: "Nhap HA tam thu"
+                      },
+                      domProps: { value: _vm.form.systolic },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "systolic", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "systolic" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.diastolic,
+                          expression: "form.diastolic"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("diastolic")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "diastolic",
+                        placeholder: "Nhap HA tam truong"
+                      },
+                      domProps: { value: _vm.form.diastolic },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "diastolic", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "diastolic" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.respiration,
+                          expression: "form.respiration"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("respiration")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "respiration",
+                        placeholder: "Nhap nhip tho cua nguoi benh"
+                      },
+                      domProps: { value: _vm.form.respiration },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "respiration", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "respiration" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.note,
+                          expression: "form.note"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("note")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "note",
+                        placeholder: "Ghi chu"
+                      },
+                      domProps: { value: _vm.form.note },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "note", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "note" }
                     })
                   ],
                   1
@@ -98811,7 +99520,7 @@ window.NProgress = nprogress__WEBPACK_IMPORTED_MODULE_1___default.a;
 window.Fire = new Vue();
 var toast = sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.mixin({
   toast: true,
-  position: 'top-end',
+  position: "top-end",
   showConfirmButton: false,
   timer: 3000
 });
@@ -98819,104 +99528,108 @@ window.toast = toast;
 window.Form = vform__WEBPACK_IMPORTED_MODULE_2__["Form"];
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_2__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_2__["HasError"]);
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_2__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_2__["AlertError"]);
-Vue.filter('humanDate', function (created) {
-  return moment__WEBPACK_IMPORTED_MODULE_3___default()(created).format('MMMM Do YYYY, h:mm:ss a');
+Vue.filter("humanDate", function (created) {
+  return moment__WEBPACK_IMPORTED_MODULE_3___default()(created).format("MMMM Do YYYY, h:mm:ss a");
 }); // let str = '';
 // Vue.filter('removeSpace', function(){
 //   return  str.replace(/ /g, '-');
 // })
 
 var routes = [{
-  name: '404',
-  path: '*',
+  name: "404",
+  path: "*",
   component: __webpack_require__(/*! ./components/404.vue */ "./resources/js/components/404.vue")["default"]
 }, {
-  name: 'all-patients',
-  path: '/patients',
+  name: "all-patients",
+  path: "/patients",
   component: __webpack_require__(/*! ./components/patients.vue */ "./resources/js/components/patients.vue")["default"]
 }, {
-  name: 'add-biodata',
-  path: '/add-biodata',
+  name: "add-biodata",
+  path: "/add-biodata",
   component: __webpack_require__(/*! ./components/add-biodata.vue */ "./resources/js/components/add-biodata.vue")["default"]
 }, {
-  name: 'add-vital',
-  path: '/add-vital',
+  name: "add-vital",
+  path: "/add-vital",
   component: __webpack_require__(/*! ./components/add-vitals.vue */ "./resources/js/components/add-vitals.vue")["default"]
 }, {
-  name: 'vitals',
-  path: '/vitals',
+  name: "vitals",
+  path: "/vitals",
   component: __webpack_require__(/*! ./components/vitals.vue */ "./resources/js/components/vitals.vue")["default"]
 }, {
-  name: 'add-hospital',
-  path: '/add-hospital',
+  name: "add-hospital",
+  path: "/add-hospital",
   component: __webpack_require__(/*! ./components/add-hospital.vue */ "./resources/js/components/add-hospital.vue")["default"]
 }, {
-  name: 'hospital',
-  path: '/hospital',
+  name: "hospital",
+  path: "/hospital",
   component: __webpack_require__(/*! ./components/hospital.vue */ "./resources/js/components/hospital.vue")["default"]
 }, {
-  name: 'add-surgery',
-  path: '/add-surgery',
+  name: "add-surgery",
+  path: "/add-surgery",
   component: __webpack_require__(/*! ./components/add-surgery.vue */ "./resources/js/components/add-surgery.vue")["default"]
 }, {
-  name: 'surgery',
-  path: '/surgery',
+  name: "surgery",
+  path: "/surgery",
   component: __webpack_require__(/*! ./components/surgery.vue */ "./resources/js/components/surgery.vue")["default"]
 }, {
-  name: 'complain',
-  path: '/complain',
+  name: "complain",
+  path: "/complain",
   component: __webpack_require__(/*! ./components/complain.vue */ "./resources/js/components/complain.vue")["default"]
 }, {
-  name: 'diagnosed',
-  path: '/diagnosed',
+  name: "diagnosed",
+  path: "/diagnosed",
   component: __webpack_require__(/*! ./components/diagnosed.vue */ "./resources/js/components/diagnosed.vue")["default"]
 }, {
-  name: 'lab-test',
-  path: '/lab-test',
+  name: "lab-test",
+  path: "/lab-test",
   component: __webpack_require__(/*! ./components/lab-test.vue */ "./resources/js/components/lab-test.vue")["default"]
 }, {
-  name: 'labresult',
-  path: '/labresult',
+  name: "labresult",
+  path: "/labresult",
   component: __webpack_require__(/*! ./components/labresult.vue */ "./resources/js/components/labresult.vue")["default"]
 }, {
-  name: 'pham-test',
-  path: '/pham-test',
+  name: "pham-test",
+  path: "/pham-test",
   component: __webpack_require__(/*! ./components/pham-test.vue */ "./resources/js/components/pham-test.vue")["default"]
 }, {
-  name: 'medication',
-  path: '/medication',
+  name: "medication",
+  path: "/medication",
   component: __webpack_require__(/*! ./components/medication.vue */ "./resources/js/components/medication.vue")["default"]
 }, {
-  name: 'give-injection',
-  path: '/give-injection',
+  name: "give-injection",
+  path: "/give-injection",
   component: __webpack_require__(/*! ./components/give-injection.vue */ "./resources/js/components/give-injection.vue")["default"]
 }, {
-  name: 'billing',
-  path: '/billing',
+  name: "billing",
+  path: "/billing",
   component: __webpack_require__(/*! ./components/billing.vue */ "./resources/js/components/billing.vue")["default"]
 }, {
-  name: 'staff',
-  path: '/staff',
+  name: "staff",
+  path: "/staff",
   component: __webpack_require__(/*! ./components/staff.vue */ "./resources/js/components/staff.vue")["default"]
 }, {
-  name: 'all-staffs',
-  path: '/all-staffs',
+  name: "all-staffs",
+  path: "/all-staffs",
   component: __webpack_require__(/*! ./components/all-staff.vue */ "./resources/js/components/all-staff.vue")["default"]
 }, {
-  name: 'profile',
-  path: '/profile',
+  name: "profile",
+  path: "/profile",
   component: __webpack_require__(/*! ./components/profile.vue */ "./resources/js/components/profile.vue")["default"]
 }, {
-  name: 'appointment',
-  path: '/appointment',
+  name: "appointment",
+  path: "/appointment",
   component: __webpack_require__(/*! ./components/appointment.vue */ "./resources/js/components/appointment.vue")["default"]
 }, {
-  name: 'emr-mngt',
-  path: '/emr-mngt',
+  name: "emr-mngt",
+  path: "/emr-mngt",
   component: __webpack_require__(/*! ./components/emr-mngt.vue */ "./resources/js/components/emr-mngt.vue")["default"]
+}, {
+  name: "add-soap",
+  path: "/add-soap",
+  component: __webpack_require__(/*! ./components/add-soap.vue */ "./resources/js/components/add-soap.vue")["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  mode: 'history',
+  mode: "history",
   routes: routes // short for `routes: routes`
 
 });
@@ -98928,7 +99641,7 @@ router.beforeResolve(function (to, from, next) {
     nprogress__WEBPACK_IMPORTED_MODULE_1___default.a.inc(); // To increment the progress bar, just use .inc(). This increments it with a random amount. This will never get to 100%: use it for every image load (or similar).If you want to increment by a specific value, you can pass that as a parameter
 
     nprogress__WEBPACK_IMPORTED_MODULE_1___default.a.configure({
-      ease: 'ease',
+      ease: "ease",
       speed: 500
     }); // Adjust animation settings using easing (a CSS easing string) and speed (in ms). (default: ease and 200)
 
@@ -98950,7 +99663,7 @@ router.afterEach(function (to, from) {});
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component("example-component", __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -98958,7 +99671,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  */
 
 var app = new Vue({
-  el: '#app',
+  el: "#app",
   router: router // data: {
   //   search: ''
   // },
@@ -99304,6 +100017,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_hospital_vue_vue_type_template_id_3f840a9e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_hospital_vue_vue_type_template_id_3f840a9e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/add-soap.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/add-soap.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _add_soap_vue_vue_type_template_id_32d7b1fc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./add-soap.vue?vue&type=template&id=32d7b1fc& */ "./resources/js/components/add-soap.vue?vue&type=template&id=32d7b1fc&");
+/* harmony import */ var _add_soap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./add-soap.vue?vue&type=script&lang=js& */ "./resources/js/components/add-soap.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _add_soap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _add_soap_vue_vue_type_template_id_32d7b1fc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _add_soap_vue_vue_type_template_id_32d7b1fc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/add-soap.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/add-soap.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/add-soap.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_add_soap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./add-soap.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/add-soap.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_add_soap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/add-soap.vue?vue&type=template&id=32d7b1fc&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/add-soap.vue?vue&type=template&id=32d7b1fc& ***!
+  \*****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_soap_vue_vue_type_template_id_32d7b1fc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./add-soap.vue?vue&type=template&id=32d7b1fc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/add-soap.vue?vue&type=template&id=32d7b1fc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_soap_vue_vue_type_template_id_32d7b1fc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_soap_vue_vue_type_template_id_32d7b1fc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -5,9 +5,9 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\addPatient;
-use App\Vital;
+use App\Soap;
 use App\Emr;
-class VitalController extends Controller
+class SoapController extends Controller
 {
 
     public function __construct()
@@ -24,7 +24,7 @@ class VitalController extends Controller
     public function index()
     {
         //
-        return Vital::with('patient')->get();
+        return Soap::with('patient')->get();
     }
 
     /**
@@ -38,22 +38,14 @@ class VitalController extends Controller
         //
         $this->validate($request, [
             'patient_id' => 'required',
-            'temperature' => 'required',
-            'blood_pressure' => 'required',
-            'height' => 'required',
-            'weight' => 'required',
-            'pulse' => 'required',
-            'blood_group' => 'required',
-            'blood_type' => 'required',
-            'immunization' => 'required',
-            'systolic' => 'required',
-            'diastolic' => 'required',
-            'respiration' => 'required',
-            'note' => 'required',
+            'subjective' => 'required',
+            'objective' => 'required',
+            'assessment' => 'required',
+            'plan' => 'required',
         ]);
-        $data = Vital::create($request->all());
+        $data = Soap::create($request->all());
         Emr::where('patient_id', $data->patient_id)->update([
-            'vital_id' => $data->id
+            'soap_id' => $data->id
         ]);
         return response()->json(['data' => $data], 200);
     }
@@ -79,20 +71,16 @@ class VitalController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $vital = Vital::findOrFail($id);
+        $soap = Soap::findOrFail($id);
 
         $this->validate($request, [
             'patient_id' => 'required',
-            'temperature' => 'required',
-            'blood_pressure' => 'required',
-            'height' => 'required',
-            'weight' => 'required',
-            'pulse' => 'required',
-            'blood_group' => 'required',
-            'blood_type' => 'required',
-            'immunization' => 'required',
+            'subjective' => 'required',
+            'objective' => 'required',
+            'assessment' => 'required',
+            'plan' => 'required',
         ]);
-        $vital->update($request->all());
+        $soap->update($request->all());
     }
 
     /**
@@ -104,8 +92,8 @@ class VitalController extends Controller
     public function destroy($id)
     {
         //
-        $vital = Vital::findOrFail($id);
+        $soap = Soap::findOrFail($id);
 
-        $vital->delete();
+        $soap->delete();
     }
 }

@@ -188,6 +188,76 @@
                                     field="immunization"
                                 ></has-error>
                             </div>
+                            <div class="form-group">
+                                <input
+                                    v-model="form.systolic"
+                                    type="text"
+                                    name="systolic"
+                                    placeholder="Nhap HA tam thu"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'systolic'
+                                        )
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="systolic"
+                                ></has-error>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    v-model="form.diastolic"
+                                    type="text"
+                                    name="diastolic"
+                                    placeholder="Nhap HA tam truong"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'diastolic'
+                                        )
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="diastolic"
+                                ></has-error>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    v-model="form.respiration"
+                                    type="text"
+                                    name="respiration"
+                                    placeholder="Nhap nhip tho cua nguoi benh"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'respiration'
+                                        )
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="respiration"
+                                ></has-error>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    v-model="form.note"
+                                    type="text"
+                                    name="note"
+                                    placeholder="Ghi chu"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has('note')
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="note"
+                                ></has-error>
+                            </div>
                             <center>
                                 <button
                                     type="submit"

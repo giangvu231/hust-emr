@@ -500,7 +500,6 @@
                                     class="addpatient btn-block btn btn-info"
                                     style="color:#fff;"
                                 >
-                                    <!-- Add Patient -->
                                     Thêm bệnh nhân
                                 </button>
                             </center>

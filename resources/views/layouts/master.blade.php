@@ -176,7 +176,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
 
             <li class="nav-item">
-                <router-link to="/soap" class="nav-link">
+                <router-link to="/add-soap" class="nav-link">
                     <i class="nav-icon fas fa-heartbeat"></i>
                     <p>
                         Nhập SOAP
