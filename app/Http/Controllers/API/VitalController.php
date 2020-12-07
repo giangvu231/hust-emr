@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\addPatient;
 use App\Vital;
+use App\Emr;
 class VitalController extends Controller
 {
 
@@ -46,18 +47,11 @@ class VitalController extends Controller
             'blood_type' => 'required',
             'immunization' => 'required',            
         ]);
-        $vital = new Vital;
-        $vital->patient_id = $request->patient_id;       
-        $vital->temperature = $request->temperature;
-        $vital->blood_pressure = $request->blood_pressure;
-        $vital->height = $request->height;
-        $vital->weight = $request->weight;
-        $vital->pulse = $request->pulse;
-        $vital->blood_group = $request->blood_group;
-        $vital->blood_type = $request->blood_type;
-        $vital->immunization = $request->immunization;
-
-        $vital->save();
+        $data = Vital::create($request->all());
+        Emr::where('patient_id', $data->patient_id)->update([
+            'vital_id' => $data->id
+        ]);
+        return response()->json(['data' => $data], 200);
     }
 
     /**

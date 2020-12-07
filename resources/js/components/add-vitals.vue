@@ -5,12 +5,12 @@
                 <div class="card">
                     <div class="card-header">Quản lý sinh hiệu</div>
                     <div class="card-body">
-                        <form @submit.prevent="addVital" id="add-vital">
+                        <form @submit.prevent="addVital()" id="add-vital">
                         <div class="form-group">
                         <!-- <label>Select Patient</label>                 -->
                         <label>Chọn bệnh nhân</label>                
                         <select v-model="form.patient_id" class="form-control" :class="{ 'is-invalid': form.errors.has('patient_id') }" name="patient_id">
-                        <option v-for="patient in patients" :key="patient.id" :value="patient.id">{{patient.full_name}}</option>
+                        <option v-for="patient in patients" :key="patient.id" :value="patient.id">{{patient.full_name + patient.id}}</option>
                         </select>  
                         <has-error :form="form" field="patient_id"></has-error>
                         </div>                       
@@ -92,7 +92,7 @@
             }            
         },
         methods:{
-            addVital(){
+            addVital(id){
                 $('.vital').html('<i class="fa fa-spin fa-spinner"></i>');
                 this.form.post('api/vital').then(
                     ()=>{
