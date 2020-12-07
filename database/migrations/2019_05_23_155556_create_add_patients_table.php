@@ -17,23 +17,29 @@ class CreateAddPatientsTable extends Migration
             $table->bigIncrements('id');
             $table->string('unique_id')->unique();
             $table->string('title');
-            $table->string('full_name');            
+            $table->string('full_name');
             $table->string('email')->unique();
-            $table->string('phone_number');  
-            $table->string('occupation');  
-            $table->string('sex');  
-            $table->string('dob');  
-            $table->string('religion');  
-            $table->string('nationality');  
-            $table->string('state_of_origin');  
-            $table->string('home_address'); 
-            $table->string('place_of_birth'); 
-            $table->string('marital_status'); 
-            $table->string('home_next_of_kin'); 
-            $table->string('phone_next_of_kin'); 
+            $table->string('phone_number');
+            $table->string('occupation');
+            $table->string('sex');
+            $table->string('dob');
+            $table->string('religion');
+            $table->string('nationality');
+            $table->string('state_of_origin');
+            $table->string('home_address');
+            $table->string('work_address');
+            $table->string('place_of_birth');
+            $table->string('marital_status');
+            $table->string('name_next_of_kin');
+            $table->string('phone_next_of_kin');
+            $table->string('home_next_of_kin');
+            $table->string('type_of_object');
+            $table->string('reason');
+            $table->string('medical_reason');
+            $table->string('medical_history');
             $table->timestamps();
         });
-    }   
+    }
     /**
      * Reverse the migrations.
      *

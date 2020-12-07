@@ -62,8 +62,14 @@ class PatientController extends Controller
             'marital_status' => 'required',
             'home_next_of_kin' => 'required',
             'phone_next_of_kin' => 'required',
+            'name_next_of_kin' => 'required',
+            'work_address' => 'required',
+            'type_of_object' => 'required',
+            'reason' => 'required',
+            'medical_reason' => 'required',
+            'medical_history' => 'required',
         ]);
-        
+
         $data = addPatient::create($request->all());
         Emr::create([
             'emr_id' => $data->unique_id,
@@ -111,6 +117,7 @@ class PatientController extends Controller
             'marital_status' => 'required',
             'home_next_of_kin' => 'required',
             'phone_next_of_kin' => 'required',
+            'name_next_of_kin' => 'required',
         ]);
 
         $patient->update($request->all());
