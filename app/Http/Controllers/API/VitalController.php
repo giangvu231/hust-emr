@@ -78,7 +78,6 @@ class VitalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $vital = Vital::findOrFail($id);
 
         $this->validate($request, [

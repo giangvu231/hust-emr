@@ -17,6 +17,7 @@ use App\Appointment;
 use App\EmrMngt;
 use App\Soap;
 use App\Diagnosishealth;
+use App\Subclinical;
 use PDF;
 
 class EmrController extends Controller
@@ -40,6 +41,7 @@ class EmrController extends Controller
         $vital = Vital::all();
         $soap = Soap::all();
         $diagnosishealth = Diagnosishealth::all();
+        $subclinical = Subclinical::all();
         $phams = Pham::all();
         $payment = Payment::all();
         $diagnose = Diagnose::all();
@@ -51,6 +53,7 @@ class EmrController extends Controller
             'vital' => $vital,
             'soap' => $soap,
             'diagnosishealth' => $diagnosishealth,
+            'subclinical' => $subclinical,
             'phams' => $phams,
             'payment' => $payment,
             'diagnose' => $diagnose,
@@ -155,6 +158,7 @@ class EmrController extends Controller
         Vital::where('patient_id',$id)->delete();
         Soap::where('patient_id',$id)->delete();
         Diagnosishealth::where('patient_id',$id)->delete();
+        Subclinical::where('patient_id',$id)->delete();
         Appointment::where('patient_id',$id)->delete();
 
         $patient->delete();

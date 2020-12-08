@@ -18,6 +18,7 @@ class Emr extends Model
         'vital_id',
         'soap_id',
         'diagnosishealth_id',
+        'subclinical_id',
         'lab_id',
         'diagnosis_id',
     ];
@@ -35,6 +36,11 @@ class Emr extends Model
     public function diagnosishealth()
     {
         return $this->hasOne('App\Diagnosishealth', 'id', 'diagnosishealth_id');
+    }
+
+    public function subclinical()
+    {
+        return $this->hasOne('App\Subclinical', 'id', 'subclinical_id');
     }
 
     public function diagnose()

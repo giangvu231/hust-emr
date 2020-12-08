@@ -163,12 +163,12 @@ const routes = [
         name: "add-diagnosishealth",
         path: "/add-diagnosishealth",
         component: require("./components/add-diagnosishealth.vue").default
+    },
+    {
+        name: "add-subclinical",
+        path: "/add-subclinical",
+        component: require("./components/add-subclinical.vue").default
     }
-    // {
-    //     name: "diagnosishealths",
-    //     path: "/diagnosishealths",
-    //     component: require("./components/diagnosishealths.vue").default
-    // }
 ];
 
 const router = new VueRouter({

@@ -760,7 +760,6 @@ export default {
         return {
             patients: {},
             search: "",
-            //   loading: false,
             form: new Form({
                 id: "",
                 unique_id: "PID" + Math.floor(Math.random() * 10000000000 + 1),

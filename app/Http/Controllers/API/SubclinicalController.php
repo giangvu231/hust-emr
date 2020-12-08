@@ -5,15 +5,18 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\addPatient;
-use App\Soap;
+use App\Subclinical;
 use App\Emr;
 
-class SoapController extends Controller
+class SubclinicalController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth:api');
     }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +24,8 @@ class SoapController extends Controller
      */
     public function index()
     {
-        return Soap::with('patient')->get();
+        //
+        return Subclinical::with('patient')->get();
     }
 
     /**
@@ -34,14 +38,14 @@ class SoapController extends Controller
     {
         $this->validate($request, [
             'patient_id' => 'required',
-            'subjective' => 'required',
-            'objective' => 'required',
-            'assessment' => 'required',
-            'plan' => 'required',
+            'lab_order' => 'required',
+            'lab_result' => 'required',
+            'imaging_order' => 'required',
+            'imaging_result' => 'required',
         ]);
-        $data = Soap::create($request->all());
+        $data = Subclinical::create($request->all());
         Emr::where('patient_id', $data->patient_id)->update([
-            'soap_id' => $data->id
+            'subclinical_id' => $data->id
         ]);
         return response()->json(['data' => $data], 200);
     }
@@ -61,32 +65,34 @@ class SoapController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $soap = Soap::findOrFail($id);
+        $subclinical = Subclinical::findOrFail($id);
 
         $this->validate($request, [
             'patient_id' => 'required',
-            'subjective' => 'required',
-            'objective' => 'required',
-            'assessment' => 'required',
-            'plan' => 'required',
+            'lab_order' => 'required',
+            'lab_result' => 'required',
+            'imaging_order' => 'required',
+            'imaging_result' => 'required',
         ]);
-        $soap->update($request->all());
+        $subclinical->update($request->all());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Soap $soap)
+    public function destroy($id)
     {
-        $soap->delete();
-        $soap = Soap::findOrFail($id);
+        //
+        $subclinical = Subclinical::findOrFail($id);
+
+        $subclinical->delete();
     }
 }

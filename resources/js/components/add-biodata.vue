@@ -4,14 +4,12 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <!-- Add Patient Biodata -->
                         Thêm lý lịch bệnh nhân
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="addPatient" id="add-biodata">
                             <div class="form-group">
                                 <label>
-                                    <!-- Select Title     -->
                                     Chọn chức danh
                                 </label>
                                 <select
@@ -26,15 +24,12 @@
                                         value="nul"
                                         style="font-weight:700;"
                                     >
-                                        <!-- Select Title -->
                                         Chọn chức danh
                                     </option>
                                     <option value="Bà">
-                                        <!-- Mrs -->
                                         Bà
                                     </option>
                                     <option value="Ông">
-                                        <!-- Mr -->
                                         Ông
                                     </option>
                                 </select>

@@ -29,6 +29,9 @@ class addPatient extends Model
     public function diagnosishealths(){
         return $this->hasOne('App\Diagnosishealth');
     }
+    public function subclinicals(){
+        return $this->hasOne('App\Subclinical');
+    }
     public function hospitals(){
         return $this->hasMany('App\HospitalHistory');
     }

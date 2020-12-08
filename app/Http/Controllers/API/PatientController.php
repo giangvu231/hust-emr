@@ -15,6 +15,7 @@ use App\SurgeryHistory;
 use App\Vital;
 use App\Soap;
 use App\Diagnosishealth;
+use App\Subclinical;
 use App\Appointment;
 use App\Emr;
 use PDF;
@@ -151,6 +152,7 @@ class PatientController extends Controller
         Vital::where('patient_id',$id)->delete();
         Soap::where('patient_id',$id)->delete();
         Diagnosishealth::where('patient_id',$id)->delete();
+        Subclinical::where('patient_id',$id)->delete();
         Appointment::where('patient_id',$id)->delete();
 
         $patient->delete();

@@ -3,9 +3,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Nhap SOAP</div>
+                    <div class="card-header">Nhap thong tin can lam sang</div>
                     <div class="card-body">
-                        <form @submit.prevent="addSoap()" id="add-soap">
+                        <form
+                            @submit.prevent="addSubclinical()"
+                            id="add-subclinical"
+                        >
                             <div class="form-group">
                                 <label>Chọn bệnh nhân</label>
                                 <select
@@ -30,7 +33,6 @@
                                     field="patient_id"
                                 ></has-error>
                             </div>
-                            <!-- --- -->
                             <div class="form-group">
                                 <input
                                     v-model="form.subjective"
@@ -105,10 +107,10 @@
                             <center>
                                 <button
                                     type="submit"
-                                    class="soap btn-block btn btn-info"
+                                    class="subclinical btn-block btn btn-info"
                                     style="color:#fff;"
                                 >
-                                    Thêm SOAP
+                                    Thêm thong tin can lam sang
                                 </button>
                             </center>
                         </form>
@@ -126,32 +128,32 @@ export default {
             patients: {},
             form: new Form({
                 patient_id: "",
-                subjective: "",
-                objective: "",
-                assessment: "",
-                plan: ""
+                lab_order: "",
+                lab_result: "",
+                imaging_order: "",
+                imaging_result: ""
             })
         };
     },
     methods: {
-        addSoap(id) {
-            $(".soap").html('<i class="fa fa-spin fa-spinner"></i>');
+        addSubclinical(id) {
+            $(".subclinical").html('<i class="fa fa-spin fa-spinner"></i>');
             this.form
-                .post("api/soap")
+                .post("api/subclinical")
                 .then(() => {
                     toast.fire({
                         type: "success",
-                        title: "SOAP của bệnh nhân được thêm thành công!"
+                        title: "subclinical của bệnh nhân được thêm thành công!"
                     });
-                    $(".soap").html("Add Patient Vital");
-                    $("#add-soap").trigger("reset");
+                    $(".subclinical").html("Add Patient subclinical");
+                    $("#add-subclinical").trigger("reset");
                 })
                 .catch(() => {
                     toast.fire({
                         type: "error",
                         title: "Dữ liệu nhập vào chưa đúng!"
                     });
-                    $(".soap").html("Add Patient Vital");
+                    $(".subclinical").html("Add Patient subclinical");
                 });
         },
         loadPatients() {
