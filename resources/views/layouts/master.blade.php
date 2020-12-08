@@ -165,7 +165,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
             <ul id="_drop3" data-tongle="1">
-
+            <li class="nav-item">
+                <router-link to="/vitals" class="nav-link">
+                <i class="nav-icon fas fa-heartbeat"></i>
+                <p>
+                Quản lý sinh hiệu
+                </p>
+                </router-link>
+                </li>
             <li class="nav-item">
                 <router-link to="/add-vital" class="nav-link">
                     <i class="nav-icon fas fa-heartbeat"></i>
@@ -174,7 +181,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </p>
                 </router-link>
             </li>
-
+            <li class="nav-item">
+                <router-link to="/soaps" class="nav-link">
+                <i class="nav-icon fas fa-heartbeat"></i>
+                <p>
+                Quản lý SOAP
+                </p>
+                </router-link>
+                </li>
             <li class="nav-item">
                 <router-link to="/add-soap" class="nav-link">
                     <i class="nav-icon fas fa-heartbeat"></i>
@@ -185,10 +199,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
 
             <li class="nav-item">
-                <router-link to="/add_diagnosis" class="nav-link">
+                <router-link to="/add-diagnosishealth" class="nav-link">
                     <i class="nav-icon fas fa-heartbeat"></i>
                     <p>
-                        Nhập chẩn đoán
+                        Chan doan lam sang
                     </p>
                 </router-link>
             </li>
@@ -201,14 +215,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </p>
                     </router-link>
                 </li>
-                <li class="nav-item">
-                <router-link to="/vitals" class="nav-link">
-                <i class="nav-icon fas fa-heartbeat"></i>
-                <p>
-                Quản lý sinh hiệu
-                </p>
-                </router-link>
-                </li>
+
 
 
                 <li class="nav-item">

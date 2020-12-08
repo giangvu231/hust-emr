@@ -6,13 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 
-class Soap extends Model
+class Diagnosishealth extends Model
 {
-    //
     use Notifiable, HasApiTokens;
 
     protected $fillable = [
-        'patient_id', 'subjective', 'objective', 'assessment', 'plan'
+        'patient_id', 'diagnosis_type', 'diagnosis_header', 'icd10_id', 'icd10_name',  'start_date', 'end_date', 'diagnosis_status', 'diagnosis_note'
     ];
 
    public function patient(){

@@ -13,6 +13,8 @@ use App\LabResult;
 use App\Pham;
 use App\SurgeryHistory;
 use App\Vital;
+use App\Soap;
+use App\Diagnosishealth;
 use App\Appointment;
 use App\Emr;
 use PDF;
@@ -102,9 +104,9 @@ class PatientController extends Controller
         $patient = addPatient::findOrFail($id);
 
         $this->validate($request, [
-            'unique_id' => 'required | unique:add_patients,unique_id,'.$patient->id,
+            'unique_id' => 'required | unique:add_patients',
             'full_name' => 'required | string | max:191',
-            'email' => 'required | string | email | max:191 | unique:add_patients,email,'.$patient->id,
+            'email' => 'required | string | email | max:191 | unique:add_patients',
             'title' => 'required',
             'phone_number' => 'required',
             'occupation' => 'required',
@@ -118,6 +120,11 @@ class PatientController extends Controller
             'home_next_of_kin' => 'required',
             'phone_next_of_kin' => 'required',
             'name_next_of_kin' => 'required',
+            'work_address' => 'required',
+            'type_of_object' => 'required',
+            'reason' => 'required',
+            'medical_reason' => 'required',
+            'medical_history' => 'required',
         ]);
 
         $patient->update($request->all());
@@ -142,6 +149,8 @@ class PatientController extends Controller
         Pham::where('patient_id',$id)->delete();
         SurgeryHistory::where('patient_id',$id)->delete();
         Vital::where('patient_id',$id)->delete();
+        Soap::where('patient_id',$id)->delete();
+        Diagnosishealth::where('patient_id',$id)->delete();
         Appointment::where('patient_id',$id)->delete();
 
         $patient->delete();

@@ -16,6 +16,8 @@ class Emr extends Model
         'emr_mngtcol',
         'patient_history_id',
         'vital_id',
+        'soap_id',
+        'diagnosishealth_id',
         'lab_id',
         'diagnosis_id',
     ];
@@ -23,6 +25,16 @@ class Emr extends Model
     public function vital()
     {
         return $this->hasOne('App\Vital', 'id', 'vital_id');
+    }
+
+    public function soap()
+    {
+        return $this->hasOne('App\Soap', 'id', 'soap_id');
+    }
+
+    public function diagnosishealth()
+    {
+        return $this->hasOne('App\Diagnosishealth', 'id', 'diagnosishealth_id');
     }
 
     public function diagnose()

@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notifiable;
 
 class Vital extends Model
 {
-    //
     use Notifiable, HasApiTokens;
 
     protected $fillable = [

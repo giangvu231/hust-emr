@@ -16,6 +16,7 @@ use App\Vital;
 use App\Appointment;
 use App\EmrMngt;
 use App\Soap;
+use App\Diagnosishealth;
 use PDF;
 
 class EmrController extends Controller
@@ -37,7 +38,8 @@ class EmrController extends Controller
         $appointment = Appointment::all();
         $addPatient = addPatient::all();
         $vital = Vital::all();
-        $vital = Soap::all();
+        $soap = Soap::all();
+        $diagnosishealth = Diagnosishealth::all();
         $phams = Pham::all();
         $payment = Payment::all();
         $diagnose = Diagnose::all();
@@ -48,6 +50,7 @@ class EmrController extends Controller
             'addPatient' => $addPatient,
             'vital' => $vital,
             'soap' => $soap,
+            'diagnosishealth' => $diagnosishealth,
             'phams' => $phams,
             'payment' => $payment,
             'diagnose' => $diagnose,
@@ -151,6 +154,7 @@ class EmrController extends Controller
         SurgeryHistory::where('patient_id',$id)->delete();
         Vital::where('patient_id',$id)->delete();
         Soap::where('patient_id',$id)->delete();
+        Diagnosishealth::where('patient_id',$id)->delete();
         Appointment::where('patient_id',$id)->delete();
 
         $patient->delete();

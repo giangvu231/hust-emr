@@ -158,7 +158,17 @@ const routes = [
         name: "soaps",
         path: "/soaps",
         component: require("./components/soaps.vue").default
+    },
+    {
+        name: "add-diagnosishealth",
+        path: "/add-diagnosishealth",
+        component: require("./components/add-diagnosishealth.vue").default
     }
+    // {
+    //     name: "diagnosishealths",
+    //     path: "/diagnosishealths",
+    //     component: require("./components/diagnosishealths.vue").default
+    // }
 ];
 
 const router = new VueRouter({
