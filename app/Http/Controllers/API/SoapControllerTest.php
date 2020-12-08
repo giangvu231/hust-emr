@@ -7,13 +7,15 @@ use App\Http\Controllers\Controller;
 use App\addPatient;
 use App\Soap;
 use App\Emr;
-
 class SoapController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth:api');
     }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -21,6 +23,7 @@ class SoapController extends Controller
      */
     public function index()
     {
+        //
         return Soap::with('patient')->get();
     }
 
@@ -32,6 +35,7 @@ class SoapController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $this->validate($request, [
             'patient_id' => 'required',
             'subjective' => 'required',
@@ -49,21 +53,10 @@ class SoapController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Soap  $soap
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Soap $soap)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Soap  $soap
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Soap $soap)
+    public function show($id)
     {
         //
     }
@@ -72,12 +65,12 @@ class SoapController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Soap  $soap
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
+        //
         $soap = Soap::findOrFail($id);
 
         $this->validate($request, [
@@ -93,13 +86,14 @@ class SoapController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Soap  $soap
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Soap $soap)
+    public function destroy($id)
     {
-        $soap->delete();
+        //
         $soap = Soap::findOrFail($id);
+
+        $soap->delete();
     }
 }

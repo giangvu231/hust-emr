@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Soap extends Model
 {
+    //
     use Notifiable, HasApiTokens;
 
     protected $fillable = [

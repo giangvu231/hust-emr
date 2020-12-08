@@ -2644,9 +2644,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2668,14 +2665,14 @@ __webpack_require__.r(__webpack_exports__);
           type: "success",
           title: "SOAP của bệnh nhân được thêm thành công!"
         });
-        $(".soap").html("Add Patient Vital");
+        $(".soap").html("Add Patient Soap");
         $("#add-soap").trigger("reset");
       })["catch"](function () {
         toast.fire({
           type: "error",
           title: "Dữ liệu nhập vào chưa đúng!"
         });
-        $(".soap").html("Add Patient Vital");
+        $(".soap").html("Add Patient Soap");
       });
     },
     loadPatients: function loadPatients() {
@@ -7505,6 +7502,297 @@ __webpack_require__.r(__webpack_exports__);
     this.loadStaffs();
     Fire.$on('afterAction', function () {
       _this2.loadStaffs();
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/soaps.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/soaps.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      soaps: {},
+      form: new Form({
+        id: "",
+        patient_id: "",
+        subjective: "",
+        objective: "",
+        assessment: "",
+        plan: ""
+      })
+    };
+  },
+  methods: {
+    loadSoaps: function loadSoaps() {
+      var _this = this;
+
+      // this.loading = true;
+      axios.get("api/soap").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.soaps = response.data;
+      });
+    },
+    // loadVitals(){
+    //      axios.get('api/vital').then(({data}) => (this.vitals = data));
+    // },
+    editModal: function editModal(soap) {
+      $("#editsoap").modal("show");
+      this.form.fill(soap);
+    },
+    deleteSoap: function deleteSoap(id) {
+      var _this2 = this;
+
+      swal.fire({
+        title: "Bạn đã chắc chắn muốn xóa?",
+        text: "Bạn sẽ không được phép hoàn tác sau khi thực hiện!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Đồng ý, hãy xóa!"
+      }).then(function (result) {
+        //delete qury below
+        if (result.value) {
+          swal.fire({
+            position: "center",
+            type: "info",
+            title: "Đang xóa",
+            showConfirmButton: false,
+            timer: 1000
+          });
+
+          _this2.form["delete"]("api/soap/" + id).then(function () {
+            swal.fire("Đã xóa!", "Đã xóa thành công.", "success");
+            Fire.$emit("afterAction");
+          })["catch"](function () {
+            swal.fire({
+              type: "error",
+              title: "Oops...",
+              text: "Đã xảy ra sự cố!"
+            });
+          });
+        }
+      });
+    },
+    updateSoap: function updateSoap() {
+      $(".updatesoap").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.put("api/soap/" + this.form.id).then(function () {
+        Fire.$emit("afterAction");
+        $("#editsoap").modal("hide");
+        toast.fire({
+          type: "success",
+          title: "Sinh hiệu được cập nhật thành công!"
+        });
+        $(".updatesoap").html("Add Patient");
+      })["catch"](function () {
+        toast.fire({
+          type: "error",
+          title: "Dữ liệu nhập vào chưa đúng"
+        });
+        $(".updatesoap").html("Add Patient");
+      });
+    }
+  },
+  mounted: function mounted() {
+    var _this3 = this;
+
+    console.log("Component mounted.");
+    this.loadSoaps();
+    Fire.$on("afterAction", function () {
+      _this3.loadSoaps();
     });
   }
 });
@@ -71554,9 +71842,7 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Nhap sinh hieu cua nguoi benh")
-          ]),
+          _c("div", { staticClass: "card-header" }, [_vm._v("Nhap SOAP")]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c(
@@ -71617,16 +71903,7 @@ var render = function() {
                         return _c(
                           "option",
                           { key: patient.id, domProps: { value: patient.id } },
-                          [
-                            _vm._v(
-                              _vm._s(
-                                "BN: " +
-                                  patient.full_name +
-                                  "Ma BN: " +
-                                  patient.id
-                              )
-                            )
-                          ]
+                          [_vm._v(_vm._s(patient.full_name))]
                         )
                       }),
                       0
@@ -82570,6 +82847,137 @@ var staticRenderFns = [
         _c("th", [_vm._v("Ngày đăng ký")]),
         _vm._v(" "),
         _c("th", [_vm._v("Tác vụ")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/soaps.vue?vue&type=template&id=5dc719e6&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/soaps.vue?vue&type=template&id=5dc719e6& ***!
+  \********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      [
+        _c(
+          "router-link",
+          {
+            staticClass: "btn btn-rounded btn-info",
+            staticStyle: { color: "#fff" },
+            attrs: { to: "/add-soap", type: "button" }
+          },
+          [_vm._v("Them SOAP")]
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("br"),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "card", staticStyle: { width: "100%" } }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c(
+            "table",
+            {
+              staticClass: "table table-bordered table-striped",
+              attrs: { id: "example1" }
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.soaps, function(soap) {
+                  return _c("tr", { key: soap.id }, [
+                    _c("td", [_vm._v(_vm._s(soap.patient.unique_id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(soap.subjective))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(soap.objective))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(soap.assessment))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(soap.plan))])
+                  ])
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _vm._m(2)
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Danh sach SOAP")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Mã BA")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ten BN")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Dau chung chu quan")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Dau chung khach quan")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Huong chan doan")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Huong dieu tri")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tfoot", [
+      _c("tr", [
+        _c("th", [_vm._v("Mã BA")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ten BN")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Dau chung chu quan")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Dau chung khach quan")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Huong chan doan")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Huong dieu tri")])
       ])
     ])
   }
@@ -99627,6 +100035,10 @@ var routes = [{
   name: "add-soap",
   path: "/add-soap",
   component: __webpack_require__(/*! ./components/add-soap.vue */ "./resources/js/components/add-soap.vue")["default"]
+}, {
+  name: "soaps",
+  path: "/soaps",
+  component: __webpack_require__(/*! ./components/soaps.vue */ "./resources/js/components/soaps.vue")["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: "history",
@@ -101190,6 +101602,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_profile_vue_vue_type_template_id_7eab0eae___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_profile_vue_vue_type_template_id_7eab0eae___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/soaps.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/components/soaps.vue ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _soaps_vue_vue_type_template_id_5dc719e6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./soaps.vue?vue&type=template&id=5dc719e6& */ "./resources/js/components/soaps.vue?vue&type=template&id=5dc719e6&");
+/* harmony import */ var _soaps_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./soaps.vue?vue&type=script&lang=js& */ "./resources/js/components/soaps.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _soaps_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _soaps_vue_vue_type_template_id_5dc719e6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _soaps_vue_vue_type_template_id_5dc719e6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/soaps.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/soaps.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/soaps.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_soaps_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./soaps.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/soaps.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_soaps_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/soaps.vue?vue&type=template&id=5dc719e6&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/soaps.vue?vue&type=template&id=5dc719e6& ***!
+  \**************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_soaps_vue_vue_type_template_id_5dc719e6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./soaps.vue?vue&type=template&id=5dc719e6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/soaps.vue?vue&type=template&id=5dc719e6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_soaps_vue_vue_type_template_id_5dc719e6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_soaps_vue_vue_type_template_id_5dc719e6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

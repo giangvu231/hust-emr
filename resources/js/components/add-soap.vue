@@ -3,9 +3,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Nhap sinh hieu cua nguoi benh</div>
+                    <div class="card-header">Nhap SOAP</div>
                     <div class="card-body">
                         <form @submit.prevent="addSoap()" id="add-soap">
+                            <!-- Tim kiem benh nhan -->
                             <div class="form-group">
                                 <label>Chọn bệnh nhân</label>
                                 <select
@@ -22,12 +23,7 @@
                                         v-for="patient in patients"
                                         :key="patient.id"
                                         :value="patient.id"
-                                        >{{
-                                            "BN: " +
-                                                patient.full_name +
-                                                "Ma BN: " +
-                                                patient.id
-                                        }}</option
+                                        >{{ patient.full_name }}</option
                                     >
                                 </select>
                                 <has-error
@@ -35,6 +31,7 @@
                                     field="patient_id"
                                 ></has-error>
                             </div>
+                            <!-- --- -->
                             <div class="form-group">
                                 <input
                                     v-model="form.subjective"
@@ -147,7 +144,7 @@ export default {
                         type: "success",
                         title: "SOAP của bệnh nhân được thêm thành công!"
                     });
-                    $(".soap").html("Add Patient Vital");
+                    $(".soap").html("Add Patient Soap");
                     $("#add-soap").trigger("reset");
                 })
                 .catch(() => {
@@ -155,7 +152,7 @@ export default {
                         type: "error",
                         title: "Dữ liệu nhập vào chưa đúng!"
                     });
-                    $(".soap").html("Add Patient Vital");
+                    $(".soap").html("Add Patient Soap");
                 });
         },
         loadPatients() {

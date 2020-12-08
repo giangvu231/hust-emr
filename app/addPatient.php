@@ -23,6 +23,9 @@ class addPatient extends Model
     public function vitals(){
         return $this->hasOne('App\Vital');
     }
+    public function soaps(){
+        return $this->hasOne('App\Soap');
+    }
     public function hospitals(){
         return $this->hasMany('App\HospitalHistory');
     }

@@ -153,6 +153,11 @@ const routes = [
         name: "add-soap",
         path: "/add-soap",
         component: require("./components/add-soap.vue").default
+    },
+    {
+        name: "soaps",
+        path: "/soaps",
+        component: require("./components/soaps.vue").default
     }
 ];
 
