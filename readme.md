@@ -25,8 +25,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 (9) php artisan migrate:refresh --seed
 (10) php artisan storage:link
 (11) npm run watch / npm run dev
-(12) Sửa pass user: $2y$10$w1ELUdVutNF.ZChfUvS1FuHTr.jHD8reRhYCG8.p9wyD.B8BH1dx.
-(12A) php artisan serve
+(12) php artisan serve
 ```
 
 ## License
