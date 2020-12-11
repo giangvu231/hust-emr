@@ -5,17 +5,15 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\addPatient;
-use App\Subclinical;
+use App\Medicine;
 use App\Emr;
 
-class SubclinicalController extends Controller
+class MedicineController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth:api');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -24,8 +22,7 @@ class SubclinicalController extends Controller
      */
     public function index()
     {
-        //
-        return Subclinical::with('patient')->get();
+        return Medicine::with('patient')->get();
     }
 
     /**
@@ -38,15 +35,18 @@ class SubclinicalController extends Controller
     {
         $this->validate($request, [
             'patient_id' => 'required',
-            'lab_order' => 'required',
-            'lab_result' => 'required',
-            'imaging_order' => 'required',
-            'imaging_result' => 'required',
+            'start_date' => 'required',
+            'ref_doctor_name' => 'required',
+            'ref_doctor_id' => 'required',
+            'medicine_name' => 'required',
+            'amount' => 'required',
+            'dose' => 'required',
+            'note' => 'required',
         ]);
-        $data = Subclinical::create($request->all());
-        // Emr::where('patient_id', $data->patient_id)->update([
-        //     'subclinical_id' => $data->id
-        // ]);
+        $data = Medicine::create($request->all());
+        Emr::where('patient_id', $data->patient_id)->update([
+            'medicine_id' => $data->id
+        ]);
         return response()->json(['data' => $data], 200);
     }
 
@@ -70,16 +70,19 @@ class SubclinicalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $subclinical = Subclinical::findOrFail($id);
+        $medicine = Medicine::findOrFail($id);
 
         $this->validate($request, [
             'patient_id' => 'required',
-            'lab_order' => 'required',
-            'lab_result' => 'required',
-            'imaging_order' => 'required',
-            'imaging_result' => 'required',
+            'start_date' => 'required',
+            'ref_doctor_name' => 'required',
+            'ref_doctor_id' => 'required',
+            'medicine_name' => 'required',
+            'amount' => 'required',
+            'dose' => 'required',
+            'note' => 'required',
         ]);
-        $subclinical->update($request->all());
+        $medicine->update($request->all());
     }
 
     /**
@@ -88,11 +91,9 @@ class SubclinicalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Medicine $medicine)
     {
-        //
-        $subclinical = Subclinical::findOrFail($id);
-
-        $subclinical->delete();
+        $medicine = Medicine::findOrFail($id);
+        $medicine->delete();
     }
 }

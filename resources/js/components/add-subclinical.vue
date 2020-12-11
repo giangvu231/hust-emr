@@ -35,72 +35,74 @@
                             </div>
                             <div class="form-group">
                                 <input
-                                    v-model="form.subjective"
+                                    v-model="form.lab_order"
                                     type="text"
-                                    name="subjective"
-                                    placeholder="Nhập dau chung chu quan"
+                                    name="lab_order"
+                                    placeholder="Chi dinh xet nghiem"
                                     class="form-control"
                                     :class="{
                                         'is-invalid': form.errors.has(
-                                            'subjective'
+                                            'lab_order'
                                         )
                                     }"
                                 />
                                 <has-error
                                     :form="form"
-                                    field="subjective"
+                                    field="lab_order"
                                 ></has-error>
                             </div>
                             <div class="form-group">
                                 <input
-                                    v-model="form.objective"
+                                    v-model="form.lab_result"
                                     type="text"
-                                    name="objective"
-                                    placeholder="Nhập dau chung khach quan"
+                                    name="lab_result"
+                                    placeholder="Ket qua xet nghiem"
                                     class="form-control"
                                     :class="{
                                         'is-invalid': form.errors.has(
-                                            'objective'
+                                            'lab_result'
                                         )
                                     }"
                                 />
                                 <has-error
                                     :form="form"
-                                    field="objective"
+                                    field="lab_result"
                                 ></has-error>
                             </div>
                             <div class="form-group">
                                 <input
-                                    v-model="form.assessment"
+                                    v-model="form.imaging_order"
                                     type="text"
-                                    name="assessment"
-                                    placeholder="Nhập huong chan doan"
+                                    name="imaging_order"
+                                    placeholder="Chi dinh chan doan hinh anh"
                                     class="form-control"
                                     :class="{
                                         'is-invalid': form.errors.has(
-                                            'assessment'
+                                            'imaging_order'
                                         )
                                     }"
                                 />
                                 <has-error
                                     :form="form"
-                                    field="assessment"
+                                    field="imaging_order"
                                 ></has-error>
                             </div>
                             <div class="form-group">
                                 <input
-                                    v-model="form.plan"
+                                    v-model="form.imaging_result"
                                     type="text"
-                                    name="plan"
-                                    placeholder="Nhập huong dieu tri"
+                                    name="imaging_result"
+                                    placeholder="Ket qua chan doan hinh anh"
                                     class="form-control"
                                     :class="{
-                                        'is-invalid': form.errors.has('plan')
+                                        'is-invalid': form.errors.has(
+                                            'imaging_result'
+                                        )
                                     }"
                                 />
                                 <has-error
                                     :form="form"
-                                    field="plan"
+                                    field="imaging_result"
                                 ></has-error>
                             </div>
 
@@ -110,7 +112,7 @@
                                     class="subclinical btn-block btn btn-info"
                                     style="color:#fff;"
                                 >
-                                    Thêm thong tin can lam sang
+                                    Thêm thông tin cận lâm sàng
                                 </button>
                             </center>
                         </form>
@@ -143,17 +145,17 @@ export default {
                 .then(() => {
                     toast.fire({
                         type: "success",
-                        title: "subclinical của bệnh nhân được thêm thành công!"
+                        title: "Thêm thành công!"
                     });
-                    $(".subclinical").html("Add Patient subclinical");
+                    $(".subclinical").html("Thêm thông tin cận lâm sàng");
                     $("#add-subclinical").trigger("reset");
                 })
                 .catch(() => {
                     toast.fire({
                         type: "error",
-                        title: "Dữ liệu nhập vào chưa đúng!"
+                        title: "Dữ liệu nhập chưa đúng!"
                     });
-                    $(".subclinical").html("Add Patient subclinical");
+                    $(".subclinical").html("Thêm thông tin cận lâm sàng");
                 });
         },
         loadPatients() {

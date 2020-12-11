@@ -80,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           @if (Auth::user()->role == "admin")
 
           <li class="nav-item">
-            <router-link to="/*" class="nav-link _click1" >
+            <router-link to="/emr-mngt" class="nav-link _click1" >
               <i class="nav-icon fas fa-database"></i>
               <p>
                 1. Quản lý HSBA
@@ -100,7 +100,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
             <li class="nav-item" >
-                <router-link to="/*hanhchinh" class="nav-link _click2">
+                <router-link to="/patients" class="nav-link _click2">
                 <i class="nav-icon fas fa-procedures"></i>
                 <p>
                 2. Thông tin hành chính
@@ -207,6 +207,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </router-link>
             </li>
 
+            <!-- ADMIN: Quản lý CLS -->
+            <li class="nav-item">
+                <router-link to="/diagnosed" class="nav-link">
+                    <i class="nav-icon fas fa-vials"></i>
+                    <p>
+                        Quản lý cận lâm sàng
+                    </p>
+                </router-link>
+            </li>
+
             <li class="nav-item">
                 <router-link to="/add-subclinical" class="nav-link">
                     <i class="nav-icon fas fa-heartbeat"></i>
@@ -259,14 +269,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </router-link>
           </li>
-          <li class="nav-item">
-            <router-link to="/diagnosed" class="nav-link">
-              <i class="nav-icon fas fa-vials"></i>
-              <p>
-              {{ __('Diagnosed Patient') }}
-              </p>
-            </router-link>
-          </li>
+
           <li class="nav-item">
             <router-link to="/lab-test" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
@@ -323,15 +326,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </ul>
           </li>
 
+            <!-- Thanh toán ra viện -->
           <li class="nav-item">
-            <router-link to="/*staff" class="nav-link _click6" >
+            <router-link to="/billing" class="nav-link _click6" >
               <i class="nav-icon fas fa-database"></i>
               <p>
-                6. Quản lý nhân viên
+                6. Thanh toán
               </p>
             </router-link>
 
               <ul id="_drop6" data-tongle="1">
+              <li class="nav-item">
+            <router-link to="/billing" class="nav-link">
+              <i class="nav-icon fas fa-info-circle"></i>
+              <p>
+              Thanh toán ra viện
+              </p>
+            </router-link>
+          </li>
+          <!-- <li class="nav-item">
+            <router-link to="/medication" class="nav-link">
+              <i class="nav-icon fas fa-comment-medical"></i>
+              <p>
+              Quản lý thuốc
+              </p>
+            </router-link>
+          </li> -->
+              </ul>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/all-staffs" class="nav-link _click7" >
+              <i class="nav-icon fas fa-database"></i>
+              <p>
+                Quản lý nhân viên
+              </p>
+            </router-link>
+
+              <ul id="_drop7" data-tongle="1">
               <li class="nav-item">
             <router-link to="/all-staffs" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
@@ -497,7 +529,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/diagnosed" class="nav-link">
               <i class="nav-icon fas fa-vials"></i>
               <p>
-              {{ __('Diagnosed Patient') }}
+              Quản lý cận lâm sàng
               </p>
             </router-link>
           </li>
@@ -720,6 +752,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
         if(status == 0){
             $('#_drop6').css('display','none');
             $('#_drop6').attr('data-tongle',"1");
+        }
+    })
+    $('._click7').click(function(){
+        var status = $('#_drop7').attr('data-tongle');
+        //console.log(status);
+        if(status == 1){
+            $('#_drop7').css('display','block');
+            $('#_drop7').attr('data-tongle',"0");
+        }
+        if(status == 0){
+            $('#_drop7').css('display','none');
+            $('#_drop7').attr('data-tongle',"1");
         }
     })
 </script>

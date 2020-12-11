@@ -21,7 +21,7 @@
                                 <option value="Miss">Miss</option>
                                 <option value="Mrs">Mrs</option>
                                 <option value="Mr">Mr</option>
-                                </select>  
+                                </select>
 
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
@@ -71,7 +71,7 @@
                             <option value="lab">Laboratory</option>
                             <option value="pharm">Pharmacy</option>
                             <option value="admin">Admin</option>
-                            </select>                                
+                            </select>
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

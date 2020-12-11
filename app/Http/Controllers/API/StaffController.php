@@ -37,24 +37,31 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $this->validate($request, [
+            'title' => 'required',
             'name' => 'required | string | max:191',
             'email' => 'required | string | email | max:191 | unique:users',
             'password' => 'required | string | min:8',
             'role' => 'required',
-            'title' => 'required',           
+            'card_id' => 'required',
+            'job_id' => 'required',
+            'location' => 'required',
+            'more_about' => 'required',
         ]);
 
         $staff = new User;
-        $staff->name = $request->name;       
         $staff->title = $request->title;
-        $staff->role = $request->role;
+        $staff->name = $request->name;
         $staff->email = $request->email;
         $staff->password = Hash::make($request->password);
+        $staff->role = $request->role;
+        $staff->card_id = $request->card_id;
+        $staff->job_id = $request->job_id;
+        $staff->location = $request->location;
+        $staff->more_about = $request->more_about;
 
         $staff->save();
-                   
+
     }
 
     /**
@@ -81,12 +88,17 @@ class StaffController extends Controller
         $staff = User::findOrFail($id);
 
         $this->validate($request, [
+            'title' => 'required',
             'name' => 'required | string | max:191',
-            'email' => 'required | string | email | max:191 | unique:add_patients,email,'.$staff->id,
+            'email' => 'required | string | email | max:191 | unique:users',
+            'password' => 'required | string | min:8',
             'role' => 'required',
-            'title' => 'required', 
+            'card_id' => 'required',
+            'job_id' => 'required',
+            'location' => 'required',
+            'more_about' => 'required',
         ]);
-        
+
         $staff->update($request->all());
     }
 
@@ -100,7 +112,7 @@ class StaffController extends Controller
     {
         //
         $staff = User::findOrFail($id);
-      
+
         $staff->delete();
     }
 

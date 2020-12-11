@@ -40,9 +40,9 @@ class phamController extends Controller
             'type' => 'required',
             'comment' => 'required',
             'unit' => 'required',
-        ]);        
+        ]);
         $pham = new Pham;
-        $pham->patient_id = $request->patient_id;       
+        $pham->patient_id = $request->patient_id;
         $pham->diagnose_id = $request->diagnose_id;
         $pham->type = $request->type;
         $pham->comment = $request->comment;
@@ -50,7 +50,7 @@ class phamController extends Controller
         $pham->unit = $request->unit;
         // $diagnose->modal_id = strtolower(str_random(8));
 
-        $pham->save(); 
+        $pham->save();
 
     }
 
@@ -77,11 +77,11 @@ class phamController extends Controller
         //
         $pham = Pham::findOrFail($id);
 
-        $this->validate($request, [            
+        $this->validate($request, [
             'type' => 'required',
-            'comment' => 'required', 
+            'comment' => 'required',
             'unit' => 'required'
-        ]);          
+        ]);
         $pham->update($request->all());
     }
 
@@ -100,6 +100,6 @@ class phamController extends Controller
     {
         //
         return Pham::where('nurse', 1)->with('patient', 'diagnose')->get();
-    
+
     }
 }
