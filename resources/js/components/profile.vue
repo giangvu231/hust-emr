@@ -22,12 +22,13 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ staff.title }} {{ staff.name }}</td>
+                                <td>{{ staff.name }}</td>
                                 <td>{{ staff.email }}</td>
-                                <td v-if="staff.role == 'recept'">
+                                <!-- <td v-if="staff.role == 'recept'">
                                     Lễ tân
                                 </td>
-                                <td v-else>{{ staff.role }}</td>
+                                <td v-else>{{ staff.role }}</td> -->
+                                <td>{{ staff.role }}</td>
                                 <td>{{ staff.created_at | humanDate }}</td>
                                 <td>
                                     <button
@@ -57,7 +58,7 @@
                                                 class="modal-title"
                                                 id="exampleModalLongTitle"
                                             >
-                                                Sửa tài khoản
+                                                Điều chỉnh thông tin
                                             </h5>
                                             <button
                                                 type="button"
@@ -76,7 +77,6 @@
                                                 id="add-biodata"
                                             >
                                                 <div class="form-group">
-                                                    <!-- <label>Edit Title</label>                 -->
                                                     <label>Chức danh</label>
                                                     <select
                                                         v-model="form.title"
@@ -88,7 +88,6 @@
                                                         }"
                                                         name="title"
                                                     >
-                                                        <!-- <option value="nul" style="font-weight:700;">Select Title</option> -->
                                                         <option
                                                             value="nul"
                                                             style="font-weight:700;"
@@ -117,7 +116,6 @@
                                                     ></has-error>
                                                 </div>
                                                 <div class="form-group">
-                                                    <!-- <label>Edit Full Name</label>   -->
                                                     <label>Sửa họ tên</label>
                                                     <input
                                                         v-model="form.name"
@@ -137,7 +135,6 @@
                                                     ></has-error>
                                                 </div>
                                                 <div class="form-group">
-                                                    <!-- <label>Edit Email</label>                          -->
                                                     <label>Sửa Email</label>
                                                     <input
                                                         v-model="form.email"
@@ -157,7 +154,6 @@
                                                     ></has-error>
                                                 </div>
                                                 <div class="form-group">
-                                                    <!-- <label>Edit Role</label>                  -->
                                                     <label>Chức vụ</label>
                                                     <select
                                                         v-model="form.role"
@@ -175,13 +171,10 @@
                                                             >Sửa chức vụ</option
                                                         >
                                                         <option value="recept"
-                                                            >Nhân viên quản lý
-                                                            bệnh án điện
-                                                            tử</option
+                                                            >Lễ tân</option
                                                         >
                                                         <option value="nurse"
-                                                            >Y tá/ Điều
-                                                            dưỡng</option
+                                                            >Y tá</option
                                                         >
                                                         <option value="doc"
                                                             >Bác sĩ</option
@@ -203,20 +196,37 @@
                                                         field="role"
                                                     ></has-error>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label>Đổi mật khẩu</label>
+                                                    <input
+                                                        v-model="form.password"
+                                                        type="password"
+                                                        name="password"
+                                                        placeholder="Nhập mật khẩu mới"
+                                                        class="form-control"
+                                                        :class="{
+                                                            'is-invalid': form.errors.has(
+                                                                'password'
+                                                            )
+                                                        }"
+                                                    />
+                                                    <has-error
+                                                        :form="form"
+                                                        field="password"
+                                                    ></has-error>
+                                                </div>
                                                 <center>
-                                                    <!-- <button type="submit" class="updatestaff btn-block btn btn-info" style="color:#fff;">Update Staff</button> -->
                                                     <button
                                                         type="submit"
                                                         class="updatestaff btn-block btn btn-info"
                                                         style="color:#fff;"
                                                     >
-                                                        Cập nhật tài khoản
+                                                        Cập nhật thông tin
                                                     </button>
                                                 </center>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                                             <button
                                                 type="button"
                                                 class="btn btn-secondary"
@@ -230,14 +240,6 @@
                             </div>
                         </tbody>
                         <tfoot>
-                            <!-- <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Role </th>
-                  <th>Date oF Registration</th>
-                  <th>Action</th>
-                </tr> -->
-
                             <tr>
                                 <th>Họ tên</th>
                                 <th>Email</th>
@@ -296,16 +298,16 @@ export default {
                     $("#editstaff").modal("hide");
                     toast.fire({
                         type: "success",
-                        title: "Tài khoản được cập nhật thành công!"
+                        title: "Cập nhật thành công!"
                     });
-                    $(".updatestaff").html("Update Staff");
+                    $(".updatestaff").html("Đã cập nhật thông tin");
                 })
                 .catch(() => {
                     toast.fire({
                         type: "error",
                         title: "Dữ liệu nhập vào chưa đúng!"
                     });
-                    $(".updatestaff").html("Update Staff");
+                    $(".updatestaff").html("Đã cập nhật thông tin");
                 });
         }
     },

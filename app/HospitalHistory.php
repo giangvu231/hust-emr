@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notifiable;
 
 class HospitalHistory extends Model
 {
-    //
     use Notifiable, HasApiTokens;
 
     protected $fillable = [
@@ -22,6 +21,4 @@ class HospitalHistory extends Model
    public function diagnose(){
         return $this->hasOne('App\Diagnose');
     }
-
-    
 }

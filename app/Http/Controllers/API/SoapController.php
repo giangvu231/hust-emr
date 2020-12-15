@@ -40,9 +40,9 @@ class SoapController extends Controller
             'plan' => 'required',
         ]);
         $data = Soap::create($request->all());
-        // Emr::where('patient_id', $data->patient_id)->update([
-        //     'soap_id' => $data->id
-        // ]);
+        Emr::where('patient_id', $data->patient_id)->update([
+            'soap_id' => $data->id
+        ]);
         return response()->json(['data' => $data], 200);
     }
 

@@ -2723,43 +2723,204 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       patients: {},
       form: new Form({
-        patient_id: '',
-        date_attented: '',
-        date_admitted: '',
-        refered_by: '',
-        physician: '',
-        ward: '',
-        date_discharged: '',
-        discharged_to: '',
-        outcome_of_care: '',
-        comment_box: '',
-        symptoms: ''
+        patient_id: "",
+        date_attented: "",
+        date_admitted: "",
+        refered_by: "",
+        physician: "",
+        ward: "",
+        date_discharged: "",
+        discharged_to: "",
+        outcome_of_care: "",
+        comment_box: "",
+        symptoms: ""
       })
     };
   },
   methods: {
     addHospital: function addHospital() {
-      $('.hospital').html('<i class="fa fa-spin fa-spinner"></i>');
-      this.form.post('api/hospital').then(function () {
+      $(".hospital").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.post("api/hospital").then(function () {
         toast.fire({
-          type: 'success',
+          type: "success",
           // title: 'Patient Hospital History Added Successfully'
-          title: 'Thêm thông tin tiền sử của bệnh nhân thành công!'
+          title: "Thêm thông tin tiền sử của bệnh nhân thành công!"
         });
-        $('.hospital').html('Add Patient Hospital History ');
-        $('#add-hospital').trigger('reset');
+        $(".hospital").html("Add Patient Hospital History ");
+        $("#add-hospital").trigger("reset");
       })["catch"](function () {
         toast.fire({
-          type: 'error',
+          type: "error",
           // title: 'Data not correctly inputed'
-          title: 'Thông tin nhập chưa đúng!'
+          title: "Thông tin nhập chưa đúng!"
         });
-        $('.hospital').html('Add Patient Hospital History ');
+        $(".hospital").html("Add Patient Hospital History ");
       });
     },
     loadPatients: function loadPatients() {
@@ -2775,7 +2936,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
   }
 });
 
@@ -3201,34 +3362,97 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       patients: {},
       form: new Form({
-        patient_id: '',
-        operations: '',
-        date_of_operation: '',
-        surgeon: ''
+        patient_id: "",
+        operations: "",
+        date_of_operation: "",
+        surgeon: ""
       })
     };
   },
   methods: {
     addSurgery: function addSurgery() {
-      $('.surgery').html('<i class="fa fa-spin fa-spinner"></i>');
-      this.form.post('api/surgery').then(function () {
+      $(".surgery").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.post("api/surgery").then(function () {
         toast.fire({
-          type: 'success',
-          title: 'Lịch sử phẫu thuật của bệnh nhân được thêm thành công!'
+          type: "success",
+          title: "Lịch sử phẫu thuật của bệnh nhân được thêm thành công!"
         });
-        $('.surgery').html('Add Patient Surgery History ');
-        $('#add-surgery').trigger('reset');
+        $(".surgery").html("Add Patient Surgery History ");
+        $("#add-surgery").trigger("reset");
       })["catch"](function () {
         toast.fire({
-          type: 'error',
-          title: 'Dữ liệu thêm vào không đúng!'
+          type: "error",
+          title: "Dữ liệu thêm vào không đúng!"
         });
-        $('.surgery').html('Add Patient surgery History ');
+        $(".surgery").html("Add Patient surgery History ");
       });
     },
     loadPatients: function loadPatients() {
@@ -3244,7 +3468,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
     this.loadPatients();
   }
 });
@@ -3733,17 +3957,148 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       staffs: {},
       form: new Form({
-        id: '',
-        title: '',
-        name: '',
-        email: '',
-        role: '',
-        password: ''
+        id: "",
+        title: "",
+        name: "",
+        email: "",
+        role: "",
+        password: ""
       })
     };
   },
@@ -3759,73 +4114,73 @@ __webpack_require__.r(__webpack_exports__);
         _this.staffs = response.data;
       });
     },
-    // loadStaffs(){                            
-    //      axios.get('api/staff').then(({data}) => (this.staffs = data));                 
+    // loadStaffs(){
+    //      axios.get('api/staff').then(({data}) => (this.staffs = data));
     // },
     editModal: function editModal(staff) {
-      $('#editstaff').modal('show');
+      $("#editstaff").modal("show");
       this.form.fill(staff);
     },
     deleteStaff: function deleteStaff(id) {
       var _this2 = this;
 
       swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        type: 'warning',
+        type: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
       }).then(function (result) {
         //delete qury below
         if (result.value) {
           swal.fire({
-            position: 'center',
-            type: 'info',
-            title: 'Processing Delete',
+            position: "center",
+            type: "info",
+            title: "Processing Delete",
             showConfirmButton: false,
             timer: 1000
           });
 
-          _this2.form["delete"]('api/staff/' + id).then(function () {
-            swal.fire('Deleted!', 'Deleted Successfully.', 'success');
-            Fire.$emit('afterAction');
+          _this2.form["delete"]("api/staff/" + id).then(function () {
+            swal.fire("Deleted!", "Deleted Successfully.", "success");
+            Fire.$emit("afterAction");
           })["catch"](function () {
             swal.fire({
-              type: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!'
+              type: "error",
+              title: "Oops...",
+              text: "Something went wrong!"
             });
           });
         }
       });
     },
     updateStaff: function updateStaff() {
-      $('.updatestaff').html('<i class="fa fa-spin fa-spinner"></i>');
-      this.form.put('api/staff/' + this.form.id).then(function () {
-        Fire.$emit('afterAction');
-        $('#editstaff').modal('hide');
+      $(".updatestaff").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.put("api/staff/" + this.form.id).then(function () {
+        Fire.$emit("afterAction");
+        $("#editstaff").modal("hide");
         toast.fire({
-          type: 'success',
-          title: 'Tài khoản đã được điều chỉnh!'
+          type: "success",
+          title: "Tài khoản đã được điều chỉnh!"
         });
-        $('.updatestaff').html('Update Staff');
+        $(".updatestaff").html("Update Staff");
       })["catch"](function () {
         toast.fire({
-          type: 'error',
-          title: 'Thông tin nhập vào chưa đúng!'
+          type: "error",
+          title: "Thông tin nhập vào chưa đúng!"
         });
-        $('.updatestaff').html('Update Staff');
+        $(".updatestaff").html("Update Staff");
       });
     }
   },
   mounted: function mounted() {
     var _this3 = this;
 
-    console.log('Component mounted.');
+    console.log("Component mounted.");
     this.loadStaffs();
-    Fire.$on('afterAction', function () {
+    Fire.$on("afterAction", function () {
       _this3.loadStaffs();
     });
   }
@@ -3933,15 +4288,92 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       appointments: {},
       patients: {},
       form: new Form({
-        patient_id: '',
-        reason: '',
-        date: ''
+        patient_id: "",
+        reason: "",
+        date: ""
       })
     };
   },
@@ -3956,37 +4388,37 @@ __webpack_require__.r(__webpack_exports__);
         _this.appointments = response.data;
       }); //  axios.get('api/appointment').then(({data}) => (this.appointments = data));
 
-      axios.get('api/patient').then(function (_ref) {
+      axios.get("api/patient").then(function (_ref) {
         var data = _ref.data;
         return _this.patients = data;
       });
     },
     addAppointment: function addAppointment() {
-      $('.appoint').html('<i class="fa fa-spin fa-spinner"></i>');
-      this.form.post('api/appointment').then(function () {
+      $(".appoint").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.post("api/appointment").then(function () {
         toast.fire({
-          type: 'success',
-          title: 'Đặt lịch thành công!'
+          type: "success",
+          title: "Đặt lịch thành công!"
         });
-        $('#addappointmentform').trigger('reset');
-        $('.appoint').html('Add Appointment');
-        Fire.$emit('afterAction');
-        $('#addappointmentmodal').modal('hide');
+        $("#addappointmentform").trigger("reset");
+        $(".appoint").html("Add Appointment");
+        Fire.$emit("afterAction");
+        $("#addappointmentmodal").modal("hide");
       })["catch"](function () {
         toast.fire({
-          type: 'error',
-          title: 'Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!'
+          type: "error",
+          title: "Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!"
         });
-        $('.appoint').html('Add Appointment');
+        $(".appoint").html("Add Appointment");
       });
     }
   },
   mounted: function mounted() {
     var _this2 = this;
 
-    console.log('Component mounted.');
+    console.log("Component mounted.");
     this.loadAppointment();
-    Fire.$on('afterAction', function () {
+    Fire.$on("afterAction", function () {
       _this2.loadAppointment();
     });
   }
@@ -6182,24 +6614,201 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       medications: {},
       user: {},
       form: new Form({
-        id: '',
-        type: '',
-        comment: '',
-        unit: '',
-        nurse: '',
-        injection: ''
+        id: "",
+        type: "",
+        comment: "",
+        unit: "",
+        nurse: "",
+        injection: ""
       })
     };
   },
   methods: {
     giveinjection: function giveinjection(medication) {
-      $('#injectiongive').modal('show');
+      $("#injectiongive").modal("show");
       this.form.fill(medication);
     },
     LoadLabresult: function LoadLabresult() {
@@ -6212,58 +6821,58 @@ __webpack_require__.r(__webpack_exports__);
         _this.medications = response.data;
       }); //  axios.get('api/give-injection').then(({data}) => (this.medications = data));
 
-      axios.get('api/user').then(function (response) {
+      axios.get("api/user").then(function (response) {
         console.log(response.data);
         _this.user = response.data;
       });
     },
     GiveInjectionNow: function GiveInjectionNow() {
-      $('.injectiongive').html('<i class="fa fa-spin fa-spinner"></i>');
-      this.form.put('api/uploadpham/' + this.form.id).then(function () {
-        Fire.$emit('afterAction');
-        $('#injectiongive').modal('hide');
+      $(".injectiongive").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.put("api/uploadpham/" + this.form.id).then(function () {
+        Fire.$emit("afterAction");
+        $("#injectiongive").modal("hide");
         toast.fire({
-          type: 'success',
-          title: 'Đã yêu cầu tiêm chủng!'
+          type: "success",
+          title: "Đã yêu cầu tiêm chủng!"
         });
-        $('.injectiongive').html('Give Injection');
+        $(".injectiongive").html("Give Injection");
       })["catch"](function () {
         toast.fire({
-          type: 'error',
-          title: 'Đã xảy ra lỗi!'
+          type: "error",
+          title: "Đã xảy ra lỗi!"
         });
-        $('.injectiongive').html('Give Injection');
+        $(".injectiongive").html("Give Injection");
       });
     },
     editModal: function editModal(medication) {
-      $('#editmedications').modal('show');
+      $("#editmedications").modal("show");
       this.form.fill(medication);
     },
     updatemedications: function updatemedications() {
-      $('.updatemedications').html('<i class="fa fa-spin fa-spinner"></i>');
-      this.form.put('api/uploadpham/' + this.form.id).then(function () {
-        Fire.$emit('afterAction');
-        $('#editmedications').modal('hide');
+      $(".updatemedications").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.put("api/uploadpham/" + this.form.id).then(function () {
+        Fire.$emit("afterAction");
+        $("#editmedications").modal("hide");
         toast.fire({
-          type: 'success',
-          title: 'Đã cập nhật thuốc thành công!'
+          type: "success",
+          title: "Đã cập nhật thuốc thành công!"
         });
-        $('.updatemedications').html('Update Lab Result');
+        $(".updatemedications").html("Update Lab Result");
       })["catch"](function () {
         toast.fire({
-          type: 'error',
-          title: 'Dữ liệu nhập vào không đúng!'
+          type: "error",
+          title: "Dữ liệu nhập vào không đúng!"
         });
-        $('.updatemedications').html('Update Lab Result');
+        $(".updatemedications").html("Update Lab Result");
       });
     }
   },
   mounted: function mounted() {
     var _this2 = this;
 
-    console.log('Component mounted.');
+    console.log("Component mounted.");
     this.LoadLabresult();
-    Fire.$on('afterAction', function () {
+    Fire.$on("afterAction", function () {
       _this2.LoadLabresult();
     });
   }
@@ -6525,23 +7134,332 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       hospitals: {},
       form: new Form({
-        id: '',
-        patient_id: '',
-        date_attented: '',
-        date_admitted: '',
-        refered_by: '',
-        physician: '',
-        ward: '',
-        date_discharged: '',
-        discharged_to: '',
-        outcome_of_care: '',
-        comment_box: '',
-        symptoms: ''
+        id: "",
+        patient_id: "",
+        date_attented: "",
+        date_admitted: "",
+        refered_by: "",
+        physician: "",
+        ward: "",
+        date_discharged: "",
+        discharged_to: "",
+        outcome_of_care: "",
+        comment_box: "",
+        symptoms: ""
       })
     };
   },
@@ -6561,69 +7479,69 @@ __webpack_require__.r(__webpack_exports__);
     //      axios.get('api/hospital').then(({data}) => (this.hospitals = data));
     // },
     editModal: function editModal(hospital) {
-      $('#edithospital').modal('show');
+      $("#edithospital").modal("show");
       this.form.fill(hospital);
     },
     deleteHospital: function deleteHospital(id) {
       var _this2 = this;
 
       swal.fire({
-        title: 'Bạn đã chắc chắn muốn xóa?',
+        title: "Bạn đã chắc chắn muốn xóa?",
         text: "Bạn sẽ không được phép hoàn tác sau khi thực hiện!",
-        type: 'warning',
+        type: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Đồng ý, hãy xóa!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Đồng ý, hãy xóa!"
       }).then(function (result) {
         //delete qury below
         if (result.value) {
           swal.fire({
-            position: 'center',
-            type: 'info',
-            title: 'Đang xóa',
+            position: "center",
+            type: "info",
+            title: "Đang xóa",
             showConfirmButton: false,
             timer: 1000
           });
 
-          _this2.form["delete"]('api/hospital/' + id).then(function () {
-            swal.fire('Đã xóa!', 'Đã xóa thành công.', 'success');
-            Fire.$emit('afterAction');
+          _this2.form["delete"]("api/hospital/" + id).then(function () {
+            swal.fire("Đã xóa!", "Đã xóa thành công.", "success");
+            Fire.$emit("afterAction");
           })["catch"](function () {
             swal.fire({
-              type: 'error',
-              title: 'Oops...',
-              text: 'Đã xảy ra sự cố!'
+              type: "error",
+              title: "Oops...",
+              text: "Đã xảy ra sự cố!"
             });
           });
         }
       });
     },
     updateHospital: function updateHospital() {
-      $('.updatehospital').html('<i class="fa fa-spin fa-spinner"></i>');
-      this.form.put('api/hospital/' + this.form.id).then(function () {
-        Fire.$emit('afterAction');
-        $('#edithospital').modal('hide');
+      $(".updatehospital").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.put("api/hospital/" + this.form.id).then(function () {
+        Fire.$emit("afterAction");
+        $("#edithospital").modal("hide");
         toast.fire({
-          type: 'success',
-          title: 'Cập nhật tiền sử bệnh nhân thành công!'
+          type: "success",
+          title: "Cập nhật tiền sử bệnh nhân thành công!"
         });
-        $('.updatehospital').html('Add Patient');
+        $(".updatehospital").html("Add Patient");
       })["catch"](function () {
         toast.fire({
-          type: 'error',
-          title: 'Dữ liệu nhập vào chưa đúng!'
+          type: "error",
+          title: "Dữ liệu nhập vào chưa đúng!"
         });
-        $('.updatehospital').html('Add Patient');
+        $(".updatehospital").html("Add Patient");
       });
     }
   },
   mounted: function mounted() {
     var _this3 = this;
 
-    console.log('Component mounted.');
+    console.log("Component mounted.");
     this.LoadHospitals();
-    Fire.$on('afterAction', function () {
+    Fire.$on("afterAction", function () {
       _this3.LoadHospitals();
     });
   }
@@ -8976,6 +9894,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -9016,15 +9936,15 @@ __webpack_require__.r(__webpack_exports__);
         $("#editstaff").modal("hide");
         toast.fire({
           type: "success",
-          title: "Tài khoản được cập nhật thành công!"
+          title: "Cập nhật thành công!"
         });
-        $(".updatestaff").html("Update Staff");
+        $(".updatestaff").html("Đã cập nhật thông tin");
       })["catch"](function () {
         toast.fire({
           type: "error",
           title: "Dữ liệu nhập vào chưa đúng!"
         });
-        $(".updatestaff").html("Update Staff");
+        $(".updatestaff").html("Đã cập nhật thông tin");
       });
     }
   },
@@ -9341,26 +10261,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -73357,7 +74257,9 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("Thêm tiền sử khám của bệnh nhân")
+            _vm._v(
+              "\n                    Thêm tiền sử khám của bệnh nhân\n                "
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -73368,7 +74270,7 @@ var render = function() {
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    return _vm.addHospital($event)
+                    return _vm.addHospital()
                   }
                 }
               },
@@ -73438,7 +74340,7 @@ var render = function() {
                   [
                     _c("label", [
                       _vm._v(
-                        "\n                        Nhập ngày có mặt\n                        "
+                        "\n                                Nhập ngày có mặt\n                            "
                       )
                     ]),
                     _vm._v(" "),
@@ -73488,7 +74390,7 @@ var render = function() {
                   [
                     _c("label", [
                       _vm._v(
-                        "\n                        Nhập ngày nhập viện\n                        "
+                        "\n                                Nhập ngày nhập viện\n                            "
                       )
                     ]),
                     _vm._v(" "),
@@ -73586,7 +74488,9 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      class: { "is-invalid": _vm.form.errors.has("physician") },
+                      class: {
+                        "is-invalid": _vm.form.errors.has("physician")
+                      },
                       attrs: {
                         type: "text",
                         name: "physician",
@@ -73624,7 +74528,9 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      class: { "is-invalid": _vm.form.errors.has("ward") },
+                      class: {
+                        "is-invalid": _vm.form.errors.has("ward")
+                      },
                       attrs: {
                         type: "text",
                         name: "ward",
@@ -73654,7 +74560,7 @@ var render = function() {
                   [
                     _c("label", [
                       _vm._v(
-                        "\n                        Nhập ngày thanh toán\n                        "
+                        "\n                                Nhập ngày thanh toán\n                            "
                       )
                     ]),
                     _vm._v(" "),
@@ -73802,7 +74708,9 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      class: { "is-invalid": _vm.form.errors.has("symptoms") },
+                      class: {
+                        "is-invalid": _vm.form.errors.has("symptoms")
+                      },
                       attrs: {
                         placeholder: "Nhập các triệu chứng",
                         name: "symptoms",
@@ -73880,7 +74788,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                        Thêm tiền sử khám của bệnh nhân\n                    "
+                        "\n                                Thêm tiền sử khám của bệnh nhân\n                            "
                       )
                     ]
                   )
@@ -74676,7 +75584,9 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      class: { "is-invalid": _vm.form.errors.has("surgeon") },
+                      class: {
+                        "is-invalid": _vm.form.errors.has("surgeon")
+                      },
                       attrs: {
                         type: "text",
                         name: "surgeon",
@@ -74708,7 +75618,11 @@ var render = function() {
                       staticStyle: { color: "#fff" },
                       attrs: { type: "submit" }
                     },
-                    [_vm._v("Thêm lịch sử phẫu thuật")]
+                    [
+                      _vm._v(
+                        "\n                                Thêm lịch sử phẫu thuật\n                            "
+                      )
+                    ]
                   )
                 ])
               ],
@@ -75430,17 +76344,11 @@ var render = function() {
                 [
                   _vm._l(_vm.staffs, function(staff) {
                     return _c("tr", { key: staff.id }, [
-                      _c("td", [
-                        _vm._v(_vm._s(staff.title) + "  " + _vm._s(staff.name))
-                      ]),
+                      _c("td", [_vm._v(_vm._s(staff.name))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(staff.email))]),
                       _vm._v(" "),
-                      staff.role == "recept"
-                        ? _c("td", [
-                            _vm._v("Nhân viên quản lý bệnh án điện tử")
-                          ])
-                        : _c("td", [_vm._v(_vm._s(staff.role))]),
+                      _c("td", [_vm._v(_vm._s(staff.role))]),
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(_vm._s(_vm._f("humanDate")(staff.created_at)))
@@ -75523,7 +76431,9 @@ var render = function() {
                                     { staticClass: "form-group" },
                                     [
                                       _c("label", [
-                                        _vm._v("Chỉnh sửa chức danh")
+                                        _vm._v(
+                                          "Chỉnh sửa chức\n                                                    danh"
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c(
@@ -75579,19 +76489,11 @@ var render = function() {
                                               },
                                               attrs: { value: "nul" }
                                             },
-                                            [_vm._v("Chọn chức danh")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "option",
-                                            { attrs: { value: "Dr" } },
-                                            [_vm._v("Dr")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "option",
-                                            { attrs: { value: "Cô" } },
-                                            [_vm._v("Cô")]
+                                            [
+                                              _vm._v(
+                                                "Chọn chức\n                                                        danh"
+                                              )
+                                            ]
                                           ),
                                           _vm._v(" "),
                                           _c(
@@ -75776,7 +76678,11 @@ var render = function() {
                                               },
                                               attrs: { value: "nul" }
                                             },
-                                            [_vm._v("Điều chỉnh chức vụ")]
+                                            [
+                                              _vm._v(
+                                                "Điều chỉnh chức\n                                                        vụ"
+                                              )
+                                            ]
                                           ),
                                           _vm._v(" "),
                                           _c(
@@ -75784,7 +76690,7 @@ var render = function() {
                                             { attrs: { value: "recept" } },
                                             [
                                               _vm._v(
-                                                "Nhân viên quản lý bệnh án điện tử"
+                                                "Nhân viên quản lý\n                                                        bệnh án điện\n                                                        tử"
                                               )
                                             ]
                                           ),
@@ -75792,7 +76698,11 @@ var render = function() {
                                           _c(
                                             "option",
                                             { attrs: { value: "nurse" } },
-                                            [_vm._v("Y tá/Điều dưỡng")]
+                                            [
+                                              _vm._v(
+                                                "Y tá/Điều\n                                                        dưỡng"
+                                              )
+                                            ]
                                           ),
                                           _vm._v(" "),
                                           _c(
@@ -75804,7 +76714,11 @@ var render = function() {
                                           _c(
                                             "option",
                                             { attrs: { value: "lab" } },
-                                            [_vm._v("Nhân viên xét nghiệm")]
+                                            [
+                                              _vm._v(
+                                                "Nhân viên xét\n                                                        nghiệm"
+                                              )
+                                            ]
                                           ),
                                           _vm._v(" "),
                                           _c(
@@ -75816,7 +76730,11 @@ var render = function() {
                                           _c(
                                             "option",
                                             { attrs: { value: "admin" } },
-                                            [_vm._v("Quản trị viên")]
+                                            [
+                                              _vm._v(
+                                                "Quản trị\n                                                        viên"
+                                              )
+                                            ]
                                           )
                                         ]
                                       ),
@@ -75837,7 +76755,11 @@ var render = function() {
                                         staticStyle: { color: "#fff" },
                                         attrs: { type: "submit" }
                                       },
-                                      [_vm._v("Cập nhật nhân viên")]
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Cập nhật thông tin\n                                                "
+                                        )
+                                      ]
                                     )
                                   ])
                                 ],
@@ -75898,7 +76820,11 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Điều chỉnh")]
+        [
+          _vm._v(
+            "\n                                            Điều chỉnh thông tin\n                                        "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -75926,7 +76852,11 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Đóng")]
+        [
+          _vm._v(
+            "\n                                            Đóng\n                                        "
+          )
+        ]
       )
     ])
   },
@@ -75981,7 +76911,7 @@ var render = function() {
           "data-target": "#addappointmentmodal"
         }
       },
-      [_vm._v("Thêm cuộc hẹn mới")]
+      [_vm._v("\n        Thêm cuộc hẹn mới\n    ")]
     ),
     _vm._v(" "),
     _c(
@@ -76144,7 +77074,9 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          class: { "is-invalid": _vm.form.errors.has("date") },
+                          class: {
+                            "is-invalid": _vm.form.errors.has("date")
+                          },
                           attrs: {
                             type: "date",
                             name: "date",
@@ -76176,7 +77108,11 @@ var render = function() {
                           staticStyle: { color: "#fff" },
                           attrs: { type: "submit" }
                         },
-                        [_vm._v("Thêm cuộc hẹn")]
+                        [
+                          _vm._v(
+                            "\n                                Thêm cuộc hẹn\n                            "
+                          )
+                        ]
                       )
                     ])
                   ],
@@ -76215,9 +77151,11 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [
                       _vm._v(
-                        _vm._s(appointment.patient.title) +
-                          " " +
-                          _vm._s(appointment.patient.full_name)
+                        "\n                                " +
+                          _vm._s(appointment.patient.title) +
+                          "\n                                " +
+                          _vm._s(appointment.patient.full_name) +
+                          "\n                            "
                       )
                     ]),
                     _vm._v(" "),
@@ -76248,7 +77186,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Cuộc hẹn")]
+        [_vm._v("\n                        Cuộc hẹn\n                    ")]
       ),
       _vm._v(" "),
       _c(
@@ -79596,7 +80534,11 @@ var render = function() {
                   _c("th", [_vm._v("Chi tiết thuốc")]),
                   _vm._v(" "),
                   _vm.user.role == "nurse" || _vm.user.role == "admin"
-                    ? _c("th", [_vm._v("Mũi tiêm")])
+                    ? _c("th", [
+                        _vm._v(
+                          "\n                                Mũi tiêm\n                            "
+                        )
+                      ])
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.user.role == "pham"
@@ -79614,9 +80556,11 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
-                          _vm._s(medication.patient.title) +
-                            " " +
-                            _vm._s(medication.patient.full_name)
+                          "\n                                " +
+                            _vm._s(medication.patient.title) +
+                            "\n                                " +
+                            _vm._s(medication.patient.full_name) +
+                            "\n                            "
                         )
                       ]),
                       _vm._v(" "),
@@ -79629,17 +80573,33 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("td", [
-                        _vm._v(_vm._s(medication.type) + " "),
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(medication.type) +
+                            " "
+                        ),
                         _c("br"),
-                        _vm._v(" " + _vm._s(medication.unit) + " Đơn vị "),
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(medication.unit) +
+                            " Đơn vị "
+                        ),
                         _c("br"),
-                        _vm._v(" " + _vm._s(medication.comment))
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(medication.comment) +
+                            "\n                            "
+                        )
                       ]),
                       _vm._v(" "),
                       _vm.user.role == "nurse" || _vm.user.role == "admin"
                         ? _c("td", [
                             medication.injection == 1
-                              ? _c("p", [_vm._v(" Đã được tiêm")])
+                              ? _c("p", [
+                                  _vm._v(
+                                    "\n                                    Đã được tiêm\n                                "
+                                  )
+                                ])
                               : _c(
                                   "button",
                                   {
@@ -79653,7 +80613,7 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                  Chỉ định tiêm\n                  "
+                                      "\n                                    Chỉ định tiêm\n                                "
                                     )
                                   ]
                                 )
@@ -79746,7 +80706,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(
-                                    " Xác nhận tác vụ trước\n                        "
+                                    "\n                                            Xác nhận tác vụ trước\n                                            "
                                   ),
                                   _c("center", [
                                     _c(
@@ -79757,7 +80717,11 @@ var render = function() {
                                         staticStyle: { color: "#fff" },
                                         attrs: { type: "submit" }
                                       },
-                                      [_vm._v("Chỉ định tiêm")]
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Chỉ định tiêm\n                                                "
+                                        )
+                                      ]
                                     )
                                   ])
                                 ],
@@ -79870,7 +80834,11 @@ var render = function() {
                                             {
                                               attrs: { value: "Viên con nhộng" }
                                             },
-                                            [_vm._v("Viên con nhộng")]
+                                            [
+                                              _vm._v(
+                                                "Viên con\n                                                        nhộng"
+                                              )
+                                            ]
                                           ),
                                           _vm._v(" "),
                                           _c(
@@ -79880,7 +80848,11 @@ var render = function() {
                                                 value: "Vitamin tổng hợp"
                                               }
                                             },
-                                            [_vm._v("Vitamin tổng hợp")]
+                                            [
+                                              _vm._v(
+                                                "Vitamin tổng\n                                                        hợp"
+                                              )
+                                            ]
                                           ),
                                           _vm._v(" "),
                                           _c(
@@ -80047,7 +81019,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(
-                                    " Yêu cầu bệnh nhân đi tiêm\n                        "
+                                    "\n                                            Yêu cầu bệnh nhân đi tiêm\n                                            "
                                   ),
                                   _c("center", [
                                     _c(
@@ -80058,7 +81030,11 @@ var render = function() {
                                         staticStyle: { color: "#fff" },
                                         attrs: { type: "submit" }
                                       },
-                                      [_vm._v("Cập nhật kết quả xét nghiệm")]
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Cập nhật kết quả xét\n                                                    nghiệm\n                                                "
+                                        )
+                                      ]
                                     )
                                   ])
                                 ],
@@ -80089,7 +81065,11 @@ var render = function() {
                   _c("th", [_vm._v("Thông tin thuốc")]),
                   _vm._v(" "),
                   _vm.user.role == "nurse" || _vm.user.role == "admin"
-                    ? _c("th", [_vm._v("Tiêm chủng")])
+                    ? _c("th", [
+                        _vm._v(
+                          "\n                                Tiêm chủng\n                            "
+                        )
+                      ])
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.user.role == "pham"
@@ -80131,7 +81111,11 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Xác nhận")]
+        [
+          _vm._v(
+            "\n                                            Xác nhận\n                                        "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -80159,7 +81143,11 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Đóng")]
+        [
+          _vm._v(
+            "\n                                            Đóng\n                                        "
+          )
+        ]
       )
     ])
   },
@@ -80171,7 +81159,11 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Sửa thuốc")]
+        [
+          _vm._v(
+            "\n                                            Sửa thuốc\n                                        "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -80199,7 +81191,11 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Đóng")]
+        [
+          _vm._v(
+            "\n                                            Đóng\n                                        "
+          )
+        ]
       )
     ])
   }
@@ -80234,7 +81230,7 @@ var render = function() {
           {
             staticClass: "btn btn-rounded btn-info",
             staticStyle: { color: "#fff" },
-            attrs: { to: "/add-biodata", type: "button" }
+            attrs: { to: "/add-hospital", type: "button" }
           },
           [_vm._v("Thêm mới")]
         )
@@ -80268,27 +81264,41 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
-                          _vm._s(hospital.patient.title) +
-                            " " +
-                            _vm._s(hospital.patient.full_name)
+                          "\n                                " +
+                            _vm._s(hospital.patient.title) +
+                            "\n                                " +
+                            _vm._s(hospital.patient.full_name) +
+                            "\n                            "
                         )
                       ]),
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
-                          _vm._s(_vm._f("humanDate")(hospital.date_attented))
+                          "\n                                " +
+                            _vm._s(
+                              _vm._f("humanDate")(hospital.date_attented)
+                            ) +
+                            "\n                            "
                         )
                       ]),
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
-                          _vm._s(_vm._f("humanDate")(hospital.date_admitted))
+                          "\n                                " +
+                            _vm._s(
+                              _vm._f("humanDate")(hospital.date_admitted)
+                            ) +
+                            "\n                            "
                         )
                       ]),
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
-                          _vm._s(_vm._f("humanDate")(hospital.date_discharged))
+                          "\n                                " +
+                            _vm._s(
+                              _vm._f("humanDate")(hospital.date_discharged)
+                            ) +
+                            "\n                            "
                         )
                       ]),
                       _vm._v(" "),
@@ -80307,7 +81317,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                    Hiển thị\n                    "
+                              "\n                                    Hiển thị\n                                "
                             )
                           ]
                         ),
@@ -80344,7 +81354,8 @@ var render = function() {
                                           _vm._f("humanDate")(
                                             hospital.date_attented
                                           )
-                                        )
+                                        ) +
+                                          "\n                                                "
                                       )
                                     ]),
                                     _vm._v(" "),
@@ -80355,18 +81366,25 @@ var render = function() {
                                           _vm._f("humanDate")(
                                             hospital.date_admitted
                                           )
-                                        )
+                                        ) +
+                                          "\n                                                "
                                       )
                                     ]),
                                     _vm._v(" "),
                                     _c("p", [
                                       _c("b", [_vm._v("Bác sĩ điều trị: ")]),
-                                      _vm._v(_vm._s(hospital.refered_by))
+                                      _vm._v(
+                                        _vm._s(hospital.refered_by) +
+                                          "\n                                                "
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     _c("p", [
                                       _c("b", [_vm._v("Người giám hộ: ")]),
-                                      _vm._v(_vm._s(hospital.ward))
+                                      _vm._v(
+                                        _vm._s(hospital.ward) +
+                                          "\n                                                "
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     _c("p", [
@@ -80376,34 +81394,49 @@ var render = function() {
                                           _vm._f("humanDate")(
                                             hospital.date_discharged
                                           )
-                                        )
+                                        ) +
+                                          "\n                                                "
                                       )
                                     ]),
                                     _vm._v(" "),
                                     _c("p", [
                                       _c("b", [_vm._v("Thu ngân: ")]),
-                                      _vm._v(_vm._s(hospital.discharged_to))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("p", [
-                                      _c("b", [
-                                        _vm._v("Tình trạng chăm sóc: ")
-                                      ]),
-                                      _vm._v(_vm._s(hospital.outcome_of_care))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("p", [
-                                      _c("b", [_vm._v("Nhận xét: ")]),
-                                      _vm._v(_vm._s(hospital.comment_box))
+                                      _vm._v(
+                                        _vm._s(hospital.discharged_to) +
+                                          "\n                                                "
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     _c("p", [
                                       _c("b", [
                                         _vm._v(
-                                          "Các triệu chứng & phản hồi của người bệnh: "
+                                          "Tình trạng chăm\n                                                        sóc: "
                                         )
                                       ]),
-                                      _vm._v(_vm._s(hospital.symptoms))
+                                      _vm._v(
+                                        _vm._s(hospital.outcome_of_care) +
+                                          "\n                                                "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("p", [
+                                      _c("b", [_vm._v("Nhận xét: ")]),
+                                      _vm._v(
+                                        _vm._s(hospital.comment_box) +
+                                          "\n                                                "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("p", [
+                                      _c("b", [
+                                        _vm._v(
+                                          "Các triệu chứng &\n                                                        phản hồi của người\n                                                        bệnh: "
+                                        )
+                                      ]),
+                                      _vm._v(
+                                        _vm._s(hospital.symptoms) +
+                                          "\n                                                "
+                                      )
                                     ])
                                   ]),
                                   _vm._v(" "),
@@ -80499,7 +81532,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.date_attented,
-                                            expression: "form.date_attented"
+                                            expression:
+                                              "\n                                                        form.date_attented\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -80545,7 +81579,9 @@ var render = function() {
                                     { staticClass: "form-group" },
                                     [
                                       _c("label", [
-                                        _vm._v("Điền ngày nhập viện")
+                                        _vm._v(
+                                          "Điền ngày nhập\n                                                    viện"
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c("input", {
@@ -80554,7 +81590,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.date_admitted,
-                                            expression: "form.date_admitted"
+                                            expression:
+                                              "\n                                                        form.date_admitted\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -80607,7 +81644,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.refered_by,
-                                            expression: "form.refered_by"
+                                            expression:
+                                              "\n                                                        form.refered_by\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -80759,7 +81797,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.date_discharged,
-                                            expression: "form.date_discharged"
+                                            expression:
+                                              "\n                                                        form.date_discharged\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -80812,7 +81851,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.discharged_to,
-                                            expression: "form.discharged_to"
+                                            expression:
+                                              "\n                                                        form.discharged_to\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -80858,7 +81898,9 @@ var render = function() {
                                     { staticClass: "form-group" },
                                     [
                                       _c("label", [
-                                        _vm._v("Tình trạng chăm sóc")
+                                        _vm._v(
+                                          "Tình trạng chăm\n                                                    sóc"
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c("textarea", {
@@ -80867,7 +81909,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.outcome_of_care,
-                                            expression: "form.outcome_of_care"
+                                            expression:
+                                              "\n                                                        form.outcome_of_care\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -80976,7 +82019,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.comment_box,
-                                            expression: "form.comment_box"
+                                            expression:
+                                              "\n                                                        form.comment_box\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -81028,7 +82072,11 @@ var render = function() {
                                         staticStyle: { color: "#fff" },
                                         attrs: { type: "submit" }
                                       },
-                                      [_vm._v("Cập nhật lịch sử khám bệnh")]
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Cập nhật lịch sử khám\n                                                    bệnh\n                                                "
+                                        )
+                                      ]
                                     )
                                   ])
                                 ],
@@ -81095,7 +82143,11 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Thêm thông tin")]
+        [
+          _vm._v(
+            "\n                                                    Thêm thông tin\n                                                "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -81123,7 +82175,11 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Đóng")]
+        [
+          _vm._v(
+            "\n                                                    Đóng\n                                                "
+          )
+        ]
       )
     ])
   },
@@ -81135,7 +82191,11 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Sửa lịch sử khám")]
+        [
+          _vm._v(
+            "\n                                            Sửa lịch sử khám\n                                        "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -81163,7 +82223,11 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Đóng")]
+        [
+          _vm._v(
+            "\n                                            Đóng\n                                        "
+          )
+        ]
       )
     ])
   },
@@ -85001,21 +86065,11 @@ var render = function() {
               _vm._v(" "),
               _c("tbody", [
                 _c("tr", [
-                  _c("td", [
-                    _vm._v(
-                      _vm._s(_vm.staff.title) + " " + _vm._s(_vm.staff.name)
-                    )
-                  ]),
+                  _c("td", [_vm._v(_vm._s(_vm.staff.name))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(_vm.staff.email))]),
                   _vm._v(" "),
-                  _vm.staff.role == "recept"
-                    ? _c("td", [
-                        _vm._v(
-                          "\n                                Lễ tân\n                            "
-                        )
-                      ])
-                    : _c("td", [_vm._v(_vm._s(_vm.staff.role))]),
+                  _c("td", [_vm._v(_vm._s(_vm.staff.role))]),
                   _vm._v(" "),
                   _c("td", [
                     _vm._v(_vm._s(_vm._f("humanDate")(_vm.staff.created_at)))
@@ -85339,21 +86393,13 @@ var render = function() {
                                         _c(
                                           "option",
                                           { attrs: { value: "recept" } },
-                                          [
-                                            _vm._v(
-                                              "Nhân viên quản lý\n                                                        bệnh án điện\n                                                        tử"
-                                            )
-                                          ]
+                                          [_vm._v("Lễ tân")]
                                         ),
                                         _vm._v(" "),
                                         _c(
                                           "option",
                                           { attrs: { value: "nurse" } },
-                                          [
-                                            _vm._v(
-                                              "Y tá/ Điều\n                                                        dưỡng"
-                                            )
-                                          ]
+                                          [_vm._v("Y tá")]
                                         ),
                                         _vm._v(" "),
                                         _c(
@@ -85397,6 +86443,57 @@ var render = function() {
                                   1
                                 ),
                                 _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c("label", [_vm._v("Đổi mật khẩu")]),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.form.password,
+                                          expression: "form.password"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.form.errors.has(
+                                          "password"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "password",
+                                        name: "password",
+                                        placeholder: "Nhập mật khẩu mới"
+                                      },
+                                      domProps: { value: _vm.form.password },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.form,
+                                            "password",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      attrs: {
+                                        form: _vm.form,
+                                        field: "password"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
                                 _c("center", [
                                   _c(
                                     "button",
@@ -85408,7 +86505,7 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                                                    Cập nhật tài khoản\n                                                "
+                                        "\n                                                    Cập nhật thông tin\n                                                "
                                       )
                                     ]
                                   )
@@ -85471,7 +86568,7 @@ var staticRenderFns = [
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
         [
           _vm._v(
-            "\n                                            Sửa tài khoản\n                                        "
+            "\n                                            Điều chỉnh thông tin\n                                        "
           )
         ]
       ),

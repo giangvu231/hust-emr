@@ -54,9 +54,9 @@ class DiagnosishealthController extends Controller
             'diagnosis_note' => 'required',
         ]);
         $data = Diagnosishealth::create($request->all());
-        // Emr::where('patient_id', $data->patient_id)->update([
-        //     'diagnosishealth_id' => $data->id
-        // ]);
+        Emr::where('patient_id', $data->patient_id)->update([
+            'diagnosishealth_id' => $data->id
+        ]);
         return response()->json(['data' => $data], 200);
     }
 

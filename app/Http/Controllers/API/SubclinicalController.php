@@ -44,9 +44,9 @@ class SubclinicalController extends Controller
             'imaging_result' => 'required',
         ]);
         $data = Subclinical::create($request->all());
-        // Emr::where('patient_id', $data->patient_id)->update([
-        //     'subclinical_id' => $data->id
-        // ]);
+        Emr::where('patient_id', $data->patient_id)->update([
+            'subclinical_id' => $data->id
+        ]);
         return response()->json(['data' => $data], 200);
     }
 

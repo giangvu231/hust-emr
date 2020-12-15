@@ -3,12 +3,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <!-- <div class="card-header">Add New Staff</div> -->
                     <div class="card-header">Thêm tài khoản</div>
                     <div class="card-body">
                         <form @submit.prevent="addStaff" id="add-staff">
                             <div class="form-group">
-                                <!-- <label>Select Title</label>                 -->
                                 <label>Chức danh</label>
                                 <select
                                     v-model="form.title"
@@ -18,24 +16,6 @@
                                     }"
                                     name="title"
                                 >
-                                    <!-- <option value="nul" style="font-weight:700;"
-                                        >Chọn chức danh</option
-                                    >
-                                    <option value="Bác sĩ lâm sàng"
-                                        >Bác sĩ lâm sàng</option
-                                    >
-                                    <option value="Bác sĩ chuyên khoa"
-                                        >Bác sĩ chuyên khoa</option
-                                    >
-                                    <option value="Điều dưỡng"
-                                        >Điều dưỡng</option
-                                    >
-                                    <option value="Y tá">Y tá</option>
-                                    <option value="Kỹ thuật viên"
-                                        >Kỹ thuật viên</option
-                                    >
-                                    <option value="Dược sĩ">Dược sĩ</option>
-                                    <option value="Cô">Cô</option> -->
                                     <option value="Bà">Bà</option>
                                     <option value="Ông">Ông</option>
                                 </select>

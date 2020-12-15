@@ -17,9 +17,13 @@ class CreateEmrsTable extends Migration
             $table->bigIncrements('id');
             $table->string('emr_id');
             $table->string('patient_id');
-            $table->string('emr_mngtcol')->nullable();
-            $table->string('patient_history_id')->nullable();
             $table->string('vital_id')->nullable();
+            $table->string('soap_id')->nullable();
+            $table->string('diagnosishealth_id')->nullable();
+            $table->string('subclinical_id')->nullable();
+            $table->string('appointment_id')->nullable();
+            // $table->string('emr_mngtcol')->nullable();
+            $table->string('patient_history_id')->nullable();
             $table->string('lab_id')->nullable();
             $table->string('diagnosis_id')->nullable();
             $table->timestamps();

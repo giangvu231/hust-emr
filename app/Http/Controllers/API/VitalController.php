@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\addPatient;
 use App\Vital;
 use App\Emr;
+
 class VitalController extends Controller
 {
 

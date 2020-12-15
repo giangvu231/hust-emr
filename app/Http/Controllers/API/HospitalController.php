@@ -4,8 +4,10 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\addPatient;
 use App\HospitalHistory;
 use App\Diagnose;
+use App\Emr;
 
 class HospitalController extends Controller
 {
@@ -14,7 +16,7 @@ class HospitalController extends Controller
     {
         $this->middleware('auth:api');
     }
-    
+
     /***
      * Display a listing of the resource.
      *
@@ -44,25 +46,27 @@ class HospitalController extends Controller
             'date_discharged' => 'required',
             'discharged_to' => 'required',
             'outcome_of_care' => 'required',
-            'symptoms' => 'required',            
-            'physician' => 'required',  
-            'comment_box' => 'required',  
-        ]);        
-        $hospital = new HospitalHistory;
-        $hospital->patient_id = $request->patient_id;       
-        $hospital->date_attented = $request->date_attented;
-        $hospital->date_admitted = $request->date_admitted;
-        $hospital->refered_by = $request->refered_by;
-        $hospital->ward = $request->ward;
-        $hospital->date_discharged = $request->date_discharged;
-        $hospital->discharged_to = $request->discharged_to;
-        $hospital->outcome_of_care = $request->outcome_of_care;
-        $hospital->physician = $request->physician;
-        $hospital->symptoms = $request->symptoms;
-        $hospital->comment_box = $request->comment_box;
-        $hospital->modal_id = strtolower(str_random(8));
+            'symptoms' => 'required',
+            'physician' => 'required',
+            'comment_box' => 'required',
+        ]);
+        // $hospital = new HospitalHistory;
+        // $hospital->patient_id = $request->patient_id;
+        // $hospital->date_attented = $request->date_attented;
+        // $hospital->date_admitted = $request->date_admitted;
+        // $hospital->refered_by = $request->refered_by;
+        // $hospital->ward = $request->ward;
+        // $hospital->date_discharged = $request->date_discharged;
+        // $hospital->discharged_to = $request->discharged_to;
+        // $hospital->outcome_of_care = $request->outcome_of_care;
+        // $hospital->physician = $request->physician;
+        // $hospital->symptoms = $request->symptoms;
+        // $hospital->comment_box = $request->comment_box;
+        // $hospital->modal_id = strtolower(str_random(8));
 
-        $hospital->save();
+        // $hospital->save();
+
+        return response()->json(['data' => $data], 200);
     }
 
     /**
@@ -97,10 +101,10 @@ class HospitalController extends Controller
             'date_discharged' => 'required',
             'discharged_to' => 'required',
             'outcome_of_care' => 'required',
-            'symptoms' => 'required',            
-            'physician' => 'required',  
-            'comment_box' => 'required',  
-        ]);        
+            'symptoms' => 'required',
+            'physician' => 'required',
+            'comment_box' => 'required',
+        ]);
         $hospital->update($request->all());
     }
 
@@ -115,8 +119,8 @@ class HospitalController extends Controller
         //
         $hospital = HospitalHistory::findOrFail($id);
 
-        Diagnose::where('hospital_id',$id)->delete();      
-      
-        $hospital->delete(); 
+        Diagnose::where('hospital_id',$id)->delete();
+
+        $hospital->delete();
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Appointment;
+use App\addPatient;
+use App\Emr;
 
 class AppointmentController extends Controller
 {
@@ -27,14 +29,19 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $this->validate($request, [
             'patient_id' => 'required',
             'reason' => 'required',
-            'date' => 'required | unique:appointments',           
+            'date' => 'required | unique:appointments',
         ]);
-                   
-        return Appointment::create($request->all());
+
+        $data = Appointment::create($request->all());
+        Emr::where('patient_id', $data->patient_id)->update([
+            'appointment_id' => $data->id
+        ]);
+        return response()->json(['data' => $data], 200);
+
+        // return Appointment::create($request->all());
     }
 
     /**
