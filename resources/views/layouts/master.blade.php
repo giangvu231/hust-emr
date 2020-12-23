@@ -117,11 +117,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </router-link>
                 <li>
 
+                <li class="nav-item">
+                    <router-link to="/hospital" class="nav-link">
+                        <i class="nav-icon fas fa-hospital-symbol"></i>
+                        <p>
+                            Lịch sử khám
+                        </p>
+                    </router-link>
+                </li>
+
                 <li class="nav-item" >
                     <router-link to="/add-biodata" class="nav-link">
                     <i class="nav-icon fas fa-database"></i>
                     <p>
-                    Nhập bệnh nhân mới
+                        Nhập bệnh nhân mới
                     </p>
                     </router-link>
                 </li>
@@ -133,16 +142,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     Nhập tiền căn
                     </p>
                     </router-link>
-                </li>
+                </li> -->
+
+
                 <li class="nav-item">
                     <router-link to="/add-hospital" class="nav-link">
-                    <i class="nav-icon fas fa-hospital-symbol"></i>
-                    <p>
-                    Nhập tiền sử
-                    </p>
+                        <i class="nav-icon fas fa-hospital-symbol"></i>
+                        <p>
+                            Nhập quá trình khám bệnh
+                        </p>
                     </router-link>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <router-link to="/taophieukham" class="nav-link">
                     <i class="nav-icon fas fa-hospital-symbol"></i>
                     <p>
@@ -150,12 +161,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </p>
                     </router-link>
                 </li> -->
-
             </ul>
         </li>
 
             <li class="nav-item">
-            <router-link to="/hospital" class="nav-link _click3" >
+            <router-link to="/vitals" class="nav-link _click3" >
               <i class="nav-icon fas fa-database"></i>
               <p>
                 2. Điều trị
@@ -206,25 +216,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </router-link>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <router-link to="/add-subclinical" class="nav-link">
                     <i class="nav-icon fas fa-heartbeat"></i>
                     <p>
                         Nhập thông tin cận lâm sàng
                     </p>
                 </router-link>
-            </li>
+            </li> -->
 
             <!-- ADMIN: Quản lý CLS -->
 
-            <li class="nav-item">
-                <router-link to="/hospital" class="nav-link">
-                    <i class="nav-icon fas fa-hospital-symbol"></i>
-                    <p>
-                        Lịch sử khám bệnh
-                    </p>
-                </router-link>
-            </li>
+
 
             <li class="nav-item">
                 <router-link to="/diagnosed" class="nav-link">
@@ -234,12 +237,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </p>
                 </router-link>
             </li>
-
-
-
-
-
-
 
                 <!-- <li class="nav-item">
             <router-link to="/add-surgery" class="nav-link">
@@ -276,23 +273,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
           </li> -->
 
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <router-link to="/lab-test" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
-              {{ __('Refered Details from Doctor') }}
+                Chỉ định xét nghiệm
               </p>
             </router-link>
-          </li> -->
+          </li>
 
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <router-link to="/labresult" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
               {{ __('Lab Result') }}
               </p>
             </router-link>
-          </li> -->
+          </li>
 
             </ul>
             </li>

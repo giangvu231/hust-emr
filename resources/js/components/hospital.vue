@@ -1,8 +1,6 @@
 <template>
     <div class="container">
         <div>
-            <!-- <router-link to="/add-biodata"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Add New</router-link> -->
-
             <router-link
                 to="/add-hospital"
                 type="button"
@@ -15,7 +13,6 @@
         <div class="row justify-content-center">
             <div class="card" style="width:100%;">
                 <div class="card-header">
-                    <!-- <h3 class="card-title">Patients Hospital History</h3> -->
                     <h3 class="card-title">Tiền sử của bệnh nhân</h3>
                 </div>
                 <!-- /.card-header -->
@@ -25,19 +22,8 @@
                         class="table table-bordered table-striped"
                     >
                         <thead>
-                            <!-- <tr>
-                  <th>Unique ID</th>
-                  <th>Name</th>
-                  <th>Date Attended</th>
-                  <th>Date Admitted</th>
-                  <th>Date Discharged </th>
-                  <th>Discharged To</th>
-                  <th>All Details</th>
-                  <th>Action</th>
-                </tr> -->
-
                             <tr>
-                                <th>Mã bệnh nhân</th>
+                                <th>Mã bệnh án</th>
                                 <th>Họ tên</th>
                                 <th>Ngày đến viện</th>
                                 <th>Ngày nhập viện</th>
@@ -54,7 +40,6 @@
                             >
                                 <td>{{ hospital.patient.unique_id }}</td>
                                 <td>
-                                    {{ hospital.patient.title }}
                                     {{ hospital.patient.full_name }}
                                 </td>
                                 <td>
@@ -68,22 +53,20 @@
                                 </td>
                                 <td>{{ hospital.discharged_to }}</td>
                                 <td>
-                                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#' + hospital.modal_id">
-                        All Info.
-                        </button> -->
-
                                     <button
                                         type="button"
                                         class="btn btn-primary"
                                         data-toggle="modal"
-                                        :data-target="'#' + hospital.modal_id"
+                                        :data-target="
+                                            '#' + hospital.patient.unique_id
+                                        "
                                     >
                                         Hiển thị
                                     </button>
 
                                     <div
                                         class="modal fade"
-                                        :id="hospital.modal_id"
+                                        :id="hospital.patient.unique_id"
                                         tabindex="-1"
                                         role="dialog"
                                         aria-labelledby="biodataTitle"
@@ -95,7 +78,6 @@
                                         >
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <!-- <h5 class="modal-title" id="exampleModalLongTitle">More Details</h5> -->
                                                     <h5
                                                         class="modal-title"
                                                         id="exampleModalLongTitle"
@@ -533,7 +515,7 @@
                 </tr> -->
 
                             <tr>
-                                <th>Mã bệnh nhân</th>
+                                <th>Mã bệnh án</th>
                                 <th>Họ tên</th>
                                 <th>Ngày vào viện</th>
                                 <th>Ngày nhập viện</th>

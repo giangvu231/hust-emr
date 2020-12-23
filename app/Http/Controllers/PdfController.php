@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PDF;
 use App\addPatient;
+use App\HospitalHistory;
 use App\Emr;
 
 class PdfController extends Controller
@@ -47,6 +48,7 @@ class PdfController extends Controller
     {
         $data = Emr::findOrFail($id);
         $patientInfo = addPatient::findOrFail($data->patient_id);
+        $hospitalHistory = HospitalHistory::findOrFail($data->patient_id);
 
         $datetime = now();
         $datetime = str_replace(" ", "", $datetime);
@@ -54,7 +56,7 @@ class PdfController extends Controller
         $datetime = str_replace(":", "", $datetime);
 
         $name = $datetime;
-        $pdf = PDF::loadView("pdf.NoiKhoa", ['data' => $data, 'patientInfo' => $patientInfo])->setPaper('A4', 'Portrait');
+        $pdf = PDF::loadView("pdf.NoiKhoa", ['data' => $data, 'patientInfo' => $patientInfo, 'hospitalHistory' => $hospitalHistory])->setPaper('A4', 'Portrait');
         $pdf->save(public_path("pdf/" . $name . ".pdf"));
         return response()->file(public_path("pdf/" . $name . ".pdf"));
     }

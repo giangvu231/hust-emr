@@ -16,12 +16,12 @@ class CreateDiagnosesTable extends Migration
         Schema::create('diagnoses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('patient_id');
-            $table->string('hospital_id')->unique();  
+            $table->string('hospital_id')->unique();
             $table->text('diagnosis');
             $table->string('comment');
             $table->string('refer_lab')->nullable();
             $table->string('refer_pham')->nullable();
-            $table->string('modal_id')->unique();
+            $table->string('modal_id')->unique()->nullable();
             $table->timestamps();
         });
     }

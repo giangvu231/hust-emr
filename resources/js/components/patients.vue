@@ -8,14 +8,14 @@
                 style="color:#fff;"
                 >Thêm mới</router-link
             >
-            <button
+            <!-- <button
                 type="button"
                 @click="pdfExport()"
                 class="btn btn-rounded btn-info"
                 style="color:#fff;"
             >
                 Print TEST
-            </button>
+            </button> -->
         </div>
         <br /><br />
         <div class="row justify-content-center">

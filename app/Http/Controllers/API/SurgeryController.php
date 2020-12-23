@@ -14,7 +14,7 @@ class SurgeryController extends Controller
     {
         $this->middleware('auth:api');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -39,10 +39,10 @@ class SurgeryController extends Controller
             'patient_id' => 'required',
             'operations' => 'required',
             'date_of_operation' => 'required',
-            'surgeon' => 'required',           
-        ]);        
+            'surgeon' => 'required',
+        ]);
         $surgery = new SurgeryHistory;
-        $surgery->patient_id = $request->patient_id;       
+        $surgery->patient_id = $request->patient_id;
         $surgery->operations = $request->operations;
         $surgery->date_of_operation = $request->date_of_operation;
         $surgery->surgeon = $request->surgeon;
@@ -78,8 +78,8 @@ class SurgeryController extends Controller
             'patient_id' => 'required',
             'operations' => 'required',
             'date_of_operation' => 'required',
-            'surgeon' => 'required',           
-        ]);        
+            'surgeon' => 'required',
+        ]);
         $surgery->update($request->all());
     }
 
@@ -93,7 +93,7 @@ class SurgeryController extends Controller
     {
         //
         $surgery = SurgeryHistory::findOrFail($id);
-      
-        $surgery->delete();  
+
+        $surgery->delete();
     }
 }

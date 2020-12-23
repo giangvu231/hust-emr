@@ -18,4 +18,4 @@ class SurgeryHistory extends Model
    public function patient(){
        return $this->belongsTo('App\addPatient');
    }
-}   
+}

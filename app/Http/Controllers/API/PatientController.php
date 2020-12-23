@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\addPatient;
 use App\Diagnose;
 use App\HospitalHistory;
+use App\Hospital;
 use App\Payment;
 use App\LabResult;
 use App\Pham;
@@ -70,7 +71,10 @@ class PatientController extends Controller
             'type_of_object' => 'required',
             'reason' => 'required',
             'medical_reason' => 'required',
-            'medical_history' => 'required',
+            'race' => 'required',
+            'foreign' => 'required',
+            'health_insurance_id' => 'required',
+            'health_insurance_date' => 'required',
         ]);
 
         $data = addPatient::create($request->all());
@@ -126,6 +130,10 @@ class PatientController extends Controller
             'reason' => 'required',
             'medical_reason' => 'required',
             'medical_history' => 'required',
+            'race' => 'required',
+            'foreign' => 'required',
+            'health_insurance_id' => 'required',
+            'health_insurance_date' => 'required',
         ]);
 
         $patient->update($request->all());

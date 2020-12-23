@@ -38,6 +38,7 @@ class EmrController extends Controller
     {
         $appointment = Appointment::all();
         $addPatient = addPatient::all();
+        $hospitalHistory = HospitalHistory::all();
         $vital = Vital::all();
         $soap = Soap::all();
         $diagnosishealth = Diagnosishealth::all();
@@ -50,6 +51,7 @@ class EmrController extends Controller
         return response()->json([
             'appointment' => $appointment,
             'addPatient' => $addPatient,
+            'hospitalHistory' => $hospitalHistory,
             'vital' => $vital,
             'soap' => $soap,
             'diagnosishealth' => $diagnosishealth,
@@ -57,7 +59,7 @@ class EmrController extends Controller
             'phams' => $phams,
             'payment' => $payment,
             'diagnose' => $diagnose,
-            'labResult' => $labResult
+            'labResult' => $labResult,
         ]);
     }
 

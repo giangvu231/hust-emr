@@ -109,6 +109,38 @@
                                 ></has-error>
                             </div>
                             <div class="form-group">
+                                <input
+                                    v-model="form.race"
+                                    type="text"
+                                    name="race"
+                                    placeholder="Dân tộc"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has('race')
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="race"
+                                ></has-error>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    v-model="form.foreign"
+                                    type="text"
+                                    name="foreign"
+                                    placeholder="Ngoại kiều"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has('foreign')
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="foreign"
+                                ></has-error>
+                            </div>
+                            <div class="form-group">
                                 <label>
                                     <!-- Select Gender -->
                                     Chọn giới tính
@@ -406,7 +438,7 @@
                                     v-model="form.work_address"
                                     type="text"
                                     name="work_address"
-                                    placeholder="Nhap noi lam viec"
+                                    placeholder="Nhập nơi làm việc"
                                     class="form-control"
                                     :class="{
                                         'is-invalid': form.errors.has(
@@ -435,6 +467,45 @@
                                 <has-error
                                     :form="form"
                                     field="type_of_object"
+                                ></has-error>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    BHYT giá trị đến ngày
+                                </label>
+                                <input
+                                    v-model="form.health_insurance_date"
+                                    type="date"
+                                    name="health_insurance_date"
+                                    placeholder="Nhập ngày hết hạn BHYT"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'health_insurance_date'
+                                        )
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="health_insurance_date"
+                                ></has-error>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    v-model="form.health_insurance_id"
+                                    type="text"
+                                    name="health_insurance_id"
+                                    placeholder="So the BHYT"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'health_insurance_id'
+                                        )
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="health_insurance_id"
                                 ></has-error>
                             </div>
                             <div class="form-group">
@@ -527,7 +598,11 @@ export default {
                 marital_status: "",
                 home_next_of_kin: "",
                 phone_next_of_kin: "",
-                name_next_of_kin: ""
+                name_next_of_kin: "",
+                race: "",
+                foreign: "",
+                health_insurance_id: "",
+                health_insurance_date: ""
             })
         };
     },
@@ -539,9 +614,9 @@ export default {
                 .then(response => {
                     toast.fire({
                         type: "success",
-                        title: "Lý lịch của bệnh nhân được thêm thành công!"
+                        title: "Thêm thông tin thành công!"
                     });
-                    $(".addpatient").html("Add Patient");
+                    $(".addpatient").html("Thêm thông tin bệnh nhân");
                     $("#add-biodata").trigger("reset");
                 })
                 .catch(err => {
@@ -550,7 +625,7 @@ export default {
                         type: "error",
                         title: "Thông tin thêm vào chưa đúng!"
                     });
-                    $(".addpatient").html("Add Patient");
+                    $(".addpatient").html("Thêm thông tin bệnh nhân");
                 });
         }
     },

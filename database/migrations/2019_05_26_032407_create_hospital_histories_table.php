@@ -17,20 +17,23 @@ class CreateHospitalHistoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('patient_id');
             $table->string('date_attented');
-            $table->string('date_admitted');            
+            $table->string('date_admitted');
             $table->string('ward');
-            $table->string('refered_by');  
-            $table->string('physician');  
-            $table->string('date_discharged');  
-            $table->string('discharged_to');  
+            $table->string('refered_by');
+            $table->string('physician');
+            $table->string('date_discharged');
+            $table->string('discharged_to');
             $table->string('outcome_of_care');
-            $table->string('symptoms');  
+            $table->string('symptoms');
             $table->string('comment_box');
-            $table->string('modal_id')->unique();
+            $table->string('modal_id')->unique()->nullable();
+            $table->string('department')->nullable();
+            $table->string('room')->nullable();
+            $table->string('bed_id')->nullable();
             $table->timestamps();
         });
     }
-    
+
 
     /**
      * Reverse the migrations.

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use App\HospitalHistory;
 use App\Diagnose;
 
@@ -15,7 +16,7 @@ class DiagnoseController extends Controller
         $this->middleware('auth:api');
     }
 
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -23,8 +24,35 @@ class DiagnoseController extends Controller
      */
     public function index()
     {
-        //
+        // Old code
         return Diagnose::with('patient', 'hospital')->get();
+
+        // $appointment = Appointment::all();
+        $addPatient = addPatient::all();
+        // $vital = Vital::all();
+        // $soap = Soap::all();
+        // $diagnosishealth = Diagnosishealth::all();
+        // $subclinical = Subclinical::all();
+        // $phams = Pham::all();
+        // $payment = Payment::all();
+        // $diagnose = Diagnose::all();
+        // $labResult = LabResult::all();
+        $hospitalhistory = HospitalHistory::all();
+
+        return response()->json([
+            // 'appointment' => $appointment,
+            'addPatient' => $addPatient,
+            // 'vital' => $vital,
+            // 'soap' => $soap,
+            // 'diagnosishealth' => $diagnosishealth,
+            // 'subclinical' => $subclinical,
+            // 'phams' => $phams,
+            // 'payment' => $payment,
+            // 'diagnose' => $diagnose,
+            // 'labResult' => $labResult
+            // 'labResult' => $labResult
+            'hospitalHistory' => $hospitalhistory
+        ]);
     }
 
     /**
@@ -40,16 +68,19 @@ class DiagnoseController extends Controller
             'patient_id' => 'required',
             'hospital_id' => 'required',
             'diagnosis' => 'required',
-            'comment' => 'required',                    
-        ]);        
-        $diagnose = new Diagnose;
-        $diagnose->patient_id = $request->patient_id;       
-        $diagnose->hospital_id = $request->hospital_id;
-        $diagnose->diagnosis = $request->diagnosis;
-        $diagnose->comment = $request->comment;
-        $diagnose->modal_id = strtolower(str_random(8));
+            'comment' => 'required',
+        ]);
+        // $diagnose = new Diagnose;
+        // $diagnose->patient_id = $request->patient_id;
+        // $diagnose->hospital_id = $request->hospital_id;
+        // $diagnose->diagnosis = $request->diagnosis;
+        // $diagnose->comment = $request->comment;
+        // $diagnose->modal_id = strtolower(str_random(8));
 
-        $diagnose->save();       
+        // $diagnose->save();
+
+        return HospitalHistory::create($request->all());
+
     }
 
     /**
@@ -75,10 +106,10 @@ class DiagnoseController extends Controller
         //
         $diagnose = Diagnose::findOrFail($id);
 
-        $this->validate($request, [            
+        $this->validate($request, [
             'diagnosis' => 'required',
-            'comment' => 'required',                    
-        ]);          
+            'comment' => 'required',
+        ]);
         $diagnose->update($request->all());
     }
 
@@ -93,12 +124,12 @@ class DiagnoseController extends Controller
         //
         $diagnose = Diagnose::findOrFail($id);
 
-        LabResult::where('patient_id',$id)->delete();        
-      
+        LabResult::where('patient_id',$id)->delete();
+
         $diagnose->delete();
     }
 
-    
+
     public function labtest()
     {
         //
@@ -109,6 +140,6 @@ class DiagnoseController extends Controller
     {
         //
         return Diagnose::where('refer_pham', 1)->with('patient', 'hospital')->get();
-    
+
     }
 }

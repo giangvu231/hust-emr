@@ -188,8 +188,8 @@
                                     {{ payment.patient.full_name }}
                                 </td>
                                 <!-- <td>{{payment.type}} Fee</td> -->
-                                <td>{{ payment.type }} Chi phí</td>
-                                <td>{{ payment.amount }}</td>
+                                <td>{{ payment.type }}</td>
+                                <td>{{ payment.amount }} VNĐ</td>
                                 <td>{{ payment.created_at | humanDate }}</td>
                             </tr>
                         </tbody>

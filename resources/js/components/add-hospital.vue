@@ -3,12 +3,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">
-                        Thêm tiền sử khám của bệnh nhân
-                    </div>
+                    <div class="card-header">Thêm lịch sử khám bệnh</div>
                     <div class="card-body">
-                        <!-- <form @submit.prevent="addHospital" id="add-hospital"> -->
-                        <form @submit.prevent="addHospital()" id="add-hospital">
+                        <form @submit.prevent="addHospital" id="add-hospital">
                             <div class="form-group">
                                 <label>Chọn bệnh nhân</label>
                                 <select
@@ -75,6 +72,56 @@
                                 <has-error
                                     :form="form"
                                     field="date_admitted"
+                                ></has-error>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    v-model="form.department"
+                                    type="text"
+                                    name="department"
+                                    placeholder="Nhập khoa dieu tri"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'department'
+                                        )
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="department"
+                                ></has-error>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    v-model="form.room"
+                                    type="text"
+                                    name="room"
+                                    placeholder="Nhập phong dieu tri"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has('room')
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="room"
+                                ></has-error>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    v-model="form.bed_id"
+                                    type="text"
+                                    name="bed_id"
+                                    placeholder="Nhập giuong dieu tri"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has('bed_id')
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="bed_id"
                                 ></has-error>
                             </div>
                             <div class="form-group">
@@ -263,7 +310,10 @@ export default {
                 discharged_to: "",
                 outcome_of_care: "",
                 comment_box: "",
-                symptoms: ""
+                symptoms: "",
+                department: "",
+                room: "",
+                bed_id: ""
             })
         };
     },
@@ -276,19 +326,17 @@ export default {
                     toast.fire({
                         type: "success",
                         // title: 'Patient Hospital History Added Successfully'
-                        title:
-                            "Thêm thông tin tiền sử của bệnh nhân thành công!"
+                        title: "Thêm thông tin thành công!"
                     });
-                    $(".hospital").html("Add Patient Hospital History ");
+                    $(".hospital").html("Thêm thông tin lịch sử của bệnh nhân");
                     $("#add-hospital").trigger("reset");
                 })
                 .catch(() => {
                     toast.fire({
                         type: "error",
-                        // title: 'Data not correctly inputed'
                         title: "Thông tin nhập chưa đúng!"
                     });
-                    $(".hospital").html("Add Patient Hospital History ");
+                    $(".hospital").html("Thêm thông tin lịch sử của bệnh nhân");
                 });
         },
         loadPatients() {
@@ -303,6 +351,7 @@ export default {
     },
     mounted() {
         console.log("Component mounted.");
+        this.loadPatients();
     }
 };
 </script>

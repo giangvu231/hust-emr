@@ -37,6 +37,11 @@ class CreateAddPatientsTable extends Migration
             $table->string('reason');
             $table->string('medical_reason');
             $table->string('medical_history');
+            $table->string('race');
+            $table->string('foreign');
+            $table->string('health_insurance_id');
+            $table->string('health_insurance_date');
+
             $table->timestamps();
         });
     }

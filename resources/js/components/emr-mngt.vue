@@ -29,7 +29,7 @@
                             </span>
                         </div>
 
-                        <div class="input-group input-group-sm">
+                        <!-- <div class="input-group input-group-sm">
                             <input
                                 type="search"
                                 v-model="search"
@@ -45,7 +45,7 @@
                                     Tìm kiếm
                                 </button>
                             </span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -61,11 +61,11 @@
                     >
                         <thead>
                             <tr>
-                                <th>Mã BN</th>
+                                <!-- <th>Mã BN</th> -->
                                 <!-- col 1 -->
+                                <th>Mã HSBA</th>
                                 <th>Họ tên</th>
                                 <!-- col 2 -->
-                                <th>Mã HSBA</th>
                                 <!-- col 3 -->
                                 <th>Ngày khám</th>
                                 <!-- col 4 -->
@@ -74,6 +74,7 @@
                                 </th>
                                 <!-- col 5 -->
                                 <th>Giới tính</th>
+                                <th>Hồ sơ</th>
                                 <!-- col 6 -->
                                 <th>Tác vụ</th>
                                 <!-- col 7 -->
@@ -81,11 +82,11 @@
                         </thead>
                         <tbody>
                             <tr v-for="patient in patients" :key="patient.id">
-                                <td>{{ patient.id }}</td>
+                                <!-- <td>{{ patient.id }}</td> -->
                                 <!-- col 1 -->
+                                <td>{{ patient.unique_id }}</td>
                                 <td>{{ patient.full_name }}</td>
                                 <!-- col 2 -->
-                                <td>{{ patient.unique_id }}</td>
                                 <!-- col 3 -->
                                 <td>{{ patient.created_at }}</td>
                                 <!-- col 4 -->
@@ -102,6 +103,8 @@
                                         Xem hồ sơ
                                     </button>
                                     <!--Biodata Modal -->
+                                </td>
+                                <td>
                                     <div
                                         class="modal fade"
                                         :id="patient.unique_id"
@@ -132,67 +135,356 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>
-                                                        <b>[1] Bệnh án: </b>
-                                                        <button
-                                                            type="submit"
-                                                            @click="
-                                                                addPatientPDF(
-                                                                    patient.id
-                                                                )
-                                                            "
-                                                        >
-                                                            Xem bệnh án
-                                                        </button>
-                                                    </p>
-                                                    <p>
-                                                        <b
-                                                            >[2] Giấy tờ lâm
-                                                            sàng</b
-                                                        >
-                                                    </p>
-                                                    <p>
-                                                        <b
-                                                            >Phiếu theo dõi sinh
-                                                            hiệu:
-                                                        </b>
-                                                        <button
-                                                            type="submit"
-                                                            @click="
-                                                                vitalPDF(
-                                                                    patient.id
-                                                                )
-                                                            "
-                                                        >
-                                                            Xem phiếu theo dõi
-                                                            sinh hiệu
-                                                        </button>
-                                                        <b
-                                                            >Bảng kế hoạch chăm
-                                                            sóc:
-                                                        </b>
-                                                        <button
-                                                            type="submit"
-                                                            @click="
-                                                                vitalPDF(
-                                                                    patient.id
-                                                                )
-                                                            "
-                                                        >
-                                                            <i
-                                                                >"Currently
-                                                                under
-                                                                development!"</i
-                                                            >
-                                                        </button>
-                                                    </p>
-
-                                                    <p>
-                                                        <b
-                                                            >[2] Giấy tờ cận lâm
-                                                            sàng</b
-                                                        >
-                                                    </p>
+                                                    <table>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <b
+                                                                    >[1] Bệnh án
+                                                                </b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        addPatientPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    Xem bệnh án
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <b
+                                                                    >[2] Giấy tờ
+                                                                    lâm sàng</b
+                                                                >
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Phiếu theo
+                                                                    dõi sinh
+                                                                    hiệu
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Bảng kế
+                                                                    hoạch chăm
+                                                                    sóc
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Phiếu tiêm
+                                                                    truyền dung
+                                                                    dịch
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Phiếu thử
+                                                                    phản ứng
+                                                                    thuốc
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Biên bản
+                                                                    hội chẩn,
+                                                                    giấy duyệt
+                                                                    mổ
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Giấy chuyển
+                                                                    viện
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Biên bản
+                                                                    nhận xét tử
+                                                                    vong:
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Phiếu xin
+                                                                    máu
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <b
+                                                                    >[2] Giấy tờ
+                                                                    cận lâm
+                                                                    sàng</b
+                                                                >
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Giấy xét
+                                                                    nghiệm:
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Phiếu kết
+                                                                    quả chụp
+                                                                    Xquang:
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Phiếu kết
+                                                                    quả chụp
+                                                                    cộng hưởng
+                                                                    từ:
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Phiếu kết
+                                                                    quả chụp cắt
+                                                                    lớp vi tính:
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Phiếu kết
+                                                                    quả siêu âm:
+                                                                </b>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button
@@ -238,7 +530,6 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td></td>
                             </tr>
                             <!--Biodata Modal -->
                             <div
@@ -727,11 +1018,11 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Mã BN</th>
+                                <!-- <th>Mã BN</th> -->
                                 <!-- col 1 -->
+                                <th>Mã HSBA</th>
                                 <th>Họ tên</th>
                                 <!-- col 2 -->
-                                <th>Mã HSBA</th>
                                 <!-- col 3 -->
                                 <th>Ngày khám</th>
                                 <!-- col 4 -->
@@ -740,6 +1031,7 @@
                                 </th>
                                 <!-- col 5 -->
                                 <th>Giới tính</th>
+                                <th>Hồ sơ</th>
                                 <!-- col 6 -->
                                 <th>Tác vụ</th>
                                 <!-- col 7 -->

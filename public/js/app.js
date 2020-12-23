@@ -2299,6 +2299,77 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2319,7 +2390,11 @@ __webpack_require__.r(__webpack_exports__);
         marital_status: "",
         home_next_of_kin: "",
         phone_next_of_kin: "",
-        name_next_of_kin: ""
+        name_next_of_kin: "",
+        race: "",
+        foreign: "",
+        health_insurance_id: "",
+        health_insurance_date: ""
       })
     };
   },
@@ -2329,9 +2404,9 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post("api/patient").then(function (response) {
         toast.fire({
           type: "success",
-          title: "Lý lịch của bệnh nhân được thêm thành công!"
+          title: "Thêm thông tin thành công!"
         });
-        $(".addpatient").html("Add Patient");
+        $(".addpatient").html("Thêm thông tin bệnh nhân");
         $("#add-biodata").trigger("reset");
       })["catch"](function (err) {
         console.log(err);
@@ -2339,7 +2414,7 @@ __webpack_require__.r(__webpack_exports__);
           type: "error",
           title: "Thông tin thêm vào chưa đúng!"
         });
-        $(".addpatient").html("Add Patient");
+        $(".addpatient").html("Thêm thông tin bệnh nhân");
       });
     }
   },
@@ -2884,6 +2959,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2899,7 +3021,10 @@ __webpack_require__.r(__webpack_exports__);
         discharged_to: "",
         outcome_of_care: "",
         comment_box: "",
-        symptoms: ""
+        symptoms: "",
+        department: "",
+        room: "",
+        bed_id: ""
       })
     };
   },
@@ -2910,17 +3035,16 @@ __webpack_require__.r(__webpack_exports__);
         toast.fire({
           type: "success",
           // title: 'Patient Hospital History Added Successfully'
-          title: "Thêm thông tin tiền sử của bệnh nhân thành công!"
+          title: "Thêm thông tin thành công!"
         });
-        $(".hospital").html("Add Patient Hospital History ");
+        $(".hospital").html("Thêm thông tin lịch sử của bệnh nhân");
         $("#add-hospital").trigger("reset");
       })["catch"](function () {
         toast.fire({
           type: "error",
-          // title: 'Data not correctly inputed'
           title: "Thông tin nhập chưa đúng!"
         });
-        $(".hospital").html("Add Patient Hospital History ");
+        $(".hospital").html("Thêm thông tin lịch sử của bệnh nhân");
       });
     },
     loadPatients: function loadPatients() {
@@ -2937,6 +3061,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log("Component mounted.");
+    this.loadPatients();
   }
 });
 
@@ -4878,16 +5003,119 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       hospitals: {},
       // checked: true,
       form: new Form({
-        patient_id: '',
-        hospital_id: '',
-        diagnosis: '',
-        comment: ''
+        patient_id: "",
+        hospital_id: "",
+        diagnosis: "",
+        comment: ""
       })
     };
   },
@@ -4907,29 +5135,29 @@ __webpack_require__.r(__webpack_exports__);
     //      axios.get('api/hospital').then(({data}) => (this.hospitals = data));
     // },
     addDiagnosis: function addDiagnosis() {
-      $('.diagnose').html('<i class="fa fa-spin fa-spinner"></i>');
-      this.form.post('api/diagnose').then(function () {
+      $(".diagnose").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.post("api/diagnose").then(function () {
         toast.fire({
-          type: 'success',
-          title: 'Thông tin chẩn đoán được thêm thành công!'
+          type: "success",
+          title: "Thông tin chẩn đoán được thêm thành công!"
         });
-        $('.diagnose').html('Diagnose Patient');
-        $('#add-diagnosis').trigger('reset');
+        $(".diagnose").html("Diagnose Patient");
+        $("#add-diagnosis").trigger("reset");
       })["catch"](function () {
         toast.fire({
-          type: 'error',
-          title: 'Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!'
+          type: "error",
+          title: "Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!"
         });
-        $('.diagnose').html('Diagnose Patient');
+        $(".diagnose").html("Diagnose Patient");
       });
     }
   },
   mounted: function mounted() {
     var _this2 = this;
 
-    console.log('Component mounted.');
+    console.log("Component mounted.");
     this.LoadHospitals();
-    Fire.$on('afterAction', function () {
+    Fire.$on("afterAction", function () {
       _this2.LoadHospitals();
     });
   }
@@ -5476,6 +5704,298 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6889,24 +7409,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -10968,20 +11470,266 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       vitals: {},
       form: new Form({
-        id: '',
-        patient_id: '',
-        temperature: '',
-        blood_pressure: '',
-        height: '',
-        weight: '',
-        pulse: '',
-        blood_group: '',
-        blood_type: '',
+        id: "",
+        patient_id: "",
+        temperature: "",
+        blood_pressure: "",
+        height: "",
+        weight: "",
+        pulse: "",
+        blood_group: "",
+        blood_type: "",
         immunization: []
       })
     };
@@ -11002,69 +11750,69 @@ __webpack_require__.r(__webpack_exports__);
     //      axios.get('api/vital').then(({data}) => (this.vitals = data));
     // },
     editModal: function editModal(vital) {
-      $('#editvital').modal('show');
+      $("#editvital").modal("show");
       this.form.fill(vital);
     },
     deleteVital: function deleteVital(id) {
       var _this2 = this;
 
       swal.fire({
-        title: 'Bạn đã chắc chắn muốn xóa?',
+        title: "Bạn đã chắc chắn muốn xóa?",
         text: "Bạn sẽ không được phép hoàn tác sau khi thực hiện!",
-        type: 'warning',
+        type: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Đồng ý, hãy xóa!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Đồng ý, hãy xóa!"
       }).then(function (result) {
         //delete qury below
         if (result.value) {
           swal.fire({
-            position: 'center',
-            type: 'info',
-            title: 'Đang xóa',
+            position: "center",
+            type: "info",
+            title: "Đang xóa",
             showConfirmButton: false,
             timer: 1000
           });
 
-          _this2.form["delete"]('api/vital/' + id).then(function () {
-            swal.fire('Đã xóa!', 'Đã xóa thành công.', 'success');
-            Fire.$emit('afterAction');
+          _this2.form["delete"]("api/vital/" + id).then(function () {
+            swal.fire("Đã xóa!", "Đã xóa thành công.", "success");
+            Fire.$emit("afterAction");
           })["catch"](function () {
             swal.fire({
-              type: 'error',
-              title: 'Oops...',
-              text: 'Đã xảy ra sự cố!'
+              type: "error",
+              title: "Oops...",
+              text: "Đã xảy ra sự cố!"
             });
           });
         }
       });
     },
     updateVital: function updateVital() {
-      $('.updatevital').html('<i class="fa fa-spin fa-spinner"></i>');
-      this.form.put('api/vital/' + this.form.id).then(function () {
-        Fire.$emit('afterAction');
-        $('#editvital').modal('hide');
+      $(".updatevital").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.put("api/vital/" + this.form.id).then(function () {
+        Fire.$emit("afterAction");
+        $("#editvital").modal("hide");
         toast.fire({
-          type: 'success',
-          title: 'Sinh hiệu được cập nhật thành công!'
+          type: "success",
+          title: "Sinh hiệu được cập nhật thành công!"
         });
-        $('.updatevital').html('Add Patient');
+        $(".updatevital").html("Add Patient");
       })["catch"](function () {
         toast.fire({
-          type: 'error',
-          title: 'Dữ liệu nhập vào chưa đúng'
+          type: "error",
+          title: "Dữ liệu nhập vào chưa đúng"
         });
-        $('.updatevital').html('Add Patient');
+        $(".updatevital").html("Add Patient");
       });
     }
   },
   mounted: function mounted() {
     var _this3 = this;
 
-    console.log('Component mounted.');
+    console.log("Component mounted.");
     this.loadVitals();
-    Fire.$on('afterAction', function () {
+    Fire.$on("afterAction", function () {
       _this3.loadVitals();
     });
   }
@@ -73060,6 +73808,86 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.race,
+                          expression: "form.race"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("race")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "race",
+                        placeholder: "Dân tộc"
+                      },
+                      domProps: { value: _vm.form.race },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "race", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "race" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.foreign,
+                          expression: "form.foreign"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("foreign")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "foreign",
+                        placeholder: "Ngoại kiều"
+                      },
+                      domProps: { value: _vm.form.foreign },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "foreign", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "foreign" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
                     _c("label", [
                       _vm._v(
                         "\n                                Chọn giới tính\n                            "
@@ -73616,7 +74444,7 @@ var render = function() {
                       attrs: {
                         type: "text",
                         name: "work_address",
-                        placeholder: "Nhap noi lam viec"
+                        placeholder: "Nhập nơi làm việc"
                       },
                       domProps: { value: _vm.form.work_address },
                       on: {
@@ -73679,6 +74507,102 @@ var render = function() {
                     _vm._v(" "),
                     _c("has-error", {
                       attrs: { form: _vm.form, field: "type_of_object" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [
+                      _vm._v(
+                        "\n                                BHYT giá trị đến ngày\n                            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.health_insurance_date,
+                          expression: "form.health_insurance_date"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has(
+                          "health_insurance_date"
+                        )
+                      },
+                      attrs: {
+                        type: "date",
+                        name: "health_insurance_date",
+                        placeholder: "Nhập ngày hết hạn BHYT"
+                      },
+                      domProps: { value: _vm.form.health_insurance_date },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "health_insurance_date",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "health_insurance_date" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.health_insurance_id,
+                          expression: "form.health_insurance_id"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("health_insurance_id")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "health_insurance_id",
+                        placeholder: "So the BHYT"
+                      },
+                      domProps: { value: _vm.form.health_insurance_id },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "health_insurance_id",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "health_insurance_id" }
                     })
                   ],
                   1
@@ -74257,9 +75181,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v(
-              "\n                    Thêm tiền sử khám của bệnh nhân\n                "
-            )
+            _vm._v("Thêm lịch sử khám bệnh")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -74270,7 +75192,7 @@ var render = function() {
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    return _vm.addHospital()
+                    return _vm.addHospital($event)
                   }
                 }
               },
@@ -74429,6 +75351,126 @@ var render = function() {
                     _vm._v(" "),
                     _c("has-error", {
                       attrs: { form: _vm.form, field: "date_admitted" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.department,
+                          expression: "form.department"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("department")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "department",
+                        placeholder: "Nhập khoa dieu tri"
+                      },
+                      domProps: { value: _vm.form.department },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "department", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "department" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.room,
+                          expression: "form.room"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("room")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "room",
+                        placeholder: "Nhập phong dieu tri"
+                      },
+                      domProps: { value: _vm.form.room },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "room", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "room" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.bed_id,
+                          expression: "form.bed_id"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("bed_id")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "bed_id",
+                        placeholder: "Nhập giuong dieu tri"
+                      },
+                      domProps: { value: _vm.form.bed_id },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "bed_id", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "bed_id" }
                     })
                   ],
                   1
@@ -77622,9 +78664,9 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(payment.type) + " Chi phí")]),
+                    _c("td", [_vm._v(_vm._s(payment.type))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(payment.amount))]),
+                    _c("td", [_vm._v(_vm._s(payment.amount) + " VNĐ")]),
                     _vm._v(" "),
                     _c("td", [
                       _vm._v(_vm._s(_vm._f("humanDate")(payment.created_at)))
@@ -77761,9 +78803,9 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [
                       _vm._v(
-                        _vm._s(hospital.patient.title) +
-                          " " +
-                          _vm._s(hospital.patient.full_name)
+                        "\n                                " +
+                          _vm._s(hospital.patient.full_name) +
+                          "\n                            "
                       )
                     ]),
                     _vm._v(" "),
@@ -77777,12 +78819,12 @@ var render = function() {
                           attrs: {
                             type: "button",
                             "data-toggle": "modal",
-                            "data-target": "#" + hospital.modal_id
+                            "data-target": "#" + hospital.patient.unique_id
                           }
                         },
                         [
                           _vm._v(
-                            "\n                    Chẩn đoán\n                    "
+                            "\n                                    Chẩn đoán\n                                "
                           )
                         ]
                       ),
@@ -77792,7 +78834,7 @@ var render = function() {
                         {
                           staticClass: "modal fade",
                           attrs: {
-                            id: hospital.modal_id,
+                            id: hospital.patient.unique_id,
                             tabindex: "-1",
                             role: "dialog",
                             "aria-labelledby": "biodataTitle",
@@ -77829,7 +78871,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.patient_id,
-                                            expression: "form.patient_id"
+                                            expression:
+                                              "\n                                                            form.patient_id\n                                                        "
                                           }
                                         ],
                                         attrs: {
@@ -77853,7 +78896,9 @@ var render = function() {
                                           }
                                         }
                                       }),
-                                      _vm._v(" Xác nhận tác vụ trước "),
+                                      _vm._v(
+                                        "\n                                                    Xác nhận tác vụ trước\n                                                    "
+                                      ),
                                       _c("br"),
                                       _vm._v(" "),
                                       _c("input", {
@@ -77862,7 +78907,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.hospital_id,
-                                            expression: "form.hospital_id"
+                                            expression:
+                                              "\n                                                            form.hospital_id\n                                                        "
                                           }
                                         ],
                                         attrs: {
@@ -77887,7 +78933,7 @@ var render = function() {
                                         }
                                       }),
                                       _vm._v(
-                                        " Xác nhận thông tin bệnh viện\n                            "
+                                        "\n                                                    Xác nhận thông tin bệnh\n                                                    viện\n                                                    "
                                       ),
                                       _vm._v(" "),
                                       _c(
@@ -77900,7 +78946,8 @@ var render = function() {
                                                 name: "model",
                                                 rawName: "v-model",
                                                 value: _vm.form.diagnosis,
-                                                expression: "form.diagnosis"
+                                                expression:
+                                                  "\n                                                                form.diagnosis\n                                                            "
                                               }
                                             ],
                                             staticClass: "form-control",
@@ -77953,7 +79000,8 @@ var render = function() {
                                                 name: "model",
                                                 rawName: "v-model",
                                                 value: _vm.form.comment,
-                                                expression: "form.comment"
+                                                expression:
+                                                  "\n                                                                form.comment\n                                                            "
                                               }
                                             ],
                                             staticClass: "form-control",
@@ -78003,7 +79051,11 @@ var render = function() {
                                             staticStyle: { color: "#fff" },
                                             attrs: { type: "submit" }
                                           },
-                                          [_vm._v("Chẩn đoán của bệnh nhân")]
+                                          [
+                                            _vm._v(
+                                              "\n                                                            Chẩn đoán của\n                                                            bệnh nhân\n                                                        "
+                                            )
+                                          ]
                                         )
                                       ])
                                     ],
@@ -78038,7 +79090,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("h3", { staticClass: "card-title" }, [
-        _vm._v("Chẩn đoán: các triệu chứng và phản hồi của bệnh nhân")
+        _vm._v(
+          "\n                    Chẩn đoán: các triệu chứng và phản hồi của bệnh nhân\n                "
+        )
       ])
     ])
   },
@@ -78066,7 +79120,11 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Chẩn đoán bệnh nhân")]
+        [
+          _vm._v(
+            "\n                                                    Chẩn đoán bệnh nhân\n                                                "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -78094,7 +79152,11 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Đóng")]
+        [
+          _vm._v(
+            "\n                                                    Đóng\n                                                "
+          )
+        ]
       )
     ])
   },
@@ -78904,54 +79966,6 @@ var render = function() {
                   ]
                 )
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "input-group input-group-sm" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.search,
-                    expression: "search"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "search", placeholder: "Nhập mã bệnh nhân" },
-                domProps: { value: _vm.search },
-                on: {
-                  keyup: function($event) {
-                    if (
-                      !$event.type.indexOf("key") &&
-                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                    ) {
-                      return null
-                    }
-                    return _vm.searchit($event)
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.search = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "input-group-append" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-info btn-flat",
-                    on: { click: _vm.searchit }
-                  },
-                  [
-                    _vm._v(
-                      "\n                                Tìm kiếm\n                            "
-                    )
-                  ]
-                )
-              ])
             ])
           ])
         ]),
@@ -78976,11 +79990,9 @@ var render = function() {
                   [
                     _vm._l(_vm.patients, function(patient) {
                       return _c("tr", { key: patient.id }, [
-                        _c("td", [_vm._v(_vm._s(patient.id))]),
+                        _c("td", [_vm._v(_vm._s(patient.unique_id))]),
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(patient.full_name))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(patient.unique_id))]),
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(patient.created_at))]),
                         _vm._v(" "),
@@ -79004,8 +80016,10 @@ var render = function() {
                                 "\n                                    Xem hồ sơ\n                                "
                               )
                             ]
-                          ),
-                          _vm._v(" "),
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
                           _c(
                             "div",
                             {
@@ -79031,85 +80045,394 @@ var render = function() {
                                     _vm._m(2, true),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "modal-body" }, [
-                                      _c("p", [
-                                        _c("b", [_vm._v("[1] Bệnh án: ")]),
+                                      _c("table", [
+                                        _vm._m(3, true),
                                         _vm._v(" "),
-                                        _c(
-                                          "button",
-                                          {
-                                            attrs: { type: "submit" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.addPatientPDF(
-                                                  patient.id
-                                                )
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                                        Xem bệnh án\n                                                    "
-                                            )
-                                          ]
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _vm._m(3, true),
-                                      _vm._v(" "),
-                                      _c("p", [
-                                        _c("b", [
-                                          _vm._v(
-                                            "Phiếu theo dõi sinh\n                                                        hiệu:\n                                                    "
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "button",
-                                          {
-                                            attrs: { type: "submit" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.vitalPDF(patient.id)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                                        Xem phiếu theo dõi\n                                                        sinh hiệu\n                                                    "
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("b", [
-                                          _vm._v(
-                                            "Bảng kế hoạch chăm\n                                                        sóc:\n                                                    "
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "button",
-                                          {
-                                            attrs: { type: "submit" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.vitalPDF(patient.id)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c("i", [
-                                              _vm._v(
-                                                '"Currently\n                                                            under\n                                                            development!"'
+                                        _c("tr", [
+                                          _c(
+                                            "td",
+                                            { attrs: { colspan: "2" } },
+                                            [
+                                              _c(
+                                                "button",
+                                                {
+                                                  attrs: { type: "submit" },
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.addPatientPDF(
+                                                        patient.id
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                                Xem bệnh án\n                                                            "
+                                                  )
+                                                ]
                                               )
-                                            ])
-                                          ]
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _vm._m(4, true)
+                                            ]
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _vm._m(4, true),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(5, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(6, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(7, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(8, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(9, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(10, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(11, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(12, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _vm._m(13, true),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(14, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(15, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(16, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(17, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("tr", [
+                                          _vm._m(18, true),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                attrs: { type: "submit" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.vitalPDF(
+                                                      patient.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    "Xem\n                                                                    phiếu"
+                                                  )
+                                                ])
+                                              ]
+                                            )
+                                          ])
+                                        ])
+                                      ])
                                     ]),
                                     _vm._v(" "),
-                                    _vm._m(5, true)
+                                    _vm._m(19, true)
                                   ])
                                 ]
                               )
@@ -79162,9 +80485,7 @@ var render = function() {
                               )
                             ])
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c("td")
+                        ])
                       ])
                     }),
                     _vm._v(" "),
@@ -79189,7 +80510,7 @@ var render = function() {
                           },
                           [
                             _c("div", { staticClass: "modal-content" }, [
-                              _vm._m(6),
+                              _vm._m(20),
                               _vm._v(" "),
                               _c("div", { staticClass: "modal-body" }, [
                                 _c(
@@ -80288,7 +81609,7 @@ var render = function() {
                                 )
                               ]),
                               _vm._v(" "),
-                              _vm._m(7)
+                              _vm._m(21)
                             ])
                           ]
                         )
@@ -80298,7 +81619,7 @@ var render = function() {
                   2
                 ),
                 _vm._v(" "),
-                _vm._m(8)
+                _vm._m(22)
               ]
             )
           ],
@@ -80325,11 +81646,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Mã BN")]),
+        _c("th", [_vm._v("Mã HSBA")]),
         _vm._v(" "),
         _c("th", [_vm._v("Họ tên")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Mã HSBA")]),
         _vm._v(" "),
         _c("th", [_vm._v("Ngày khám")]),
         _vm._v(" "),
@@ -80340,6 +81659,8 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("th", [_vm._v("Giới tính")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Hồ sơ")]),
         _vm._v(" "),
         _c("th", [_vm._v("Tác vụ")])
       ])
@@ -80373,10 +81694,38 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [
+    return _c("tr", [
+      _c("td", { attrs: { colspan: "2" } }, [
+        _c("b", [
+          _vm._v(
+            "[1] Bệnh án\n                                                            "
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", { attrs: { colspan: "2" } }, [
+        _c("b", [
+          _vm._v(
+            "[2] Giấy tờ\n                                                                lâm sàng"
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
       _c("b", [
         _vm._v(
-          "[2] Giấy tờ lâm\n                                                        sàng"
+          "Phiếu theo\n                                                                dõi sinh\n                                                                hiệu\n                                                            "
         )
       ])
     ])
@@ -80385,10 +81734,156 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [
+    return _c("td", [
       _c("b", [
         _vm._v(
-          "[2] Giấy tờ cận lâm\n                                                        sàng"
+          "Bảng kế\n                                                                hoạch chăm\n                                                                sóc\n                                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("b", [
+        _vm._v(
+          "Phiếu tiêm\n                                                                truyền dung\n                                                                dịch\n                                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("b", [
+        _vm._v(
+          "Phiếu thử\n                                                                phản ứng\n                                                                thuốc\n                                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("b", [
+        _vm._v(
+          "Biên bản\n                                                                hội chẩn,\n                                                                giấy duyệt\n                                                                mổ\n                                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("b", [
+        _vm._v(
+          "Giấy chuyển\n                                                                viện\n                                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("b", [
+        _vm._v(
+          "Biên bản\n                                                                nhận xét tử\n                                                                vong:\n                                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("b", [
+        _vm._v(
+          "Phiếu xin\n                                                                máu\n                                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", { attrs: { colspan: "2" } }, [
+        _c("b", [
+          _vm._v(
+            "[2] Giấy tờ\n                                                                cận lâm\n                                                                sàng"
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("b", [
+        _vm._v(
+          "Giấy xét\n                                                                nghiệm:\n                                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("b", [
+        _vm._v(
+          "Phiếu kết\n                                                                quả chụp\n                                                                Xquang:\n                                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("b", [
+        _vm._v(
+          "Phiếu kết\n                                                                quả chụp\n                                                                cộng hưởng\n                                                                từ:\n                                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("b", [
+        _vm._v(
+          "Phiếu kết\n                                                                quả chụp cắt\n                                                                lớp vi tính:\n                                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("b", [
+        _vm._v(
+          "Phiếu kết\n                                                                quả siêu âm:\n                                                            "
         )
       ])
     ])
@@ -80466,11 +81961,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("tfoot", [
       _c("tr", [
-        _c("th", [_vm._v("Mã BN")]),
+        _c("th", [_vm._v("Mã HSBA")]),
         _vm._v(" "),
         _c("th", [_vm._v("Họ tên")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Mã HSBA")]),
         _vm._v(" "),
         _c("th", [_vm._v("Ngày khám")]),
         _vm._v(" "),
@@ -80481,6 +81974,8 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("th", [_vm._v("Giới tính")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Hồ sơ")]),
         _vm._v(" "),
         _c("th", [_vm._v("Tác vụ")])
       ])
@@ -81265,8 +82760,6 @@ var render = function() {
                       _c("td", [
                         _vm._v(
                           "\n                                " +
-                            _vm._s(hospital.patient.title) +
-                            "\n                                " +
                             _vm._s(hospital.patient.full_name) +
                             "\n                            "
                         )
@@ -81312,7 +82805,7 @@ var render = function() {
                             attrs: {
                               type: "button",
                               "data-toggle": "modal",
-                              "data-target": "#" + hospital.modal_id
+                              "data-target": "#" + hospital.patient.unique_id
                             }
                           },
                           [
@@ -81327,7 +82820,7 @@ var render = function() {
                           {
                             staticClass: "modal fade",
                             attrs: {
-                              id: hospital.modal_id,
+                              id: hospital.patient.unique_id,
                               tabindex: "-1",
                               role: "dialog",
                               "aria-labelledby": "biodataTitle",
@@ -82117,7 +83610,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Mã bệnh nhân")]),
+        _c("th", [_vm._v("Mã bệnh án")]),
         _vm._v(" "),
         _c("th", [_vm._v("Họ tên")]),
         _vm._v(" "),
@@ -82237,7 +83730,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("tfoot", [
       _c("tr", [
-        _c("th", [_vm._v("Mã bệnh nhân")]),
+        _c("th", [_vm._v("Mã bệnh án")]),
         _vm._v(" "),
         _c("th", [_vm._v("Họ tên")]),
         _vm._v(" "),
@@ -83800,21 +85293,6 @@ var render = function() {
             attrs: { to: "/add-biodata", type: "button" }
           },
           [_vm._v("Thêm mới")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-rounded btn-info",
-            staticStyle: { color: "#fff" },
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.pdfExport()
-              }
-            }
-          },
-          [_vm._v("\n            Print TEST\n        ")]
         )
       ],
       1
@@ -87750,9 +89228,11 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
-                          _vm._s(vital.patient.title) +
-                            " " +
-                            _vm._s(vital.patient.full_name)
+                          "\n                                " +
+                            _vm._s(vital.patient.title) +
+                            "\n                                " +
+                            _vm._s(vital.patient.full_name) +
+                            "\n                            "
                         )
                       ]),
                       _vm._v(" "),
@@ -87777,7 +89257,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                    Hiển thị\n                    "
+                              "\n                                    Hiển thị\n                                "
                             )
                           ]
                         ),
@@ -87812,20 +89292,29 @@ var render = function() {
                                     [
                                       _c("p", [
                                         _c("b", [_vm._v("Nhóm máu: ")]),
-                                        _vm._v(_vm._s(vital.blood_group))
+                                        _vm._v(
+                                          _vm._s(vital.blood_group) +
+                                            "\n                                                "
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c("p", [
                                         _c("b", [
                                           _vm._v(
-                                            "Loại máu (Phân loại theo hệ thống Rhesus): "
+                                            "Loại máu (Phân loại\n                                                        theo hệ thống\n                                                        Rhesus):\n                                                    "
                                           )
                                         ]),
-                                        _vm._v(" " + _vm._s(vital.blood_type))
+                                        _vm._v(
+                                          "\n                                                    " +
+                                            _vm._s(vital.blood_type) +
+                                            "\n                                                "
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c("h4", [
-                                        _vm._v("Tình trạng tiêm chủng")
+                                        _vm._v(
+                                          "\n                                                    Tình trạng tiêm chủng\n                                                "
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _vm._m(3, true),
@@ -87933,7 +89422,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.temperature,
-                                            expression: "form.temperature"
+                                            expression:
+                                              "\n                                                        form.temperature\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -87986,7 +89476,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.blood_pressure,
-                                            expression: "form.blood_pressure"
+                                            expression:
+                                              "\n                                                        form.blood_pressure\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -88134,7 +89625,9 @@ var render = function() {
                                     { staticClass: "form-group" },
                                     [
                                       _c("label", [
-                                        _vm._v("Nhịp tim (nhịp/phút)")
+                                        _vm._v(
+                                          "Nhịp tim\n                                                    (nhịp/phút)"
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c("input", {
@@ -88195,7 +89688,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.blood_group,
-                                            expression: "form.blood_group"
+                                            expression:
+                                              "\n                                                        form.blood_group\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -88249,7 +89743,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.blood_type,
-                                            expression: "form.blood_type"
+                                            expression:
+                                              "\n                                                        form.blood_type\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -88296,7 +89791,9 @@ var render = function() {
                                     { staticClass: "form-group" },
                                     [
                                       _c("label", [
-                                        _vm._v("Tình trạng tiêm chủng")
+                                        _vm._v(
+                                          "Tình trạng tiêm\n                                                    chủng"
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c("br"),
@@ -88309,7 +89806,8 @@ var render = function() {
                                               name: "model",
                                               rawName: "v-model",
                                               value: _vm.form.immunization,
-                                              expression: "form.immunization"
+                                              expression:
+                                                "\n                                                        form.immunization\n                                                    "
                                             }
                                           ],
                                           staticClass:
@@ -88407,7 +89905,11 @@ var render = function() {
                                         staticStyle: { color: "#fff" },
                                         attrs: { type: "submit" }
                                       },
-                                      [_vm._v("Cập nhật thông tin sinh hiệu")]
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Cập nhật thông tin sinh\n                                                    hiệu\n                                                "
+                                        )
+                                      ]
                                     )
                                   ])
                                 ],
@@ -88476,7 +89978,11 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Các thông tin khác")]
+        [
+          _vm._v(
+            "\n                                                    Các thông tin khác\n                                                "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -88499,10 +90005,12 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("i", [
       _vm._v(
-        "Đã tiêm phòng: đậu mùa, sốt vàng, TAB, uốn ván, bại liệt, bạch hầu "
+        "Đã tiêm phòng: đậu mùa,\n                                                    sốt vàng, TAB, uốn ván,\n                                                    bại liệt, bạch hầu\n                                                    "
       ),
       _c("br"),
-      _vm._v(" Danh sách đã tiêm phòng bên dưới")
+      _vm._v(
+        "\n                                                    Danh sách đã tiêm phòng\n                                                    bên dưới"
+      )
     ])
   },
   function() {
@@ -88516,7 +90024,11 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Đóng")]
+        [
+          _vm._v(
+            "\n                                                    Đóng\n                                                "
+          )
+        ]
       )
     ])
   },
@@ -88528,7 +90040,11 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Sinh hiệu bệnh nhân")]
+        [
+          _vm._v(
+            "\n                                            Sinh hiệu bệnh nhân\n                                        "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -88556,7 +90072,11 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Đóng")]
+        [
+          _vm._v(
+            "\n                                            Đóng\n                                        "
+          )
+        ]
       )
     ])
   },

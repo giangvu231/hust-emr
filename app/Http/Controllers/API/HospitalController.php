@@ -4,14 +4,12 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\addPatient;
 use App\HospitalHistory;
 use App\Diagnose;
 use App\Emr;
 
 class HospitalController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth:api');
@@ -24,8 +22,8 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        //
         return HospitalHistory::with('patient')->get();
+        return HospitalHistory::all();
     }
 
     /**
@@ -49,6 +47,9 @@ class HospitalController extends Controller
             'symptoms' => 'required',
             'physician' => 'required',
             'comment_box' => 'required',
+            'department' => 'required',
+            'room' => 'required',
+            'bed_id' => 'required',
         ]);
         // $hospital = new HospitalHistory;
         // $hospital->patient_id = $request->patient_id;
@@ -66,6 +67,14 @@ class HospitalController extends Controller
 
         // $hospital->save();
 
+        $data = HospitalHistory::create($request->all());
+        Diagnose::create([
+            'patient_id' => $data->patient_id,
+            'hospital_id' => $data->id,
+            'diagnosis' => $data->symptoms,
+            'comment' => $data->comment_box,
+            'modal_id' => $data->modal_id,
+        ]);
         return response()->json(['data' => $data], 200);
     }
 
@@ -89,7 +98,6 @@ class HospitalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $hospital = HospitalHistory::findOrFail($id);
 
         $this->validate($request, [
@@ -104,6 +112,9 @@ class HospitalController extends Controller
             'symptoms' => 'required',
             'physician' => 'required',
             'comment_box' => 'required',
+            'department' => 'required',
+            'room' => 'required',
+            'bed_id' => 'required',
         ]);
         $hospital->update($request->all());
     }
