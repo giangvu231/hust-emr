@@ -2647,20 +2647,122 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       patients: {},
       form: new Form({
         patient_id: "",
-        diagnosis_type: "",
-        diagnosis_header: "",
-        icd10_id: "under development",
-        icd10_name: "under development",
-        start_date: "",
-        end_date: "",
-        diagnosis_status: "",
-        diagnosis_note: ""
+        diagnosis_tuanhoan: "",
+        diagnosis_hohap: "",
+        diagnosis_tieuhoa: "",
+        diagnosis_than_tietnieu_sinhduc: "",
+        diagnosis_thankinh: "",
+        diagnosis_coxuongkhop: "",
+        diagnosis_taimuihong: "",
+        diagnosis_ranghammat: "",
+        diagnosis_mat: "",
+        diagnosis_noitiet_dinhduong_khac: ""
       })
     };
   },
@@ -2672,14 +2774,14 @@ __webpack_require__.r(__webpack_exports__);
           type: "success",
           title: "Thêm thành công!"
         });
-        $(".diagnosishealth").html("Add Patient Diagnosishealth");
+        $(".diagnosishealth").html("Thêm thông tin");
         $("#add-diagnosishealth").trigger("reset");
       })["catch"](function () {
         toast.fire({
           type: "error",
           title: "Dữ liệu nhập vào chưa đúng!"
         });
-        $(".diagnosishealth").html("Add Patient Diagnosishealth");
+        $(".diagnosishealth").html("Thêm thông tin");
       });
     },
     loadPatients: function loadPatients() {
@@ -3628,6 +3730,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4040,37 +4152,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -5605,6 +5686,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -75415,7 +75502,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("Chan doan lam sang")
+            _vm._v("Khám các cơ quan")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -75431,350 +75518,647 @@ var render = function() {
                 }
               },
               [
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", [_vm._v("Chọn bệnh nhân")]),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.patient_id,
-                            expression: "form.patient_id"
-                          }
+                _c("table", { attrs: { width: "100%" } }, [
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("label", [_vm._v("Chọn bệnh nhân")]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.patient_id,
+                                  expression: "form.patient_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("patient_id")
+                              },
+                              attrs: { name: "patient_id" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "patient_id",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            _vm._l(_vm.patients, function(patient) {
+                              return _c(
+                                "option",
+                                {
+                                  key: patient.id,
+                                  domProps: { value: patient.id }
+                                },
+                                [_vm._v(_vm._s(patient.full_name + patient.id))]
+                              )
+                            }),
+                            0
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "patient_id" }
+                          })
                         ],
-                        staticClass: "form-control",
-                        class: {
-                          "is-invalid": _vm.form.errors.has("patient_id")
-                        },
-                        attrs: { name: "patient_id" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.form,
-                              "patient_id",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      _vm._l(_vm.patients, function(patient) {
-                        return _c(
-                          "option",
-                          { key: patient.id, domProps: { value: patient.id } },
-                          [_vm._v(_vm._s(patient.full_name + patient.id))]
-                        )
-                      }),
-                      0
-                    ),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "patient_id" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.diagnosis_type,
-                          expression: "form.diagnosis_type"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("diagnosis_type")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "diagnosis_type",
-                        placeholder: "Nhập Loai chan doan"
-                      },
-                      domProps: { value: _vm.form.diagnosis_type },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.form,
-                            "diagnosis_type",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "diagnosis_type" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.diagnosis_header,
-                          expression: "form.diagnosis_header"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("diagnosis_header")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "diagnosis_header",
-                        placeholder: "Nhập Tieu de"
-                      },
-                      domProps: { value: _vm.form.diagnosis_header },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.form,
-                            "diagnosis_header",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "diagnosis_header" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", [
-                      _vm._v(
-                        "\n                                Ngay bat dau\n                            "
+                        1
                       )
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.start_date,
-                          expression: "form.start_date"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("start_date")
-                      },
-                      attrs: {
-                        type: "date",
-                        name: "start_date",
-                        placeholder: "Điền ngày bat dau"
-                      },
-                      domProps: { value: _vm.form.start_date },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "start_date", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "start_date" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", [
-                      _vm._v(
-                        "\n                                Ngay ket thuc\n                            "
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.diagnosis_tuanhoan,
+                                expression:
+                                  "\n                                                form.diagnosis_tuanhoan\n                                            "
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "diagnosis_tuanhoan"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "diagnosis_tuanhoan",
+                              placeholder: "Cơ quan tuần hoàn",
+                              rows: "5"
+                            },
+                            domProps: { value: _vm.form.diagnosis_tuanhoan },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "diagnosis_tuanhoan",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "diagnosis_tuanhoan"
+                            }
+                          })
+                        ],
+                        1
                       )
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.end_date,
-                          expression: "form.end_date"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("end_date")
-                      },
-                      attrs: {
-                        type: "date",
-                        name: "end_date",
-                        placeholder: "Điền ngày ket thuc"
-                      },
-                      domProps: { value: _vm.form.end_date },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "end_date", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "end_date" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.diagnosis_status,
-                          expression: "form.diagnosis_status"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("diagnosis_status")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "diagnosis_status",
-                        placeholder: "Nhập tinh trang"
-                      },
-                      domProps: { value: _vm.form.diagnosis_status },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.form,
-                            "diagnosis_status",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "diagnosis_status" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.diagnosis_note,
-                          expression: "form.diagnosis_note"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("diagnosis_note")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "diagnosis_note",
-                        placeholder: "Nhập ghi chu"
-                      },
-                      domProps: { value: _vm.form.diagnosis_note },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.form,
-                            "diagnosis_note",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "diagnosis_note" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("center", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "diagnosishealth btn-block btn btn-info",
-                      staticStyle: { color: "#fff" },
-                      attrs: { type: "submit" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                                Thêm chan doan lam sang\n                            "
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.diagnosis_hohap,
+                                expression: "form.diagnosis_hohap"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "diagnosis_hohap"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "diagnosis_hohap",
+                              placeholder: "Cơ quan hô hấp",
+                              rows: "5"
+                            },
+                            domProps: { value: _vm.form.diagnosis_hohap },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "diagnosis_hohap",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "diagnosis_hohap" }
+                          })
+                        ],
+                        1
                       )
-                    ]
-                  )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.diagnosis_tieuhoa,
+                                expression: "form.diagnosis_tieuhoa"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "diagnosis_tieuhoa"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "diagnosis_tieuhoa",
+                              placeholder: "Cơ quan tiêu hóa",
+                              rows: "5"
+                            },
+                            domProps: { value: _vm.form.diagnosis_tieuhoa },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "diagnosis_tieuhoa",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "diagnosis_tieuhoa"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.diagnosis_than_tietnieu_sinhduc,
+                                expression:
+                                  "\n                                                form.diagnosis_than_tietnieu_sinhduc\n                                            "
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "diagnosis_than_tietnieu_sinhduc"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "diagnosis_than_tietnieu_sinhduc",
+                              placeholder:
+                                "Cơ quan Thận - Tiết niệu - Sinh dục",
+                              rows: "5"
+                            },
+                            domProps: {
+                              value: _vm.form.diagnosis_than_tietnieu_sinhduc
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "diagnosis_than_tietnieu_sinhduc",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "diagnosis_than_tietnieu_sinhduc"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.diagnosis_thankinh,
+                                expression:
+                                  "\n                                                form.diagnosis_thankinh\n                                            "
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "diagnosis_thankinh"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "diagnosis_thankinh",
+                              placeholder: "Cơ quan Thần Kinh",
+                              rows: "5"
+                            },
+                            domProps: { value: _vm.form.diagnosis_thankinh },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "diagnosis_thankinh",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "diagnosis_thankinh"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.diagnosis_coxuongkhop,
+                                expression:
+                                  "\n                                                form.diagnosis_coxuongkhop\n                                            "
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "diagnosis_coxuongkhop"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "diagnosis_coxuongkhop",
+                              placeholder: "Cơ quan Cơ - Xương - Khớp",
+                              rows: "5"
+                            },
+                            domProps: { value: _vm.form.diagnosis_coxuongkhop },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "diagnosis_coxuongkhop",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "diagnosis_coxuongkhop"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.diagnosis_taimuihong,
+                                expression:
+                                  "\n                                                form.diagnosis_taimuihong\n                                            "
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "diagnosis_taimuihong"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "diagnosis_taimuihong",
+                              placeholder: "Cơ quan Tai - Mũi - Họng",
+                              rows: "5"
+                            },
+                            domProps: { value: _vm.form.diagnosis_taimuihong },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "diagnosis_taimuihong",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "diagnosis_taimuihong"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.diagnosis_ranghammat,
+                                expression:
+                                  "\n                                                form.diagnosis_ranghammat\n                                            "
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "diagnosis_ranghammat"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "diagnosis_ranghammat",
+                              placeholder: "Cơ quan Răng - Hàm - Mặt",
+                              rows: "5"
+                            },
+                            domProps: { value: _vm.form.diagnosis_ranghammat },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "diagnosis_ranghammat",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "diagnosis_ranghammat"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.diagnosis_mat,
+                                expression: "form.diagnosis_mat"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("diagnosis_mat")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "diagnosis_mat",
+                              placeholder: "Cơ quan Mắt",
+                              rows: "5"
+                            },
+                            domProps: { value: _vm.form.diagnosis_mat },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "diagnosis_mat",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "diagnosis_mat" }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value:
+                                  _vm.form.diagnosis_noitiet_dinhduong_khac,
+                                expression:
+                                  "\n                                                form.diagnosis_noitiet_dinhduong_khac\n                                            "
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "diagnosis_noitiet_dinhduong_khac"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "diagnosis_noitiet_dinhduong_khac",
+                              placeholder:
+                                "Cơ quan Nội tiết, dinh dưỡng và các bệnh lý khác",
+                              rows: "5"
+                            },
+                            domProps: {
+                              value: _vm.form.diagnosis_noitiet_dinhduong_khac
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "diagnosis_noitiet_dinhduong_khac",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "diagnosis_noitiet_dinhduong_khac"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c(
+                      "td",
+                      { attrs: { colspan: "2" } },
+                      [
+                        _c("center", [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "diagnosishealth btn-block btn btn-info",
+                              staticStyle: { color: "#fff" },
+                              attrs: { type: "submit" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                            Thêm thông tin\n                                        "
+                              )
+                            ]
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ])
                 ])
-              ],
-              1
+              ]
             )
           ])
         ])
@@ -77671,7 +78055,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("input", {
+                    _c("textarea", {
                       directives: [
                         {
                           name: "model",
@@ -77687,7 +78071,9 @@ var render = function() {
                       attrs: {
                         type: "text",
                         name: "subjective",
-                        placeholder: "Nhập dau chung chu quan"
+                        placeholder: "Dấu chứng chủ quan (Subjective)",
+                        rows: "5",
+                        cols: "10"
                       },
                       domProps: { value: _vm.form.subjective },
                       on: {
@@ -77711,7 +78097,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("input", {
+                    _c("textarea", {
                       directives: [
                         {
                           name: "model",
@@ -77727,7 +78113,9 @@ var render = function() {
                       attrs: {
                         type: "text",
                         name: "objective",
-                        placeholder: "Nhập dau chung khach quan"
+                        placeholder: "Dấu chứng khách quan (Objective)",
+                        rows: "5",
+                        cols: "10"
                       },
                       domProps: { value: _vm.form.objective },
                       on: {
@@ -77751,7 +78139,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("input", {
+                    _c("textarea", {
                       directives: [
                         {
                           name: "model",
@@ -77767,7 +78155,9 @@ var render = function() {
                       attrs: {
                         type: "text",
                         name: "assessment",
-                        placeholder: "Nhập huong chan doan"
+                        placeholder: "Hướng chẩn đoán (Assessment)",
+                        cols: "10",
+                        rows: "5"
                       },
                       domProps: { value: _vm.form.assessment },
                       on: {
@@ -77791,7 +78181,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("input", {
+                    _c("textarea", {
                       directives: [
                         {
                           name: "model",
@@ -77807,7 +78197,9 @@ var render = function() {
                       attrs: {
                         type: "text",
                         name: "plan",
-                        placeholder: "Nhập huong dieu tri"
+                        placeholder: "Hướng điều trị (Plan)",
+                        rows: "5",
+                        cols: "10"
                       },
                       domProps: { value: _vm.form.plan },
                       on: {
@@ -78426,7 +78818,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("Quản lý sinh hiệu")
+            _vm._v("Khám bệnh toàn thân")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -78442,553 +78834,453 @@ var render = function() {
                 }
               },
               [
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", [_vm._v("Chọn bệnh nhân")]),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.patient_id,
-                            expression: "form.patient_id"
-                          }
+                _c("table", { attrs: { width: "100%" } }, [
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.patient_id,
+                                  expression: "form.patient_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("patient_id")
+                              },
+                              attrs: {
+                                "aria-placeholder": "Chon benh nhan",
+                                name: "patient_id"
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "patient_id",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            _vm._l(_vm.patients, function(patient) {
+                              return _c(
+                                "option",
+                                {
+                                  key: patient.id,
+                                  domProps: { value: patient.id }
+                                },
+                                [_vm._v(_vm._s(patient.full_name + patient.id))]
+                              )
+                            }),
+                            0
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "patient_id" }
+                          })
                         ],
-                        staticClass: "form-control",
-                        class: {
-                          "is-invalid": _vm.form.errors.has("patient_id")
-                        },
-                        attrs: { name: "patient_id" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.form,
-                              "patient_id",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      _vm._l(_vm.patients, function(patient) {
-                        return _c(
-                          "option",
-                          { key: patient.id, domProps: { value: patient.id } },
-                          [_vm._v(_vm._s(patient.full_name + patient.id))]
-                        )
-                      }),
-                      0
-                    ),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "patient_id" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.temperature,
-                          expression: "form.temperature"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("temperature")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "temperature",
-                        placeholder: "Nhập thân nhiệt (°C)"
-                      },
-                      domProps: { value: _vm.form.temperature },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "temperature", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "temperature" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.blood_pressure,
-                          expression: "form.blood_pressure"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("blood_pressure")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "blood_pressure",
-                        placeholder: "Nhập huyết áp (mmHg)"
-                      },
-                      domProps: { value: _vm.form.blood_pressure },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.form,
-                            "blood_pressure",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "blood_pressure" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.height,
-                          expression: "form.height"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("height")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "height",
-                        placeholder: "Nhập chiều cao (cm)"
-                      },
-                      domProps: { value: _vm.form.height },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "height", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "height" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.weight,
-                          expression: "form.weight"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("weight")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "weight",
-                        placeholder: "Nhập cân nặng (kg)"
-                      },
-                      domProps: { value: _vm.form.weight },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "weight", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "weight" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.pulse,
-                          expression: "form.pulse"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("pulse")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "pulse",
-                        placeholder: "Nhập nhịp tim (nhịp/phút)"
-                      },
-                      domProps: { value: _vm.form.pulse },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "pulse", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "pulse" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.blood_group,
-                          expression: "form.blood_group"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("blood_group")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "blood_group",
-                        placeholder: "Nhập nhóm máu (O, A, B, AB)"
-                      },
-                      domProps: { value: _vm.form.blood_group },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "blood_group", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "blood_group" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.blood_type,
-                          expression: "form.blood_type"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("blood_type")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "blood_type",
-                        placeholder:
-                          "Nhập loại máu (O+, O-, A+, A-, B+, B-, AB+, AB- )"
-                      },
-                      domProps: { value: _vm.form.blood_type },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "blood_type", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "blood_type" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", [_vm._v("Tình trạng tiêm chủng")]),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.immunization,
-                            expression: "form.immunization"
-                          }
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.pulse,
+                                expression: "form.pulse"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("pulse")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "pulse",
+                              placeholder: "Mạch (lần/phút)"
+                            },
+                            domProps: { value: _vm.form.pulse },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.form, "pulse", $event.target.value)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "pulse" }
+                          })
                         ],
-                        staticClass: "form-control immunization",
-                        class: {
-                          "is-invalid": _vm.form.errors.has("immunization")
-                        },
-                        attrs: { multiple: "", name: "immunization[]" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.form,
-                              "immunization",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "Phòng đậu mùa" } }, [
-                          _vm._v("Phòng đậu mùa")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "Phòng sốt vàng" } }, [
-                          _vm._v("Phòng sốt vàng")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "TAB" } }, [
-                          _vm._v("TAB")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "Phòng uốn ván" } }, [
-                          _vm._v("Phòng uốn ván")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "Phòng bại liệt" } }, [
-                          _vm._v("Phòng bại liệt")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "Phòng bạch hầu" } }, [
-                          _vm._v("Phòng bạch hầu")
-                        ])
-                      ]
-                    ),
+                        1
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "immunization" }
-                    })
-                  ],
-                  1
-                ),
+                    _c("td", [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.temperature,
+                                expression: "form.temperature"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("temperature")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "temperature",
+                              placeholder: "Thân nhiệt (°C)"
+                            },
+                            domProps: { value: _vm.form.temperature },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "temperature",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "temperature" }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.systolic,
+                                expression: "form.systolic"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("systolic")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "systolic",
+                              placeholder: "Huyết áp tâm thu (mmHg)"
+                            },
+                            domProps: { value: _vm.form.systolic },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "systolic",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "systolic" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.diastolic,
+                                expression: "form.diastolic"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("diastolic")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "diastolic",
+                              placeholder: "Huyết áp tâm trương(mmHg)"
+                            },
+                            domProps: { value: _vm.form.diastolic },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "diastolic",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "diastolic" }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.respiration,
+                                expression: "form.respiration"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("respiration")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "respiration",
+                              placeholder: "Nhịp thở (lần/phút)"
+                            },
+                            domProps: { value: _vm.form.respiration },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "respiration",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "respiration" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.weight,
+                                expression: "form.weight"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("weight")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "weight",
+                              placeholder: "Nhập cân nặng (kg)"
+                            },
+                            domProps: { value: _vm.form.weight },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "weight",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "weight" }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.height,
+                                expression: "form.height"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("height")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "height",
+                              placeholder: "Nhập chiều cao (cm)"
+                            },
+                            domProps: { value: _vm.form.height },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "height",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "height" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.blood_group,
+                                expression: "form.blood_group"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("blood_group")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "blood_group",
+                              placeholder: "Nhập nhóm máu (O, A, B, AB)"
+                            },
+                            domProps: { value: _vm.form.blood_group },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "blood_group",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "blood_group" }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                ]),
                 _vm._v(" "),
                 _c(
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.systolic,
-                          expression: "form.systolic"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("systolic")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "systolic",
-                        placeholder: "Nhap HA tam thu"
-                      },
-                      domProps: { value: _vm.form.systolic },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "systolic", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "systolic" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.diastolic,
-                          expression: "form.diastolic"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("diastolic")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "diastolic",
-                        placeholder: "Nhap HA tam truong"
-                      },
-                      domProps: { value: _vm.form.diastolic },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "diastolic", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "diastolic" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.respiration,
-                          expression: "form.respiration"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("respiration")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "respiration",
-                        placeholder: "Nhap nhip tho cua nguoi benh"
-                      },
-                      domProps: { value: _vm.form.respiration },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "respiration", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "respiration" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("input", {
+                    _c("textarea", {
                       directives: [
                         {
                           name: "model",
@@ -79004,7 +79296,10 @@ var render = function() {
                       attrs: {
                         type: "text",
                         name: "note",
-                        placeholder: "Ghi chu"
+                        placeholder:
+                          "Nội dung khám (ý thức, da niêm mạc, hệ thống mạch, tuyến giáp, vị trí, kích thước, số lượng, di động v.v...)",
+                        cols: "10",
+                        rows: "5"
                       },
                       domProps: { value: _vm.form.note },
                       on: {
@@ -81434,11 +81729,17 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Chẩn đoán")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Lưu ý của BS")]),
+        _c("th", [_vm._v("Nhận xét")]),
         _vm._v(" "),
         _c("th", [_vm._v("Triệu chứng")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Yêu cầu xét nghiệm")]),
+        _c("th", [
+          _vm._v("\n                                Yêu cầu "),
+          _c("br"),
+          _vm._v(
+            "\n                                cận lâm sàng\n                            "
+          )
+        ]),
         _vm._v(" "),
         _c("th", [_vm._v("Yêu cầu thuốc")]),
         _vm._v(" "),
@@ -81602,11 +81903,17 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Chẩn đoán")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Lưu ý của BS")]),
+        _c("th", [_vm._v("Nhận xét")]),
         _vm._v(" "),
         _c("th", [_vm._v("Triệu chứng")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Yêu cầu xét nghiệm")]),
+        _c("th", [
+          _vm._v("\n                                Yêu cầu "),
+          _c("br"),
+          _vm._v(
+            "\n                                cận lâm sàng\n                            "
+          )
+        ]),
         _vm._v(" "),
         _c("th", [_vm._v("Yêu cầu thuốc")]),
         _vm._v(" "),

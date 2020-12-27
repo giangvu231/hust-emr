@@ -121,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <router-link to="/hospital" class="nav-link">
                         <i class="nav-icon fas fa-hospital-symbol"></i>
                         <p>
-                            Lịch sử khám
+                            Quá trình khám
                         </p>
                     </router-link>
                 </li>
@@ -168,7 +168,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/vitals" class="nav-link _click3" >
               <i class="nav-icon fas fa-database"></i>
               <p>
-                2. Điều trị
+                2. Khám bệnh & Điều trị
               </p>
             </router-link>
 
@@ -177,7 +177,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <router-link to="/vitals" class="nav-link">
                     <i class="nav-icon fas fa-heartbeat"></i>
                     <p>
-                        Quản lý sinh hiệu
+                        Quản lý khám toàn thân
                     </p>
                 </router-link>
                 </li>
@@ -185,7 +185,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <router-link to="/add-vital" class="nav-link">
                     <i class="nav-icon fas fa-heartbeat"></i>
                     <p>
-                        Nhập sinh hiệu
+                        Khám toàn thân
                     </p>
                 </router-link>
             </li>
@@ -211,7 +211,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <router-link to="/add-diagnosishealth" class="nav-link">
                     <i class="nav-icon fas fa-heartbeat"></i>
                     <p>
-                        Nhập chẩn đoán lâm sàng
+                        Khám các cơ quan
                     </p>
                 </router-link>
             </li>

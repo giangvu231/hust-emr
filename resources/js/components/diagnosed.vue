@@ -16,9 +16,12 @@
                                 <th>Mã bệnh án</th>
                                 <th>Họ tên</th>
                                 <th>Chẩn đoán</th>
-                                <th>Lưu ý của BS</th>
+                                <th>Nhận xét</th>
                                 <th>Triệu chứng</th>
-                                <th>Yêu cầu xét nghiệm</th>
+                                <th>
+                                    Yêu cầu <br />
+                                    cận lâm sàng
+                                </th>
                                 <th>Yêu cầu thuốc</th>
                                 <th>Tác vụ</th>
                             </tr>
@@ -360,9 +363,12 @@
                                 <th>Mã bệnh án</th>
                                 <th>Họ tên</th>
                                 <th>Chẩn đoán</th>
-                                <th>Lưu ý của BS</th>
+                                <th>Nhận xét</th>
                                 <th>Triệu chứng</th>
-                                <th>Yêu cầu xét nghiệm</th>
+                                <th>
+                                    Yêu cầu <br />
+                                    cận lâm sàng
+                                </th>
                                 <th>Yêu cầu thuốc</th>
                                 <th>Tác vụ</th>
                             </tr>

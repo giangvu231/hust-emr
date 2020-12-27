@@ -17,8 +17,8 @@ class CreateDiagnosesTable extends Migration
             $table->bigIncrements('id');
             $table->string('patient_id');
             $table->string('hospital_id')->unique();
-            $table->text('diagnosis');
-            $table->string('comment');
+            $table->text('diagnosis')->nullable();
+            $table->string('comment')->nullable();
             $table->string('refer_lab')->nullable();
             $table->string('refer_pham')->nullable();
             $table->string('modal_id')->unique()->nullable();

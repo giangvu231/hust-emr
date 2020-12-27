@@ -11,12 +11,20 @@ class Diagnosishealth extends Model
     use Notifiable, HasApiTokens;
 
     protected $fillable = [
-        'patient_id', 'diagnosis_type', 'diagnosis_header', 'icd10_id', 'icd10_name',  'start_date', 'end_date', 'diagnosis_status', 'diagnosis_note'
+        'patient_id',
+        'diagnosis_tuanhoan',
+        'diagnosis_hohap',
+        'diagnosis_tieuhoa',
+        'diagnosis_than_tietnieu_sinhduc',
+        'diagnosis_thankinh',
+        'diagnosis_coxuongkhop',
+        'diagnosis_taimuihong',
+        'diagnosis_ranghammat',
+        'diagnosis_mat',
+        'diagnosis_noitiet_dinhduong_khac',
     ];
 
    public function patient(){
        return $this->belongsTo('App\addPatient');
    }
-
-   protected $casts = ['immunization' => 'array'];
 }

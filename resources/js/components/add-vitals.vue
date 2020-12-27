@@ -3,256 +3,225 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Quản lý sinh hiệu</div>
+                    <div class="card-header">Khám bệnh toàn thân</div>
                     <div class="card-body">
                         <form @submit.prevent="addVital()" id="add-vital">
+                            <table width="100%">
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <select
+                                                v-model="form.patient_id"
+                                                aria-placeholder="Chon benh nhan"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'patient_id'
+                                                    )
+                                                }"
+                                                name="patient_id"
+                                            >
+                                                <option
+                                                    v-for="patient in patients"
+                                                    :key="patient.id"
+                                                    :value="patient.id"
+                                                    >{{
+                                                        patient.full_name +
+                                                            patient.id
+                                                    }}</option
+                                                >
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="patient_id"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.pulse"
+                                                type="text"
+                                                name="pulse"
+                                                placeholder="Mạch (lần/phút)"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'pulse'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="pulse"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.temperature"
+                                                type="text"
+                                                name="temperature"
+                                                placeholder="Thân nhiệt (°C)"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'temperature'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="temperature"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.systolic"
+                                                type="text"
+                                                name="systolic"
+                                                placeholder="Huyết áp tâm thu (mmHg)"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'systolic'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="systolic"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.diastolic"
+                                                type="text"
+                                                name="diastolic"
+                                                placeholder="Huyết áp tâm trương(mmHg)"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'diastolic'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="diastolic"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.respiration"
+                                                type="text"
+                                                name="respiration"
+                                                placeholder="Nhịp thở (lần/phút)"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'respiration'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="respiration"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.weight"
+                                                type="text"
+                                                name="weight"
+                                                placeholder="Nhập cân nặng (kg)"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'weight'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="weight"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.height"
+                                                type="text"
+                                                name="height"
+                                                placeholder="Nhập chiều cao (cm)"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'height'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="height"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.blood_group"
+                                                type="text"
+                                                name="blood_group"
+                                                placeholder="Nhập nhóm máu (O, A, B, AB)"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'blood_group'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="blood_group"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
                             <div class="form-group">
-                                <label>Chọn bệnh nhân</label>
-                                <select
-                                    v-model="form.patient_id"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'patient_id'
-                                        )
-                                    }"
-                                    name="patient_id"
-                                >
-                                    <option
-                                        v-for="patient in patients"
-                                        :key="patient.id"
-                                        :value="patient.id"
-                                        >{{
-                                            patient.full_name + patient.id
-                                        }}</option
-                                    >
-                                </select>
-                                <has-error
-                                    :form="form"
-                                    field="patient_id"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.temperature"
-                                    type="text"
-                                    name="temperature"
-                                    placeholder="Nhập thân nhiệt (°C)"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'temperature'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="temperature"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.blood_pressure"
-                                    type="text"
-                                    name="blood_pressure"
-                                    placeholder="Nhập huyết áp (mmHg)"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'blood_pressure'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="blood_pressure"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.height"
-                                    type="text"
-                                    name="height"
-                                    placeholder="Nhập chiều cao (cm)"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has('height')
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="height"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.weight"
-                                    type="text"
-                                    name="weight"
-                                    placeholder="Nhập cân nặng (kg)"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has('weight')
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="weight"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.pulse"
-                                    type="text"
-                                    name="pulse"
-                                    placeholder="Nhập nhịp tim (nhịp/phút)"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has('pulse')
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="pulse"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.blood_group"
-                                    type="text"
-                                    name="blood_group"
-                                    placeholder="Nhập nhóm máu (O, A, B, AB)"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'blood_group'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="blood_group"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.blood_type"
-                                    type="text"
-                                    name="blood_type"
-                                    placeholder="Nhập loại máu (O+, O-, A+, A-, B+, B-, AB+, AB- )"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'blood_type'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="blood_type"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <!-- <label>Immunization Status</label> <br>                -->
-                                <label>Tình trạng tiêm chủng</label> <br />
-                                <select
-                                    v-model="form.immunization"
-                                    class="form-control immunization"
-                                    multiple
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'immunization'
-                                        )
-                                    }"
-                                    name="immunization[]"
-                                >
-                                    <option value="Phòng đậu mùa"
-                                        >Phòng đậu mùa</option
-                                    >
-                                    <option value="Phòng sốt vàng"
-                                        >Phòng sốt vàng</option
-                                    >
-                                    <option value="TAB">TAB</option>
-                                    <option value="Phòng uốn ván"
-                                        >Phòng uốn ván</option
-                                    >
-                                    <option value="Phòng bại liệt"
-                                        >Phòng bại liệt</option
-                                    >
-                                    <option value="Phòng bạch hầu"
-                                        >Phòng bạch hầu</option
-                                    >
-                                </select>
-                                <has-error
-                                    :form="form"
-                                    field="immunization"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.systolic"
-                                    type="text"
-                                    name="systolic"
-                                    placeholder="Nhap HA tam thu"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'systolic'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="systolic"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.diastolic"
-                                    type="text"
-                                    name="diastolic"
-                                    placeholder="Nhap HA tam truong"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'diastolic'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="diastolic"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.respiration"
-                                    type="text"
-                                    name="respiration"
-                                    placeholder="Nhap nhip tho cua nguoi benh"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'respiration'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="respiration"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
+                                <textarea
                                     v-model="form.note"
                                     type="text"
                                     name="note"
-                                    placeholder="Ghi chu"
+                                    placeholder="Nội dung khám (ý thức, da niêm mạc, hệ thống mạch, tuyến giáp, vị trí, kích thước, số lượng, di động v.v...)"
+                                    cols="10"
+                                    rows="5"
                                     class="form-control"
                                     :class="{
                                         'is-invalid': form.errors.has('note')
                                     }"
-                                />
+                                >
+                                </textarea>
                                 <has-error
                                     :form="form"
                                     field="note"

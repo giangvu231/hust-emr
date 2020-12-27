@@ -15,10 +15,10 @@ class CreateLabResultsTable extends Migration
     {
         Schema::create('lab_results', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('patient_id');  
-            $table->string('diagnose_id')->unique();  
-            $table->string('type');
-            $table->string('comment');
+            $table->string('patient_id');
+            $table->string('diagnose_id')->unique()->nullable();
+            $table->string('type')->nullable();
+            $table->string('comment')->nullable();
             // $table->string('image');
             $table->timestamps();
         });

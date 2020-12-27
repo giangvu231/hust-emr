@@ -44,14 +44,7 @@ class DiagnosishealthController extends Controller
     {
         $this->validate($request, [
             'patient_id' => 'required',
-            'diagnosis_type' => 'required',
-            'diagnosis_header' => 'required',
-            'icd10_id' => 'required',
-            'icd10_name' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
-            'diagnosis_status' => 'required',
-            'diagnosis_note' => 'required',
+
         ]);
         $data = Diagnosishealth::create($request->all());
         Emr::where('patient_id', $data->patient_id)->update([
@@ -94,14 +87,7 @@ class DiagnosishealthController extends Controller
 
         $this->validate($request, [
             'patient_id' => 'required',
-            'diagnosis_type' => 'required',
-            'diagnosis_header' => 'required',
-            'icd10_id' => 'required',
-            'icd10_name' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
-            'diagnosis_status' => 'required',
-            'diagnosis_note' => 'required',
+
         ]);
         $diagnosishealth->update($request->all());
     }

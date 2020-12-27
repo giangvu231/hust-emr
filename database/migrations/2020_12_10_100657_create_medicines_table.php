@@ -16,13 +16,13 @@ class CreateMedicinesTable extends Migration
         Schema::create('medicines', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('patient_id');
-            $table->string('start_date');
-            $table->string('ref_doctor_name');
-            $table->string('ref_doctor_id');
-            $table->string('medicine_name');
-            $table->string('amount');
-            $table->string('dose');
-            $table->longText('note');
+            $table->string('start_date')->nullable();
+            $table->string('ref_doctor_name')->nullable();
+            $table->string('ref_doctor_id')->nullable();
+            $table->string('medicine_name')->nullable();
+            $table->string('amount')->nullable();
+            $table->string('dose')->nullable();
+            $table->longText('note')->nullable();
             $table->timestamps();
         });
     }

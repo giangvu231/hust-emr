@@ -15,11 +15,11 @@ class CreatePhamsTable extends Migration
     {
         Schema::create('phams', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('patient_id');  
-            $table->string('diagnose_id')->unique();  
-            $table->string('type');
-            $table->text('comment');
-            $table->string('unit');
+            $table->string('patient_id');
+            $table->string('diagnose_id')->unique();
+            $table->string('type')->nullable();
+            $table->text('comment')->nullable();
+            $table->string('unit')->nullable();
             $table->string('nurse')->nullable();
             $table->string('injection')->nullable();
             $table->timestamps();

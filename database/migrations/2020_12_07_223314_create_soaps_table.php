@@ -16,10 +16,10 @@ class CreateSoapsTable extends Migration
         Schema::create('soaps', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('patient_id');
-            $table->longText('subjective');
-            $table->longText('objective');
-            $table->longText('assessment');
-            $table->longText('plan');
+            $table->longText('subjective')->nullable();
+            $table->longText('objective')->nullable();
+            $table->longText('assessment')->nullable();
+            $table->longText('plan')->nullable();
             $table->timestamps();
         });
     }

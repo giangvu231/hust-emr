@@ -32,70 +32,80 @@
                             </div>
                             <!-- --- -->
                             <div class="form-group">
-                                <input
+                                <textarea
                                     v-model="form.subjective"
                                     type="text"
                                     name="subjective"
-                                    placeholder="Nhập dau chung chu quan"
+                                    placeholder="Dấu chứng chủ quan (Subjective)"
+                                    rows="5"
+                                    cols="10"
                                     class="form-control"
                                     :class="{
                                         'is-invalid': form.errors.has(
                                             'subjective'
                                         )
                                     }"
-                                />
+                                >
+                                </textarea>
                                 <has-error
                                     :form="form"
                                     field="subjective"
                                 ></has-error>
                             </div>
                             <div class="form-group">
-                                <input
+                                <textarea
                                     v-model="form.objective"
                                     type="text"
                                     name="objective"
-                                    placeholder="Nhập dau chung khach quan"
+                                    placeholder="Dấu chứng khách quan (Objective)"
+                                    rows="5"
+                                    cols="10"
                                     class="form-control"
                                     :class="{
                                         'is-invalid': form.errors.has(
                                             'objective'
                                         )
                                     }"
-                                />
+                                >
+                                </textarea>
                                 <has-error
                                     :form="form"
                                     field="objective"
                                 ></has-error>
                             </div>
                             <div class="form-group">
-                                <input
+                                <textarea
                                     v-model="form.assessment"
                                     type="text"
                                     name="assessment"
-                                    placeholder="Nhập huong chan doan"
+                                    placeholder="Hướng chẩn đoán (Assessment)"
+                                    cols="10"
+                                    rows="5"
                                     class="form-control"
                                     :class="{
                                         'is-invalid': form.errors.has(
                                             'assessment'
                                         )
                                     }"
-                                />
+                                ></textarea>
                                 <has-error
                                     :form="form"
                                     field="assessment"
                                 ></has-error>
                             </div>
                             <div class="form-group">
-                                <input
+                                <textarea
                                     v-model="form.plan"
                                     type="text"
                                     name="plan"
-                                    placeholder="Nhập huong dieu tri"
+                                    placeholder="Hướng điều trị (Plan)"
+                                    rows="5"
+                                    cols="10"
                                     class="form-control"
                                     :class="{
                                         'is-invalid': form.errors.has('plan')
                                     }"
-                                />
+                                ></textarea>
                                 <has-error
                                     :form="form"
                                     field="plan"

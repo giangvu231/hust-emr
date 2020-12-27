@@ -16,11 +16,11 @@ class CreateSurgeryHistoriesTable extends Migration
         Schema::create('surgery_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('patient_id');
-            $table->string('operations');  
-            $table->string('date_of_operation');
-            $table->string('surgeon');
-            $table->string('modal_id')->unique();
-            $table->timestamps();            
+            $table->string('operations')->nullable();
+            $table->string('date_of_operation')->nullable();
+            $table->string('surgeon')->nullable();
+            $table->string('modal_id')->unique()->nullable();
+            $table->timestamps();
         });
     }
 

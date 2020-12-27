@@ -16,10 +16,10 @@ class CreateSubclinicalsTable extends Migration
         Schema::create('subclinicals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('patient_id');
-            $table->longText('lab_order');
-            $table->longText('lab_result');
-            $table->longText('imaging_order');
-            $table->longText('imaging_result');
+            $table->longText('lab_order')->nullable();
+            $table->longText('lab_result')->nullable();
+            $table->longText('imaging_order')->nullable();
+            $table->longText('imaging_result')->nullable();
             $table->timestamps();
         });
     }

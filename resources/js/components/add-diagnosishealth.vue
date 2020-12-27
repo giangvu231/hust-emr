@@ -3,202 +3,302 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Chan doan lam sang</div>
+                    <div class="card-header">Khám các cơ quan</div>
                     <div class="card-body">
                         <form
                             @submit.prevent="addDiagnosishealth()"
                             id="add-diagnosishealth"
                         >
-                            <!-- Query BN -->
-                            <div class="form-group">
-                                <label>Chọn bệnh nhân</label>
-                                <select
-                                    v-model="form.patient_id"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'patient_id'
-                                        )
-                                    }"
-                                    name="patient_id"
-                                >
-                                    <option
-                                        v-for="patient in patients"
-                                        :key="patient.id"
-                                        :value="patient.id"
-                                        >{{
-                                            patient.full_name + patient.id
-                                        }}</option
-                                    >
-                                </select>
-                                <has-error
-                                    :form="form"
-                                    field="patient_id"
-                                ></has-error>
-                            </div>
-
-                            <!-- Loai chan doan -->
-                            <div class="form-group">
-                                <input
-                                    v-model="form.diagnosis_type"
-                                    type="text"
-                                    name="diagnosis_type"
-                                    placeholder="Nhập Loai chan doan"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'diagnosis_type'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="diagnosis_type"
-                                ></has-error>
-                            </div>
-
-                            <!-- Loai tieu de -->
-                            <div class="form-group">
-                                <input
-                                    v-model="form.diagnosis_header"
-                                    type="text"
-                                    name="diagnosis_header"
-                                    placeholder="Nhập Tieu de"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'diagnosis_header'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="diagnosis_header"
-                                ></has-error>
-                            </div>
-
-                            <!-- Query ICD 10 -->
-                            <!-- <div class="form-group">
-                                <label>Chọn ICD-10</label>
-                                <select
-                                    v-model="form.patient_id"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'patient_id'
-                                        )
-                                    }"
-                                    name="patient_id"
-                                >
-                                    <option
-                                        v-for="patient in patients"
-                                        :key="patient.id"
-                                        :value="patient.id"
-                                        >{{
-                                            patient.full_name + patient.id
-                                        }}</option
-                                    >
-                                </select>
-                                <has-error
-                                    :form="form"
-                                    field="patient_id"
-                                ></has-error>
-                            </div> -->
-
-                            <!-- Ngay bat dau -->
-                            <div class="form-group">
-                                <label>
-                                    Ngay bat dau
-                                </label>
-                                <input
-                                    v-model="form.start_date"
-                                    type="date"
-                                    name="start_date"
-                                    placeholder="Điền ngày bat dau"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'start_date'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="start_date"
-                                ></has-error>
-                            </div>
-
-                            <!-- Ngay ket thuc -->
-                            <div class="form-group">
-                                <label>
-                                    Ngay ket thuc
-                                </label>
-                                <input
-                                    v-model="form.end_date"
-                                    type="date"
-                                    name="end_date"
-                                    placeholder="Điền ngày ket thuc"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'end_date'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="end_date"
-                                ></has-error>
-                            </div>
-
-                            <!-- Tinh trang -->
-                            <div class="form-group">
-                                <input
-                                    v-model="form.diagnosis_status"
-                                    type="text"
-                                    name="diagnosis_status"
-                                    placeholder="Nhập tinh trang"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'diagnosis_status'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="diagnosis_status"
-                                ></has-error>
-                            </div>
-
-                            <!-- ghi chu -->
-                            <div class="form-group">
-                                <input
-                                    v-model="form.diagnosis_note"
-                                    type="text"
-                                    name="diagnosis_note"
-                                    placeholder="Nhập ghi chu"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'diagnosis_note'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="diagnosis_note"
-                                ></has-error>
-                            </div>
-                            <center>
-                                <button
-                                    type="submit"
-                                    class="diagnosishealth btn-block btn btn-info"
-                                    style="color:#fff;"
-                                >
-                                    Thêm chan doan lam sang
-                                </button>
-                            </center>
+                            <table width="100%">
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <label>Chọn bệnh nhân</label>
+                                            <select
+                                                v-model="form.patient_id"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'patient_id'
+                                                    )
+                                                }"
+                                                name="patient_id"
+                                            >
+                                                <option
+                                                    v-for="patient in patients"
+                                                    :key="patient.id"
+                                                    :value="patient.id"
+                                                    >{{
+                                                        patient.full_name +
+                                                            patient.id
+                                                    }}</option
+                                                >
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="patient_id"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="
+                                                    form.diagnosis_tuanhoan
+                                                "
+                                                type="text"
+                                                name="diagnosis_tuanhoan"
+                                                placeholder="Cơ quan tuần hoàn"
+                                                rows="5"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'diagnosis_tuanhoan'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="diagnosis_tuanhoan"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="form.diagnosis_hohap"
+                                                type="text"
+                                                name="diagnosis_hohap"
+                                                placeholder="Cơ quan hô hấp"
+                                                rows="5"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'diagnosis_hohap'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="diagnosis_hohap"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="form.diagnosis_tieuhoa"
+                                                type="text"
+                                                name="diagnosis_tieuhoa"
+                                                placeholder="Cơ quan tiêu hóa"
+                                                rows="5"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'diagnosis_tieuhoa'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="diagnosis_tieuhoa"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="
+                                                    form.diagnosis_than_tietnieu_sinhduc
+                                                "
+                                                type="text"
+                                                name="diagnosis_than_tietnieu_sinhduc"
+                                                placeholder="Cơ quan Thận - Tiết niệu - Sinh dục"
+                                                rows="5"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'diagnosis_than_tietnieu_sinhduc'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="diagnosis_than_tietnieu_sinhduc"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="
+                                                    form.diagnosis_thankinh
+                                                "
+                                                type="text"
+                                                name="diagnosis_thankinh"
+                                                placeholder="Cơ quan Thần Kinh"
+                                                rows="5"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'diagnosis_thankinh'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="diagnosis_thankinh"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="
+                                                    form.diagnosis_coxuongkhop
+                                                "
+                                                type="text"
+                                                name="diagnosis_coxuongkhop"
+                                                placeholder="Cơ quan Cơ - Xương - Khớp"
+                                                rows="5"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'diagnosis_coxuongkhop'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="diagnosis_coxuongkhop"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="
+                                                    form.diagnosis_taimuihong
+                                                "
+                                                type="text"
+                                                name="diagnosis_taimuihong"
+                                                placeholder="Cơ quan Tai - Mũi - Họng"
+                                                rows="5"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'diagnosis_taimuihong'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="diagnosis_taimuihong"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="
+                                                    form.diagnosis_ranghammat
+                                                "
+                                                type="text"
+                                                name="diagnosis_ranghammat"
+                                                placeholder="Cơ quan Răng - Hàm - Mặt"
+                                                rows="5"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'diagnosis_ranghammat'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="diagnosis_ranghammat"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="form.diagnosis_mat"
+                                                type="text"
+                                                name="diagnosis_mat"
+                                                placeholder="Cơ quan Mắt"
+                                                rows="5"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'diagnosis_mat'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="diagnosis_mat"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="
+                                                    form.diagnosis_noitiet_dinhduong_khac
+                                                "
+                                                type="text"
+                                                name="diagnosis_noitiet_dinhduong_khac"
+                                                placeholder="Cơ quan Nội tiết, dinh dưỡng và các bệnh lý khác"
+                                                rows="5"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'diagnosis_noitiet_dinhduong_khac'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="diagnosis_noitiet_dinhduong_khac"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <center>
+                                            <button
+                                                type="submit"
+                                                class="diagnosishealth btn-block btn btn-info"
+                                                style="color:#fff;"
+                                            >
+                                                Thêm thông tin
+                                            </button>
+                                        </center>
+                                    </td>
+                                </tr>
+                            </table>
                         </form>
                     </div>
                 </div>
@@ -214,14 +314,16 @@ export default {
             patients: {},
             form: new Form({
                 patient_id: "",
-                diagnosis_type: "",
-                diagnosis_header: "",
-                icd10_id: "under development",
-                icd10_name: "under development",
-                start_date: "",
-                end_date: "",
-                diagnosis_status: "",
-                diagnosis_note: ""
+                diagnosis_tuanhoan: "",
+                diagnosis_hohap: "",
+                diagnosis_tieuhoa: "",
+                diagnosis_than_tietnieu_sinhduc: "",
+                diagnosis_thankinh: "",
+                diagnosis_coxuongkhop: "",
+                diagnosis_taimuihong: "",
+                diagnosis_ranghammat: "",
+                diagnosis_mat: "",
+                diagnosis_noitiet_dinhduong_khac: ""
             })
         };
     },
@@ -235,7 +337,7 @@ export default {
                         type: "success",
                         title: "Thêm thành công!"
                     });
-                    $(".diagnosishealth").html("Add Patient Diagnosishealth");
+                    $(".diagnosishealth").html("Thêm thông tin");
                     $("#add-diagnosishealth").trigger("reset");
                 })
                 .catch(() => {
@@ -243,7 +345,7 @@ export default {
                         type: "error",
                         title: "Dữ liệu nhập vào chưa đúng!"
                     });
-                    $(".diagnosishealth").html("Add Patient Diagnosishealth");
+                    $(".diagnosishealth").html("Thêm thông tin");
                 });
         },
         loadPatients() {

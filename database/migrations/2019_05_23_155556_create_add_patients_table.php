@@ -16,7 +16,7 @@ class CreateAddPatientsTable extends Migration
         Schema::create('add_patients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('unique_id')->unique();
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->string('full_name');
             $table->string('email')->unique();
             $table->string('phone_number');
