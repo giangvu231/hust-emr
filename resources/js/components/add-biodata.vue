@@ -8,296 +8,549 @@
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="addPatient" id="add-biodata">
-                            <div class="form-group">
-                                <label>
-                                    Chọn chức danh
-                                </label>
-                                <select
-                                    v-model="form.title"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has('title')
-                                    }"
-                                    name="title"
-                                >
-                                    <option
-                                        value="nul"
-                                        style="font-weight:700;"
-                                    >
-                                        Chọn chức danh
-                                    </option>
-                                    <option value="Bà">
-                                        Bà
-                                    </option>
-                                    <option value="Ông">
-                                        Ông
-                                    </option>
-                                </select>
-                                <has-error
-                                    :form="form"
-                                    field="title"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.full_name"
-                                    type="text"
-                                    name="full_name"
-                                    placeholder="Nhập họ tên bệnh nhân"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'full_name'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="full_name"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.email"
-                                    type="email"
-                                    name="email"
-                                    placeholder="Nhập Email"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has('email')
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="email"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.phone_number"
-                                    type="number"
-                                    name="phone_number"
-                                    placeholder="Nhập số điện thoại liên lạc"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'phone_number'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="phone_number"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.occupation"
-                                    type="text"
-                                    name="occupation"
-                                    placeholder="Nhập nghề nghiệp hiện tại"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'occupation'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="occupation"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.race"
-                                    type="text"
-                                    name="race"
-                                    placeholder="Dân tộc"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has('race')
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="race"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.foreign"
-                                    type="text"
-                                    name="foreign"
-                                    placeholder="Ngoại kiều"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has('foreign')
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="foreign"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <label>
-                                    <!-- Select Gender -->
-                                    Chọn giới tính
-                                </label>
-                                <select
-                                    v-model="form.sex"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has('sex')
-                                    }"
-                                    name="sex"
-                                >
-                                    <option
-                                        value="nul"
-                                        style="font-weight:700;"
-                                    >
-                                        Chọn giới tính
-                                    </option>
-                                    <option value="Nam">
-                                        Nam
-                                    </option>
-                                    <option value="Nữ">
-                                        Nữ
-                                    </option>
-                                    <option value="Nữ">
-                                        Khac
-                                    </option>
-                                </select>
-                                <has-error :form="form" field="sex"></has-error>
-                            </div>
-                            <div class="form-group">
-                                <label>
-                                    <!-- Date of Birth -->
-                                    Ngày sinh
-                                </label>
-                                <input
-                                    v-model="form.dob"
-                                    type="date"
-                                    name="dob"
-                                    placeholder="Nhập ngày sinh"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has('dob')
-                                    }"
-                                />
-                                <has-error :form="form" field="dob"></has-error>
-                            </div>
+                            <table class="form-group" width="100%">
+                                <tr>
+                                    <b>THÔNG TIN HÀNH CHÍNH</b>
+                                </tr>
+                                <tr>
+                                    <td width="30%">
+                                        <div class="form-group">
+                                            <select
+                                                v-model="form.title"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'title'
+                                                    )
+                                                }"
+                                                name="title"
+                                            >
+                                                <option
+                                                    disabled
+                                                    value=""
+                                                    style="font-weight:700;"
+                                                >
+                                                    Chọn chức danh
+                                                </option>
+                                                <option value="Bà">
+                                                    Bà
+                                                </option>
+                                                <option value="Ông">
+                                                    Ông
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="title"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td width="70%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.full_name"
+                                                type="text"
+                                                name="full_name"
+                                                placeholder="Nhập họ tên bệnh nhân"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'full_name'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="full_name"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.email"
+                                                type="email"
+                                                name="email"
+                                                placeholder="Nhập Email"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'email'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="email"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.phone_number"
+                                                type="number"
+                                                name="phone_number"
+                                                placeholder="Nhập số điện thoại liên lạc"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'phone_number'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="phone_number"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td width="50%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.occupation"
+                                                type="text"
+                                                name="occupation"
+                                                placeholder="Nhập nghề nghiệp hiện tại"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'occupation'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="occupation"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.race"
+                                                type="text"
+                                                name="race"
+                                                placeholder="Dân tộc"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'race'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="race"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td width="50%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.foreign"
+                                                type="text"
+                                                name="foreign"
+                                                placeholder="Ngoại kiều"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'foreign'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="foreign"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">
+                                        <label>
+                                            <b>Giới tính</b>
+                                        </label>
+                                        <!-- <select
+                                                v-model="form.sex"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'sex'
+                                                    )
+                                                }"
+                                                name="sex"
+                                            >
+                                                <option
+                                                    disabled
+                                                    value=""
+                                                    style="font-weight:700;"
+                                                >
+                                                    Chọn giới tính
+                                                </option>
+                                                <option value="Nam">
+                                                    Nam
+                                                </option>
+                                                <option value="Nữ">
+                                                    Nữ
+                                                </option>
+                                                <option value="Khác">
+                                                    Khác
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="sex"
+                                            ></has-error> -->
+                                        <div class="form-group">
+                                            <input
+                                                type="radio"
+                                                id="one"
+                                                value="Nam"
+                                                v-model="form.sex"
+                                            />
+                                            <label for="one">Nam</label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input
+                                                type="radio"
+                                                id="two"
+                                                value="Nữ"
+                                                v-model="form.sex"
+                                            />
+                                            <label for="two">Nữ</label>
+                                        </div>
+                                    </td>
+                                    <td width="50%">
+                                        <div class="form-group">
+                                            <label>
+                                                Ngày sinh
+                                            </label>
+                                            <input
+                                                v-model="form.dob"
+                                                type="date"
+                                                name="dob"
+                                                placeholder="Nhập ngày sinh"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dob'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="dob"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.religion"
+                                                type="text"
+                                                name="religion"
+                                                placeholder="Nhập Tôn giáo"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'religion'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="religion"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td width="50%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.nationality"
+                                                type="text"
+                                                name="nationality"
+                                                placeholder="Nhập Quốc tịch"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'nationality'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="nationality"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="form.home_address"
+                                                placeholder="Nhập địa chỉ bệnh nhân"
+                                                name="home_address"
+                                                id=""
+                                                cols="10"
+                                                rows="2"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'home_address'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="home_address"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.place_of_birth"
+                                                type="text"
+                                                name="place_of_birth"
+                                                placeholder="Nhập nơi sinh của bệnh nhân"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'place_of_birth'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="place_of_birth"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td width="50%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.marital_status"
+                                                type="text"
+                                                name="marital_status"
+                                                placeholder="Nhập tình trạng hôn nhân hiện tại"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'marital_status'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="marital_status"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="50%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.work_address"
+                                                type="text"
+                                                name="work_address"
+                                                placeholder="Nhập nơi làm việc"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'work_address'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="work_address"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <select
+                                                v-model="form.type_of_object"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'type_of_object'
+                                                    )
+                                                }"
+                                                name="type_of_object"
+                                            >
+                                                <option
+                                                    disabled
+                                                    value=""
+                                                    style="font-weight:700;"
+                                                >
+                                                    Chọn loại KCB
+                                                </option>
+                                                <option value="BHYT">
+                                                    1. BHYT
+                                                </option>
+                                                <option value="Thu phí">
+                                                    2. Thu phí
+                                                </option>
+                                                <option value="Miễn">
+                                                    3. Miễn
+                                                </option>
+                                                <option value="Khác">
+                                                    4. Khác
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="type_of_object"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>BHYT giá trị đến ngày</td>
+                                    <td>Số thẻ BHYT</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="
+                                                    form.health_insurance_date
+                                                "
+                                                type="date"
+                                                name="health_insurance_date"
+                                                placeholder="Nhập ngày hết hạn BHYT"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'health_insurance_date'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="health_insurance_date"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="
+                                                    form.health_insurance_id
+                                                "
+                                                type="text"
+                                                name="health_insurance_id"
+                                                placeholder="So the BHYT"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'health_insurance_id'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="health_insurance_id"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <b>THÔNG TIN NGƯỜI THÂN</b>
+                                </tr>
+                                <tr>
+                                    <td width="50%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.name_next_of_kin"
+                                                type="text"
+                                                name="name_next_of_kin"
+                                                placeholder="Nhập tên người thân"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'name_next_of_kin'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="name_next_of_kin"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td width="50%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.phone_next_of_kin"
+                                                type="number"
+                                                name="phone_next_of_kin"
+                                                placeholder="Nhập số điện thoại liên lạc của người thân"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'phone_next_of_kin'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="phone_next_of_kin"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="form.home_next_of_kin"
+                                                placeholder="Nhập địa chỉ người thân"
+                                                name="home_next_of_kin"
+                                                id=""
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'home_next_of_kin'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="home_next_of_kin"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <center>
+                                            <button
+                                                type="submit"
+                                                class="addpatient btn-block btn btn-info"
+                                                style="color:#fff;"
+                                            >
+                                                Thêm bệnh nhân
+                                            </button>
+                                        </center>
+                                    </td>
+                                </tr>
+                            </table>
+
                             <!-- <div class="form-group">
-                                <label>
-                                    Chọn tôn giáo
-                                </label>
-                                <select
-                                    v-model="form.religion"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'religion'
-                                        )
-                                    }"
-                                    name="religion"
-                                >
-                                    <option
-                                        value="nul"
-                                        style="font-weight:700;"
-                                    >
-                                        Chọn tôn giáo
-                                    </option>
-                                    <option value="Christainity"
-                                        >Christainity</option
-                                    >
-                                    <option value="Islam">Islam</option>
-                                    <option value="Thiên Chúa Giáo"
-                                        >Thiên Chúa Giáo</option
-                                    >
-                                    <option value="Không">Không</option>
-                                </select>
-                                <has-error
-                                    :form="form"
-                                    field="religion"
-                                ></has-error>
-                            </div> -->
-                            <div class="form-group">
-                                <label for="*">
-                                    Nhap Ton giao
-                                </label>
-                                <input
-                                    v-model="form.religion"
-                                    type="text"
-                                    name="religion"
-                                    placeholder="Nhập Ton giao"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'religion'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="religion"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.nationality"
-                                    type="text"
-                                    name="nationality"
-                                    placeholder="Nhập Quốc tịch"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'nationality'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="nationality"
-                                ></has-error>
-                            </div>
-                            <!-- <div class="form-group">
-                                <label>
-                                    Quê quán
-                                </label>
-                                <select
-                                    v-model="form.state_of_origin"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'state_of_origin'
-                                        )
-                                    }"
-                                    name="state_of_origin"
-                                >
-                                    <option
-                                        value="nul"
-                                        style="font-weight:700;"
-                                    >
-                                        Quê quán
-                                    </option>
-                                    <option value="Niger State"
-                                        >Niger State</option
-                                    >
-                                    <option value="Zamfara State"
-                                        >Zamfara State</option
-                                    >
-                                    <option value="Gombe State"
-                                        >Gombe State</option
-                                    >
-                                    <option value="Hà Nội">Hà Nội</option>
-                                </select>
-                                <has-error
-                                    :form="form"
-                                    field="state_of_origin"
-                                ></has-error>
-                            </div> -->
-                            <div class="form-group">
                                 <label for="*">
                                     Nhap Que quan
                                 </label>
@@ -317,258 +570,7 @@
                                     :form="form"
                                     field="state_of_origin"
                                 ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <textarea
-                                    v-model="form.home_address"
-                                    placeholder="Nhập địa chỉ bệnh nhân"
-                                    name="home_address"
-                                    id=""
-                                    cols="10"
-                                    rows="5"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'home_address'
-                                        )
-                                    }"
-                                ></textarea>
-                                <has-error
-                                    :form="form"
-                                    field="home_address"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.place_of_birth"
-                                    type="text"
-                                    name="place_of_birth"
-                                    placeholder="Nhập nơi sinh của bệnh nhân"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'place_of_birth'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="place_of_birth"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.marital_status"
-                                    type="text"
-                                    name="marital_status"
-                                    placeholder="Nhập tình trạng hôn nhân hiện tại"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'marital_status'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="marital_status"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <label for="*">
-                                    Thông tin người thân
-                                </label>
-                                <input
-                                    v-model="form.name_next_of_kin"
-                                    type="text"
-                                    name="name_next_of_kin"
-                                    placeholder="Nhập tên người thân"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'name_next_of_kin'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="name_next_of_kin"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <textarea
-                                    v-model="form.home_next_of_kin"
-                                    placeholder="Nhập địa chỉ người thân"
-                                    name="home_next_of_kin"
-                                    id=""
-                                    cols="10"
-                                    rows="5"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'home_next_of_kin'
-                                        )
-                                    }"
-                                ></textarea>
-                                <has-error
-                                    :form="form"
-                                    field="home_next_of_kin"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.phone_next_of_kin"
-                                    type="number"
-                                    name="phone_next_of_kin"
-                                    placeholder="Nhập số điện thoại liên lạc của người thân"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'phone_next_of_kin'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="phone_next_of_kin"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.work_address"
-                                    type="text"
-                                    name="work_address"
-                                    placeholder="Nhập nơi làm việc"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'work_address'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="work_address"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.type_of_object"
-                                    type="text"
-                                    name="type_of_object"
-                                    placeholder="Loai KCB"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'type_of_object'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="type_of_object"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <label>
-                                    BHYT giá trị đến ngày
-                                </label>
-                                <input
-                                    v-model="form.health_insurance_date"
-                                    type="date"
-                                    name="health_insurance_date"
-                                    placeholder="Nhập ngày hết hạn BHYT"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'health_insurance_date'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="health_insurance_date"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.health_insurance_id"
-                                    type="text"
-                                    name="health_insurance_id"
-                                    placeholder="So the BHYT"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'health_insurance_id'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="health_insurance_id"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.reason"
-                                    type="text"
-                                    name="reason"
-                                    placeholder="Nhap ly do vao vien"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has('reason')
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="reason"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.medical_reason"
-                                    type="text"
-                                    name="medical_reason"
-                                    placeholder="Nhap Tien can cua nguoi benh"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'medical_reason'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="medical_reason"
-                                ></has-error>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    v-model="form.medical_history"
-                                    type="text"
-                                    name="medical_history"
-                                    placeholder="Nhap Tien su benh cua nguoi benh"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'medical_history'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="medical_history"
-                                ></has-error>
-                            </div>
-                            <center>
-                                <button
-                                    type="submit"
-                                    class="addpatient btn-block btn btn-info"
-                                    style="color:#fff;"
-                                >
-                                    Thêm bệnh nhân
-                                </button>
-                            </center>
+                            </div> -->
                         </form>
                     </div>
                 </div>
@@ -592,7 +594,6 @@ export default {
                 dob: "",
                 religion: "",
                 nationality: "",
-                state_of_origin: "",
                 home_address: "",
                 place_of_birth: "",
                 marital_status: "",

@@ -28,14 +28,18 @@
 		font-weight: bold;
 	}
 	* {
-		font-family: "Times New Roman" !important;
+        font-family: "Times New Roman" !important;
+        border: solid black 1px;
 	}
     .font-bold {
 		font-weight: bold;
 	}
 	.font-italic {
 		font-style: italic;
-	}
+    }
+    span.uppercase {
+        text-transform: uppercase;
+    }
 </style>
 
 <body style="font-family: Times New Roman">
@@ -43,23 +47,23 @@
 	<div class="header">
 		<table width="100%">
 			<tr>
-				<td>
+				<td width="30%">
 					Sở Y tế:
 				</td>
-				<td width="40%" rowspan="3" style="text-align: center;">
+				<td width="40%" rowspan="3" style="text-align: center; font-size: 25px">
 					<b>BỆNH ÁN NỘI KHOA</b>
 				</td>
-				<td>
+				<td width="30%">
 					Số lưu trữ: {{ $patientInfo->unique_id }}
 				</td>
 			</tr>
 			<tr>
-				<td>Bệnh viện:
-				<td>
+				<td width="30%">Bệnh viện:
+				<td width="30%">Mã YT
 			</tr>
 			<tr>
-				<td>Khoa: {{ $patientInfo->department }} &nbsp; Giường: {{ $patientInfo->bed_id }} </td>
-				<td>Mã YT</td>
+				<td width="30%">Khoa: {{ $hospitalHistory->department }} &nbsp; Giường: {{ $hospitalHistory->bed_id }} </td>
+				<td width="30%"></td>
 			</tr>
 		</table>
 	</div>
@@ -69,52 +73,47 @@
 		<br>
 		<table width="100%">
 			<tr>
-				<td width="40%">
-					Họ và tên (IN HOA) : {{ $patientInfo->full_name }}
+				<td width="50%"  >
+					1. Họ và tên <i>(In hoa)</i>: <span class="uppercase">{{ $patientInfo->full_name }}</span>
 				</td>
-				<td width="40%">
-					Sinh ngày: {{ $patientInfo->dob }}
-				</td>
-				<td width="10%">
-					Tuổi:
+				<td width="50%" >
+					2. Sinh ngày: {{ $patientInfo->dob }} &nbsp;&nbsp;Tuổi:
 				</td>
 			</tr>
 			<tr>
-				<td>
-					Giới tính : {{ $patientInfo->sex }}
+				<td width="50%" >
+					3. Giới tính: {{ $patientInfo->sex }}
 				</td>
-				<td>
-					Nghề nghiệp : {{ $patientInfo->occupation }}
+				<td width="50%" >
+					4. Nghề nghiệp : {{ $patientInfo->occupation }}
 				</td>
-				<td></td>
 			</tr>
 			<tr>
-				<td>
-					Dân tộc: {{ $patientInfo->race }}
+				<td width="50%">
+					5. Dân tộc: {{ $patientInfo->race }}
 				</td>
-				<td>
-					Ngoại kiều: {{ $patientInfo->foreign }}
+				<td width="50%">
+					6. Ngoại kiều: {{ $patientInfo->foreign }}
 				</td>
-				<td></td>
 			</tr>
 		</table>
 		<table width="100%">
 			<tr>
 				<td colspan="2">
-					Địa chỉ : {{ $patientInfo->home_address }}
+					7. Địa chỉ : {{ $patientInfo->home_address }}
 				</td>
 			</tr>
 			<tr>
 				<td width="50%">
-					Nơi làm việc : {{ $patientInfo->work_address }}
+					8. Nơi làm việc : {{ $patientInfo->work_address }}
 				</td>
 				<td>
-					Đối tượng : {{ $patientInfo->type_of_object }}
+					9. Đối tượng : {{ $patientInfo->type_of_object }}
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Giá trị BHYT: {{ $patientInfo->health_insurance_date }}
+					10. BHYT giá trị đến: {{ $patientInfo->health_insurance_date }}
 				</td>
 				<td>
 					Số thẻ BHYT: {{ $patientInfo->health_insurance_id }}
@@ -122,7 +121,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-                    Họ tên, địa chỉ người nhà khi cần báo tin: {{ $patientInfo->name_next_of_kin }} - Đ/C: {{ $patientInfo->home_next_of_kin }}
+                    11. Họ tên, địa chỉ người nhà khi cần báo tin: {{ $patientInfo->name_next_of_kin }} - Đ/C: {{ $patientInfo->home_next_of_kin }}
 				</td>
 			</tr>
 			<tr>
@@ -141,44 +140,42 @@
 		<table width="100%" style="border: 1px solid black">
 			<tr>
 				<td width="50%">
-                    Vào viện: {{ $hospitalHistory->date_admitted }}
+                    12. Vào viện: {{ $hospitalHistory->date_admitted }}
                 </td>
 				<td>
-					Nơi giới thiệu:
+					14. Nơi giới thiệu: {{ $hospitalHistory->refer_dept }}
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Trực tiếp vào:
+					13. Trực tiếp vào: {{ $hospitalHistory->admit_dept }}
 				</td>
 				<td>
-					Vào viện do bệnh này lần thứ:
+					Vào viện do bệnh này lần thứ: {{ $hospitalHistory->reason_count }}
 				</td>
 			</tr>
 		</table>
 		<table width="100%" style="border: 1px solid black">
 			<tr>
-				<td width="50%">Vào Khoa : </td>
+				<td width="50%">15. Vào Khoa : {{ $hospitalHistory->department }}</td>
 				<td>
-					Chuyển viện :
+					17. Chuyển viện:
 					<br>
-					Chuyển đến :
+					Chuyển đến:
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Chuyển :
-					<br>
-					Khoa :
+					16. Chuyển khoa lần 1:
 				</td>
 				<td>
-					Ra viện:
+					18. Ra viện:
 				</td>
 			</tr>
 			<tr>
-				<td></td>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chuyển khoa lần 2: </td>
 				<td>
-					Tổng số ngày điều trị
+					19. Tổng số ngày điều trị
 				</td>
 			</tr>
 		</table>
@@ -190,19 +187,27 @@
 		</b>
 		<table width="100%" style="border: 1px solid black">
 			<tr>
-				<td>
-					Nơi chuyển đến:
+				<td width="50%">
+					20. Nơi chuyển đến:
 					<br>
-					KKB, cấp cứu:
+					21. KKB, cấp cứu:
 					<br>
-					Khi vào khoa điều trị:
+					22. Khi vào khoa điều trị:
+					<br>
+					+ Thủ thuật:
+					&nbsp;&nbsp;
+					+ Phẫu thuật:
 				</td>
 				<td>
-					Ra viện:
+					23. Ra viện:
 					<br>
-					Bệnh chính:
+					+ Bệnh chính:
 					<br>
-					Bệnh kèm theo :
+					+ Bệnh kèm theo:
+					<br>
+					+ Tai biến:
+					&nbsp;&nbsp;
+					+ Biến chứng:
 				</td>
 			</tr>
 		</table>
@@ -306,35 +311,41 @@
 		Đặc điểm liên quan bệnh:
 		<table width="100%" border="1px solid black">
 			<tr>
-				<td width="10%"><b>TT</b></td>
-				<td width="20%"><i>Ký hiệu</i></td>
-				<td width="20%">Thời gian (tính theo tháng)</td>
-				<td width="10%"><b>TT</b></td>
-				<td width="20%"><i>Ký hiệu</i></td>
-				<td width="20%">Thời gian (tính theo tháng)</td>
+				<td width="5%"><b>TT</b></td>
+                <td width="20%" colspan="2">Ký hiệu</td>
+				<td width="20%">Thời gian <br> (tính theo tháng)</td>
+				<td width="5%"><b>TT</b></td>
+                <td width="20%" colspan="2">Ký hiệu</td>
+				<td width="20%">Thời gian <br> (tính theo tháng)</td>
 			</tr>
 			<tr>
 				<td>01</td>
 				<td>Dị ứng</td>
+                <td>  </td>
 				<td><i>(dị nguyên)</i></td>
 				<td>04</td>
 				<td>Thuốc lá</td>
+                <td></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>02</td>
 				<td>Ma túy</td>
+                <td></td>
 				<td></td>
 				<td>05</td>
 				<td>Thuốc lào</td>
+                <td></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>03</td>
 				<td>Rượu bia</td>
-				<td></td>
+                <td>{{ $hospitalHistory->disease_ruoubia }}</td>
+				<td> {{ $hospitalHistory->disease_ruoubia_time }} </td>
 				<td>06</td>
 				<td>Khác</td>
+                <td></td>
 				<td></td>
 			</tr>
 		</table>

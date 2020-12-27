@@ -137,14 +137,14 @@
                                                 <div class="modal-body">
                                                     <table>
                                                         <tr>
-                                                            <td colspan="2">
+                                                            <td colspan="3">
                                                                 <b
                                                                     >[1] Bệnh án
                                                                 </b>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2">
+                                                            <td>
                                                                 <button
                                                                     type="submit"
                                                                     @click="
@@ -156,9 +156,21 @@
                                                                     Xem bệnh án
                                                                 </button>
                                                             </td>
+                                                            <td colspan="2">
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        addPatientPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    Scan bệnh án
+                                                                </button>
+                                                            </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2">
+                                                            <td colspan="3">
                                                                 <b
                                                                     >[2] Giấy tờ
                                                                     lâm sàng</b
@@ -188,6 +200,22 @@
                                                                     >
                                                                 </button>
                                                             </td>
+
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
@@ -208,6 +236,21 @@
                                                                 >
                                                                     <i
                                                                         >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
                                                                         phiếu</i
                                                                     >
                                                                 </button>
@@ -236,6 +279,21 @@
                                                                     >
                                                                 </button>
                                                             </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
@@ -256,6 +314,21 @@
                                                                 >
                                                                     <i
                                                                         >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
                                                                         phiếu</i
                                                                     >
                                                                 </button>
@@ -285,6 +358,21 @@
                                                                     >
                                                                 </button>
                                                             </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
@@ -304,6 +392,21 @@
                                                                 >
                                                                     <i
                                                                         >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
                                                                         phiếu</i
                                                                     >
                                                                 </button>
@@ -332,6 +435,21 @@
                                                                     >
                                                                 </button>
                                                             </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
@@ -355,9 +473,24 @@
                                                                     >
                                                                 </button>
                                                             </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2">
+                                                            <td colspan="3">
                                                                 <b
                                                                     >[2] Giấy tờ
                                                                     cận lâm
@@ -387,6 +520,21 @@
                                                                     >
                                                                 </button>
                                                             </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
@@ -407,6 +555,21 @@
                                                                 >
                                                                     <i
                                                                         >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
                                                                         phiếu</i
                                                                     >
                                                                 </button>
@@ -436,6 +599,21 @@
                                                                     >
                                                                 </button>
                                                             </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
@@ -460,6 +638,21 @@
                                                                     >
                                                                 </button>
                                                             </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
@@ -479,6 +672,21 @@
                                                                 >
                                                                     <i
                                                                         >Xem
+                                                                        phiếu</i
+                                                                    >
+                                                                </button>
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    type="submit"
+                                                                    @click="
+                                                                        vitalPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    <i
+                                                                        >Scan
                                                                         phiếu</i
                                                                     >
                                                                 </button>

@@ -37,19 +37,22 @@ class HospitalController extends Controller
         //
         $this->validate($request, [
             'patient_id' => 'required',
-            'date_attented' => 'required',
-            'date_admitted' => 'required',
-            'refered_by' => 'required',
-            'ward' => 'required',
-            'date_discharged' => 'required',
-            'discharged_to' => 'required',
-            'outcome_of_care' => 'required',
-            'symptoms' => 'required',
-            'physician' => 'required',
-            'comment_box' => 'required',
-            'department' => 'required',
-            'room' => 'required',
-            'bed_id' => 'required',
+            // 'date_attented' => 'required',
+            // 'date_admitted' => 'required',
+            // 'refered_by' => 'required',
+            // 'ward' => 'required',
+            // 'date_discharged' => 'required',
+            // 'discharged_to' => 'required',
+            // 'outcome_of_care' => 'required',
+            // 'symptoms' => 'required',
+            // 'physician' => 'required',
+            // 'comment_box' => 'required',
+            // 'department' => 'required',
+            // 'room' => 'required',
+            // 'bed_id' => 'required',
+            // 'admit_dept' => 'required',
+            // 'refer_dept' => 'required',
+            // 'reason_count' => 'required',
         ]);
         // $hospital = new HospitalHistory;
         // $hospital->patient_id = $request->patient_id;
@@ -73,7 +76,7 @@ class HospitalController extends Controller
             'hospital_id' => $data->id,
             'diagnosis' => $data->symptoms,
             'comment' => $data->comment_box,
-            'modal_id' => $data->modal_id,
+            // 'modal_id' => $data->modal_id,
         ]);
         return response()->json(['data' => $data], 200);
     }
@@ -102,19 +105,22 @@ class HospitalController extends Controller
 
         $this->validate($request, [
             'patient_id' => 'required',
-            'date_attented' => 'required',
-            'date_admitted' => 'required',
-            'refered_by' => 'required',
-            'ward' => 'required',
-            'date_discharged' => 'required',
-            'discharged_to' => 'required',
-            'outcome_of_care' => 'required',
-            'symptoms' => 'required',
-            'physician' => 'required',
-            'comment_box' => 'required',
-            'department' => 'required',
-            'room' => 'required',
-            'bed_id' => 'required',
+            // 'date_attented' => 'required',
+            // 'date_admitted' => 'required',
+            // 'refered_by' => 'required',
+            // 'ward' => 'required',
+            // 'date_discharged' => 'required',
+            // 'discharged_to' => 'required',
+            // 'outcome_of_care' => 'required',
+            // 'symptoms' => 'required',
+            // 'physician' => 'required',
+            // 'comment_box' => 'required',
+            // 'department' => 'required',
+            // 'room' => 'required',
+            // 'bed_id' => 'required',
+            // 'admit_dept' => 'required',
+            // 'refer_dept' => 'required',
+            // 'reason_count' => 'required',
         ]);
         $hospital->update($request->all());
     }
