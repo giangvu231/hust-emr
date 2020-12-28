@@ -18,6 +18,7 @@ use App\EmrMngt;
 use App\Soap;
 use App\Diagnosishealth;
 use App\Subclinical;
+use App\Treatment;
 use PDF;
 
 class EmrController extends Controller
@@ -47,6 +48,8 @@ class EmrController extends Controller
         $payment = Payment::all();
         $diagnose = Diagnose::all();
         $labResult = LabResult::all();
+        $treatment = Treatment::all();
+        $emrSummary = EmrSummary::all();
 
         return response()->json([
             'appointment' => $appointment,
@@ -60,6 +63,8 @@ class EmrController extends Controller
             'payment' => $payment,
             'diagnose' => $diagnose,
             'labResult' => $labResult,
+            'treatment' => $treatment,
+            'emrSummary' => $emrSummary,
         ]);
     }
 
@@ -162,6 +167,8 @@ class EmrController extends Controller
         Diagnosishealth::where('patient_id',$id)->delete();
         Subclinical::where('patient_id',$id)->delete();
         Appointment::where('patient_id',$id)->delete();
+        Treatment::where('patient_id',$id)->delete();
+        EmrSummary::where('patient_id',$id)->delete();
 
         $patient->delete();
 

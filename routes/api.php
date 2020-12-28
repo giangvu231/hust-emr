@@ -22,6 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         'patient' => 'API\PatientController',
         'vital' => 'API\VitalController',
         'soap' => 'API\SoapController',
+        'treatment' => 'API\TreatmentController',
+        'emrsummary' => 'API\EmrSummaryController',
         'diagnosishealth' => 'API\DiagnosishealthController',
         'subclinical' => 'API\SubclinicalController',
         'hospital' => 'API\HospitalController',

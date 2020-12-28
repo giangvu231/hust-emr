@@ -286,7 +286,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/labresult" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
-              {{ __('Lab Result') }}
+              Kết quả xét nghiệm
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/add-treatment" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+                Nhập chẩn đoán
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/emr-summary" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+                Tổng kết bệnh án
               </p>
             </router-link>
           </li>

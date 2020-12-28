@@ -168,6 +168,16 @@ const routes = [
         name: "add-subclinical",
         path: "/add-subclinical",
         component: require("./components/add-subclinical.vue").default
+    },
+    {
+        name: "add-treatment",
+        path: "/add-treatment",
+        component: require("./components/add-treatment.vue").default
+    },
+    {
+        name: "emr-summary",
+        path: "/emr-summary",
+        component: require("./components/emr-summary.vue").default
     }
 ];
 

@@ -18,6 +18,8 @@ use App\Soap;
 use App\Diagnosishealth;
 use App\Subclinical;
 use App\Appointment;
+use App\Treatment;
+use App\EmrSummary;
 use App\Emr;
 use PDF;
 
@@ -159,6 +161,8 @@ class PatientController extends Controller
         Diagnosishealth::where('patient_id',$id)->delete();
         Subclinical::where('patient_id',$id)->delete();
         Appointment::where('patient_id',$id)->delete();
+        Treatment::where('patient_id',$id)->delete();
+        EmrSummary::where('patient_id',$id)->delete();
 
         $patient->delete();
 

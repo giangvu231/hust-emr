@@ -33,6 +33,16 @@ class Emr extends Model
         return $this->hasOne('App\Soap', 'id', 'soap_id');
     }
 
+    public function treatment()
+    {
+        return $this->hasOne('App\Treatment', 'id', 'treatment_id');
+    }
+
+    public function emrsummary()
+    {
+        return $this->hasMany('App\EmrSummary', 'id', 'emrsummary_id');
+    }
+
     public function diagnosishealth()
     {
         return $this->hasOne('App\Diagnosishealth', 'id', 'diagnosishealth_id');

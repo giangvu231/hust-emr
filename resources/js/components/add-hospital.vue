@@ -140,217 +140,19 @@
                                                 >
                                                     Nơi giới thiệu
                                                 </option>
-                                                <option value="1.Cơ quan y tế">
+                                                <option value="Cơ quan y tế">
                                                     1.Cơ quan y tế
                                                 </option>
-                                                <option value="2.Tự đến">
+                                                <option value="Tự đến">
                                                     2.Tự đến
                                                 </option>
-                                                <option value="3.Khác">
+                                                <option value="Khác">
                                                     3.Khác
                                                 </option>
                                             </select>
                                             <has-error
                                                 :form="form"
                                                 field="refer_dept"
-                                            ></has-error>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    NƠI ĐIỀU TRỊ
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.department"
-                                                type="text"
-                                                name="department"
-                                                placeholder="Nhập khoa điều trị"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'department'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="department"
-                                            ></has-error>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.room"
-                                                type="text"
-                                                name="room"
-                                                placeholder="Nhập phòng điều trị"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'room'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="room"
-                                            ></has-error>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.bed_id"
-                                                type="text"
-                                                name="bed_id"
-                                                placeholder="Nhập giường điều trị"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'bed_id'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="bed_id"
-                                            ></has-error>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.reason_count"
-                                                type="text"
-                                                name="reason_count"
-                                                placeholder="Số lần nhập viện do bệnh này?"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'reason_count'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="reason_count"
-                                            ></has-error>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.refered_by"
-                                                type="text"
-                                                name="refered_by"
-                                                placeholder="Bác sĩ điều trị"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'refered_by'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="refered_by"
-                                            ></has-error>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.physician"
-                                                type="text"
-                                                name="physician"
-                                                placeholder="Nhập tên Điều dưỡng"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'physician'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="physician"
-                                            ></has-error>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- <tr>
-                                    <td colspan="2">
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.ward"
-                                                type="text"
-                                                name="ward"
-                                                placeholder="Người giám hộ"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'ward'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="ward"
-                                            ></has-error>
-                                        </div>
-                                    </td>
-                                </tr> -->
-                                <tr>
-                                    <td>Ngày thanh toán</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.date_discharged"
-                                                type="date"
-                                                name="date_discharged"
-                                                placeholder="Ngày thanh toán"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'date_discharged'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="date_discharged"
-                                            ></has-error>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div></div>
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.discharged_to"
-                                                type="text"
-                                                name="discharged_to"
-                                                placeholder="Thu ngân"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'discharged_to'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="discharged_to"
                                             ></has-error>
                                         </div>
                                     </td>
@@ -693,8 +495,7 @@
                                     class="hospital btn-block btn btn-info"
                                     style="color:#fff;"
                                 >
-                                    <!-- Add Patient Hospital History -->
-                                    Thêm tiền sử khám của bệnh nhân
+                                    Thêm thông tin
                                 </button>
                             </center>
                         </form>
@@ -714,20 +515,10 @@ export default {
                 patient_id: "",
                 date_attented: "",
                 date_admitted: "",
-                refered_by: "",
-                physician: "",
-                // ward: "",
-                date_discharged: "",
-                discharged_to: "",
-                // outcome_of_care: "",
                 comment_box: "",
                 symptoms: "",
-                department: "",
-                room: "",
-                bed_id: "",
                 admit_dept: "",
                 refer_dept: "",
-                reason_count: "",
                 disease_in: "",
                 disease_out: "",
                 reason: "",
@@ -758,7 +549,7 @@ export default {
                         // title: 'Patient Hospital History Added Successfully'
                         title: "Thêm thông tin thành công!"
                     });
-                    $(".hospital").html("Thêm thông tin lịch sử của bệnh nhân");
+                    $(".hospital").html("Thêm thông tin");
                     $("#add-hospital").trigger("reset");
                 })
                 .catch(() => {
@@ -766,7 +557,7 @@ export default {
                         type: "error",
                         title: "Thông tin nhập chưa đúng!"
                     });
-                    $(".hospital").html("Thêm thông tin lịch sử của bệnh nhân");
+                    $(".hospital").html("Thêm thông tin");
                 });
         },
         loadPatients() {

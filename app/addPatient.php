@@ -34,6 +34,9 @@ class addPatient extends Model
     public function subclinicals(){
         return $this->hasOne('App\Subclinical');
     }
+    public function treatments(){
+        return $this->hasOne('App\Treatment');
+    }
 
     public function hospitals(){
         return $this->hasMany('App\HospitalHistory');
@@ -53,5 +56,9 @@ class addPatient extends Model
 
     public function appointment(){
         return $this->hasMany('App\Appointment');
+    }
+
+    public function emrsummary(){
+        return $this->hasMany('App\EmrSummary');
     }
 }
