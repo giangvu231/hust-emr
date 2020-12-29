@@ -177,37 +177,6 @@
                                         <label>
                                             <b>Giới tính</b>
                                         </label>
-                                        <!-- <select
-                                                v-model="form.sex"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'sex'
-                                                    )
-                                                }"
-                                                name="sex"
-                                            >
-                                                <option
-                                                    disabled
-                                                    value=""
-                                                    style="font-weight:700;"
-                                                >
-                                                    Chọn giới tính
-                                                </option>
-                                                <option value="Nam">
-                                                    Nam
-                                                </option>
-                                                <option value="Nữ">
-                                                    Nữ
-                                                </option>
-                                                <option value="Khác">
-                                                    Khác
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="sex"
-                                            ></has-error> -->
                                         <div class="form-group">
                                             <input
                                                 type="radio"
@@ -549,28 +518,6 @@
                                     </td>
                                 </tr>
                             </table>
-
-                            <!-- <div class="form-group">
-                                <label for="*">
-                                    Nhap Que quan
-                                </label>
-                                <input
-                                    v-model="form.state_of_origin"
-                                    type="text"
-                                    name="state_of_origin"
-                                    placeholder="Nhập que quan hien tai"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has(
-                                            'state_of_origin'
-                                        )
-                                    }"
-                                />
-                                <has-error
-                                    :form="form"
-                                    field="state_of_origin"
-                                ></has-error>
-                            </div> -->
                         </form>
                     </div>
                 </div>
@@ -584,7 +531,8 @@ export default {
     data() {
         return {
             form: new Form({
-                unique_id: "BA" + Math.floor(Math.random() * 10000000000 + 1),
+                unique_id: "BA" + Math.floor(Math.random() * 10000000 + 1),
+                pid: "BN" + Math.floor(Math.random() * 10000000 + 1),
                 title: "",
                 full_name: "",
                 email: "",

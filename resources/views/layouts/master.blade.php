@@ -11,7 +11,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ __('Electronic Patients Medical Record System') }}</title>
+  <title>BỆNH ÁN ĐIỆN TỬ</title>
 
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/fSelect.css">
@@ -87,7 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </router-link>
 
-              <ul id="_drop1" data-tongle="1">
+              <!-- <ul id="_drop1" data-tongle="1">
                 <li class="nav-item" >
                     <router-link to="/emr-mngt" class="nav-link">
                     <i class="nav-icon fas fa-database"></i>
@@ -96,7 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </p>
                     </router-link>
                 </li>
-              </ul>
+              </ul> -->
           </li>
 
             <li class="nav-item" >

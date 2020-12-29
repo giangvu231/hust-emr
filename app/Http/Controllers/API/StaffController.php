@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\addPatient;
 use Auth;
 
 class StaffController extends Controller
@@ -121,4 +122,25 @@ class StaffController extends Controller
         //
         return \Auth::user();
     }
+
+    public function search()
+    {
+        if($search = \Request::get('q')){
+            return User::where(function($query) use ($search){
+                $query->where('name', 'LIKE', "%$search%" )->orWhere('title', 'LIKE', "%$search%" );
+            })->paginate(30);
+        };
+
+        if($search = \Request::get('q')){
+            return addPatient::where(function($query) use ($search){
+                $query->where('name', 'LIKE', "%$search%" )->orWhere('title', 'LIKE', "%$search%" );
+            })->paginate(30);
+        };
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
 }

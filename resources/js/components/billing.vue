@@ -283,7 +283,7 @@ export default {
                         dataTy: "json",
                         success: function(data) {
                             console.log(data);
-                            // $('.info_s').html();
+                            $(".info_s").html();
                             $(".almost_done").hide();
                             $(".done").html(
                                 "<div>Thanh toán thành công, Tạo thanh toán khác</div>"
@@ -292,7 +292,7 @@ export default {
                             $(".pay").html("Submit");
                         }
                     });
-                    //   alert('success. transaction ref is ' + response.reference);
+                    alert("success. transaction ref is " + response.reference);
                 },
                 onClose: function() {
                     alert("window closed");

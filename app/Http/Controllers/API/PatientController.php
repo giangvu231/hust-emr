@@ -21,6 +21,8 @@ use App\Appointment;
 use App\Treatment;
 use App\EmrSummary;
 use App\Emr;
+use App\User;
+use Auth;
 use PDF;
 
 class PatientController extends Controller
@@ -54,35 +56,23 @@ class PatientController extends Controller
     {
         $this->validate($request, [
             'unique_id' => 'required | unique:add_patients',
+            'pid' => 'required | unique:add_patients',
+
             'full_name' => 'required | string | max:191',
             'email' => 'required | string | email | max:191 | unique:add_patients',
             'title' => 'required',
             'phone_number' => 'required',
-            // 'occupation' => 'required',
-            // 'sex' => 'required',
-            // 'dob' => 'required',
-            // 'religion' => 'required',
-            // 'nationality' => 'required',
-            // 'home_address' => 'required',
-            // 'place_of_birth' => 'required',
-            // 'marital_status' => 'required',
-            // 'home_next_of_kin' => 'required',
-            // 'phone_next_of_kin' => 'required',
-            // 'name_next_of_kin' => 'required',
-            // 'work_address' => 'required',
-            // 'type_of_object' => 'required',
-            // 'reason' => 'required',
-            // 'medical_reason' => 'required',
-            // 'race' => 'required',
-            // 'foreign' => 'required',
-            // 'health_insurance_id' => 'required',
-            // 'health_insurance_date' => 'required',
+
         ]);
 
+        // $userName= $request->user()->name;
+
         $data = addPatient::create($request->all());
+
         Emr::create([
             'emr_id' => $data->unique_id,
             'patient_id' => $data->id,
+            // 'lab_id' => $userName,
         ]);
         return response()->json(['data' => $data], 200);
     }

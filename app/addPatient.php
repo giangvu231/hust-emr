@@ -11,7 +11,31 @@ class addPatient extends Model
     use Notifiable, HasApiTokens;
 
     protected $fillable = [
-        'unique_id', 'title', 'full_name', 'email', 'phone_number',  'occupation', 'sex', 'dob', 'role', 'religion',  'nationality', 'home_address', 'place_of_birth', 'marital_status', 'home_next_of_kin', 'phone_next_of_kin', 'name_next_of_kin', 'work_address', 'type_of_object', 'race', 'foreign', 'health_insurance_id', 'health_insurance_date',
+        'unique_id',
+        'pid',
+        'title',
+        'full_name',
+        'email',
+        'phone_number',
+        'occupation',
+        'sex',
+        'dob',
+        'role',
+        'religion',
+        'nationality',
+        'home_address',
+        'place_of_birth',
+        'marital_status',
+        'home_next_of_kin',
+        'phone_next_of_kin',
+        'name_next_of_kin',
+        'work_address',
+        'type_of_object',
+        'race',
+        'foreign',
+        'health_insurance_id',
+        'health_insurance_date',
+        'username'
     ];
 
     public function emrs()

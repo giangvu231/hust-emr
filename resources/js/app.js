@@ -232,4 +232,11 @@ const app = new Vue({
     //     Fire.$emit('searching')
     //   }
     // }
+    // data: {
+    //     comment: {
+    //         user_id: document
+    //             .querySelector("meta[name='user-id']")
+    //             .getAttribute("content")
+    //     }
+    // }
 });

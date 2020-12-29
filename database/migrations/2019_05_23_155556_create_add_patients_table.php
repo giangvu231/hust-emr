@@ -16,6 +16,9 @@ class CreateAddPatientsTable extends Migration
         Schema::create('add_patients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('unique_id')->unique();
+            $table->string('pid')->unique();
+
+
             $table->string('title')->nullable();
             $table->string('full_name');
             $table->string('email')->unique();
@@ -38,6 +41,8 @@ class CreateAddPatientsTable extends Migration
             $table->string('health_insurance_id')->nullable();
             $table->string('health_insurance_date')->nullable();
 
+            $table->string('userid')->nullable();
+            $table->string('username')->nullable();
             $table->timestamps();
         });
     }

@@ -2319,64 +2319,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       form: new Form({
-        unique_id: "BA" + Math.floor(Math.random() * 10000000000 + 1),
+        unique_id: "BA" + Math.floor(Math.random() * 10000000 + 1),
+        pid: "BN" + Math.floor(Math.random() * 10000000 + 1),
         title: "",
         full_name: "",
         email: "",
@@ -5501,14 +5449,15 @@ __webpack_require__.r(__webpack_exports__);
             },
             dataTy: "json",
             success: function success(data) {
-              console.log(data); // $('.info_s').html();
-
+              console.log(data);
+              $(".info_s").html();
               $(".almost_done").hide();
               $(".done").html("<div>Thanh toán thành công, Tạo thanh toán khác</div>");
               $("#addpayment").show();
               $(".pay").html("Submit");
             }
-          }); //   alert('success. transaction ref is ' + response.reference);
+          });
+          alert("success. transaction ref is " + response.reference);
         },
         onClose: function onClose() {
           alert("window closed");
@@ -108776,6 +108725,13 @@ var app = new Vue({
   //   searchit(){
   //     Fire.$emit('searching')
   //   }
+  // }
+  // data: {
+  //     comment: {
+  //         user_id: document
+  //             .querySelector("meta[name='user-id']")
+  //             .getAttribute("content")
+  //     }
   // }
 
 });
