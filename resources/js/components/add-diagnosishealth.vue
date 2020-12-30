@@ -287,6 +287,31 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
+                                        <div class="form-group">
+                                            <textarea
+                                                v-model="
+                                                    form.diagnosis_syndrome
+                                                "
+                                                type="text"
+                                                name="diagnosis_syndrome"
+                                                placeholder="Các triệu chứng, hội chứng lâm sàng đã phát hiện"
+                                                rows="5"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'diagnosis_syndrome'
+                                                    )
+                                                }"
+                                            ></textarea>
+                                            <has-error
+                                                :form="form"
+                                                field="diagnosis_syndrome"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
                                         <center>
                                             <button
                                                 type="submit"
@@ -323,7 +348,8 @@ export default {
                 diagnosis_taimuihong: "",
                 diagnosis_ranghammat: "",
                 diagnosis_mat: "",
-                diagnosis_noitiet_dinhduong_khac: ""
+                diagnosis_noitiet_dinhduong_khac: "",
+                diagnosis_syndrome: ""
             })
         };
     },

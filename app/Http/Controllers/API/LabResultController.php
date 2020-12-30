@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\LabResult;
+use App\Emr;
 
 class LabResultController extends Controller
 {
@@ -23,7 +24,7 @@ class LabResultController extends Controller
     {
         //
         return LabResult::with('patient', 'diagnose')->get();
-        
+
     }
 
     /**
@@ -39,16 +40,22 @@ class LabResultController extends Controller
             'patient_id' => 'required',
             'diagnose_id' => 'required',
             'type' => 'required',
-            'comment' => 'required',                    
-        ]);        
-        $lapresult = new LabResult;
-        $lapresult->patient_id = $request->patient_id;       
-        $lapresult->diagnose_id = $request->diagnose_id;
-        $lapresult->type = $request->type;
-        $lapresult->comment = $request->comment;
+            'comment' => 'required',
+        ]);
+        // $lapresult = new LabResult;
+        // $lapresult->patient_id = $request->patient_id;
+        // $lapresult->diagnose_id = $request->diagnose_id;
+        // $lapresult->type = $request->type;
+        // $lapresult->comment = $request->comment;
         // $diagnose->modal_id = strtolower(str_random(8));
 
-        $lapresult->save();   
+        // $lapresult->save();
+
+        $data = LabResult::create($request->all());
+        Emr::where('patient_id', $data->patient_id)->update([
+            'lab_id' => $data->id
+        ]);
+        return response()->json(['data' => $data], 200);
     }
 
     /**
@@ -74,10 +81,10 @@ class LabResultController extends Controller
         //
         $labresult = LabResult::findOrFail($id);
 
-        $this->validate($request, [            
+        $this->validate($request, [
             'type' => 'required',
-            'comment' => 'required',                    
-        ]);          
+            'comment' => 'required',
+        ]);
         $labresult->update($request->all());
     }
 
@@ -97,7 +104,7 @@ class LabResultController extends Controller
         //
         return Auth::user();
         // return LabResult::with('patient', 'diagnose')->get();
-        
+
     }
 
 }

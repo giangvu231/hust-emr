@@ -12,7 +12,10 @@ class LabResult extends Model
     use Notifiable, HasApiTokens;
 
     protected $fillable = [
-        'patient_id', 'diagnose_id', 'type', 'comment'
+        'patient_id',
+        'diagnose_id',
+        'type',
+        'comment'
     ];
 
    public function patient(){
@@ -21,6 +24,6 @@ class LabResult extends Model
 
    public function diagnose(){
     return $this->belongsTo('App\Diagnose');
-        
+
     }
 }

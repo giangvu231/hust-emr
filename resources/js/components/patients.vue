@@ -20,29 +20,37 @@
         <br /><br />
         <div class="row justify-content-center">
             <div class="card" style="width:100%;">
-                <div class="row card-header">
-                    <div class="col-sm-6">
-                        <h3 class="card-title">Danh sách lý lịch bệnh nhân</h3>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="input-group input-group-sm">
-                            <input
-                                type="search"
-                                v-model="search"
-                                @keyup.enter="searchit"
-                                class="form-control"
-                                placeholder="Nhập tên bệnh nhân"
-                            />
-                            <span class="input-group-append">
-                                <button
-                                    @click="searchit"
-                                    class="btn btn-info btn-flat"
-                                >
-                                    Tìm kiếm
-                                </button>
-                            </span>
-                        </div>
-                    </div>
+                <div class="card-header">
+                    <table width="100%">
+                        <tr>
+                            <td>
+                                <div>
+                                    <h3 class="card-title">
+                                        Danh sách lý lịch bệnh nhân
+                                    </h3>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group input-group-sm">
+                                    <input
+                                        type="search"
+                                        v-model="search"
+                                        @keyup.enter="searchit"
+                                        class="form-control"
+                                        placeholder="Nhập tên bệnh nhân"
+                                    />
+                                    <span class="input-group-append">
+                                        <button
+                                            @click="searchit"
+                                            class="btn btn-info btn-flat"
+                                        >
+                                            Tìm kiếm
+                                        </button>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">

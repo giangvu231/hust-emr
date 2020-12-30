@@ -37,9 +37,9 @@ class TreatmentController extends Controller
 
         ]);
         $data = Treatment::create($request->all());
-        // Emr::where('patient_id', $data->patient_id)->update([
-        //     'treament_id' => $data->id
-        // ]);
+        Emr::where('patient_id', $data->patient_id)->update([
+            'treatment_id' => $data->id
+        ]);
         return response()->json(['data' => $data], 200);
     }
 

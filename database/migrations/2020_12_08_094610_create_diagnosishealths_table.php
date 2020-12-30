@@ -27,6 +27,7 @@ class CreateDiagnosishealthsTable extends Migration
             $table->longText('diagnosis_ranghammat')->nullable();
             $table->longText('diagnosis_mat')->nullable();
             $table->longText('diagnosis_noitiet_dinhduong_khac')->nullable();
+            $table->longText('diagnosis_syndrome')->nullable();
 
             $table->timestamps();
         });

@@ -27,7 +27,7 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //        
+        //
         setcookie('patient_id' , $request->patient_id , time()+3600 );
         setcookie('type' , $request->type , time()+3600 );
         setcookie('amount' , $request->amount , time()+3600 );
@@ -77,9 +77,9 @@ class PaymentController extends Controller
         $pay->patient_id = $_COOKIE['patient_id'];
         $pay->type = $_COOKIE['type'];
         $pay->amount = $_COOKIE['amount'];
-        $pay->email = $_COOKIE['email']; 
-        $pay->ref = $request->ref_id;  
-        
+        $pay->email = $_COOKIE['email'];
+        $pay->ref = $request->ref_id;
+
         $pay->save();
     }
 }

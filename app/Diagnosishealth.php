@@ -22,6 +22,7 @@ class Diagnosishealth extends Model
         'diagnosis_ranghammat',
         'diagnosis_mat',
         'diagnosis_noitiet_dinhduong_khac',
+        'diagnosis_syndrome',
     ];
 
    public function patient(){

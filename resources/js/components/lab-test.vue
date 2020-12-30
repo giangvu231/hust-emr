@@ -290,9 +290,9 @@ export default {
                 .then(() => {
                     toast.fire({
                         type: "success",
-                        title: "Kết quả xét nghiệm đã cập nhật thành công!"
+                        title: "Cập nhật thành công!"
                     });
-                    $(".labtestresult").html("Upload Test Result");
+                    $(".labtestresult").html("Cập nhật kết quả xét nghiệm CLS");
                     $("#lap-result").modal("hide");
                 })
                 .catch(() => {
@@ -301,7 +301,9 @@ export default {
                         title:
                             "Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!"
                     });
-                    $(".labtestresult").html("Upload Test Result ");
+                    $(".labtestresult").html(
+                        "Cập nhật kết quả xét nghiệm CLS "
+                    );
                 });
         }
     },

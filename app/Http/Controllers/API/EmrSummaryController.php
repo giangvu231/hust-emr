@@ -36,12 +36,11 @@ class EmrSummaryController extends Controller
     {
         $this->validate($request, [
             'patient_id' => 'required',
-
         ]);
         $data = EmrSummary::create($request->all());
-        // Emr::where('patient_id', $data->patient_id)->update([
-        //     'treament_id' => $data->id
-        // ]);
+        Emr::where('patient_id', $data->patient_id)->update([
+            'emr_summary_id' => $data->id
+        ]);
         return response()->json(['data' => $data], 200);
     }
 

@@ -22,10 +22,11 @@ class CreateEmrsTable extends Migration
             $table->string('diagnosishealth_id')->nullable();
             $table->string('subclinical_id')->nullable();
             $table->string('appointment_id')->nullable();
-            // $table->string('emr_mngtcol')->nullable();
             $table->string('patient_history_id')->nullable();
             $table->string('lab_id')->nullable();
             $table->string('diagnosis_id')->nullable();
+            $table->string('treatment_id')->nullable();
+            $table->string('emr_summary_id')->nullable();
             $table->timestamps();
         });
     }

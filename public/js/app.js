@@ -2695,6 +2695,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2710,7 +2735,8 @@ __webpack_require__.r(__webpack_exports__);
         diagnosis_taimuihong: "",
         diagnosis_ranghammat: "",
         diagnosis_mat: "",
-        diagnosis_noitiet_dinhduong_khac: ""
+        diagnosis_noitiet_dinhduong_khac: "",
+        diagnosis_syndrome: ""
       })
     };
   },
@@ -7560,18 +7586,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -9369,16 +9383,16 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post("api/uploadtest").then(function () {
         toast.fire({
           type: "success",
-          title: "Kết quả xét nghiệm đã cập nhật thành công!"
+          title: "Cập nhật thành công!"
         });
-        $(".labtestresult").html("Upload Test Result");
+        $(".labtestresult").html("Cập nhật kết quả xét nghiệm CLS");
         $("#lap-result").modal("hide");
       })["catch"](function () {
         toast.fire({
           type: "error",
           title: "Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!"
         });
-        $(".labtestresult").html("Upload Test Result ");
+        $(".labtestresult").html("Cập nhật kết quả xét nghiệm CLS ");
       });
     }
   },
@@ -9931,6 +9945,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -76425,6 +76447,62 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.diagnosis_syndrome,
+                                expression:
+                                  "\n                                                form.diagnosis_syndrome\n                                            "
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "diagnosis_syndrome"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "diagnosis_syndrome",
+                              placeholder:
+                                "Các triệu chứng, hội chứng lâm sàng đã phát hiện",
+                              rows: "5"
+                            },
+                            domProps: { value: _vm.form.diagnosis_syndrome },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "diagnosis_syndrome",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "diagnosis_syndrome"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
                     _c(
                       "td",
                       { attrs: { colspan: "2" } },
@@ -82468,55 +82546,70 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "card", staticStyle: { width: "100%" } }, [
-        _c("div", { staticClass: "row card-header" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-6" }, [
-            _c("div", { staticClass: "input-group input-group-sm" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.search,
-                    expression: "search"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "search", placeholder: "Nhập tên bệnh nhân" },
-                domProps: { value: _vm.search },
-                on: {
-                  keyup: function($event) {
-                    if (
-                      !$event.type.indexOf("key") &&
-                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                    ) {
-                      return null
-                    }
-                    return _vm.searchit($event)
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.search = $event.target.value
-                  }
-                }
-              }),
+        _c("div", { staticClass: "card-header" }, [
+          _c("table", { attrs: { width: "100%" } }, [
+            _c("tr", [
+              _vm._m(0),
               _vm._v(" "),
-              _c("span", { staticClass: "input-group-append" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-info btn-flat",
-                    on: { click: _vm.searchit }
-                  },
-                  [
-                    _vm._v(
-                      "\n                                Tìm kiếm\n                            "
-                    )
-                  ]
-                )
+              _c("td", [
+                _c("div", [
+                  _c("div", { staticClass: "input-group input-group-sm" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.search,
+                          expression: "search"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "search",
+                        placeholder: "Nhập tên bệnh nhân"
+                      },
+                      domProps: { value: _vm.search },
+                      on: {
+                        keyup: function($event) {
+                          if (
+                            !$event.type.indexOf("key") &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
+                          return _vm.searchit($event)
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.search = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "input-group-append" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-info btn-flat",
+                          on: { click: _vm.searchit }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                            Tìm kiếm\n                                        "
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                ])
               ])
             ])
           ])
@@ -84506,9 +84599,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-6" }, [
-      _c("h3", { staticClass: "card-title" }, [
-        _vm._v("Danh sách hồ sơ bệnh án")
+    return _c("td", [
+      _c("div", [
+        _c("h3", { staticClass: "card-title" }, [
+          _vm._v(
+            "\n                                    Danh sách hồ sơ bệnh án\n                                "
+          )
+        ])
       ])
     ])
   },
@@ -88470,55 +88567,68 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "card", staticStyle: { width: "100%" } }, [
-        _c("div", { staticClass: "row card-header" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-6" }, [
-            _c("div", { staticClass: "input-group input-group-sm" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.search,
-                    expression: "search"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "search", placeholder: "Nhập tên bệnh nhân" },
-                domProps: { value: _vm.search },
-                on: {
-                  keyup: function($event) {
-                    if (
-                      !$event.type.indexOf("key") &&
-                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                    ) {
-                      return null
-                    }
-                    return _vm.searchit($event)
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.search = $event.target.value
-                  }
-                }
-              }),
+        _c("div", { staticClass: "card-header" }, [
+          _c("table", { attrs: { width: "100%" } }, [
+            _c("tr", [
+              _vm._m(0),
               _vm._v(" "),
-              _c("span", { staticClass: "input-group-append" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-info btn-flat",
-                    on: { click: _vm.searchit }
-                  },
-                  [
-                    _vm._v(
-                      "\n                                Tìm kiếm\n                            "
+              _c("td", [
+                _c("div", { staticClass: "input-group input-group-sm" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.search,
+                        expression: "search"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "search",
+                      placeholder: "Nhập tên bệnh nhân"
+                    },
+                    domProps: { value: _vm.search },
+                    on: {
+                      keyup: function($event) {
+                        if (
+                          !$event.type.indexOf("key") &&
+                          _vm._k(
+                            $event.keyCode,
+                            "enter",
+                            13,
+                            $event.key,
+                            "Enter"
+                          )
+                        ) {
+                          return null
+                        }
+                        return _vm.searchit($event)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.search = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "input-group-append" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-info btn-flat",
+                        on: { click: _vm.searchit }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                        Tìm kiếm\n                                    "
+                        )
+                      ]
                     )
-                  ]
-                )
+                  ])
+                ])
               ])
             ])
           ])
@@ -89946,9 +90056,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-6" }, [
-      _c("h3", { staticClass: "card-title" }, [
-        _vm._v("Danh sách lý lịch bệnh nhân")
+    return _c("td", [
+      _c("div", [
+        _c("h3", { staticClass: "card-title" }, [
+          _vm._v(
+            "\n                                    Danh sách lý lịch bệnh nhân\n                                "
+          )
+        ])
       ])
     ])
   },
@@ -110818,8 +110932,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\emr-dev\hust-emr\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\emr-dev\hust-emr\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\emr-dev\emr-v.20.12.30\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\emr-dev\emr-v.20.12.30\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
