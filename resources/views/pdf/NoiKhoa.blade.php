@@ -70,11 +70,11 @@
       <table width="100%">
         <tr>
           <td width="50%">1. Họ và tên <i>(In hoa)</i>: <span class="uppercase">{{ $patientInfo->full_name }}</span></td>
-          <td width="50%">2. Sinh ngày: {{ $patientInfo->dob }} &nbsp;&nbsp;Tuổi:</td>
+          <td width="50%">2. Sinh ngày: {{ $patientInfo->dob }} &nbsp;&nbsp;Tuổi: {{ $patientInfo->age }}</td>
         </tr>
         <tr>
           <td width="50%">3. Giới tính: {{ $patientInfo->sex }}</td>
-          <td width="50%">4. Nghề nghiệp : {{ $patientInfo->occupation }}</td>
+          <td width="50%">4. Nghề nghiệp: {{ $patientInfo->occupation }}</td>
         </tr>
         <tr>
           <td width="50%">5. Dân tộc: {{ $patientInfo->race }}</td>

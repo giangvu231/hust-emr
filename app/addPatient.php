@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon;
 
 class addPatient extends Model
 {
@@ -84,5 +85,12 @@ class addPatient extends Model
 
     public function emrsummary(){
         return $this->hasMany('App\EmrSummary');
+    }
+    /**
+     * Accessor for Age.
+     */
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->attributes['dob'])->age;
     }
 }

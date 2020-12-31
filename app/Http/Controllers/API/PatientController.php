@@ -67,6 +67,7 @@ class PatientController extends Controller
 
         // $userName= $request->user()->name;
 
+
         $data = addPatient::create($request->all());
 
         Emr::create([
