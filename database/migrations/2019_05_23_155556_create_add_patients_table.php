@@ -40,6 +40,9 @@ class CreateAddPatientsTable extends Migration
             $table->string('foreign')->nullable();
             $table->string('health_insurance_id')->nullable();
             $table->string('health_insurance_date')->nullable();
+            $table->string('job_id')->nullable();
+            $table->string('job_code')->nullable();
+            $table->string('job_name')->nullable();
 
             $table->string('userid')->nullable();
             $table->string('username')->nullable();

@@ -112,20 +112,32 @@
                                     <td width="50%">
                                         <div class="form-group">
                                             <input
-                                                v-model="form.occupation"
                                                 type="text"
-                                                name="occupation"
-                                                placeholder="Nhập nghề nghiệp hiện tại"
+                                                v-model="searchText"
+                                                @keyup="search()"
+                                            />
+                                            <select
+                                                v-model="form.job_id"
                                                 class="form-control"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'occupation'
+                                                        'job_id'
                                                     )
                                                 }"
-                                            />
+                                                name="job_id"
+                                            >
+                                                <option
+                                                    v-for="searchArr in searchArrs"
+                                                    :key="searchArr.id"
+                                                    :value="searchArr.id"
+                                                >
+                                                    {{ searchArr.code }} -
+                                                    {{ searchArr.name }}
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
-                                                field="occupation"
+                                                field="job_id"
                                             ></has-error>
                                         </div>
                                     </td>
@@ -530,6 +542,9 @@
 export default {
     data() {
         return {
+            searchText: "",
+            searchArrs: [],
+            jobs: {},
             form: new Form({
                 unique_id: "BA" + Math.floor(Math.random() * 10000000 + 1),
                 pid: "BN" + Math.floor(Math.random() * 10000000 + 1),
@@ -551,7 +566,10 @@ export default {
                 race: "",
                 foreign: "",
                 health_insurance_id: "",
-                health_insurance_date: ""
+                health_insurance_date: "",
+                job_id: "",
+                job_code: "",
+                job_name: ""
             })
         };
     },
@@ -576,6 +594,16 @@ export default {
                     });
                     $(".addpatient").html("Thêm thông tin bệnh nhân");
                 });
+        },
+        search() {
+            axios
+                .post("/searchjob", {
+                    name: this.searchText
+                })
+                .then(response => {
+                    this.searchArrs = response.data;
+                })
+                .catch(() => {});
         }
     },
     mounted() {

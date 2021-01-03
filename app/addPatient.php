@@ -36,6 +36,9 @@ class addPatient extends Model
         'foreign',
         'health_insurance_id',
         'health_insurance_date',
+        'job_id',
+        'job_code',
+        'job_name',
         'username'
     ];
 

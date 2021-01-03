@@ -35,6 +35,9 @@ class HospitalHistory extends Model
         'disease_thuoclao_time',
         'disease_khac',
         'disease_khac_time',
+        'icd10_id',
+        'icd10_code',
+        'icd10_name',
     ];
 
    public function patient(){

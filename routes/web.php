@@ -33,3 +33,6 @@ Route::get('/{vue_capture?}', function () {
     return view('layouts.master');
 })->where('vue_capture', '[\/\w\.-]*')->middleware('auth');
 
+Route::post('/search', 'SearchController@postSearch');
+
+Route::post('/searchjob', 'SearchJobController@postSearch');

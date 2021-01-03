@@ -22,6 +22,7 @@ use App\Treatment;
 use App\EmrSummary;
 use App\Emr;
 use App\User;
+use App\Job;
 use Auth;
 use PDF;
 
@@ -70,10 +71,14 @@ class PatientController extends Controller
 
         $data = addPatient::create($request->all());
 
+        $job = Job::findOrFail($data->job_id);
+        addPatient::where('job_id', $job->id)->update([
+            'job_code' => $job->code,
+            'job_name' => $job->name,
+        ]);
         Emr::create([
             'emr_id' => $data->unique_id,
             'patient_id' => $data->id,
-            // 'lab_id' => $userName,
         ]);
         return response()->json(['data' => $data], 200);
     }

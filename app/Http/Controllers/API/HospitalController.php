@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\HospitalHistory;
 use App\Diagnose;
 use App\Emr;
+use App\Icd10;
 
 class HospitalController extends Controller
 {
@@ -71,6 +72,13 @@ class HospitalController extends Controller
         // $hospital->save();
 
         $data = HospitalHistory::create($request->all());
+
+        $icd10 = Icd10::findOrFail($data->icd10_id);
+        HospitalHistory::where('icd10_id', $icd10->id)->update([
+            'icd10_code' => $icd10->code,
+            'icd10_name' => $icd10->name,
+        ]);
+
         Diagnose::create([
             'patient_id' => $data->patient_id,
             'hospital_id' => $data->id,

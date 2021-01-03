@@ -2319,9 +2319,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      searchText: "",
+      searchArrs: [],
+      jobs: {},
       form: new Form({
         unique_id: "BA" + Math.floor(Math.random() * 10000000 + 1),
         pid: "BN" + Math.floor(Math.random() * 10000000 + 1),
@@ -2343,7 +2358,10 @@ __webpack_require__.r(__webpack_exports__);
         race: "",
         foreign: "",
         health_insurance_id: "",
-        health_insurance_date: ""
+        health_insurance_date: "",
+        job_id: "",
+        job_code: "",
+        job_name: ""
       })
     };
   },
@@ -2365,6 +2383,15 @@ __webpack_require__.r(__webpack_exports__);
         });
         $(".addpatient").html("Thêm thông tin bệnh nhân");
       });
+    },
+    search: function search() {
+      var _this = this;
+
+      axios.post("/searchjob", {
+        name: this.searchText
+      }).then(function (response) {
+        _this.searchArrs = response.data;
+      })["catch"](function () {});
     }
   },
   mounted: function mounted() {
@@ -3295,9 +3322,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      searchText: "",
+      searchArrs: [],
+      query: "",
+      icd10s: {},
       patients: {},
       form: new Form({
         patient_id: "",
@@ -3322,7 +3394,10 @@ __webpack_require__.r(__webpack_exports__);
         disease_thuoclao: "",
         disease_thuoclao_time: "",
         disease_khac: "",
-        disease_khac_time: ""
+        disease_khac_time: "",
+        icd10_id: "",
+        icd10_code: "",
+        icd10_name: ""
       })
     };
   },
@@ -3355,6 +3430,15 @@ __webpack_require__.r(__webpack_exports__);
         }, 1000);
         _this.patients = response.data;
       });
+    },
+    search: function search() {
+      var _this2 = this;
+
+      axios.post("/search", {
+        name: this.searchText
+      }).then(function (response) {
+        _this2.searchArrs = response.data;
+      })["catch"](function () {});
     }
   },
   mounted: function mounted() {
@@ -74838,36 +74922,85 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.form.occupation,
-                                  expression: "form.occupation"
+                                  value: _vm.searchText,
+                                  expression: "searchText"
                                 }
                               ],
-                              staticClass: "form-control",
-                              class: {
-                                "is-invalid": _vm.form.errors.has("occupation")
-                              },
-                              attrs: {
-                                type: "text",
-                                name: "occupation",
-                                placeholder: "Nhập nghề nghiệp hiện tại"
-                              },
-                              domProps: { value: _vm.form.occupation },
+                              attrs: { type: "text" },
+                              domProps: { value: _vm.searchText },
                               on: {
+                                keyup: function($event) {
+                                  return _vm.search()
+                                },
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
                                   }
-                                  _vm.$set(
-                                    _vm.form,
-                                    "occupation",
-                                    $event.target.value
-                                  )
+                                  _vm.searchText = $event.target.value
                                 }
                               }
                             }),
                             _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.job_id,
+                                    expression: "form.job_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has("job_id")
+                                },
+                                attrs: { name: "job_id" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "job_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.searchArrs, function(searchArr) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: searchArr.id,
+                                    domProps: { value: searchArr.id }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                                " +
+                                        _vm._s(searchArr.code) +
+                                        " -\n                                                " +
+                                        _vm._s(searchArr.name) +
+                                        "\n                                            "
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            ),
+                            _vm._v(" "),
                             _c("has-error", {
-                              attrs: { form: _vm.form, field: "occupation" }
+                              attrs: { form: _vm.form, field: "job_id" }
                             })
                           ],
                           1
@@ -76562,6 +76695,108 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
+          _c("table", { staticClass: "form-group", attrs: { width: "100%" } }, [
+            _c("tr", [
+              _c("td", { attrs: { width: "100%" } }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("td", { attrs: { width: "30%" } }, [
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.searchText,
+                              expression: "searchText"
+                            }
+                          ],
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.searchText },
+                          on: {
+                            keyup: function($event) {
+                              return _vm.search()
+                            },
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.searchText = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.icd10_id,
+                                expression: "form.icd10_id"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("icd10_id")
+                            },
+                            attrs: { name: "icd10_id" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.form,
+                                  "icd10_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          _vm._l(_vm.searchArrs, function(searchArr) {
+                            return _c(
+                              "option",
+                              {
+                                key: searchArr.id,
+                                domProps: { value: searchArr.id }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                                " +
+                                    _vm._s(searchArr.id) +
+                                    " -\n                                                " +
+                                    _vm._s(searchArr.name) +
+                                    "\n                                            "
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "icd10_id" }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "card-header" }, [
             _vm._v("Thêm lịch sử khám bệnh")
           ]),
