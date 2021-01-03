@@ -111,12 +111,13 @@
                                     </td>
                                     <td width="50%">
                                         <div class="form-group">
-                                            <input
+                                            <!-- <input
                                                 type="text"
                                                 v-model="searchText"
-                                                @keyup="search()"
-                                            />
+                                                @keyup="searchForJob()"
+                                            /> -->
                                             <select
+                                                @mouseover="searchForJob()"
                                                 v-model="form.job_id"
                                                 class="form-control"
                                                 :class="{
@@ -126,6 +127,12 @@
                                                 }"
                                                 name="job_id"
                                             >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                    >Nghề nghiệp</option
+                                                >
                                                 <option
                                                     v-for="searchArr in searchArrs"
                                                     :key="searchArr.id"
@@ -145,6 +152,45 @@
                                 <tr>
                                     <td width="50%">
                                         <div class="form-group">
+                                            <!-- <input
+                                                type="text"
+                                                v-model="searchText"
+                                                @keyup="searchForJob()"
+                                            /> -->
+                                            <select
+                                                @mouseover="searchForRace()"
+                                                v-model="form.race_id"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'race_id'
+                                                    )
+                                                }"
+                                                name="race_id"
+                                            >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                    >Dân tộc</option
+                                                >
+                                                <option
+                                                    v-for="searchRace in searchRaces"
+                                                    :key="searchRace.id"
+                                                    :value="searchRace.id"
+                                                >
+                                                    {{ searchRace.code }} -
+                                                    {{ searchRace.name }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="race_id"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <!-- <td width="50%">
+                                        <div class="form-group">
                                             <input
                                                 v-model="form.race"
                                                 type="text"
@@ -162,7 +208,7 @@
                                                 field="race"
                                             ></has-error>
                                         </div>
-                                    </td>
+                                    </td> -->
                                     <td width="50%">
                                         <div class="form-group">
                                             <input
@@ -278,7 +324,7 @@
                                         <div class="form-group">
                                             <textarea
                                                 v-model="form.home_address"
-                                                placeholder="Nhập địa chỉ bệnh nhân"
+                                                placeholder="Nhập Số nhà - Thôn, phố - Xã, phường"
                                                 name="home_address"
                                                 id=""
                                                 cols="10"
@@ -293,6 +339,93 @@
                                             <has-error
                                                 :form="form"
                                                 field="home_address"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                style="width: 100%;"
+                                                placeholder="Huyện (Q, Tx)"
+                                                type="text"
+                                                v-model="searchDistrict"
+                                                @keyup="searchForDistrict()"
+                                            />
+                                            <select
+                                                @mouseover="searchForDistrict()"
+                                                v-model="form.district_id"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'district_id'
+                                                    )
+                                                }"
+                                                name="district_id"
+                                            >
+                                                <option
+                                                    disabled
+                                                    selected
+                                                    value=""
+                                                    >Chọn Huyện theo quy
+                                                    định</option
+                                                >
+                                                <option
+                                                    v-for="searchDistrict in searchDistricts"
+                                                    :key="searchDistrict.id"
+                                                    :value="searchDistrict.id"
+                                                >
+                                                    {{ searchDistrict.code }} -
+                                                    {{ searchDistrict.name }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="district_id"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                style="width: 100%;"
+                                                placeholder="Tỉnh, thành phố"
+                                                type="text"
+                                                v-model="searchCity"
+                                                @keyup="searchForCity()"
+                                            />
+                                            <select
+                                                @mouseover="searchForCity()"
+                                                v-model="form.city_id"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'city_id'
+                                                    )
+                                                }"
+                                                name="city_id"
+                                            >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                    >Chọn Tỉnh, TP theo quy
+                                                    định</option
+                                                >
+                                                <option
+                                                    v-for="searchCity in searchCities"
+                                                    :key="searchCity.id"
+                                                    :value="searchCity.id"
+                                                >
+                                                    {{ searchCity.code }} -
+                                                    {{ searchCity.name }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="city_id"
                                             ></has-error>
                                         </div>
                                     </td>
@@ -373,12 +506,11 @@
                                                 name="type_of_object"
                                             >
                                                 <option
-                                                    disabled
                                                     value=""
-                                                    style="font-weight:700;"
+                                                    disabled
+                                                    selected
+                                                    >Loại KCB</option
                                                 >
-                                                    Chọn loại KCB
-                                                </option>
                                                 <option value="BHYT">
                                                     1. BHYT
                                                 </option>
@@ -544,6 +676,13 @@ export default {
         return {
             searchText: "",
             searchArrs: [],
+            searchRace: "",
+            searchRaces: [],
+            searchCity: "",
+            searchCities: [],
+            searchDistrict: "",
+            searchDistricts: [],
+
             jobs: {},
             form: new Form({
                 unique_id: "BA" + Math.floor(Math.random() * 10000000 + 1),
@@ -569,7 +708,13 @@ export default {
                 health_insurance_date: "",
                 job_id: "",
                 job_code: "",
-                job_name: ""
+                job_name: "",
+                race_id: "",
+                race_code: "",
+                race_name: "",
+                city_id: "",
+                city_code: "",
+                city_name: ""
             })
         };
     },
@@ -595,13 +740,43 @@ export default {
                     $(".addpatient").html("Thêm thông tin bệnh nhân");
                 });
         },
-        search() {
+        searchForJob() {
             axios
                 .post("/searchjob", {
                     name: this.searchText
                 })
                 .then(response => {
                     this.searchArrs = response.data;
+                })
+                .catch(() => {});
+        },
+        searchForRace() {
+            axios
+                .post("/searchrace", {
+                    name: this.searchRace
+                })
+                .then(response => {
+                    this.searchRaces = response.data;
+                })
+                .catch(() => {});
+        },
+        searchForCity() {
+            axios
+                .post("/searchcity", {
+                    name: this.searchCity
+                })
+                .then(response => {
+                    this.searchCities = response.data;
+                })
+                .catch(() => {});
+        },
+        searchForDistrict() {
+            axios
+                .post("/searchdistrict", {
+                    name: this.searchDistrict
+                })
+                .then(response => {
+                    this.searchDistricts = response.data;
                 })
                 .catch(() => {});
         }

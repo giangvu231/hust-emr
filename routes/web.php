@@ -36,3 +36,9 @@ Route::get('/{vue_capture?}', function () {
 Route::post('/search', 'SearchController@postSearch');
 
 Route::post('/searchjob', 'SearchJobController@postSearch');
+
+Route::post('/searchrace', 'SearchRaceController@postSearch');
+
+Route::post('/searchcity', 'SearchCityController@postSearch');
+
+Route::post('/searchdistrict', 'SearchDistrictController@postSearch');

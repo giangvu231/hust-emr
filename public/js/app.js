@@ -2331,11 +2331,149 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       searchText: "",
       searchArrs: [],
+      searchRace: "",
+      searchRaces: [],
+      searchCity: "",
+      searchCities: [],
+      searchDistrict: "",
+      searchDistricts: [],
       jobs: {},
       form: new Form({
         unique_id: "BA" + Math.floor(Math.random() * 10000000 + 1),
@@ -2361,7 +2499,13 @@ __webpack_require__.r(__webpack_exports__);
         health_insurance_date: "",
         job_id: "",
         job_code: "",
-        job_name: ""
+        job_name: "",
+        race_id: "",
+        race_code: "",
+        race_name: "",
+        city_id: "",
+        city_code: "",
+        city_name: ""
       })
     };
   },
@@ -2384,13 +2528,40 @@ __webpack_require__.r(__webpack_exports__);
         $(".addpatient").html("Thêm thông tin bệnh nhân");
       });
     },
-    search: function search() {
+    searchForJob: function searchForJob() {
       var _this = this;
 
       axios.post("/searchjob", {
         name: this.searchText
       }).then(function (response) {
         _this.searchArrs = response.data;
+      })["catch"](function () {});
+    },
+    searchForRace: function searchForRace() {
+      var _this2 = this;
+
+      axios.post("/searchrace", {
+        name: this.searchRace
+      }).then(function (response) {
+        _this2.searchRaces = response.data;
+      })["catch"](function () {});
+    },
+    searchForCity: function searchForCity() {
+      var _this3 = this;
+
+      axios.post("/searchcity", {
+        name: this.searchCity
+      }).then(function (response) {
+        _this3.searchCities = response.data;
+      })["catch"](function () {});
+    },
+    searchForDistrict: function searchForDistrict() {
+      var _this4 = this;
+
+      axios.post("/searchdistrict", {
+        name: this.searchDistrict
+      }).then(function (response) {
+        _this4.searchDistricts = response.data;
       })["catch"](function () {});
     }
   },
@@ -74917,30 +75088,6 @@ var render = function() {
                           "div",
                           { staticClass: "form-group" },
                           [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.searchText,
-                                  expression: "searchText"
-                                }
-                              ],
-                              attrs: { type: "text" },
-                              domProps: { value: _vm.searchText },
-                              on: {
-                                keyup: function($event) {
-                                  return _vm.search()
-                                },
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.searchText = $event.target.value
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
                             _c(
                               "select",
                               {
@@ -74958,6 +75105,9 @@ var render = function() {
                                 },
                                 attrs: { name: "job_id" },
                                 on: {
+                                  mouseover: function($event) {
+                                    return _vm.searchForJob()
+                                  },
                                   change: function($event) {
                                     var $$selectedVal = Array.prototype.filter
                                       .call($event.target.options, function(o) {
@@ -74978,25 +75128,39 @@ var render = function() {
                                   }
                                 }
                               },
-                              _vm._l(_vm.searchArrs, function(searchArr) {
-                                return _c(
+                              [
+                                _c(
                                   "option",
                                   {
-                                    key: searchArr.id,
-                                    domProps: { value: searchArr.id }
+                                    attrs: {
+                                      value: "",
+                                      disabled: "",
+                                      selected: ""
+                                    }
                                   },
-                                  [
-                                    _vm._v(
-                                      "\n                                                " +
-                                        _vm._s(searchArr.code) +
-                                        " -\n                                                " +
-                                        _vm._s(searchArr.name) +
-                                        "\n                                            "
-                                    )
-                                  ]
-                                )
-                              }),
-                              0
+                                  [_vm._v("Nghề nghiệp")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.searchArrs, function(searchArr) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: searchArr.id,
+                                      domProps: { value: searchArr.id }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                " +
+                                          _vm._s(searchArr.code) +
+                                          " -\n                                                " +
+                                          _vm._s(searchArr.name) +
+                                          "\n                                            "
+                                      )
+                                    ]
+                                  )
+                                })
+                              ],
+                              2
                             ),
                             _vm._v(" "),
                             _c("has-error", {
@@ -75014,41 +75178,83 @@ var render = function() {
                           "div",
                           { staticClass: "form-group" },
                           [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.form.race,
-                                  expression: "form.race"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                "is-invalid": _vm.form.errors.has("race")
-                              },
-                              attrs: {
-                                type: "text",
-                                name: "race",
-                                placeholder: "Dân tộc"
-                              },
-                              domProps: { value: _vm.form.race },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.race_id,
+                                    expression: "form.race_id"
                                   }
-                                  _vm.$set(
-                                    _vm.form,
-                                    "race",
-                                    $event.target.value
-                                  )
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has("race_id")
+                                },
+                                attrs: { name: "race_id" },
+                                on: {
+                                  mouseover: function($event) {
+                                    return _vm.searchForRace()
+                                  },
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "race_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
                                 }
-                              }
-                            }),
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      disabled: "",
+                                      selected: ""
+                                    }
+                                  },
+                                  [_vm._v("Dân tộc")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.searchRaces, function(searchRace) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: searchRace.id,
+                                      domProps: { value: searchRace.id }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                " +
+                                          _vm._s(searchRace.code) +
+                                          " -\n                                                " +
+                                          _vm._s(searchRace.name) +
+                                          "\n                                            "
+                                      )
+                                    ]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
                             _vm._v(" "),
                             _c("has-error", {
-                              attrs: { form: _vm.form, field: "race" }
+                              attrs: { form: _vm.form, field: "race_id" }
                             })
                           ],
                           1
@@ -75318,7 +75524,8 @@ var render = function() {
                                 )
                               },
                               attrs: {
-                                placeholder: "Nhập địa chỉ bệnh nhân",
+                                placeholder:
+                                  "Nhập Số nhà - Thôn, phố - Xã, phường",
                                 name: "home_address",
                                 id: "",
                                 cols: "10",
@@ -75341,6 +75548,252 @@ var render = function() {
                             _vm._v(" "),
                             _c("has-error", {
                               attrs: { form: _vm.form, field: "home_address" }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.searchDistrict,
+                                  expression: "searchDistrict"
+                                }
+                              ],
+                              staticStyle: { width: "100%" },
+                              attrs: {
+                                placeholder: "Huyện (Q, Tx)",
+                                type: "text"
+                              },
+                              domProps: { value: _vm.searchDistrict },
+                              on: {
+                                keyup: function($event) {
+                                  return _vm.searchForDistrict()
+                                },
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.searchDistrict = $event.target.value
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.district_id,
+                                    expression: "form.district_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has(
+                                    "district_id"
+                                  )
+                                },
+                                attrs: { name: "district_id" },
+                                on: {
+                                  mouseover: function($event) {
+                                    return _vm.searchForDistrict()
+                                  },
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "district_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      disabled: "",
+                                      selected: "",
+                                      value: ""
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "Chọn Huyện theo quy\n                                                định"
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.searchDistricts, function(
+                                  searchDistrict
+                                ) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: searchDistrict.id,
+                                      domProps: { value: searchDistrict.id }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                " +
+                                          _vm._s(searchDistrict.code) +
+                                          " -\n                                                " +
+                                          _vm._s(searchDistrict.name) +
+                                          "\n                                            "
+                                      )
+                                    ]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "district_id" }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.searchCity,
+                                  expression: "searchCity"
+                                }
+                              ],
+                              staticStyle: { width: "100%" },
+                              attrs: {
+                                placeholder: "Tỉnh, thành phố",
+                                type: "text"
+                              },
+                              domProps: { value: _vm.searchCity },
+                              on: {
+                                keyup: function($event) {
+                                  return _vm.searchForCity()
+                                },
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.searchCity = $event.target.value
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.city_id,
+                                    expression: "form.city_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has("city_id")
+                                },
+                                attrs: { name: "city_id" },
+                                on: {
+                                  mouseover: function($event) {
+                                    return _vm.searchForCity()
+                                  },
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "city_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      disabled: "",
+                                      selected: ""
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "Chọn Tỉnh, TP theo quy\n                                                định"
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.searchCities, function(searchCity) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: searchCity.id,
+                                      domProps: { value: searchCity.id }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                " +
+                                          _vm._s(searchCity.code) +
+                                          " -\n                                                " +
+                                          _vm._s(searchCity.name) +
+                                          "\n                                            "
+                                      )
+                                    ]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "city_id" }
                             })
                           ],
                           1
@@ -75543,14 +75996,13 @@ var render = function() {
                                 _c(
                                   "option",
                                   {
-                                    staticStyle: { "font-weight": "700" },
-                                    attrs: { disabled: "", value: "" }
+                                    attrs: {
+                                      value: "",
+                                      disabled: "",
+                                      selected: ""
+                                    }
                                   },
-                                  [
-                                    _vm._v(
-                                      "\n                                                Chọn loại KCB\n                                            "
-                                    )
-                                  ]
+                                  [_vm._v("Loại KCB")]
                                 ),
                                 _vm._v(" "),
                                 _c("option", { attrs: { value: "BHYT" } }, [

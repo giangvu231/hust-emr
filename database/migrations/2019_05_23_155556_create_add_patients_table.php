@@ -43,6 +43,15 @@ class CreateAddPatientsTable extends Migration
             $table->string('job_id')->nullable();
             $table->string('job_code')->nullable();
             $table->string('job_name')->nullable();
+            $table->string('race_id')->nullable();
+            $table->string('race_code')->nullable();
+            $table->string('race_name')->nullable();
+            $table->string('city_id')->nullable();
+            $table->string('city_code')->nullable();
+            $table->string('city_name')->nullable();
+            $table->string('district_id')->nullable();
+            $table->string('district_code')->nullable();
+            $table->string('district_name')->nullable();
 
             $table->string('userid')->nullable();
             $table->string('username')->nullable();

@@ -23,6 +23,9 @@ use App\EmrSummary;
 use App\Emr;
 use App\User;
 use App\Job;
+use App\Race;
+use App\City;
+use App\District;
 use Auth;
 use PDF;
 
@@ -76,6 +79,26 @@ class PatientController extends Controller
             'job_code' => $job->code,
             'job_name' => $job->name,
         ]);
+
+        $race = Race::findOrFail($data->race_id);
+        addPatient::where('race_id', $race->id)->update([
+            'race_code' => $race->code,
+            'race_name' => $race->name,
+        ]);
+
+        $city = City::findOrFail($data->city_id);
+        addPatient::where('city_id', $city->id)->update([
+            'city_code' => $city->code,
+            'city_name' => $city->name,
+        ]);
+
+        $district = District::findOrFail($data->district_id);
+        addPatient::where('district_id', $district->id)->update([
+            'district_code' => $district->code,
+            'district_name' => $district->name,
+        ]);
+
+
         Emr::create([
             'emr_id' => $data->unique_id,
             'patient_id' => $data->id,

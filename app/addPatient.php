@@ -39,6 +39,15 @@ class addPatient extends Model
         'job_id',
         'job_code',
         'job_name',
+        'race_id',
+        'race_code',
+        'race_name',
+        'city_id',
+        'city_code',
+        'city_name',
+        'district_id',
+        'district_code',
+        'district_name',
         'username'
     ];
 
