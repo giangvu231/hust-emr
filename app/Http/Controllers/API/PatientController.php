@@ -26,6 +26,7 @@ use App\Job;
 use App\Race;
 use App\City;
 use App\District;
+use App\Nation;
 use Auth;
 use PDF;
 
@@ -96,6 +97,12 @@ class PatientController extends Controller
         addPatient::where('district_id', $district->id)->update([
             'district_code' => $district->code,
             'district_name' => $district->name,
+        ]);
+
+        $nation = Nation::findOrFail($data->nation_id);
+        addPatient::where('nation_id', $nation->id)->update([
+            'nation_code' => $nation->code,
+            'nation_name' => $nation->name,
         ]);
 
 

@@ -210,7 +210,7 @@
                                         </div>
                                     </td> -->
                                     <td width="50%">
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <input
                                                 v-model="form.foreign"
                                                 type="text"
@@ -226,6 +226,43 @@
                                             <has-error
                                                 :form="form"
                                                 field="foreign"
+                                            ></has-error>
+                                        </div> -->
+                                        <div class="form-group">
+                                            <!-- <input
+                                                type="text"
+                                                v-model="searchText"
+                                                @keyup="searchForJob()"
+                                            /> -->
+                                            <select
+                                                @mouseover="searchForNation()"
+                                                v-model="form.nation_id"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'nation_id'
+                                                    )
+                                                }"
+                                                name="nation_id"
+                                            >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                    >Ngoại kiều</option
+                                                >
+                                                <option
+                                                    v-for="searchNation in searchNations"
+                                                    :key="searchNation.id"
+                                                    :value="searchNation.id"
+                                                >
+                                                    {{ searchNation.code }} -
+                                                    {{ searchNation.name }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="nation_id"
                                             ></has-error>
                                         </div>
                                     </td>
@@ -682,6 +719,8 @@ export default {
             searchCities: [],
             searchDistrict: "",
             searchDistricts: [],
+            searchNation: "",
+            searchNations: [],
 
             jobs: {},
             form: new Form({
@@ -714,7 +753,13 @@ export default {
                 race_name: "",
                 city_id: "",
                 city_code: "",
-                city_name: ""
+                city_name: "",
+                district_id: "",
+                district_code: "",
+                district_name: "",
+                nation_id: "",
+                nation_code: "",
+                nation_name: ""
             })
         };
     },
@@ -777,6 +822,16 @@ export default {
                 })
                 .then(response => {
                     this.searchDistricts = response.data;
+                })
+                .catch(() => {});
+        },
+        searchForNation() {
+            axios
+                .post("/searchnation", {
+                    name: this.searchNation
+                })
+                .then(response => {
+                    this.searchNations = response.data;
                 })
                 .catch(() => {});
         }

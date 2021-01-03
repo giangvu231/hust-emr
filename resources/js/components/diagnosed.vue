@@ -100,7 +100,6 @@
                                 >
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <!-- <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5> -->
                                             <h5
                                                 class="modal-title"
                                                 id="exampleModalLongTitle"
@@ -119,15 +118,55 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- <form @submit.prevent="referToLab" id="edit-diagnoses">
-                                <input v-model="form.refer_lab"
-                                  :value="1"
-                                  type="radio"
-                                  name="refer_lab" /> Confirm Action First -->
                                             <form
                                                 @submit.prevent="referToLab"
                                                 id="edit-diagnoses"
                                             >
+                                                <div class="form-group">
+                                                    <input
+                                                        style="width: 100%;"
+                                                        placeholder="Yêu cầu xét nghiệm"
+                                                        type="text"
+                                                        v-model="searchLab"
+                                                        @keyup="searchForLab()"
+                                                    />
+                                                    <select
+                                                        @mouseover="
+                                                            searchForLab()
+                                                        "
+                                                        v-model="form.lab_id"
+                                                        class="form-control"
+                                                        :class="{
+                                                            'is-invalid': form.errors.has(
+                                                                'lab_id'
+                                                            )
+                                                        }"
+                                                        name="lab_id"
+                                                    >
+                                                        <option
+                                                            disabled
+                                                            selected
+                                                            value=""
+                                                            >Yêu cầu xét
+                                                            nghiệm</option
+                                                        >
+                                                        <option
+                                                            v-for="searchLab in searchLabs"
+                                                            :key="searchLab.id"
+                                                            :value="
+                                                                searchLab.id
+                                                            "
+                                                        >
+                                                            {{ searchLab.code }}
+                                                            -
+                                                            {{ searchLab.name }}
+                                                        </option>
+                                                    </select>
+                                                    <has-error
+                                                        :form="form"
+                                                        field="lab_id"
+                                                    ></has-error>
+                                                </div>
                                                 <input
                                                     v-model="form.refer_lab"
                                                     :value="1"
@@ -136,7 +175,6 @@
                                                 />
                                                 Xác nhận tác vụ trước
                                                 <center>
-                                                    <!-- <button type="submit" class="tolab btn-block btn btn-info" style="color:#fff;">Refer to Labouratory</button> -->
                                                     <button
                                                         type="submit"
                                                         class="tolab btn-block btn btn-info"
@@ -386,13 +424,18 @@
 export default {
     data() {
         return {
+            searchLab: "",
+            searchLabs: [],
             diagnoses: {},
             form: new Form({
                 id: "",
                 diagnosis: "",
                 comment: "",
                 refer_lab: "",
-                refer_pham: ""
+                refer_pham: "",
+                lab_id: "",
+                lab_code: "",
+                lab_name: ""
             })
         };
     },
@@ -522,6 +565,16 @@ export default {
                     });
                     $(".topham").html("Yêu cầu thuốc");
                 });
+        },
+        searchForLab() {
+            axios
+                .post("/searchlab", {
+                    name: this.searchLab
+                })
+                .then(response => {
+                    this.searchLabs = response.data;
+                })
+                .catch(() => {});
         }
     },
     mounted() {

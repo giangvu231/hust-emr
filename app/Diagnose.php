@@ -12,7 +12,16 @@ class Diagnose extends Model
     use Notifiable, HasApiTokens;
 
      protected $fillable = [
-        'patient_id', 'hospital_id', 'diagnosis', 'comment', 'refer_lab',  'refer_pham', 'modal_id'
+        'patient_id',
+        'hospital_id',
+        'diagnosis',
+        'comment',
+        'refer_lab',
+        'refer_pham',
+        // 'modal_id',
+        'lab_id',
+        'lab_code',
+        'lab_name',
     ];
 
    public function patient(){
@@ -21,7 +30,7 @@ class Diagnose extends Model
 
    public function hospital(){
     return $this->belongsTo('App\HospitalHistory');
-        
+
     }
 
     public function labresult(){

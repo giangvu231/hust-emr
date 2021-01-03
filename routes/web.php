@@ -35,10 +35,21 @@ Route::get('/{vue_capture?}', function () {
 
 Route::post('/search', 'SearchController@postSearch');
 
-Route::post('/searchjob', 'SearchJobController@postSearch');
+// Route::post('/searchjob', 'SearchJobController@postSearch');
+Route::post('/searchjob', 'SearchController@searchJob');
 
-Route::post('/searchrace', 'SearchRaceController@postSearch');
+// Route::post('/searchrace', 'SearchRaceController@postSearch');
+Route::post('/searchrace', 'SearchController@searchRace');
 
-Route::post('/searchcity', 'SearchCityController@postSearch');
+// Route::post('/searchcity', 'SearchCityController@postSearch');
+Route::post('/searchcity', 'SearchController@searchCity');
 
-Route::post('/searchdistrict', 'SearchDistrictController@postSearch');
+// Route::post('/searchdistrict', 'SearchDistrictController@postSearch');
+Route::post('/searchdistrict', 'SearchController@searchDistrict');
+
+// Route::post('/searchnation', 'SearchNationController@postSearch');
+Route::post('/searchnation', 'SearchController@searchNation');
+
+// Route::post('/searchlab', 'SearchLabController@postSearch');
+Route::post('/searchlab', 'SearchController@searchLab');
+

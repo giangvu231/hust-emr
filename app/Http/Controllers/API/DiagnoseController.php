@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\HospitalHistory;
 use App\Diagnose;
+use App\Lab;
 
 class DiagnoseController extends Controller
 {
@@ -79,8 +80,16 @@ class DiagnoseController extends Controller
 
         // $diagnose->save();
 
-        return HospitalHistory::create($request->all());
+        // return HospitalHistory::create($request->all());
+        $data = Diagnose::create($request->all());
 
+        $lab = Lab::findOrFail($data->lab_id);
+        Diagnose::where('lab_id', $lab->id)->update([
+            'lab_code' => $lab->code,
+            'lab_name' => $lab->name,
+        ]);
+
+        return response()->json(['data' => $data], 200);
     }
 
     /**

@@ -2463,6 +2463,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2474,6 +2511,8 @@ __webpack_require__.r(__webpack_exports__);
       searchCities: [],
       searchDistrict: "",
       searchDistricts: [],
+      searchNation: "",
+      searchNations: [],
       jobs: {},
       form: new Form({
         unique_id: "BA" + Math.floor(Math.random() * 10000000 + 1),
@@ -2505,7 +2544,13 @@ __webpack_require__.r(__webpack_exports__);
         race_name: "",
         city_id: "",
         city_code: "",
-        city_name: ""
+        city_name: "",
+        district_id: "",
+        district_code: "",
+        district_name: "",
+        nation_id: "",
+        nation_code: "",
+        nation_name: ""
       })
     };
   },
@@ -2562,6 +2607,15 @@ __webpack_require__.r(__webpack_exports__);
         name: this.searchDistrict
       }).then(function (response) {
         _this4.searchDistricts = response.data;
+      })["catch"](function () {});
+    },
+    searchForNation: function searchForNation() {
+      var _this5 = this;
+
+      axios.post("/searchnation", {
+        name: this.searchNation
+      }).then(function (response) {
+        _this5.searchNations = response.data;
       })["catch"](function () {});
     }
   },
@@ -6445,16 +6499,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      searchLab: "",
+      searchLabs: [],
       diagnoses: {},
       form: new Form({
         id: "",
         diagnosis: "",
         comment: "",
         refer_lab: "",
-        refer_pham: ""
+        refer_pham: "",
+        lab_id: "",
+        lab_code: "",
+        lab_name: ""
       })
     };
   },
@@ -6573,15 +6670,24 @@ __webpack_require__.r(__webpack_exports__);
         });
         $(".topham").html("Yêu cầu thuốc");
       });
+    },
+    searchForLab: function searchForLab() {
+      var _this3 = this;
+
+      axios.post("/searchlab", {
+        name: this.searchLab
+      }).then(function (response) {
+        _this3.searchLabs = response.data;
+      })["catch"](function () {});
     }
   },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this4 = this;
 
     console.log("Component mounted.");
     this.LoadDiagnoses();
     Fire.$on("afterAction", function () {
-      _this3.LoadDiagnoses();
+      _this4.LoadDiagnoses();
     });
   }
 });
@@ -75266,41 +75372,85 @@ var render = function() {
                           "div",
                           { staticClass: "form-group" },
                           [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.form.foreign,
-                                  expression: "form.foreign"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                "is-invalid": _vm.form.errors.has("foreign")
-                              },
-                              attrs: {
-                                type: "text",
-                                name: "foreign",
-                                placeholder: "Ngoại kiều"
-                              },
-                              domProps: { value: _vm.form.foreign },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.nation_id,
+                                    expression: "form.nation_id"
                                   }
-                                  _vm.$set(
-                                    _vm.form,
-                                    "foreign",
-                                    $event.target.value
-                                  )
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has("nation_id")
+                                },
+                                attrs: { name: "nation_id" },
+                                on: {
+                                  mouseover: function($event) {
+                                    return _vm.searchForNation()
+                                  },
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "nation_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
                                 }
-                              }
-                            }),
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      disabled: "",
+                                      selected: ""
+                                    }
+                                  },
+                                  [_vm._v("Ngoại kiều")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.searchNations, function(
+                                  searchNation
+                                ) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: searchNation.id,
+                                      domProps: { value: searchNation.id }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                " +
+                                          _vm._s(searchNation.code) +
+                                          " -\n                                                " +
+                                          _vm._s(searchNation.name) +
+                                          "\n                                            "
+                                      )
+                                    ]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
                             _vm._v(" "),
                             _c("has-error", {
-                              attrs: { form: _vm.form, field: "foreign" }
+                              attrs: { form: _vm.form, field: "nation_id" }
                             })
                           ],
                           1
@@ -82657,6 +82807,138 @@ var render = function() {
                                   }
                                 },
                                 [
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group" },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.searchLab,
+                                            expression: "searchLab"
+                                          }
+                                        ],
+                                        staticStyle: { width: "100%" },
+                                        attrs: {
+                                          placeholder: "Yêu cầu xét nghiệm",
+                                          type: "text"
+                                        },
+                                        domProps: { value: _vm.searchLab },
+                                        on: {
+                                          keyup: function($event) {
+                                            return _vm.searchForLab()
+                                          },
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.searchLab = $event.target.value
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "select",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.form.lab_id,
+                                              expression: "form.lab_id"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          class: {
+                                            "is-invalid": _vm.form.errors.has(
+                                              "lab_id"
+                                            )
+                                          },
+                                          attrs: { name: "lab_id" },
+                                          on: {
+                                            mouseover: function($event) {
+                                              return _vm.searchForLab()
+                                            },
+                                            change: function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.$set(
+                                                _vm.form,
+                                                "lab_id",
+                                                $event.target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "option",
+                                            {
+                                              attrs: {
+                                                disabled: "",
+                                                selected: "",
+                                                value: ""
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "Yêu cầu xét\n                                                        nghiệm"
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _vm._l(_vm.searchLabs, function(
+                                            searchLab
+                                          ) {
+                                            return _c(
+                                              "option",
+                                              {
+                                                key: searchLab.id,
+                                                domProps: {
+                                                  value: searchLab.id
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                                        " +
+                                                    _vm._s(searchLab.code) +
+                                                    "\n                                                        -\n                                                        " +
+                                                    _vm._s(searchLab.name) +
+                                                    "\n                                                    "
+                                                )
+                                              ]
+                                            )
+                                          })
+                                        ],
+                                        2
+                                      ),
+                                      _vm._v(" "),
+                                      _c("has-error", {
+                                        attrs: {
+                                          form: _vm.form,
+                                          field: "lab_id"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
                                   _c("input", {
                                     directives: [
                                       {

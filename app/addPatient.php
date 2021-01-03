@@ -48,6 +48,9 @@ class addPatient extends Model
         'district_id',
         'district_code',
         'district_name',
+        'nation_id',
+        'nation_code',
+        'nation_name',
         'username'
     ];
 
