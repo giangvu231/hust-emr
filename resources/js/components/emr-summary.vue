@@ -67,6 +67,67 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <b>XUẤT VIỆN</b>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <select
+                                                v-model="form.discharge_type"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'discharge_type'
+                                                    )
+                                                }"
+                                                name="discharge_type"
+                                            >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                    >Loại</option
+                                                >
+                                                <option value="Ra viện">
+                                                    1. Ra viện
+                                                </option>
+                                                <option value="Xin về">
+                                                    2. Xin về
+                                                </option>
+                                                <option value="Bỏ về">
+                                                    3. Bỏ về
+                                                </option>
+                                                <option value="Đưa về">
+                                                    4. Đưa về
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="discharge_type"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.discharge_time"
+                                                type="datetime-local"
+                                                name="discharge_time"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'discharge_time'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="discharge_time"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td colspan="2">
                                         <div class="form-group">
                                             <textarea

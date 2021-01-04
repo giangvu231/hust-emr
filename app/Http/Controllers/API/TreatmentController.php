@@ -8,6 +8,8 @@ use App\addPatient;
 use App\User;
 use App\Treatment;
 use App\Emr;
+use App\Icd10;
+use App\Search;
 
 class TreatmentController extends Controller
 {
@@ -49,8 +51,23 @@ class TreatmentController extends Controller
             'medical_user_name' => $userData->name
         ]);
 
+        $icd10_admit_disease = Icd10::findOrFail($data->icd10_admit_id);
+        Treatment::where('icd10_admit_id', $icd10_admit_disease->id)->update([
+            'icd10_admit_code' => $icd10_admit_disease->code,
+            'icd10_admit_name' => $icd10_admit_disease->name,
+        ]);
 
+        $icd10_emergency_disease = Icd10::findOrFail($data->icd10_emergency_id);
+        Treatment::where('icd10_emergency_id', $icd10_emergency_disease->id)->update([
+            'icd10_emergency_code' => $icd10_emergency_disease->code,
+            'icd10_emergency_name' => $icd10_emergency_disease->name,
+        ]);
 
+        $icd10_treatment_disease = Icd10::findOrFail($data->icd10_treatment_id);
+        Treatment::where('icd10_treatment_id', $icd10_treatment_disease->id)->update([
+            'icd10_treatment_code' => $icd10_treatment_disease->code,
+            'icd10_treatment_name' => $icd10_treatment_disease->name,
+        ]);
 
         return response()->json(['data' => $data], 200);
     }

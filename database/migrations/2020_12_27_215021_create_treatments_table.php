@@ -28,6 +28,29 @@ class CreateTreatmentsTable extends Migration
             $table->string('bed_id')->nullable();
             $table->string('reason_count')->nullable();
 
+            $table->string('icd10_admit_id')->nullable();
+            $table->string('icd10_admit_name')->nullable();
+            $table->string('icd10_admit_code')->nullable();
+            $table->string('icd10_emergency_id')->nullable();
+            $table->string('icd10_emergency_name')->nullable();
+            $table->string('icd10_emergency_code')->nullable();
+            $table->string('icd10_treatment_id')->nullable();
+            $table->string('icd10_treatment_name')->nullable();
+            $table->string('icd10_treatment_code')->nullable();
+
+            $table->string('dept_name_2nd')->nullable();
+            $table->string('dept_time_2nd')->nullable();
+            $table->string('dept_name_3rd')->nullable();
+            $table->string('dept_time_3rd')->nullable();
+            $table->string('dept_name_4th')->nullable();
+            $table->string('dept_time_4th')->nullable();
+
+            $table->string('hosp_transfer_type')->nullable();
+            $table->string('hosp_transfer_name')->nullable();
+
+            $table->string('diagnosis_procedure')->nullable();
+            $table->string('diagnosis_surgery')->nullable();
+
             $table->timestamps();
         });
     }

@@ -12,11 +12,33 @@ use App\Nation;
 use App\Race;
 use App\LabOrder;
 use App\Imaging;
+use App\Treatment;
 use App\HospitalHistory;
 
 class SearchController extends Controller
 {
     public function postSearch(Request $request)
+    {
+    	$search = $request->name;
+    	$dataName = Icd10::where('name', 'LIKE', "%$search%")->get();
+        return $dataName;
+    }
+
+    public function searchAdmitDisease(Request $request)
+    {
+    	$search = $request->name;
+    	$dataName = Icd10::where('name', 'LIKE', "%$search%")->get();
+        return $dataName;
+    }
+
+    public function searchEmergencyDisease(Request $request)
+    {
+    	$search = $request->name;
+    	$dataName = Icd10::where('name', 'LIKE', "%$search%")->get();
+        return $dataName;
+    }
+
+    public function searchTreatmentDisease(Request $request)
     {
     	$search = $request->name;
     	$dataName = Icd10::where('name', 'LIKE', "%$search%")->get();

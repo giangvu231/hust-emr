@@ -41,6 +41,278 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <b>TÓM LƯỢC CHẨN ĐOÁN</b>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <b
+                                            >1. Chẩn đoán bệnh tại nơi chuyển
+                                            đến:</b
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table width="100%">
+                                            <tr>
+                                                <td style="text-align:inherit;">
+                                                    Tên bệnh theo ICD-10
+                                                </td>
+                                                <td width="70%">
+                                                    <div class="form-group">
+                                                        <input
+                                                            style="width: 100%;"
+                                                            placeholder="Tìm bệnh theo bảng mã ICD-10"
+                                                            type="text"
+                                                            v-model="
+                                                                searchAdmitDisease
+                                                            "
+                                                            @keyup="
+                                                                searchForAdmitDisease()
+                                                            "
+                                                        />
+                                                        <select
+                                                            @mouseover="
+                                                                searchForAdmitDisease()
+                                                            "
+                                                            v-model="
+                                                                form.icd10_admit_id
+                                                            "
+                                                            class="form-control"
+                                                            :class="{
+                                                                'is-invalid': form.errors.has(
+                                                                    'icd10_admit_id'
+                                                                )
+                                                            }"
+                                                            name="icd10_admit_id"
+                                                        >
+                                                            <option
+                                                                disabled
+                                                                selected
+                                                                value=""
+                                                                >Bảng mã ICD
+                                                                10</option
+                                                            >
+                                                            <option
+                                                                v-for="searchAdmitDisease in searchAdmitDiseases"
+                                                                :key="
+                                                                    searchAdmitDisease.id
+                                                                "
+                                                                :value="
+                                                                    searchAdmitDisease.id
+                                                                "
+                                                            >
+                                                                {{
+                                                                    searchAdmitDisease.code
+                                                                }}
+                                                                -
+                                                                {{
+                                                                    searchAdmitDisease.name
+                                                                }}
+                                                            </option>
+                                                        </select>
+                                                        <has-error
+                                                            :form="form"
+                                                            field="icd10_admit_id"
+                                                        ></has-error>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <b
+                                            >2. Chẩn đoán bệnh tại KKB, Cấp
+                                            cứu:</b
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table width="100%">
+                                            <tr>
+                                                <td style="text-align:inherit;">
+                                                    Tên bệnh theo ICD-10
+                                                </td>
+                                                <td width="70%">
+                                                    <div class="form-group">
+                                                        <input
+                                                            style="width: 100%;"
+                                                            placeholder="Tìm bệnh theo bảng mã ICD-10"
+                                                            type="text"
+                                                            v-model="
+                                                                searchEmergencyDisease
+                                                            "
+                                                            @keyup="
+                                                                searchForEmergencyDisease()
+                                                            "
+                                                        />
+                                                        <select
+                                                            @mouseover="
+                                                                searchForEmergencyDisease()
+                                                            "
+                                                            v-model="
+                                                                form.icd10_emergency_id
+                                                            "
+                                                            class="form-control"
+                                                            :class="{
+                                                                'is-invalid': form.errors.has(
+                                                                    'icd10_emergency_id'
+                                                                )
+                                                            }"
+                                                            name="icd10_emergency_id"
+                                                        >
+                                                            <option
+                                                                disabled
+                                                                selected
+                                                                value=""
+                                                                >Bảng mã ICD
+                                                                10</option
+                                                            >
+                                                            <option
+                                                                v-for="searchEmergencyDisease in searchEmergencyDiseases"
+                                                                :key="
+                                                                    searchEmergencyDisease.id
+                                                                "
+                                                                :value="
+                                                                    searchEmergencyDisease.id
+                                                                "
+                                                            >
+                                                                {{
+                                                                    searchEmergencyDisease.code
+                                                                }}
+                                                                -
+                                                                {{
+                                                                    searchEmergencyDisease.name
+                                                                }}
+                                                            </option>
+                                                        </select>
+                                                        <has-error
+                                                            :form="form"
+                                                            field="icd10_emergency_id"
+                                                        ></has-error>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <b
+                                            >3. Chẩn đoán bệnh khi vào khoa điều
+                                            trị:</b
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table width="100%">
+                                            <tr>
+                                                <td style="text-align:inherit;">
+                                                    Tên bệnh theo ICD-10
+                                                </td>
+                                                <td width="70%">
+                                                    <div class="form-group">
+                                                        <input
+                                                            style="width: 100%;"
+                                                            placeholder="Tìm bệnh theo bảng mã ICD-10"
+                                                            type="text"
+                                                            v-model="
+                                                                searchTreatmentDisease
+                                                            "
+                                                            @keyup="
+                                                                searchForTreatmentDisease()
+                                                            "
+                                                        />
+                                                        <select
+                                                            @mouseover="
+                                                                searchForTreatmentDisease()
+                                                            "
+                                                            v-model="
+                                                                form.icd10_treatment_id
+                                                            "
+                                                            class="form-control"
+                                                            :class="{
+                                                                'is-invalid': form.errors.has(
+                                                                    'icd10_treatment_id'
+                                                                )
+                                                            }"
+                                                            name="icd10_treatment_id"
+                                                        >
+                                                            <option
+                                                                disabled
+                                                                selected
+                                                                value=""
+                                                                >Bảng mã ICD
+                                                                10</option
+                                                            >
+                                                            <option
+                                                                v-for="searchTreatmentDisease in searchTreatmentDiseases"
+                                                                :key="
+                                                                    searchTreatmentDisease.id
+                                                                "
+                                                                :value="
+                                                                    searchTreatmentDisease.id
+                                                                "
+                                                            >
+                                                                {{
+                                                                    searchTreatmentDisease.code
+                                                                }}
+                                                                -
+                                                                {{
+                                                                    searchTreatmentDisease.name
+                                                                }}
+                                                            </option>
+                                                        </select>
+                                                        <has-error
+                                                            :form="form"
+                                                            field="icd10_treatment_id"
+                                                        ></has-error>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table width="100%">
+                                            <tr>
+                                                <td>
+                                                    Thủ thuật:
+                                                    <input
+                                                        type="checkbox"
+                                                        id="procedure"
+                                                        value="X"
+                                                        v-model="
+                                                            form.diagnosis_procedure
+                                                        "
+                                                        true-value="X"
+                                                        false-value=""
+                                                    />
+                                                </td>
+                                                <td>
+                                                    Phẫu thuật:
+                                                    <input
+                                                        type="checkbox"
+                                                        id="surgery"
+                                                        value="X"
+                                                        v-model="
+                                                            form.diagnosis_surgery
+                                                        "
+                                                        true-value="X"
+                                                        false-value=""
+                                                    />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <br />
+                                <tr>
                                     <b>Nơi điều trị</b>
                                 </tr>
                                 <tr>
@@ -266,6 +538,204 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>Chuyển khoa lần 1</td>
+                                    <td>Thời điểm chuyển</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.dept_name_2nd"
+                                                type="text"
+                                                name="dept_name_2nd"
+                                                placeholder="Khoa/Phòng"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dept_name_2nd'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="dept_name_2nd"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.dept_time_2nd"
+                                                type="datetime-local"
+                                                name="dept_time_2nd"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dept_time_2nd'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="dept_time_2nd"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Chuyển khoa lần 2</td>
+                                    <td>Thời điểm chuyển</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.dept_name_3rd"
+                                                type="text"
+                                                name="dept_name_3rd"
+                                                placeholder="Khoa/Phòng"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dept_name_3rd'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="dept_name_3rd"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.dept_time_3rd"
+                                                type="datetime-local"
+                                                name="dept_time_3rd"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dept_time_3rd'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="dept_time_3rd"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Chuyển khoa lần 3</td>
+                                    <td>Thời điểm chuyển</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.dept_name_4th"
+                                                type="text"
+                                                name="dept_name_4th"
+                                                placeholder="Khoa/Phòng"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dept_name_4th'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="dept_name_4th"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input
+                                                v-model="form.dept_time_4th"
+                                                type="datetime-local"
+                                                name="dept_time_4th"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dept_time_4th'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="dept_time_4th"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <b>CHUYỂN VIỆN</b>
+                                </tr>
+                                <tr>
+                                    <td width="30%">
+                                        <div class="form-group">
+                                            <select
+                                                v-model="
+                                                    form.hosp_transfer_type
+                                                "
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'hosp_transfer_type'
+                                                    )
+                                                }"
+                                                name="hosp_transfer_type"
+                                            >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                    >Loại</option
+                                                >
+                                                <option value="Tuyến trên">
+                                                    1. Tuyến trên
+                                                </option>
+                                                <option value="Tuyến dưới">
+                                                    2. Tuyến dưới
+                                                </option>
+                                                <option value="Chuyên khoa">
+                                                    3. Chuyên khoa
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="hosp_transfer_type"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                    <td width="70%">
+                                        <div class="form-group">
+                                            <input
+                                                v-model="
+                                                    form.hosp_transfer_name
+                                                "
+                                                type="text"
+                                                name="hosp_transfer_name"
+                                                placeholder="Chuyển đến?"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'hosp_transfer_name'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="hosp_transfer_name"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td colspan="2">
                                         <center>
                                             <button
@@ -291,6 +761,13 @@
 export default {
     data() {
         return {
+            searchAdmitDisease: "",
+            searchAdmitDiseases: [],
+            searchEmergencyDisease: "",
+            searchEmergencyDiseases: [],
+            searchTreatmentDisease: "",
+            searchTreatmentDiseases: [],
+
             patients: {},
             form: new Form({
                 patient_id: "",
@@ -299,6 +776,30 @@ export default {
                 disease_difference: "",
                 disease_prognosis: "",
                 disease_plan: "",
+
+                icd10_admit_id: "",
+                icd10_admit_name: "",
+                icd10_admit_code: "",
+                icd10_emergency_id: "",
+                icd10_emergency_name: "",
+                icd10_emergency_code: "",
+                icd10_treatment_id: "",
+                icd10_treatment_name: "",
+                icd10_treatment_code: "",
+
+                dept_name_2nd: "",
+                dept_time_2nd: "",
+                dept_name_3rd: "",
+                dept_time_3rd: "",
+                dept_name_4th: "",
+                dept_time_4th: "",
+
+                hosp_transfer_type: "",
+                hosp_transfer_name: "",
+
+                diagnosis_procedure: "",
+                diagnosis_surgery: "",
+
                 department: "",
                 room: "",
                 bed_id: "",
@@ -335,6 +836,36 @@ export default {
                 }, 1000);
                 this.patients = response.data;
             });
+        },
+        searchForAdmitDisease() {
+            axios
+                .post("/searchadmitdisease", {
+                    name: this.searchAdmitDisease
+                })
+                .then(response => {
+                    this.searchAdmitDiseases = response.data;
+                })
+                .catch(() => {});
+        },
+        searchForEmergencyDisease() {
+            axios
+                .post("/searchemergencydisease", {
+                    name: this.searchEmergencyDisease
+                })
+                .then(response => {
+                    this.searchEmergencyDiseases = response.data;
+                })
+                .catch(() => {});
+        },
+        searchForTreatmentDisease() {
+            axios
+                .post("/searchtreatmentdisease", {
+                    name: this.searchTreatmentDisease
+                })
+                .then(response => {
+                    this.searchTreatmentDiseases = response.data;
+                })
+                .catch(() => {});
         }
     },
     mounted() {
