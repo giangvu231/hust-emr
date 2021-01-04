@@ -4,18 +4,16 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\LabResult;
+use App\ImagingResult;
 use App\Emr;
-use App\Lab;
+use App\Imaging;
 
-class LabResultController extends Controller
+class ImagingResultController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth:api');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +22,18 @@ class LabResultController extends Controller
     public function index()
     {
         //
-        return LabResult::with('patient', 'diagnose')->get();
+        return ImagingResult::with('patient', 'diagnose')->get();
 
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -43,28 +51,18 @@ class LabResultController extends Controller
             'type' => 'required',
             'comment' => 'required',
         ]);
-        // $lapresult = new LabResult;
-        // $lapresult->patient_id = $request->patient_id;
-        // $lapresult->diagnose_id = $request->diagnose_id;
-        // $lapresult->type = $request->type;
-        // $lapresult->comment = $request->comment;
-        // $diagnose->modal_id = strtolower(str_random(8));
 
-        // $lapresult->save();
+        $data = ImagingResult::create($request->all());
 
-        $data = LabResult::create($request->all());
-
-        $lab = Lab::findOrFail($data->lab_id);
-        LabResult::where('lab_id', $lab->id)->update([
-            'lab_code' => $lab->code,
-            'lab_name' => $lab->name,
+        $imaging = Imaging::findOrFail($data->imaging_id);
+        ImagingResult::where('imaging_id', $imaging->id)->update([
+            'imaging_code' => $imaging->code,
+            'imaging_name' => $imaging->name,
         ]);
 
-        Emr::where('patient_id', $data->patient_id)->update([
-            'lab_id' => $data->id
-        ]);
-
-
+        // Emr::where('patient_id', $data->patient_id)->update([
+        //     'lab_id' => $data->id
+        // ]);
 
         return response()->json(['data' => $data], 200);
     }
@@ -81,6 +79,17 @@ class LabResultController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\ImagingResult  $imagingResult
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(ImagingResult $imagingResult)
+    {
+        //
+    }
+
+   /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -90,13 +99,13 @@ class LabResultController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $labresult = LabResult::findOrFail($id);
+        $imagingresult = ImagingResult::findOrFail($id);
 
         $this->validate($request, [
             'type' => 'required',
             'comment' => 'required',
         ]);
-        $labresult->update($request->all());
+        $imagingresult->update($request->all());
     }
 
     /**
@@ -117,5 +126,4 @@ class LabResultController extends Controller
         // return LabResult::with('patient', 'diagnose')->get();
 
     }
-
 }

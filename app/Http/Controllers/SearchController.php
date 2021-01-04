@@ -10,6 +10,8 @@ use App\City;
 use App\District;
 use App\Nation;
 use App\Race;
+use App\LabOrder;
+use App\Imaging;
 use App\HospitalHistory;
 
 class SearchController extends Controller
@@ -25,6 +27,13 @@ class SearchController extends Controller
     {
     	$search = $request->name;
     	$dataName = Lab::where('name', 'LIKE', "%$search%")->get();
+        return $dataName;
+    }
+
+    public function searchImaging(Request $request)
+    {
+    	$search = $request->name;
+    	$dataName = Imaging::where('name', 'LIKE', "%$search%")->get();
         return $dataName;
     }
 
@@ -62,6 +71,4 @@ class SearchController extends Controller
     	$dataName = Race::where('name', 'LIKE', "%$search%")->get();
         return $dataName;
     }
-
-
 }

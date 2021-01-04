@@ -29,6 +29,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         'hospital' => 'API\HospitalController',
         'surgery' => 'API\SurgeryController',
         'diagnose' => 'API\DiagnoseController',
+        'uploadimaging' => 'API\ImagingResultController',
         'uploadtest' => 'API\LabResultController',
         'uploadpham' => 'API\phamController',
         'payment' => 'API\PaymentController',
@@ -38,6 +39,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     ]);
 
     Route::get('labtest', 'API\DiagnoseController@labtest');
+    Route::get('imagingtest', 'API\DiagnoseController@imagingtest');
     Route::get('phamtest', 'API\DiagnoseController@phamtest');
     Route::get('give-injection', 'API\phamController@giveInjection');
     Route::post('paymentsave', 'API\PaymentController@paymentsave');

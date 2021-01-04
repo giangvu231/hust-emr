@@ -15,6 +15,7 @@ class CreateEmrsTable extends Migration
     {
         Schema::create('emrs', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->string('emr_id');
             $table->string('patient_id');
             $table->string('vital_id')->nullable();
@@ -24,9 +25,12 @@ class CreateEmrsTable extends Migration
             $table->string('appointment_id')->nullable();
             $table->string('patient_history_id')->nullable();
             $table->string('lab_id')->nullable();
+            $table->string('imaging_id')->nullable();
+            $table->string('pham_id')->nullable();
             $table->string('diagnosis_id')->nullable();
             $table->string('treatment_id')->nullable();
             $table->string('emr_summary_id')->nullable();
+
             $table->timestamps();
         });
     }

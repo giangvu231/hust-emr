@@ -50,6 +50,7 @@ Route::post('/searchdistrict', 'SearchController@searchDistrict');
 // Route::post('/searchnation', 'SearchNationController@postSearch');
 Route::post('/searchnation', 'SearchController@searchNation');
 
-// Route::post('/searchlab', 'SearchLabController@postSearch');
 Route::post('/searchlab', 'SearchController@searchLab');
+
+Route::post('/searchimagingorder', 'SearchController@searchImaging');
 

@@ -233,7 +233,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <router-link to="/diagnosed" class="nav-link">
                     <i class="nav-icon fas fa-vials"></i>
                     <p>
-                        Quản lý cận lâm sàng
+                        Quản lý lâm sàng
                     </p>
                 </router-link>
             </li>
@@ -287,6 +287,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <i class="nav-icon fas fa-vial"></i>
               <p>
               Kết quả xét nghiệm
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/imaging-test" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+                Chỉ định CDHA
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/imagingresult" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+              Kết quả CDHA
               </p>
             </router-link>
           </li>

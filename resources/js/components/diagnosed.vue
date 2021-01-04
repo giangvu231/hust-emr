@@ -19,10 +19,12 @@
                                 <th>Nhận xét</th>
                                 <th>Triệu chứng</th>
                                 <th>
-                                    Yêu cầu <br />
-                                    cận lâm sàng
+                                    CĐHA
                                 </th>
-                                <th>Yêu cầu thuốc</th>
+                                <th>
+                                    Xét nghiệm
+                                </th>
+                                <th>Thuốc</th>
                                 <th>Tác vụ</th>
                             </tr>
                         </thead>
@@ -36,6 +38,19 @@
                                 <td>{{ diagnose.diagnosis }}</td>
                                 <td>{{ diagnose.comment }}</td>
                                 <td>{{ diagnose.hospital.symptoms }}</td>
+                                <td>
+                                    <p v-if="diagnose.refer_imaging == 1">
+                                        Đã yêu cầu
+                                    </p>
+                                    <button
+                                        v-else
+                                        type="button"
+                                        class="btn btn-primary"
+                                        @click="toImaging(diagnose)"
+                                    >
+                                        Yêu cầu CDHA
+                                    </button>
+                                </td>
                                 <td>
                                     <p v-if="diagnose.refer_lab == 1">
                                         Đã yêu cầu
@@ -85,6 +100,73 @@
                                     </div>
                                 </td>
                             </tr>
+                            <!-- refer to imging modal -->
+                            <div
+                                class="modal fade"
+                                id="toimaging"
+                                tabindex="-1"
+                                role="dialog"
+                                aria-labelledby="biodataTitle"
+                                aria-hidden="true"
+                            >
+                                <div
+                                    class="modal-dialog modal-dialog-centered"
+                                    role="document"
+                                >
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5
+                                                class="modal-title"
+                                                id="exampleModalLongTitle"
+                                            >
+                                                Xác nhận
+                                            </h5>
+                                            <button
+                                                type="button"
+                                                class="close"
+                                                data-dismiss="modal"
+                                                aria-label="Close"
+                                            >
+                                                <span aria-hidden="true"
+                                                    >&times;</span
+                                                >
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form
+                                                @submit.prevent="referToImaging"
+                                                id="edit-diagnoses"
+                                            >
+                                                <input
+                                                    v-model="form.refer_imaging"
+                                                    :value="1"
+                                                    type="radio"
+                                                    name="refer_imaging"
+                                                />
+                                                Xác nhận tác vụ trước
+                                                <center>
+                                                    <button
+                                                        type="submit"
+                                                        class="toimaging btn-block btn btn-info"
+                                                        style="color:#fff;"
+                                                    >
+                                                        Yêu cầu CDHA
+                                                    </button>
+                                                </center>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button
+                                                type="button"
+                                                class="btn btn-secondary"
+                                                data-dismiss="modal"
+                                            >
+                                                Đóng
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- refer to lab modal          -->
                             <div
                                 class="modal fade"
@@ -122,51 +204,6 @@
                                                 @submit.prevent="referToLab"
                                                 id="edit-diagnoses"
                                             >
-                                                <div class="form-group">
-                                                    <input
-                                                        style="width: 100%;"
-                                                        placeholder="Yêu cầu xét nghiệm"
-                                                        type="text"
-                                                        v-model="searchLab"
-                                                        @keyup="searchForLab()"
-                                                    />
-                                                    <select
-                                                        @mouseover="
-                                                            searchForLab()
-                                                        "
-                                                        v-model="form.lab_id"
-                                                        class="form-control"
-                                                        :class="{
-                                                            'is-invalid': form.errors.has(
-                                                                'lab_id'
-                                                            )
-                                                        }"
-                                                        name="lab_id"
-                                                    >
-                                                        <option
-                                                            disabled
-                                                            selected
-                                                            value=""
-                                                            >Yêu cầu xét
-                                                            nghiệm</option
-                                                        >
-                                                        <option
-                                                            v-for="searchLab in searchLabs"
-                                                            :key="searchLab.id"
-                                                            :value="
-                                                                searchLab.id
-                                                            "
-                                                        >
-                                                            {{ searchLab.code }}
-                                                            -
-                                                            {{ searchLab.name }}
-                                                        </option>
-                                                    </select>
-                                                    <has-error
-                                                        :form="form"
-                                                        field="lab_id"
-                                                    ></has-error>
-                                                </div>
                                                 <input
                                                     v-model="form.refer_lab"
                                                     :value="1"
@@ -214,7 +251,6 @@
                                 >
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <!-- <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5> -->
                                             <h5
                                                 class="modal-title"
                                                 id="exampleModalLongTitle"
@@ -237,10 +273,6 @@
                                                 @submit.prevent="referToPham"
                                                 id="edit-diagnoses"
                                             >
-                                                <!-- <input v-model="form.refer_pham"
-                                  :value="1"
-                                  type="radio"
-                                  name="refer_pham" /> Confirm Action First -->
                                                 <input
                                                     v-model="form.refer_pham"
                                                     :value="1"
@@ -249,7 +281,6 @@
                                                 />
                                                 Xác nhận tác vụ trước
                                                 <center>
-                                                    <!-- <button type="submit" class="topham btn-block btn btn-info" style="color:#fff;">Refer to Pharmacy</button> -->
                                                     <button
                                                         type="submit"
                                                         class="topham btn-block btn btn-info"
@@ -261,7 +292,6 @@
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                                             <button
                                                 type="button"
                                                 class="btn btn-secondary"
@@ -361,7 +391,6 @@
                                                     ></has-error>
                                                 </div>
                                                 <center>
-                                                    <!-- <button type="submit" class="updatediagnoses btn-block btn btn-info" style="color:#fff;">Update Patient Diagnoses</button> -->
                                                     <button
                                                         type="submit"
                                                         class="updatediagnoses btn-block btn btn-info"
@@ -373,7 +402,6 @@
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                                             <button
                                                 type="button"
                                                 class="btn btn-secondary"
@@ -387,16 +415,6 @@
                             </div>
                         </tbody>
                         <tfoot>
-                            <!-- <tr>
-                <th>Unique ID</th>
-                <th>Name</th>
-                <th>Dianoses Details</th>
-                <th>Doctor Comment</th>
-                <th>Symtoms</th>
-                <th>Refer to Lab.</th>
-                <th>Refer to Pharm.</th>
-                <th>Action</th>
-                </tr> -->
                             <tr>
                                 <th>Mã bệnh án</th>
                                 <th>Họ tên</th>
@@ -404,10 +422,12 @@
                                 <th>Nhận xét</th>
                                 <th>Triệu chứng</th>
                                 <th>
-                                    Yêu cầu <br />
-                                    cận lâm sàng
+                                    CĐHA
                                 </th>
-                                <th>Yêu cầu thuốc</th>
+                                <th>
+                                    Xét nghiệm
+                                </th>
+                                <th>Thuốc</th>
                                 <th>Tác vụ</th>
                             </tr>
                         </tfoot>
@@ -431,11 +451,9 @@ export default {
                 id: "",
                 diagnosis: "",
                 comment: "",
+                refer_imaging: "",
                 refer_lab: "",
-                refer_pham: "",
-                lab_id: "",
-                lab_code: "",
-                lab_name: ""
+                refer_pham: ""
             })
         };
     },
@@ -462,6 +480,10 @@ export default {
         },
         toPham(diagnose) {
             $("#topham").modal("show");
+            this.form.fill(diagnose);
+        },
+        toImaging(diagnose) {
+            $("#toimaging").modal("show");
             this.form.fill(diagnose);
         },
         deleteDiagnosed(id) {
@@ -514,14 +536,35 @@ export default {
                         type: "success",
                         title: "Cập nhật thông tin chẩn đoán thành công!"
                     });
-                    $(".updatediagnoses").html("Update Patient Diagnoses");
+                    $(".updatediagnoses").html("Cập nhật thông tin chẩn đoán");
                 })
                 .catch(() => {
                     toast.fire({
                         type: "error",
                         title: "Dữ liệu nhập vào chưa đúng!"
                     });
-                    $(".updatediagnoses").html("Update Patient Diagnoses");
+                    $(".updatediagnoses").html("Cập nhật thông tin chẩn đoán");
+                });
+        },
+        referToImaging() {
+            $(".toimaging").html('<i class="fa fa-spin fa-spinner"></i>');
+            this.form
+                .put("api/diagnose/" + this.form.id)
+                .then(() => {
+                    Fire.$emit("afterAction");
+                    $("#toimaging").modal("hide");
+                    toast.fire({
+                        type: "success",
+                        title: "Đã yêu cầu CĐHA"
+                    });
+                    $(".toimaging").html("Yêu cầu CĐHA");
+                })
+                .catch(() => {
+                    toast.fire({
+                        type: "error",
+                        title: "Đã xảy ra lỗi!"
+                    });
+                    $(".toimaging").html("Yêu cầu CĐHA");
                 });
         },
         referToLab() {
@@ -565,16 +608,6 @@ export default {
                     });
                     $(".topham").html("Yêu cầu thuốc");
                 });
-        },
-        searchForLab() {
-            axios
-                .post("/searchlab", {
-                    name: this.searchLab
-                })
-                .then(response => {
-                    this.searchLabs = response.data;
-                })
-                .catch(() => {});
         }
     },
     mounted() {

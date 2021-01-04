@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLabResultsTable extends Migration
+class CreateImagingResultsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateLabResultsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lab_results', function (Blueprint $table) {
+        Schema::create('imaging_results', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->string('patient_id');
             $table->string('diagnose_id')->unique()->nullable();
             $table->string('type')->nullable();
             $table->string('comment')->nullable();
-            $table->string('lab_id')->nullable();
-            $table->string('lab_code')->nullable();
-            $table->string('lab_name')->nullable();
-            // $table->string('image');
+            $table->string('imaging_id')->nullable();
+            $table->string('imaging_code')->nullable();
+            $table->string('imaging_name')->nullable();
+
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ class CreateLabResultsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lab_results');
+        Schema::dropIfExists('imaging_results');
     }
 }

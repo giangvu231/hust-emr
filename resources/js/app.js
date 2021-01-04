@@ -100,9 +100,19 @@ const routes = [
         component: require("./components/lab-test.vue").default
     },
     {
+        name: "imaging-test",
+        path: "/imaging-test",
+        component: require("./components/imaging-test.vue").default
+    },
+    {
         name: "labresult",
         path: "/labresult",
         component: require("./components/labresult.vue").default
+    },
+    {
+        name: "imagingresult",
+        path: "/imagingresult",
+        component: require("./components/imagingresult.vue").default
     },
     {
         name: "pham-test",

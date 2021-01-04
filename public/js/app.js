@@ -6537,6 +6537,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6547,11 +6567,9 @@ __webpack_require__.r(__webpack_exports__);
         id: "",
         diagnosis: "",
         comment: "",
+        refer_imaging: "",
         refer_lab: "",
-        refer_pham: "",
-        lab_id: "",
-        lab_code: "",
-        lab_name: ""
+        refer_pham: ""
       })
     };
   },
@@ -6580,6 +6598,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     toPham: function toPham(diagnose) {
       $("#topham").modal("show");
+      this.form.fill(diagnose);
+    },
+    toImaging: function toImaging(diagnose) {
+      $("#toimaging").modal("show");
       this.form.fill(diagnose);
     },
     deleteDiagnosed: function deleteDiagnosed(id) {
@@ -6626,13 +6648,31 @@ __webpack_require__.r(__webpack_exports__);
           type: "success",
           title: "Cập nhật thông tin chẩn đoán thành công!"
         });
-        $(".updatediagnoses").html("Update Patient Diagnoses");
+        $(".updatediagnoses").html("Cập nhật thông tin chẩn đoán");
       })["catch"](function () {
         toast.fire({
           type: "error",
           title: "Dữ liệu nhập vào chưa đúng!"
         });
-        $(".updatediagnoses").html("Update Patient Diagnoses");
+        $(".updatediagnoses").html("Cập nhật thông tin chẩn đoán");
+      });
+    },
+    referToImaging: function referToImaging() {
+      $(".toimaging").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.put("api/diagnose/" + this.form.id).then(function () {
+        Fire.$emit("afterAction");
+        $("#toimaging").modal("hide");
+        toast.fire({
+          type: "success",
+          title: "Đã yêu cầu CĐHA"
+        });
+        $(".toimaging").html("Yêu cầu CĐHA");
+      })["catch"](function () {
+        toast.fire({
+          type: "error",
+          title: "Đã xảy ra lỗi!"
+        });
+        $(".toimaging").html("Yêu cầu CĐHA");
       });
     },
     referToLab: function referToLab() {
@@ -6670,24 +6710,15 @@ __webpack_require__.r(__webpack_exports__);
         });
         $(".topham").html("Yêu cầu thuốc");
       });
-    },
-    searchForLab: function searchForLab() {
-      var _this3 = this;
-
-      axios.post("/searchlab", {
-        name: this.searchLab
-      }).then(function (response) {
-        _this3.searchLabs = response.data;
-      })["catch"](function () {});
     }
   },
   mounted: function mounted() {
-    var _this4 = this;
+    var _this3 = this;
 
     console.log("Component mounted.");
     this.LoadDiagnoses();
     Fire.$on("afterAction", function () {
-      _this4.LoadDiagnoses();
+      _this3.LoadDiagnoses();
     });
   }
 });
@@ -9444,6 +9475,691 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/imaging-test.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/imaging-test.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      searchImagingText: "",
+      searchImagingArrs: [],
+      diagnoses: {},
+      form: new Form({
+        patient_id: "",
+        diagnose_id: "",
+        type: "",
+        comment: ""
+      })
+    };
+  },
+  methods: {
+    LoadDiagnoses: function LoadDiagnoses() {
+      var _this = this;
+
+      // this.loading = true;
+      axios.get("api/imagingtest").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.diagnoses = response.data;
+      });
+    },
+    // LoadDiagnoses(){
+    //      axios.get('api/labtest').then(({data}) => (this.diagnoses = data));
+    // },
+    // imageFunction(e){
+    //   let file = e.target.files[0];
+    //   let reader = new FileReader();
+    //   reader.onloadend = (file) => {
+    //     this.form.image = reader.result;
+    //   }
+    //   reader.readAsDataURL(file);
+    // },
+    addDiagnosis: function addDiagnosis() {
+      $(".imagingtestresult").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.post("api/uploadimaging").then(function () {
+        toast.fire({
+          type: "success",
+          title: "Cập nhật thành công!"
+        });
+        $(".imagingtestresult").html("Cập nhật kết quả xét nghiệm CLS");
+        $("#lap-result").modal("hide");
+      })["catch"](function () {
+        toast.fire({
+          type: "error",
+          title: "Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!"
+        });
+        $(".imagingtestresult").html("Cập nhật kết quả xét nghiệm CLS ");
+      });
+    },
+    searchForImaging: function searchForImaging() {
+      var _this2 = this;
+
+      axios.post("/searchimagingorder", {
+        name: this.searchImagingText
+      }).then(function (response) {
+        _this2.searchImagingArrs = response.data;
+      })["catch"](function () {});
+    }
+  },
+  mounted: function mounted() {
+    var _this3 = this;
+
+    console.log("Component mounted.");
+    this.LoadDiagnoses();
+    Fire.$on("afterAction", function () {
+      _this3.LoadDiagnoses();
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/imagingresult.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/imagingresult.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      imagingresults: {},
+      user: {},
+      form: new Form({
+        id: "",
+        type: "",
+        comment: ""
+      })
+    };
+  },
+  methods: {
+    LoadImagingresult: function LoadImagingresult() {
+      var _this = this;
+
+      axios.get("api/uploadimaging").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.imagingresults = response.data;
+      }); //  axios.get('api/uploadtest').then(({data}) => (this.imagingresults = data));
+
+      axios.get("api/user").then(function (response) {
+        console.log(response.data);
+        _this.user = response.data;
+      });
+    },
+    editModal: function editModal(imagingresult) {
+      $("#editimagingresults").modal("show");
+      this.form.fill(imagingresult);
+    },
+    updateimagingresults: function updateimagingresults() {
+      $(".updateimagingresults").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.put("api/uploadtest/" + this.form.id).then(function () {
+        Fire.$emit("afterAction");
+        $("#editimagingresults").modal("hide");
+        toast.fire({
+          type: "success",
+          title: "Kết quả xét nghiệm đã cập nhật thành công!"
+        });
+        $(".updateimagingresults").html("Cập nhật CDHA");
+      })["catch"](function () {
+        toast.fire({
+          type: "error",
+          title: "Dữ liệu nhập vào chưa đúng!"
+        });
+        $(".updateimagingresults").html("Cập nhật CDHA");
+      });
+    }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    console.log("Component mounted.");
+    this.LoadImagingresult();
+    Fire.$on("afterAction", function () {
+      _this2.LoadImagingresult();
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lab-test.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/lab-test.vue?vue&type=script&lang=js& ***!
@@ -9704,9 +10420,68 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      searchLab: "",
+      searchLabs: [],
       diagnoses: {},
       form: new Form({
         patient_id: "",
@@ -9755,15 +10530,24 @@ __webpack_require__.r(__webpack_exports__);
         });
         $(".labtestresult").html("Cập nhật kết quả xét nghiệm CLS ");
       });
+    },
+    searchForLab: function searchForLab() {
+      var _this2 = this;
+
+      axios.post("/searchlab", {
+        name: this.searchLab
+      }).then(function (response) {
+        _this2.searchLabs = response.data;
+      })["catch"](function () {});
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
     console.log("Component mounted.");
     this.LoadDiagnoses();
     Fire.$on("afterAction", function () {
-      _this2.LoadDiagnoses();
+      _this3.LoadDiagnoses();
     });
   }
 });
@@ -82684,6 +83468,32 @@ var render = function() {
                       _c("td", [_vm._v(_vm._s(diagnose.hospital.symptoms))]),
                       _vm._v(" "),
                       _c("td", [
+                        diagnose.refer_imaging == 1
+                          ? _c("p", [
+                              _vm._v(
+                                "\n                                    Đã yêu cầu\n                                "
+                              )
+                            ])
+                          : _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.toImaging(diagnose)
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    Yêu cầu CDHA\n                                "
+                                )
+                              ]
+                            )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
                         diagnose.refer_lab == 1
                           ? _c("p", [
                               _vm._v(
@@ -82776,7 +83586,7 @@ var render = function() {
                     {
                       staticClass: "modal fade",
                       attrs: {
-                        id: "tolab",
+                        id: "toimaging",
                         tabindex: "-1",
                         role: "dialog",
                         "aria-labelledby": "biodataTitle",
@@ -82802,143 +83612,105 @@ var render = function() {
                                   on: {
                                     submit: function($event) {
                                       $event.preventDefault()
+                                      return _vm.referToImaging($event)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.refer_imaging,
+                                        expression: "form.refer_imaging"
+                                      }
+                                    ],
+                                    attrs: {
+                                      type: "radio",
+                                      name: "refer_imaging"
+                                    },
+                                    domProps: {
+                                      value: 1,
+                                      checked: _vm._q(_vm.form.refer_imaging, 1)
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        return _vm.$set(
+                                          _vm.form,
+                                          "refer_imaging",
+                                          1
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                                            Xác nhận tác vụ trước\n                                            "
+                                  ),
+                                  _c("center", [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "toimaging btn-block btn btn-info",
+                                        staticStyle: { color: "#fff" },
+                                        attrs: { type: "submit" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Yêu cầu CDHA\n                                                "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ],
+                                1
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(3)
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal fade",
+                      attrs: {
+                        id: "tolab",
+                        tabindex: "-1",
+                        role: "dialog",
+                        "aria-labelledby": "biodataTitle",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "modal-dialog modal-dialog-centered",
+                          attrs: { role: "document" }
+                        },
+                        [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _vm._m(4),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-body" }, [
+                              _c(
+                                "form",
+                                {
+                                  attrs: { id: "edit-diagnoses" },
+                                  on: {
+                                    submit: function($event) {
+                                      $event.preventDefault()
                                       return _vm.referToLab($event)
                                     }
                                   }
                                 },
                                 [
-                                  _c(
-                                    "div",
-                                    { staticClass: "form-group" },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.searchLab,
-                                            expression: "searchLab"
-                                          }
-                                        ],
-                                        staticStyle: { width: "100%" },
-                                        attrs: {
-                                          placeholder: "Yêu cầu xét nghiệm",
-                                          type: "text"
-                                        },
-                                        domProps: { value: _vm.searchLab },
-                                        on: {
-                                          keyup: function($event) {
-                                            return _vm.searchForLab()
-                                          },
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.searchLab = $event.target.value
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "select",
-                                        {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value: _vm.form.lab_id,
-                                              expression: "form.lab_id"
-                                            }
-                                          ],
-                                          staticClass: "form-control",
-                                          class: {
-                                            "is-invalid": _vm.form.errors.has(
-                                              "lab_id"
-                                            )
-                                          },
-                                          attrs: { name: "lab_id" },
-                                          on: {
-                                            mouseover: function($event) {
-                                              return _vm.searchForLab()
-                                            },
-                                            change: function($event) {
-                                              var $$selectedVal = Array.prototype.filter
-                                                .call(
-                                                  $event.target.options,
-                                                  function(o) {
-                                                    return o.selected
-                                                  }
-                                                )
-                                                .map(function(o) {
-                                                  var val =
-                                                    "_value" in o
-                                                      ? o._value
-                                                      : o.value
-                                                  return val
-                                                })
-                                              _vm.$set(
-                                                _vm.form,
-                                                "lab_id",
-                                                $event.target.multiple
-                                                  ? $$selectedVal
-                                                  : $$selectedVal[0]
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                disabled: "",
-                                                selected: "",
-                                                value: ""
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "Yêu cầu xét\n                                                        nghiệm"
-                                              )
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _vm._l(_vm.searchLabs, function(
-                                            searchLab
-                                          ) {
-                                            return _c(
-                                              "option",
-                                              {
-                                                key: searchLab.id,
-                                                domProps: {
-                                                  value: searchLab.id
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                                        " +
-                                                    _vm._s(searchLab.code) +
-                                                    "\n                                                        -\n                                                        " +
-                                                    _vm._s(searchLab.name) +
-                                                    "\n                                                    "
-                                                )
-                                              ]
-                                            )
-                                          })
-                                        ],
-                                        2
-                                      ),
-                                      _vm._v(" "),
-                                      _c("has-error", {
-                                        attrs: {
-                                          form: _vm.form,
-                                          field: "lab_id"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
                                   _c("input", {
                                     directives: [
                                       {
@@ -82987,7 +83759,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _vm._m(3)
+                            _vm._m(5)
                           ])
                         ]
                       )
@@ -83015,7 +83787,7 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "modal-content" }, [
-                            _vm._m(4),
+                            _vm._m(6),
                             _vm._v(" "),
                             _c("div", { staticClass: "modal-body" }, [
                               _c(
@@ -83081,7 +83853,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _vm._m(5)
+                            _vm._m(7)
                           ])
                         ]
                       )
@@ -83109,7 +83881,7 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "modal-content" }, [
-                            _vm._m(6),
+                            _vm._m(8),
                             _vm._v(" "),
                             _c("div", { staticClass: "modal-body" }, [
                               _c(
@@ -83257,7 +84029,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _vm._m(7)
+                            _vm._m(9)
                           ])
                         ]
                       )
@@ -83267,7 +84039,7 @@ var render = function() {
                 2
               ),
               _vm._v(" "),
-              _vm._m(8)
+              _vm._m(10)
             ]
           )
         ])
@@ -83303,17 +84075,69 @@ var staticRenderFns = [
         _c("th", [_vm._v("Triệu chứng")]),
         _vm._v(" "),
         _c("th", [
-          _vm._v("\n                                Yêu cầu "),
-          _c("br"),
           _vm._v(
-            "\n                                cận lâm sàng\n                            "
+            "\n                                CĐHA\n                            "
           )
         ]),
         _vm._v(" "),
-        _c("th", [_vm._v("Yêu cầu thuốc")]),
+        _c("th", [
+          _vm._v(
+            "\n                                Xét nghiệm\n                            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Thuốc")]),
         _vm._v(" "),
         _c("th", [_vm._v("Tác vụ")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
+        [
+          _vm._v(
+            "\n                                            Xác nhận\n                                        "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [
+          _vm._v(
+            "\n                                            Đóng\n                                        "
+          )
+        ]
+      )
     ])
   },
   function() {
@@ -83477,14 +84301,18 @@ var staticRenderFns = [
         _c("th", [_vm._v("Triệu chứng")]),
         _vm._v(" "),
         _c("th", [
-          _vm._v("\n                                Yêu cầu "),
-          _c("br"),
           _vm._v(
-            "\n                                cận lâm sàng\n                            "
+            "\n                                CĐHA\n                            "
           )
         ]),
         _vm._v(" "),
-        _c("th", [_vm._v("Yêu cầu thuốc")]),
+        _c("th", [
+          _vm._v(
+            "\n                                Xét nghiệm\n                            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Thuốc")]),
         _vm._v(" "),
         _c("th", [_vm._v("Tác vụ")])
       ])
@@ -87988,10 +88816,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lab-test.vue?vue&type=template&id=09c7bd1d&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/lab-test.vue?vue&type=template&id=09c7bd1d& ***!
-  \***********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/imaging-test.vue?vue&type=template&id=2763c632&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/imaging-test.vue?vue&type=template&id=2763c632& ***!
+  \***************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -88054,7 +88882,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                                    Tải lên kết quả xét nghiệm\n                                "
+                            "\n                                    Cập nhật kết quả CDHA\n                                "
                           )
                         ]
                       ),
@@ -88161,8 +88989,1305 @@ var render = function() {
                                         }
                                       }),
                                       _vm._v(
+                                        "\n                                                    Xác nhận trước\n                                                    "
+                                      ),
+                                      _c(
+                                        "div",
+                                        { staticClass: "form-group" },
+                                        [
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.searchImagingText,
+                                                expression:
+                                                  "\n                                                                searchImagingText\n                                                            "
+                                              }
+                                            ],
+                                            staticStyle: { width: "100%" },
+                                            attrs: {
+                                              placeholder: "Yêu cầu CDHA",
+                                              type: "text"
+                                            },
+                                            domProps: {
+                                              value: _vm.searchImagingText
+                                            },
+                                            on: {
+                                              keyup: function($event) {
+                                                return _vm.searchForImaging()
+                                              },
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.searchImagingText =
+                                                  $event.target.value
+                                              }
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.form.imaging_id,
+                                                  expression:
+                                                    "\n                                                                form.imaging_id\n                                                            "
+                                                }
+                                              ],
+                                              staticClass: "form-control",
+                                              class: {
+                                                "is-invalid": _vm.form.errors.has(
+                                                  "imaging_id"
+                                                )
+                                              },
+                                              attrs: { name: "imaging_id" },
+                                              on: {
+                                                mouseover: function($event) {
+                                                  return _vm.searchForImaging()
+                                                },
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.$set(
+                                                    _vm.form,
+                                                    "imaging_id",
+                                                    $event.target.multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: {
+                                                    value: "",
+                                                    disabled: "",
+                                                    selected: ""
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Chọn loại\n                                                                CDHA"
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._l(
+                                                _vm.searchImagingArrs,
+                                                function(searchImagingArr) {
+                                                  return _c(
+                                                    "option",
+                                                    {
+                                                      key: searchImagingArr.id,
+                                                      domProps: {
+                                                        value:
+                                                          searchImagingArr.id
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                                                " +
+                                                          _vm._s(
+                                                            searchImagingArr.code
+                                                          ) +
+                                                          "\n                                                                -\n                                                                " +
+                                                          _vm._s(
+                                                            searchImagingArr.name
+                                                          ) +
+                                                          "\n                                                            "
+                                                      )
+                                                    ]
+                                                  )
+                                                }
+                                              )
+                                            ],
+                                            2
+                                          ),
+                                          _vm._v(" "),
+                                          _c("has-error", {
+                                            attrs: {
+                                              form: _vm.form,
+                                              field: "imaging_id"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "form-group" },
+                                        [
+                                          _c("label", [
+                                            _vm._v(
+                                              "Chọn loại\n                                                            CDHA"
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.form.type,
+                                                  expression:
+                                                    "\n                                                                form.type\n                                                            "
+                                                }
+                                              ],
+                                              staticClass: "form-control",
+                                              class: {
+                                                "is-invalid": _vm.form.errors.has(
+                                                  "type"
+                                                )
+                                              },
+                                              attrs: { name: "type" },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.$set(
+                                                    _vm.form,
+                                                    "type",
+                                                    $event.target.multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: {
+                                                    value: "Công thức máu"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Công thức\n                                                                máu"
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: {
+                                                    value:
+                                                      "Xét nghiệm nước tiểu"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Xét nghiệm\n                                                                nước\n                                                                tiểu"
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                { attrs: { value: "Sốt rét" } },
+                                                [
+                                                  _vm._v(
+                                                    "Sốt\n                                                                rét"
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: { value: "HIV I - II" }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "HIV I -\n                                                                II"
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: { value: "Nhóm máu" }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Nhóm\n                                                                máu"
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: { value: "Kiểu Gen" }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Kiểu\n                                                                Gen"
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: {
+                                                    value: "Đường huyết"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Đường\n                                                                huyết"
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: { value: "Thử thai" }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Thử\n                                                                thai"
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: { value: "Lao phổi" }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Lao\n                                                                phổi"
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("has-error", {
+                                            attrs: {
+                                              form: _vm.form,
+                                              field: "type"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "form-group" },
+                                        [
+                                          _c("textarea", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.form.comment,
+                                                expression:
+                                                  "\n                                                                form.comment\n                                                            "
+                                              }
+                                            ],
+                                            staticClass: "form-control",
+                                            class: {
+                                              "is-invalid": _vm.form.errors.has(
+                                                "comment"
+                                              )
+                                            },
+                                            attrs: {
+                                              placeholder: "Comment",
+                                              name: "comment",
+                                              id: "",
+                                              cols: "10",
+                                              rows: "5"
+                                            },
+                                            domProps: {
+                                              value: _vm.form.comment
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "comment",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("has-error", {
+                                            attrs: {
+                                              form: _vm.form,
+                                              field: "comment"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c("center", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "imagingtestresult btn-block btn btn-info",
+                                            staticStyle: { color: "#fff" },
+                                            attrs: { type: "submit" }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                            Cập nhật kết quả\n                                                            xét nghiệm\n                                                        "
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _vm._m(3, true)
+                              ])
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _vm._m(4)
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [
+        _vm._v("Bệnh nhân đã chẩn đoán")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Mã bệnh nhân")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Họ tên")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Thông tin chẩn đoán")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nhận xét của bác sĩ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Các triệu chứng")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tác vụ")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
+        [
+          _vm._v(
+            "\n                                                    Cập nhật kết quả xét\n                                                    nghiệm\n                                                "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [
+          _vm._v(
+            "\n                                                    Đóng\n                                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tfoot", [
+      _c("tr", [
+        _c("th", [_vm._v("Mã bệnh nhân")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Họ tên")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Thông tin chẩn đoán")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nhận xét của bác sĩ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Các triệu chứng")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tác vụ")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/imagingresult.vue?vue&type=template&id=09e44a8c&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/imagingresult.vue?vue&type=template&id=09e44a8c& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "card", staticStyle: { width: "100%" } }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c(
+            "table",
+            {
+              staticClass: "table table-bordered table-striped",
+              attrs: { id: "example1" }
+            },
+            [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", [_vm._v("Mã bệnh nhân")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Họ tên")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Thông tin chẩn đoán")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Ngày thực hiện")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Kết quả")]),
+                  _vm._v(" "),
+                  _vm.user.role == "lab"
+                    ? _c("th", [_vm._v("Tác vụ")])
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                [
+                  _vm._l(_vm.imagingresults, function(imagingresult) {
+                    return _c("tr", { key: imagingresult.id }, [
+                      _c("td", [
+                        _vm._v(_vm._s(imagingresult.patient.unique_id))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(imagingresult.patient.full_name) +
+                            "\n                            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(imagingresult.updated_at))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(
+                              _vm._f("humanDate")(imagingresult.created_at)
+                            ) +
+                            "\n                            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(imagingresult.type) +
+                            " "
+                        ),
+                        _c("br"),
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(imagingresult.comment) +
+                            "\n                            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm.user.role == "lab"
+                        ? _c("td", [
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-sm-6" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "text-primary",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.editModal(imagingresult)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-edit" })]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(1, true)
+                            ])
+                          ])
+                        : _vm._e()
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal fade",
+                      attrs: {
+                        id: "editimagingresults",
+                        tabindex: "-1",
+                        role: "dialog",
+                        "aria-labelledby": "biodataTitle",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "modal-dialog modal-dialog-centered",
+                          attrs: { role: "document" }
+                        },
+                        [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _vm._m(2),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-body" }, [
+                              _c(
+                                "form",
+                                {
+                                  attrs: { id: "edit-imagingresults" },
+                                  on: {
+                                    submit: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.updateimagingresults($event)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group" },
+                                    [
+                                      _c("label", [_vm._v("Chọn loại CDHA")]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "select",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.form.type,
+                                              expression: "form.type"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          class: {
+                                            "is-invalid": _vm.form.errors.has(
+                                              "type"
+                                            )
+                                          },
+                                          attrs: { name: "type" },
+                                          on: {
+                                            change: function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.$set(
+                                                _vm.form,
+                                                "type",
+                                                $event.target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "option",
+                                            {
+                                              attrs: { value: "Công thức máu" }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "Công thức\n                                                        máu"
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            {
+                                              attrs: {
+                                                value: "Xét nghiệm nước tiểu"
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "Xét nghiệm nước\n                                                        tiểu"
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "Sốt rét" } },
+                                            [_vm._v("Sốt rét")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "HIV I - II" } },
+                                            [_vm._v("HIV I - II")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "Nhóm máu" } },
+                                            [_vm._v("Nhóm máu")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "Kiểu Gen" } },
+                                            [_vm._v("Kiểu Gen")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "Đường huyết" } },
+                                            [_vm._v("Đường huyết")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "Thử thai" } },
+                                            [_vm._v("Thử thai")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "Lao phổi" } },
+                                            [_vm._v("Lao phổi")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("has-error", {
+                                        attrs: { form: _vm.form, field: "type" }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group" },
+                                    [
+                                      _c("label", [_vm._v("Sửa nhận xét")]),
+                                      _vm._v(" "),
+                                      _c("textarea", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.form.comment,
+                                            expression: "form.comment"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        class: {
+                                          "is-invalid": _vm.form.errors.has(
+                                            "comment"
+                                          )
+                                        },
+                                        attrs: {
+                                          placeholder: "Comment",
+                                          name: "comment",
+                                          id: "",
+                                          cols: "10",
+                                          rows: "5"
+                                        },
+                                        domProps: { value: _vm.form.comment },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.form,
+                                              "comment",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("has-error", {
+                                        attrs: {
+                                          form: _vm.form,
+                                          field: "comment"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("center", [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "updateimagingresults btn-block btn btn-info",
+                                        staticStyle: { color: "#fff" },
+                                        attrs: { type: "submit" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Cập nhật kết quả CDHA\n                                                "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ],
+                                1
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(3)
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c("tfoot", [
+                _c("tr", [
+                  _c("th", [_vm._v("Mã bệnh nhân")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Họ tên")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Thông tin chẩn đoán")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Ngày kiểm tra")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Kết quả xét nghiệm")]),
+                  _vm._v(" "),
+                  _vm.user.role == "lab"
+                    ? _c("th", [_vm._v("Tác vụ")])
+                    : _vm._e()
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [
+        _vm._v("Kết quả chẩn đoán hình ảnh")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-6" }, [
+      _c("a", { staticClass: "text-danger", attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fa fa-trash" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
+        [
+          _vm._v(
+            "\n                                            Sửa kết quả CDHA\n                                        "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [
+          _vm._v(
+            "\n                                            Đóng\n                                        "
+          )
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lab-test.vue?vue&type=template&id=09c7bd1d&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/lab-test.vue?vue&type=template&id=09c7bd1d& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "card", staticStyle: { width: "100%" } }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c(
+            "table",
+            {
+              staticClass: "table table-bordered table-striped",
+              attrs: { id: "example1" }
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.diagnoses, function(diagnose) {
+                  return _c("tr", { key: diagnose.id }, [
+                    _c("td", [_vm._v(_vm._s(diagnose.patient.unique_id))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(diagnose.patient.title) +
+                          "\n                                " +
+                          _vm._s(diagnose.patient.full_name) +
+                          "\n                            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(diagnose.diagnosis))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(diagnose.comment))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(diagnose.hospital.symptoms))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: {
+                            type: "button",
+                            "data-toggle": "modal",
+                            "data-target": "#" + diagnose.patient.unique_id,
+                            id: "lap-result"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Cập nhật kết quả xét nghiệm\n                                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "modal fade",
+                          attrs: {
+                            id: diagnose.patient.unique_id,
+                            tabindex: "-1",
+                            role: "dialog",
+                            "aria-labelledby": "biodataTitle",
+                            "aria-hidden": "true"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal-dialog modal-dialog-centered",
+                              attrs: { role: "document" }
+                            },
+                            [
+                              _c("div", { staticClass: "modal-content" }, [
+                                _vm._m(2, true),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "modal-body" }, [
+                                  _c(
+                                    "form",
+                                    {
+                                      attrs: { id: "lab-test" },
+                                      on: {
+                                        submit: function($event) {
+                                          $event.preventDefault()
+                                          return _vm.addDiagnosis($event)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.form.patient_id,
+                                            expression:
+                                              "\n                                                            form.patient_id\n                                                        "
+                                          }
+                                        ],
+                                        attrs: {
+                                          type: "radio",
+                                          name: "patient_id"
+                                        },
+                                        domProps: {
+                                          value: diagnose.patient.id,
+                                          checked: _vm._q(
+                                            _vm.form.patient_id,
+                                            diagnose.patient.id
+                                          )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            return _vm.$set(
+                                              _vm.form,
+                                              "patient_id",
+                                              diagnose.patient.id
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(
                                         "\n                                                    Xác nhận trước\n\n                                                    "
                                       ),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.form.diagnose_id,
+                                            expression:
+                                              "\n                                                            form.diagnose_id\n                                                        "
+                                          }
+                                        ],
+                                        attrs: {
+                                          type: "radio",
+                                          name: "diagnose_id"
+                                        },
+                                        domProps: {
+                                          value: diagnose.id,
+                                          checked: _vm._q(
+                                            _vm.form.diagnose_id,
+                                            diagnose.id
+                                          )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            return _vm.$set(
+                                              _vm.form,
+                                              "diagnose_id",
+                                              diagnose.id
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(
+                                        "\n                                                    Xác nhận trước\n                                                    "
+                                      ),
+                                      _c(
+                                        "div",
+                                        { staticClass: "form-group" },
+                                        [
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.searchLab,
+                                                expression:
+                                                  "\n                                                                searchLab\n                                                            "
+                                              }
+                                            ],
+                                            staticStyle: { width: "100%" },
+                                            attrs: {
+                                              placeholder: "Yêu cầu xét nghiệm",
+                                              type: "text"
+                                            },
+                                            domProps: { value: _vm.searchLab },
+                                            on: {
+                                              keyup: function($event) {
+                                                return _vm.searchForLab()
+                                              },
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.searchLab =
+                                                  $event.target.value
+                                              }
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.form.lab_id,
+                                                  expression:
+                                                    "\n                                                                form.lab_id\n                                                            "
+                                                }
+                                              ],
+                                              staticClass: "form-control",
+                                              class: {
+                                                "is-invalid": _vm.form.errors.has(
+                                                  "lab_id"
+                                                )
+                                              },
+                                              attrs: { name: "lab_id" },
+                                              on: {
+                                                mouseover: function($event) {
+                                                  return _vm.searchForLab()
+                                                },
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.$set(
+                                                    _vm.form,
+                                                    "lab_id",
+                                                    $event.target.multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: {
+                                                    value: "",
+                                                    disabled: "",
+                                                    selected: ""
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Chọn loại\n                                                                xét\n                                                                nghiệm"
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._l(_vm.searchLabs, function(
+                                                searchLab
+                                              ) {
+                                                return _c(
+                                                  "option",
+                                                  {
+                                                    key: searchLab.id,
+                                                    domProps: {
+                                                      value: searchLab.id
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                " +
+                                                        _vm._s(searchLab.code) +
+                                                        "\n                                                                -\n                                                                " +
+                                                        _vm._s(searchLab.name) +
+                                                        "\n                                                            "
+                                                    )
+                                                  ]
+                                                )
+                                              })
+                                            ],
+                                            2
+                                          ),
+                                          _vm._v(" "),
+                                          _c("has-error", {
+                                            attrs: {
+                                              form: _vm.form,
+                                              field: "lab_id"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
                                       _c(
                                         "div",
                                         { staticClass: "form-group" },
@@ -88480,7 +90605,7 @@ var staticRenderFns = [
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
         [
           _vm._v(
-            "\n                                                    Tải lên kết quả xét\n                                                    nghiệm\n                                                "
+            "\n                                                    Cập nhật kết quả xét\n                                                    nghiệm\n                                                "
           )
         ]
       ),
@@ -109693,9 +111818,17 @@ var routes = [{
   path: "/lab-test",
   component: __webpack_require__(/*! ./components/lab-test.vue */ "./resources/js/components/lab-test.vue")["default"]
 }, {
+  name: "imaging-test",
+  path: "/imaging-test",
+  component: __webpack_require__(/*! ./components/imaging-test.vue */ "./resources/js/components/imaging-test.vue")["default"]
+}, {
   name: "labresult",
   path: "/labresult",
   component: __webpack_require__(/*! ./components/labresult.vue */ "./resources/js/components/labresult.vue")["default"]
+}, {
+  name: "imagingresult",
+  path: "/imagingresult",
+  component: __webpack_require__(/*! ./components/imagingresult.vue */ "./resources/js/components/imagingresult.vue")["default"]
 }, {
   name: "pham-test",
   path: "/pham-test",
@@ -111188,6 +113321,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_hospital_vue_vue_type_template_id_cc15daf6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_hospital_vue_vue_type_template_id_cc15daf6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/imaging-test.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/imaging-test.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _imaging_test_vue_vue_type_template_id_2763c632___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./imaging-test.vue?vue&type=template&id=2763c632& */ "./resources/js/components/imaging-test.vue?vue&type=template&id=2763c632&");
+/* harmony import */ var _imaging_test_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./imaging-test.vue?vue&type=script&lang=js& */ "./resources/js/components/imaging-test.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _imaging_test_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _imaging_test_vue_vue_type_template_id_2763c632___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _imaging_test_vue_vue_type_template_id_2763c632___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/imaging-test.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/imaging-test.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/imaging-test.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_imaging_test_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./imaging-test.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/imaging-test.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_imaging_test_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/imaging-test.vue?vue&type=template&id=2763c632&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/imaging-test.vue?vue&type=template&id=2763c632& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_imaging_test_vue_vue_type_template_id_2763c632___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./imaging-test.vue?vue&type=template&id=2763c632& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/imaging-test.vue?vue&type=template&id=2763c632&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_imaging_test_vue_vue_type_template_id_2763c632___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_imaging_test_vue_vue_type_template_id_2763c632___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/imagingresult.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/imagingresult.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _imagingresult_vue_vue_type_template_id_09e44a8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./imagingresult.vue?vue&type=template&id=09e44a8c& */ "./resources/js/components/imagingresult.vue?vue&type=template&id=09e44a8c&");
+/* harmony import */ var _imagingresult_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./imagingresult.vue?vue&type=script&lang=js& */ "./resources/js/components/imagingresult.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _imagingresult_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _imagingresult_vue_vue_type_template_id_09e44a8c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _imagingresult_vue_vue_type_template_id_09e44a8c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/imagingresult.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/imagingresult.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/imagingresult.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_imagingresult_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./imagingresult.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/imagingresult.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_imagingresult_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/imagingresult.vue?vue&type=template&id=09e44a8c&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/imagingresult.vue?vue&type=template&id=09e44a8c& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_imagingresult_vue_vue_type_template_id_09e44a8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./imagingresult.vue?vue&type=template&id=09e44a8c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/imagingresult.vue?vue&type=template&id=09e44a8c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_imagingresult_vue_vue_type_template_id_09e44a8c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_imagingresult_vue_vue_type_template_id_09e44a8c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

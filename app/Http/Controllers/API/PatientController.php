@@ -11,6 +11,7 @@ use App\HospitalHistory;
 use App\Hospital;
 use App\Payment;
 use App\LabResult;
+use App\ImagingResult;
 use App\Pham;
 use App\SurgeryHistory;
 use App\Vital;

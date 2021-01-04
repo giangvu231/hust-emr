@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 
-class LabResult extends Model
+class ImagingResult extends Model
 {
-    //
     use Notifiable, HasApiTokens;
 
     protected $fillable = [
@@ -16,9 +15,9 @@ class LabResult extends Model
         'diagnose_id',
         'type',
         'comment',
-        'lab_id',
-        'lab_code',
-        'lab_name',
+        'imaging_id',
+        'imaging_code',
+        'imaging_name',
     ];
 
    public function patient(){
@@ -27,6 +26,5 @@ class LabResult extends Model
 
    public function diagnose(){
     return $this->belongsTo('App\Diagnose');
-
     }
 }

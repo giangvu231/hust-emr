@@ -16,12 +16,10 @@ class Diagnose extends Model
         'hospital_id',
         'diagnosis',
         'comment',
+        'refer_imaging',
         'refer_lab',
         'refer_pham',
         // 'modal_id',
-        'lab_id',
-        'lab_code',
-        'lab_name',
     ];
 
    public function patient(){

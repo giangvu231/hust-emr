@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\HospitalHistory;
 use App\Diagnose;
+use App\LabResult;
+use App\ImagingResult;
+use App\Imaging;
 use App\Lab;
 
 class DiagnoseController extends Controller
@@ -80,16 +83,7 @@ class DiagnoseController extends Controller
 
         // $diagnose->save();
 
-        // return HospitalHistory::create($request->all());
-        $data = Diagnose::create($request->all());
-
-        $lab = Lab::findOrFail($data->lab_id);
-        Diagnose::where('lab_id', $lab->id)->update([
-            'lab_code' => $lab->code,
-            'lab_name' => $lab->name,
-        ]);
-
-        return response()->json(['data' => $data], 200);
+        return HospitalHistory::create($request->all());
     }
 
     /**
@@ -136,6 +130,12 @@ class DiagnoseController extends Controller
         LabResult::where('patient_id',$id)->delete();
 
         $diagnose->delete();
+    }
+
+    public function imagingtest()
+    {
+        //
+        return Diagnose::where('refer_imaging', 1)->with('patient', 'hospital')->get();
     }
 
 

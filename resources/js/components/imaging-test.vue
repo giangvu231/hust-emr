@@ -44,7 +44,7 @@
                                         "
                                         id="lap-result"
                                     >
-                                        Cập nhật kết quả xét nghiệm
+                                        Cập nhật kết quả CDHA
                                     </button>
 
                                     <div
@@ -111,66 +111,64 @@
                                                         <div class="form-group">
                                                             <input
                                                                 style="width: 100%;"
-                                                                placeholder="Yêu cầu xét nghiệm"
+                                                                placeholder="Yêu cầu CDHA"
                                                                 type="text"
                                                                 v-model="
-                                                                    searchLab
+                                                                    searchImagingText
                                                                 "
                                                                 @keyup="
-                                                                    searchForLab()
+                                                                    searchForImaging()
                                                                 "
                                                             />
                                                             <select
                                                                 @mouseover="
-                                                                    searchForLab()
+                                                                    searchForImaging()
                                                                 "
                                                                 v-model="
-                                                                    form.lab_id
+                                                                    form.imaging_id
                                                                 "
                                                                 class="form-control"
                                                                 :class="{
                                                                     'is-invalid': form.errors.has(
-                                                                        'lab_id'
+                                                                        'imaging_id'
                                                                     )
                                                                 }"
-                                                                name="lab_id"
+                                                                name="imaging_id"
                                                             >
                                                                 <option
                                                                     value=""
                                                                     disabled
                                                                     selected
                                                                     >Chọn loại
-                                                                    xét
-                                                                    nghiệm</option
+                                                                    CDHA</option
                                                                 >
                                                                 <option
-                                                                    v-for="searchLab in searchLabs"
+                                                                    v-for="searchImagingArr in searchImagingArrs"
                                                                     :key="
-                                                                        searchLab.id
+                                                                        searchImagingArr.id
                                                                     "
                                                                     :value="
-                                                                        searchLab.id
+                                                                        searchImagingArr.id
                                                                     "
                                                                 >
                                                                     {{
-                                                                        searchLab.code
+                                                                        searchImagingArr.code
                                                                     }}
                                                                     -
                                                                     {{
-                                                                        searchLab.name
+                                                                        searchImagingArr.name
                                                                     }}
                                                                 </option>
                                                             </select>
                                                             <has-error
                                                                 :form="form"
-                                                                field="lab_id"
+                                                                field="imaging_id"
                                                             ></has-error>
                                                         </div>
                                                         <div class="form-group">
-                                                            <!-- <label>Select Type of Test</label>                 -->
                                                             <label
-                                                                >Chọn loại xét
-                                                                nghiệm</label
+                                                                >Chọn loại
+                                                                CDHA</label
                                                             >
                                                             <select
                                                                 v-model="
@@ -260,10 +258,10 @@
                                                             ></has-error>
                                                         </div>
                                                         <center>
-                                                            <!-- <button type="submit" class="labtestresult btn-block btn btn-info" style="color:#fff;">Upload Test Result</button> -->
+                                                            <!-- <button type="submit" class="imagingtestresult btn-block btn btn-info" style="color:#fff;">Upload Test Result</button> -->
                                                             <button
                                                                 type="submit"
-                                                                class="labtestresult btn-block btn btn-info"
+                                                                class="imagingtestresult btn-block btn btn-info"
                                                                 style="color:#fff;"
                                                             >
                                                                 Cập nhật kết quả
@@ -310,8 +308,8 @@
 export default {
     data() {
         return {
-            searchLab: "",
-            searchLabs: [],
+            searchImagingText: "",
+            searchImagingArrs: [],
             diagnoses: {},
             form: new Form({
                 patient_id: "",
@@ -324,7 +322,7 @@ export default {
     methods: {
         LoadDiagnoses() {
             // this.loading = true;
-            axios.get("api/labtest").then(response => {
+            axios.get("api/imagingtest").then(response => {
                 setTimeout(function() {
                     NProgress.done();
                 }, 1000);
@@ -343,15 +341,19 @@ export default {
         //   reader.readAsDataURL(file);
         // },
         addDiagnosis() {
-            $(".labtestresult").html('<i class="fa fa-spin fa-spinner"></i>');
+            $(".imagingtestresult").html(
+                '<i class="fa fa-spin fa-spinner"></i>'
+            );
             this.form
-                .post("api/uploadtest")
+                .post("api/uploadimaging")
                 .then(() => {
                     toast.fire({
                         type: "success",
                         title: "Cập nhật thành công!"
                     });
-                    $(".labtestresult").html("Cập nhật kết quả xét nghiệm CLS");
+                    $(".imagingtestresult").html(
+                        "Cập nhật kết quả xét nghiệm CLS"
+                    );
                     $("#lap-result").modal("hide");
                 })
                 .catch(() => {
@@ -360,18 +362,18 @@ export default {
                         title:
                             "Thông tin nhập vào chưa đúng! <br> Hoặc <br> Dữ liệu đã tồn tại!"
                     });
-                    $(".labtestresult").html(
+                    $(".imagingtestresult").html(
                         "Cập nhật kết quả xét nghiệm CLS "
                     );
                 });
         },
-        searchForLab() {
+        searchForImaging() {
             axios
-                .post("/searchlab", {
-                    name: this.searchLab
+                .post("/searchimagingorder", {
+                    name: this.searchImagingText
                 })
                 .then(response => {
-                    this.searchLabs = response.data;
+                    this.searchImagingArrs = response.data;
                 })
                 .catch(() => {});
         }
