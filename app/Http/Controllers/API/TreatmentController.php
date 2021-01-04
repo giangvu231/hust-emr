@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\addPatient;
+use App\User;
 use App\Treatment;
 use App\Emr;
 
@@ -36,10 +37,21 @@ class TreatmentController extends Controller
             'patient_id' => 'required',
 
         ]);
+
         $data = Treatment::create($request->all());
         Emr::where('patient_id', $data->patient_id)->update([
             'treatment_id' => $data->id
         ]);
+
+        $userData= $request->user();
+        Emr::where('patient_id', $data->patient_id)->update([
+            'medical_user_id' => $userData->id,
+            'medical_user_name' => $userData->name
+        ]);
+
+
+
+
         return response()->json(['data' => $data], 200);
     }
 

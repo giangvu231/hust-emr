@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\addPatient;
 use App\EmrSummary;
 use App\Emr;
+use App\User;
 
 class EmrSummaryController extends Controller
 {
@@ -37,10 +38,21 @@ class EmrSummaryController extends Controller
         $this->validate($request, [
             'patient_id' => 'required',
         ]);
+
         $data = EmrSummary::create($request->all());
         Emr::where('patient_id', $data->patient_id)->update([
             'emr_summary_id' => $data->id
         ]);
+
+        $userData= $request->user();
+        Emr::where('patient_id', $data->patient_id)->update([
+            'treatment_user_id' => $userData->id,
+            'treatment_user_name' => $userData->name
+        ]);
+
+
+
+
         return response()->json(['data' => $data], 200);
     }
 
