@@ -151,9 +151,6 @@
                                                             "
                                                         />
                                                         <select
-                                                            @mouseover="
-                                                                searchForMainDisease()
-                                                            "
                                                             v-model="
                                                                 form.discharge_maindisease_id
                                                             "
@@ -224,9 +221,6 @@
                                                             "
                                                         />
                                                         <select
-                                                            @mouseover="
-                                                                searchForSubDisease()
-                                                            "
                                                             v-model="
                                                                 form.discharge_subdisease_id
                                                             "
@@ -561,9 +555,6 @@
                                                             "
                                                         />
                                                         <select
-                                                            @mouseover="
-                                                                searchForDeathReason()
-                                                            "
                                                             v-model="
                                                                 form.death_reason_id
                                                             "
@@ -655,9 +646,6 @@
                                                             "
                                                         />
                                                         <select
-                                                            @mouseover="
-                                                                searchForAutopsyDiagnosis()
-                                                            "
                                                             v-model="
                                                                 form.autopsy_diagnosis_id
                                                             "

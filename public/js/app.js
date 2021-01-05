@@ -9341,18 +9341,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -89252,9 +89240,6 @@ var render = function() {
                                     },
                                     attrs: { name: "discharge_maindisease_id" },
                                     on: {
-                                      mouseover: function($event) {
-                                        return _vm.searchForMainDisease()
-                                      },
                                       change: function($event) {
                                         var $$selectedVal = Array.prototype.filter
                                           .call($event.target.options, function(
@@ -89405,9 +89390,6 @@ var render = function() {
                                     },
                                     attrs: { name: "discharge_subdisease_id" },
                                     on: {
-                                      mouseover: function($event) {
-                                        return _vm.searchForSubDisease()
-                                      },
                                       change: function($event) {
                                         var $$selectedVal = Array.prototype.filter
                                           .call($event.target.options, function(
@@ -90219,9 +90201,6 @@ var render = function() {
                                     },
                                     attrs: { name: "death_reason_id" },
                                     on: {
-                                      mouseover: function($event) {
-                                        return _vm.searchForDeathReason()
-                                      },
                                       change: function($event) {
                                         var $$selectedVal = Array.prototype.filter
                                           .call($event.target.options, function(
@@ -90441,9 +90420,6 @@ var render = function() {
                                     },
                                     attrs: { name: "autopsy_diagnosis_id" },
                                     on: {
-                                      mouseover: function($event) {
-                                        return _vm.searchForAutopsyDiagnosis()
-                                      },
                                       change: function($event) {
                                         var $$selectedVal = Array.prototype.filter
                                           .call($event.target.options, function(
