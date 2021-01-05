@@ -24,6 +24,13 @@ class SearchController extends Controller
         return $dataName;
     }
 
+    public function searchICD10(Request $request)
+    {
+    	$search = $request->name;
+    	$dataName = Icd10::where('name', 'LIKE', "%$search%")->get();
+        return $dataName;
+    }
+
     public function searchAdmitDisease(Request $request)
     {
     	$search = $request->name;

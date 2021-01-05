@@ -73,11 +73,11 @@ class HospitalController extends Controller
 
         $data = HospitalHistory::create($request->all());
 
-        $icd10 = Icd10::findOrFail($data->icd10_id);
-        HospitalHistory::where('icd10_id', $icd10->id)->update([
-            'icd10_code' => $icd10->code,
-            'icd10_name' => $icd10->name,
-        ]);
+        // $icd10 = Icd10::findOrFail($data->icd10_id);
+        // HospitalHistory::where('icd10_id', $icd10->id)->update([
+        //     'icd10_code' => $icd10->code,
+        //     'icd10_name' => $icd10->name,
+        // ]);
 
         Diagnose::create([
             'patient_id' => $data->patient_id,

@@ -3,47 +3,6 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <table class="form-group" width="100%">
-                        <tr>
-                            <td width="100%">
-                                <div class="form-group">
-                                    <td width="30%">
-                                        <div class="form-group">
-                                            <input
-                                                type="text"
-                                                v-model="searchText"
-                                                @keyup="search()"
-                                            />
-                                            <select
-                                                v-model="form.icd10_id"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'icd10_id'
-                                                    )
-                                                }"
-                                                name="icd10_id"
-                                            >
-                                                <option
-                                                    v-for="searchArr in searchArrs"
-                                                    :key="searchArr.id"
-                                                    :value="searchArr.id"
-                                                >
-                                                    {{ searchArr.id }} -
-                                                    {{ searchArr.name }}
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="icd10_id"
-                                            ></has-error>
-                                        </div>
-                                    </td>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-
                     <div class="card-header">Thêm lịch sử khám bệnh</div>
                     <div class="card-body">
                         <form @submit.prevent="addHospital" id="add-hospital">
