@@ -76,6 +76,12 @@ class PatientController extends Controller
 
         $data = addPatient::create($request->all());
 
+        Emr::create([
+            'emr_id' => $data->unique_id,
+            'patient_id' => $data->id,
+        ]);
+        return response()->json(['data' => $data], 200);
+
         $job = Job::findOrFail($data->job_id);
         addPatient::where('job_id', $job->id)->update([
             'job_code' => $job->code,
@@ -107,11 +113,7 @@ class PatientController extends Controller
         ]);
 
 
-        Emr::create([
-            'emr_id' => $data->unique_id,
-            'patient_id' => $data->id,
-        ]);
-        return response()->json(['data' => $data], 200);
+
     }
 
     /**

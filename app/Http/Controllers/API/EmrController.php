@@ -49,6 +49,7 @@ class EmrController extends Controller
         $payment = Payment::all();
         $diagnose = Diagnose::all();
         $labResult = LabResult::all();
+        $imagingResult = ImagingResult::all();
         $treatment = Treatment::all();
         $emrSummary = EmrSummary::all();
 
@@ -64,6 +65,7 @@ class EmrController extends Controller
             'payment' => $payment,
             'diagnose' => $diagnose,
             'labResult' => $labResult,
+            'imagingResult' => $imagingResult,
             'treatment' => $treatment,
             'emrSummary' => $emrSummary,
         ]);
@@ -160,6 +162,7 @@ class EmrController extends Controller
         Diagnose::where('patient_id',$id)->delete();
         HospitalHistory::where('patient_id',$id)->delete();
         LabResult::where('patient_id',$id)->delete();
+        ImagingResult::where('patient_id',$id)->delete();
         Payment::where('patient_id',$id)->delete();
         Pham::where('patient_id',$id)->delete();
         SurgeryHistory::where('patient_id',$id)->delete();

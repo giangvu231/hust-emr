@@ -65,16 +65,13 @@
                                                             placeholder="Tìm bệnh theo bảng mã ICD-10"
                                                             type="text"
                                                             v-model="
-                                                                searchAdmitDisease
+                                                                searchAdmitText
                                                             "
                                                             @keyup="
-                                                                searchForAdmitDisease()
+                                                                searchForAdmit()
                                                             "
                                                         />
                                                         <select
-                                                            @mouseover="
-                                                                searchForAdmitDisease()
-                                                            "
                                                             v-model="
                                                                 form.icd10_admit_id
                                                             "
@@ -94,20 +91,20 @@
                                                                 10</option
                                                             >
                                                             <option
-                                                                v-for="searchAdmitDisease in searchAdmitDiseases"
+                                                                v-for="searchAdmitArr in searchAdmitArrs"
                                                                 :key="
-                                                                    searchAdmitDisease.id
+                                                                    searchAdmitArr.id
                                                                 "
                                                                 :value="
-                                                                    searchAdmitDisease.id
+                                                                    searchAdmitArr.id
                                                                 "
                                                             >
                                                                 {{
-                                                                    searchAdmitDisease.code
+                                                                    searchAdmitArr.code
                                                                 }}
                                                                 -
                                                                 {{
-                                                                    searchAdmitDisease.name
+                                                                    searchAdmitArr.name
                                                                 }}
                                                             </option>
                                                         </select>
@@ -143,16 +140,13 @@
                                                             placeholder="Tìm bệnh theo bảng mã ICD-10"
                                                             type="text"
                                                             v-model="
-                                                                searchEmergencyDisease
+                                                                searchEmergencyText
                                                             "
                                                             @keyup="
-                                                                searchForEmergencyDisease()
+                                                                searchForEmergency()
                                                             "
                                                         />
                                                         <select
-                                                            @mouseover="
-                                                                searchForEmergencyDisease()
-                                                            "
                                                             v-model="
                                                                 form.icd10_emergency_id
                                                             "
@@ -172,20 +166,20 @@
                                                                 10</option
                                                             >
                                                             <option
-                                                                v-for="searchEmergencyDisease in searchEmergencyDiseases"
+                                                                v-for="searchEmergencyArr in searchEmergencyArrs"
                                                                 :key="
-                                                                    searchEmergencyDisease.id
+                                                                    searchEmergencyArr.id
                                                                 "
                                                                 :value="
-                                                                    searchEmergencyDisease.id
+                                                                    searchEmergencyArr.id
                                                                 "
                                                             >
                                                                 {{
-                                                                    searchEmergencyDisease.code
+                                                                    searchEmergencyArr.code
                                                                 }}
                                                                 -
                                                                 {{
-                                                                    searchEmergencyDisease.name
+                                                                    searchEmergencyArr.name
                                                                 }}
                                                             </option>
                                                         </select>
@@ -221,16 +215,13 @@
                                                             placeholder="Tìm bệnh theo bảng mã ICD-10"
                                                             type="text"
                                                             v-model="
-                                                                searchTreatmentDisease
+                                                                searchTreatmentText
                                                             "
                                                             @keyup="
-                                                                searchForTreatmentDisease()
+                                                                searchForTreatment()
                                                             "
                                                         />
                                                         <select
-                                                            @mouseover="
-                                                                searchForTreatmentDisease()
-                                                            "
                                                             v-model="
                                                                 form.icd10_treatment_id
                                                             "
@@ -250,20 +241,20 @@
                                                                 10</option
                                                             >
                                                             <option
-                                                                v-for="searchTreatmentDisease in searchTreatmentDiseases"
+                                                                v-for="searchTreatmentArr in searchTreatmentArrs"
                                                                 :key="
-                                                                    searchTreatmentDisease.id
+                                                                    searchTreatmentArr.id
                                                                 "
                                                                 :value="
-                                                                    searchTreatmentDisease.id
+                                                                    searchTreatmentArr.id
                                                                 "
                                                             >
                                                                 {{
-                                                                    searchTreatmentDisease.code
+                                                                    searchTreatmentArr.code
                                                                 }}
                                                                 -
                                                                 {{
-                                                                    searchTreatmentDisease.name
+                                                                    searchTreatmentArr.name
                                                                 }}
                                                             </option>
                                                         </select>
@@ -761,12 +752,12 @@
 export default {
     data() {
         return {
-            searchAdmitDisease: "",
-            searchAdmitDiseases: [],
-            searchEmergencyDisease: "",
-            searchEmergencyDiseases: [],
-            searchTreatmentDisease: "",
-            searchTreatmentDiseases: [],
+            searchAdmitText: "",
+            searchAdmitArrs: [],
+            searchEmergencyText: "",
+            searchEmergencyArrs: [],
+            searchTreatmentText: "",
+            searchTreatmentArrs: [],
 
             patients: {},
             form: new Form({
@@ -780,12 +771,6 @@ export default {
                 icd10_admit_id: "",
                 icd10_admit_name: "",
                 icd10_admit_code: "",
-                icd10_emergency_id: "",
-                icd10_emergency_name: "",
-                icd10_emergency_code: "",
-                icd10_treatment_id: "",
-                icd10_treatment_name: "",
-                icd10_treatment_code: "",
 
                 dept_name_2nd: "",
                 dept_time_2nd: "",
@@ -803,7 +788,15 @@ export default {
                 department: "",
                 room: "",
                 bed_id: "",
-                reason_count: ""
+                reason_count: "",
+
+                icd10_emergency_id: "",
+                icd10_emergency_name: "",
+                icd10_emergency_code: "",
+
+                icd10_treatment_id: "",
+                icd10_treatment_name: "",
+                icd10_treatment_code: ""
             })
         };
     },
@@ -837,33 +830,33 @@ export default {
                 this.patients = response.data;
             });
         },
-        searchForAdmitDisease() {
+        searchForAdmit() {
             axios
-                .post("/searchadmitdisease", {
-                    name: this.searchAdmitDisease
+                .post("/search", {
+                    name: this.searchAdmitText
                 })
                 .then(response => {
-                    this.searchAdmitDiseases = response.data;
+                    this.searchAdmitArrs = response.data;
                 })
                 .catch(() => {});
         },
-        searchForEmergencyDisease() {
+        searchForEmergency() {
             axios
-                .post("/searchemergencydisease", {
-                    name: this.searchEmergencyDisease
+                .post("/search", {
+                    name: this.searchEmergencyText
                 })
                 .then(response => {
-                    this.searchEmergencyDiseases = response.data;
+                    this.searchEmergencyArrs = response.data;
                 })
                 .catch(() => {});
         },
-        searchForTreatmentDisease() {
+        searchForTreatment() {
             axios
-                .post("/searchtreatmentdisease", {
-                    name: this.searchTreatmentDisease
+                .post("/search", {
+                    name: this.searchTreatmentText
                 })
                 .then(response => {
-                    this.searchTreatmentDiseases = response.data;
+                    this.searchTreatmentArrs = response.data;
                 })
                 .catch(() => {});
         }

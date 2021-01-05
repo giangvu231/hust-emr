@@ -23,14 +23,12 @@ class Treatment extends Model
         'reason_count',
 
         'icd10_admit_id',
-        'icd10_admit_name',
         'icd10_admit_code',
-        'icd10_emergency_id',
-        'icd10_emergency_name',
-        'icd10_emergency_code',
+        'icd10_admit_name',
+
         'icd10_treatment_id',
-        'icd10_treatment_name',
         'icd10_treatment_code',
+        'icd10_treatment_name',
 
         'dept_name_2nd',
         'dept_time_2nd',
@@ -44,6 +42,14 @@ class Treatment extends Model
 
         'diagnosis_procedure',
         'diagnosis_surgery',
+
+        'icd10_emergency_id',
+        'icd10_emergency_code',
+        'icd10_emergency_name',
+
+        'icd10_treatment_id',
+        'icd10_treatment_code',
+        'icd10_treatment_name',
 
 
     ];

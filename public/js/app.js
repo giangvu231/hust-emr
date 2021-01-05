@@ -4935,24 +4935,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      searchAdmitDisease: "",
-      searchAdmitDiseases: [],
-      searchEmergencyDisease: "",
-      searchEmergencyDiseases: [],
-      searchTreatmentDisease: "",
-      searchTreatmentDiseases: [],
+      searchAdmitText: "",
+      searchAdmitArrs: [],
+      searchEmergencyText: "",
+      searchEmergencyArrs: [],
+      searchTreatmentText: "",
+      searchTreatmentArrs: [],
       patients: {},
       form: new Form({
         patient_id: "",
@@ -4964,12 +4955,6 @@ __webpack_require__.r(__webpack_exports__);
         icd10_admit_id: "",
         icd10_admit_name: "",
         icd10_admit_code: "",
-        icd10_emergency_id: "",
-        icd10_emergency_name: "",
-        icd10_emergency_code: "",
-        icd10_treatment_id: "",
-        icd10_treatment_name: "",
-        icd10_treatment_code: "",
         dept_name_2nd: "",
         dept_time_2nd: "",
         dept_name_3rd: "",
@@ -4983,7 +4968,13 @@ __webpack_require__.r(__webpack_exports__);
         department: "",
         room: "",
         bed_id: "",
-        reason_count: ""
+        reason_count: "",
+        icd10_emergency_id: "",
+        icd10_emergency_name: "",
+        icd10_emergency_code: "",
+        icd10_treatment_id: "",
+        icd10_treatment_name: "",
+        icd10_treatment_code: ""
       })
     };
   },
@@ -5016,31 +5007,31 @@ __webpack_require__.r(__webpack_exports__);
         _this.patients = response.data;
       });
     },
-    searchForAdmitDisease: function searchForAdmitDisease() {
+    searchForAdmit: function searchForAdmit() {
       var _this2 = this;
 
-      axios.post("/searchadmitdisease", {
-        name: this.searchAdmitDisease
+      axios.post("/search", {
+        name: this.searchAdmitText
       }).then(function (response) {
-        _this2.searchAdmitDiseases = response.data;
+        _this2.searchAdmitArrs = response.data;
       })["catch"](function () {});
     },
-    searchForEmergencyDisease: function searchForEmergencyDisease() {
+    searchForEmergency: function searchForEmergency() {
       var _this3 = this;
 
-      axios.post("/searchemergencydisease", {
-        name: this.searchEmergencyDisease
+      axios.post("/search", {
+        name: this.searchEmergencyText
       }).then(function (response) {
-        _this3.searchEmergencyDiseases = response.data;
+        _this3.searchEmergencyArrs = response.data;
       })["catch"](function () {});
     },
-    searchForTreatmentDisease: function searchForTreatmentDisease() {
+    searchForTreatment: function searchForTreatment() {
       var _this4 = this;
 
-      axios.post("/searchtreatmentdisease", {
-        name: this.searchTreatmentDisease
+      axios.post("/search", {
+        name: this.searchTreatmentText
       }).then(function (response) {
-        _this4.searchTreatmentDiseases = response.data;
+        _this4.searchTreatmentArrs = response.data;
       })["catch"](function () {});
     }
   },
@@ -81559,9 +81550,9 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.searchAdmitDisease,
+                                      value: _vm.searchAdmitText,
                                       expression:
-                                        "\n                                                            searchAdmitDisease\n                                                        "
+                                        "\n                                                            searchAdmitText\n                                                        "
                                     }
                                   ],
                                   staticStyle: { width: "100%" },
@@ -81569,17 +81560,16 @@ var render = function() {
                                     placeholder: "Tìm bệnh theo bảng mã ICD-10",
                                     type: "text"
                                   },
-                                  domProps: { value: _vm.searchAdmitDisease },
+                                  domProps: { value: _vm.searchAdmitText },
                                   on: {
                                     keyup: function($event) {
-                                      return _vm.searchForAdmitDisease()
+                                      return _vm.searchForAdmit()
                                     },
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
                                       }
-                                      _vm.searchAdmitDisease =
-                                        $event.target.value
+                                      _vm.searchAdmitText = $event.target.value
                                     }
                                   }
                                 }),
@@ -81604,9 +81594,6 @@ var render = function() {
                                     },
                                     attrs: { name: "icd10_admit_id" },
                                     on: {
-                                      mouseover: function($event) {
-                                        return _vm.searchForAdmitDisease()
-                                      },
                                       change: function($event) {
                                         var $$selectedVal = Array.prototype.filter
                                           .call($event.target.options, function(
@@ -81646,23 +81633,21 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _vm._l(_vm.searchAdmitDiseases, function(
-                                      searchAdmitDisease
+                                    _vm._l(_vm.searchAdmitArrs, function(
+                                      searchAdmitArr
                                     ) {
                                       return _c(
                                         "option",
                                         {
-                                          key: searchAdmitDisease.id,
-                                          domProps: {
-                                            value: searchAdmitDisease.id
-                                          }
+                                          key: searchAdmitArr.id,
+                                          domProps: { value: searchAdmitArr.id }
                                         },
                                         [
                                           _vm._v(
                                             "\n                                                            " +
-                                              _vm._s(searchAdmitDisease.code) +
+                                              _vm._s(searchAdmitArr.code) +
                                               "\n                                                            -\n                                                            " +
-                                              _vm._s(searchAdmitDisease.name) +
+                                              _vm._s(searchAdmitArr.name) +
                                               "\n                                                        "
                                           )
                                         ]
@@ -81713,9 +81698,9 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.searchEmergencyDisease,
+                                      value: _vm.searchEmergencyText,
                                       expression:
-                                        "\n                                                            searchEmergencyDisease\n                                                        "
+                                        "\n                                                            searchEmergencyText\n                                                        "
                                     }
                                   ],
                                   staticStyle: { width: "100%" },
@@ -81723,18 +81708,16 @@ var render = function() {
                                     placeholder: "Tìm bệnh theo bảng mã ICD-10",
                                     type: "text"
                                   },
-                                  domProps: {
-                                    value: _vm.searchEmergencyDisease
-                                  },
+                                  domProps: { value: _vm.searchEmergencyText },
                                   on: {
                                     keyup: function($event) {
-                                      return _vm.searchForEmergencyDisease()
+                                      return _vm.searchForEmergency()
                                     },
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
                                       }
-                                      _vm.searchEmergencyDisease =
+                                      _vm.searchEmergencyText =
                                         $event.target.value
                                     }
                                   }
@@ -81760,9 +81743,6 @@ var render = function() {
                                     },
                                     attrs: { name: "icd10_emergency_id" },
                                     on: {
-                                      mouseover: function($event) {
-                                        return _vm.searchForEmergencyDisease()
-                                      },
                                       change: function($event) {
                                         var $$selectedVal = Array.prototype.filter
                                           .call($event.target.options, function(
@@ -81802,33 +81782,28 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _vm._l(
-                                      _vm.searchEmergencyDiseases,
-                                      function(searchEmergencyDisease) {
-                                        return _c(
-                                          "option",
-                                          {
-                                            key: searchEmergencyDisease.id,
-                                            domProps: {
-                                              value: searchEmergencyDisease.id
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                                            " +
-                                                _vm._s(
-                                                  searchEmergencyDisease.code
-                                                ) +
-                                                "\n                                                            -\n                                                            " +
-                                                _vm._s(
-                                                  searchEmergencyDisease.name
-                                                ) +
-                                                "\n                                                        "
-                                            )
-                                          ]
-                                        )
-                                      }
-                                    )
+                                    _vm._l(_vm.searchEmergencyArrs, function(
+                                      searchEmergencyArr
+                                    ) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: searchEmergencyArr.id,
+                                          domProps: {
+                                            value: searchEmergencyArr.id
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                            " +
+                                              _vm._s(searchEmergencyArr.code) +
+                                              "\n                                                            -\n                                                            " +
+                                              _vm._s(searchEmergencyArr.name) +
+                                              "\n                                                        "
+                                          )
+                                        ]
+                                      )
+                                    })
                                   ],
                                   2
                                 ),
@@ -81874,9 +81849,9 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.searchTreatmentDisease,
+                                      value: _vm.searchTreatmentText,
                                       expression:
-                                        "\n                                                            searchTreatmentDisease\n                                                        "
+                                        "\n                                                            searchTreatmentText\n                                                        "
                                     }
                                   ],
                                   staticStyle: { width: "100%" },
@@ -81884,18 +81859,16 @@ var render = function() {
                                     placeholder: "Tìm bệnh theo bảng mã ICD-10",
                                     type: "text"
                                   },
-                                  domProps: {
-                                    value: _vm.searchTreatmentDisease
-                                  },
+                                  domProps: { value: _vm.searchTreatmentText },
                                   on: {
                                     keyup: function($event) {
-                                      return _vm.searchForTreatmentDisease()
+                                      return _vm.searchForTreatment()
                                     },
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
                                       }
-                                      _vm.searchTreatmentDisease =
+                                      _vm.searchTreatmentText =
                                         $event.target.value
                                     }
                                   }
@@ -81921,9 +81894,6 @@ var render = function() {
                                     },
                                     attrs: { name: "icd10_treatment_id" },
                                     on: {
-                                      mouseover: function($event) {
-                                        return _vm.searchForTreatmentDisease()
-                                      },
                                       change: function($event) {
                                         var $$selectedVal = Array.prototype.filter
                                           .call($event.target.options, function(
@@ -81963,33 +81933,28 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _vm._l(
-                                      _vm.searchTreatmentDiseases,
-                                      function(searchTreatmentDisease) {
-                                        return _c(
-                                          "option",
-                                          {
-                                            key: searchTreatmentDisease.id,
-                                            domProps: {
-                                              value: searchTreatmentDisease.id
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                                            " +
-                                                _vm._s(
-                                                  searchTreatmentDisease.code
-                                                ) +
-                                                "\n                                                            -\n                                                            " +
-                                                _vm._s(
-                                                  searchTreatmentDisease.name
-                                                ) +
-                                                "\n                                                        "
-                                            )
-                                          ]
-                                        )
-                                      }
-                                    )
+                                    _vm._l(_vm.searchTreatmentArrs, function(
+                                      searchTreatmentArr
+                                    ) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: searchTreatmentArr.id,
+                                          domProps: {
+                                            value: searchTreatmentArr.id
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                            " +
+                                              _vm._s(searchTreatmentArr.code) +
+                                              "\n                                                            -\n                                                            " +
+                                              _vm._s(searchTreatmentArr.name) +
+                                              "\n                                                        "
+                                          )
+                                        ]
+                                      )
+                                    })
                                   ],
                                   2
                                 ),

@@ -20,6 +20,7 @@ class Emr extends Model
         'diagnosishealth_id',
         'subclinical_id',
         'lab_id',
+        'imaging_id',
         'diagnosis_id',
     ];
 

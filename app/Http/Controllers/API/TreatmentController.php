@@ -9,7 +9,7 @@ use App\User;
 use App\Treatment;
 use App\Emr;
 use App\Icd10;
-use App\Search;
+use App\Lab;
 
 class TreatmentController extends Controller
 {
@@ -41,32 +41,35 @@ class TreatmentController extends Controller
         ]);
 
         $data = Treatment::create($request->all());
-        Emr::where('patient_id', $data->patient_id)->update([
-            'treatment_id' => $data->id
-        ]);
 
         $userData= $request->user();
+
+
+        $icd10_admit = Icd10::findOrFail($data->icd10_admit_id);
+        Treatment::where('icd10_admit_id', $icd10_admit->id)->update([
+            'icd10_admit_code' => $icd10_admit->code,
+            'icd10_admit_name' => $icd10_admit->name,
+        ]);
+
+        $icd10_emergency = Icd10::findOrFail($data->icd10_emergency_id);
+        Treatment::where('icd10_emergency_id', $icd10_emergency->id)->update([
+            'icd10_emergency_code' => $icd10_emergency->code,
+            'icd10_emergency_name' => $icd10_emergency->name,
+        ]);
+
+        $icd10_treatment = Icd10::findOrFail($data->icd10_treatment_id);
+        Treatment::where('icd10_treatment_id', $icd10_treatment->id)->update([
+            'icd10_treatment_code' => $icd10_treatment->code,
+            'icd10_treatment_name' => $icd10_treatment->name,
+        ]);
+
         Emr::where('patient_id', $data->patient_id)->update([
             'medical_user_id' => $userData->id,
             'medical_user_name' => $userData->name
         ]);
 
-        $icd10_admit_disease = Icd10::findOrFail($data->icd10_admit_id);
-        Treatment::where('icd10_admit_id', $icd10_admit_disease->id)->update([
-            'icd10_admit_code' => $icd10_admit_disease->code,
-            'icd10_admit_name' => $icd10_admit_disease->name,
-        ]);
-
-        $icd10_emergency_disease = Icd10::findOrFail($data->icd10_emergency_id);
-        Treatment::where('icd10_emergency_id', $icd10_emergency_disease->id)->update([
-            'icd10_emergency_code' => $icd10_emergency_disease->code,
-            'icd10_emergency_name' => $icd10_emergency_disease->name,
-        ]);
-
-        $icd10_treatment_disease = Icd10::findOrFail($data->icd10_treatment_id);
-        Treatment::where('icd10_treatment_id', $icd10_treatment_disease->id)->update([
-            'icd10_treatment_code' => $icd10_treatment_disease->code,
-            'icd10_treatment_name' => $icd10_treatment_disease->name,
+        Emr::where('patient_id', $data->patient_id)->update([
+            'treatment_id' => $data->id
         ]);
 
         return response()->json(['data' => $data], 200);

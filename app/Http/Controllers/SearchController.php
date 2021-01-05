@@ -31,27 +31,6 @@ class SearchController extends Controller
         return $dataName;
     }
 
-    public function searchAdmitDisease(Request $request)
-    {
-    	$search = $request->name;
-    	$dataName = Icd10::where('name', 'LIKE', "%$search%")->get();
-        return $dataName;
-    }
-
-    public function searchEmergencyDisease(Request $request)
-    {
-    	$search = $request->name;
-    	$dataName = Icd10::where('name', 'LIKE', "%$search%")->get();
-        return $dataName;
-    }
-
-    public function searchTreatmentDisease(Request $request)
-    {
-    	$search = $request->name;
-    	$dataName = Icd10::where('name', 'LIKE', "%$search%")->get();
-        return $dataName;
-    }
-
     public function searchLab(Request $request)
     {
     	$search = $request->name;
