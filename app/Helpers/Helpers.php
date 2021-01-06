@@ -6,17 +6,16 @@ function createXML($data) {
 
     // TIÊU ĐỀ
     $LOAI_BENH_AN = $xml->createElement("LOAI_BENH_AN", );
-    $COQUAN_CHUQUAN = $xml->createElement("COQUAN_CHUQUAN",);
-    $MA_BV = $xml->createElement("MA_BV", );
-    $MA_KHOA = $xml->createElement("MA_KHOA", $data->department);
-    $MA_GIUONG = $xml->createElement("MA_GIUONG", $data->bed_id);
-    $SO_LUU_TRU = $xml->createElement("SO_LUU_TRU", $data->unique_id);
-
     $xml->appendChild($LOAI_BENH_AN);
+    $COQUAN_CHUQUAN = $xml->createElement("COQUAN_CHUQUAN",);
     $xml->appendChild($COQUAN_CHUQUAN);
+    $MA_BV = $xml->createElement("MA_BV", );
     $xml->appendChild($MA_BV);
+    $MA_KHOA = $xml->createElement("MA_KHOA", $data->department);
     $xml->appendChild($MA_KHOA);
+    $MA_GIUONG = $xml->createElement("MA_GIUONG", $data->bed_id);
     $xml->appendChild($MA_GIUONG);
+    $SO_LUU_TRU = $xml->createElement("SO_LUU_TRU", $data->unique_id);
     $xml->appendChild($SO_LUU_TRU);
 
     // HÀNH CHÍNH

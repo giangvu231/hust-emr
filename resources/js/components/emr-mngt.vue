@@ -1396,7 +1396,7 @@ export default {
                 .then(response => {
                     toast.fire({
                         type: "success",
-                        title: "Dữ liệu được xuất thành công!"
+                        title: "Xuất XML thành công!"
                     });
                 })
                 .catch(err => {

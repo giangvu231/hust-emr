@@ -8591,7 +8591,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/xml_export/" + id).then(function (response) {
         toast.fire({
           type: "success",
-          title: "Dữ liệu được xuất thành công!"
+          title: "Xuất XML thành công!"
         });
       })["catch"](function (err) {
         toast.fire({

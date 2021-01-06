@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PDF;
 use App\addPatient;
+use App\District;
 use App\HospitalHistory;
 use App\Vital;
 use App\Diagnosishealth;
 use App\LabResult;
+use App\ImagingResult;
 use App\Treatment;
 use App\EmrSummary;
 use App\Emr;
@@ -53,12 +55,12 @@ class PdfController extends Controller
     {
         $data = Emr::findOrFail($id);
         $patientInfo = addPatient::findOrFail($data->patient_id);
-        $hospitalHistory = HospitalHistory::findOrFail($data->patient_id);
-        $patientVital = Vital::findOrFail($data->patient_id);
-        $patientBody = Diagnosishealth::findOrFail($data->patient_id);
-        $patientLab = LabResult::findOrFail($data->patient_id);
-        $patientTreatment = Treatment::findOrFail($data->patient_id);
-        $patientSummary = EmrSummary::findOrFail($data->patient_id);
+        $hospitalHistory = HospitalHistory::findOrFail($data->hospital_histories_id);
+        $treatment = Treatment::findOrFail($data->treatment_id);
+        $summary = EmrSummary::findOrFail($data->emr_summary_id);
+        $vital = Vital::findOrFail($data->vital_id);
+        $body = Diagnosishealth::findOrFail($data->diagnosishealth_id);
+        $lab = LabResult::findOrFail($data->lab_id);
 
         $datetime = now();
         $datetime = str_replace(" ", "", $datetime);
@@ -66,15 +68,22 @@ class PdfController extends Controller
         $datetime = str_replace(":", "", $datetime);
 
         $name = $datetime;
-        $pdf = PDF::loadView("pdf.NoiKhoa", [
+
+        if($data->emr_type == 'NoiKhoa') {
+            $template = "pdf.NoiKhoa";
+        }else{
+            $template = "pdf.NgoaiKhoa";
+        };
+
+        $pdf = PDF::loadView($template, [
             'data' => $data,
             'patientInfo' => $patientInfo,
             'hospitalHistory' => $hospitalHistory,
-            'patientVital' => $patientVital,
-            'patientBody' => $patientBody,
-            'patientLab' => $patientLab,
-            'patientTreatment' => $patientTreatment,
-            'patientSummary' => $patientSummary,
+            'treatment' => $treatment,
+            'summary' => $summary,
+            'vital' => $vital,
+            'body' => $body,
+            'lab' => $lab,
 
             ])->setPaper('A4', 'Portrait');
         $pdf->save(public_path("pdf/" . $name . ".pdf"));

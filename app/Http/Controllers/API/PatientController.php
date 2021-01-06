@@ -80,7 +80,6 @@ class PatientController extends Controller
             'emr_id' => $data->unique_id,
             'patient_id' => $data->id,
         ]);
-        return response()->json(['data' => $data], 200);
 
         $job = Job::findOrFail($data->job_id);
         addPatient::where('job_id', $job->id)->update([
@@ -112,8 +111,7 @@ class PatientController extends Controller
             'nation_name' => $nation->name,
         ]);
 
-
-
+        return response()->json(['data' => $data], 200);
     }
 
     /**

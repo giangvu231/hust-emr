@@ -21,15 +21,13 @@ class CreateEmrsTable extends Migration
             $table->string('vital_id')->nullable();
             $table->string('soap_id')->nullable();
             $table->string('diagnosishealth_id')->nullable();
-            $table->string('subclinical_id')->nullable();
             $table->string('appointment_id')->nullable();
-            $table->string('patient_history_id')->nullable();
             $table->string('lab_id')->nullable();
             $table->string('imaging_id')->nullable();
             $table->string('pham_id')->nullable();
-            $table->string('diagnosis_id')->nullable();
             $table->string('treatment_id')->nullable();
             $table->string('emr_summary_id')->nullable();
+            $table->string('medicine_id')->nullable();
 
             $table->string('medical_user_id')->nullable();
             $table->string('medical_user_name')->nullable();

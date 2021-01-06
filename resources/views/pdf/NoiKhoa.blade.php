@@ -58,7 +58,7 @@
         </tr>
 
         <tr>
-          <td width="30%">Khoa: {{ $patientTreatment->department }} &nbsp; Giường: {{ $patientTreatment->bed_id }}</td>
+          <td width="30%">Khoa: &nbsp; Giường:</td>
           <td width="30%"></td>
         </tr>
       </table>
@@ -74,16 +74,19 @@
         </tr>
         <tr>
           <td width="50%">3. Giới tính: {{ $patientInfo->sex }}</td>
-          <td width="50%">4. Nghề nghiệp: {{ $patientInfo->occupation }}</td>
+          <td width="50%">4. Nghề nghiệp: {{ $patientInfo->job_name }}</td>
         </tr>
         <tr>
-          <td width="50%">5. Dân tộc: {{ $patientInfo->race }}</td>
-          <td width="50%">6. Ngoại kiều: {{ $patientInfo->foreign }}</td>
+          <td width="50%">5. Dân tộc: {{ $patientInfo->race_name }}</td>
+          <td width="50%">6. Ngoại kiều: {{ $patientInfo->nation_name }}</td>
         </tr>
       </table>
       <table width="100%">
         <tr>
-          <td colspan="2">7. Địa chỉ : {{ $patientInfo->home_address }}</td>
+          <td colspan="2">
+            7. Địa chỉ : {{ $patientInfo->home_address }} Huyện (Q, Tx) {{ $patientInfo->district_name }} Tỉnh, thành phố {{ $patientInfo->city_name
+            }}
+          </td>
         </tr>
         <tr>
           <td width="50%">8. Nơi làm việc : {{ $patientInfo->work_address }}</td>
@@ -114,12 +117,12 @@
         </tr>
         <tr>
           <td>13. Trực tiếp vào: {{ $hospitalHistory->admit_dept }}</td>
-          <td>Vào viện do bệnh này lần thứ: {{ $hospitalHistory->reason_count }}</td>
+          <td>Vào viện do bệnh này lần thứ:</td>
         </tr>
       </table>
       <table width="100%" style="border: 1px solid black">
         <tr>
-          <td width="50%">15. Vào Khoa : {{ $hospitalHistory->department }}</td>
+          <td width="50%">15. Vào Khoa :</td>
           <td>
             17. Chuyển viện:
             <br />
@@ -142,20 +145,26 @@
       <table width="100%" style="border: 1px solid black">
         <tr>
           <td width="50%">
-            20. Nơi chuyển đến:
+            20. Nơi chuyển đến: <br />
+            {{ $treatment->icd10_admit_name }}
+
             <br />
-            21. KKB, cấp cứu:
+            21. KKB, cấp cứu: <br />
+            {{ $treatment->icd10_emergency_name }}
+
             <br />
-            22. Khi vào khoa điều trị:
+            22. Khi vào khoa điều trị: <br />
+            {{ $treatment->icd10_treatment_name }}
+
             <br />
-            + Thủ thuật: &nbsp;&nbsp; + Phẫu thuật:
+            + Thủ thuật: [{{ $treatment->diagnosis_procedure }}]&nbsp;&nbsp; + Phẫu thuật: [{{ $treatment->diagnosis_surgery }}]
           </td>
           <td>
-            23. Ra viện:
+            23. Ra viện: <br />
             <br />
-            + Bệnh chính:
+            + Bệnh chính: <br />
             <br />
-            + Bệnh kèm theo:
+            + Bệnh kèm theo: <br />
             <br />
             + Tai biến: &nbsp;&nbsp; + Biến chứng:
           </td>
@@ -167,16 +176,31 @@
       <b> IV. TÌNH TRẠNG RA VIỆN </b>
       <table width="100%" style="border: 1px solid black">
         <tr>
-          <td>Kết quả điều trị:</td>
-          <td>Tình trạng tử vong:</td>
+          <td width="30%" style="vertical-align: text-top">
+            24. Kết quả điều trị: <br />
+            {{ $summary->treatment_result }}
+          </td>
+          <td>
+            26. Tình hình tử vong: {{ \Carbon\Carbon::parse($summary->death_time)->format('H \g\i\ờ m \p\h, \n\g\à\y d \t\h\á\n\g m \n\ă\m Y') }}
+            <br />
+            {{ $summary->death_type }} <br />
+            {{ $summary->death_time_range }}
+          </td>
         </tr>
         <tr>
-          <td>Giải phẫu bệnh (khi có sinh thiết):</td>
-          <td>Nguyên nhân tử vong chính</td>
+          <td></td>
+          <td>27. Nguyên nhân chính tử vong</td>
         </tr>
         <tr>
-          <td>Khám nghiệm tử thi :</td>
-          <td>Chẩn đoán giải phẫu tử thi :</td>
+          <td>
+            25. Giải phẫu bệnh <i>(khi có sinh thiết)</i>: <br />
+            {{ $summary->anapath }}
+          </td>
+          <td>28. Khám nghiệm tử thi: [{{ $summary->autopsy }}]</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>29. Chẩn đoán giải phẫu tử thi: {{ $summary->autopsy_diagnosis_name }}</td>
         </tr>
       </table>
     </div>
@@ -218,17 +242,16 @@
     <br />
     <br />
     <br />
+
     <!--A-Bệnh án-->
-    <div>
+    <div width="100%">
       <b>A-BỆNH ÁN</b>
       <table width="100%">
         <!--I.Lý do vào viện-->
-        <tr>
+        <tr >
           <td width="60%"><b>I. Lý do vào viện:</b> {{ $hospitalHistory->reason }}</td>
           <td>Vào ngày thứ {{ $hospitalHistory->reason_date }} của bệnh</td>
         </tr>
-      </table>
-      <table width="100%">
         <tr>
           <td colspan="2">
             <b>II. Hỏi bệnh</b>
@@ -241,7 +264,7 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2">{{ $hospitalHistory->symptoms }}</td>
+          <td colspan="2">{!! nl2br(e($hospitalHistory->symptoms)) !!}</td>
         </tr>
         <tr>
           <td colspan="2">
@@ -254,7 +277,7 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2">{{ $hospitalHistory->disease_in }}</td>
+          <td colspan="2">{!! nl2br(e($hospitalHistory->disease_in)) !!}</td>
         </tr>
         <tr>
           <td colspan="2">Đặc điểm liên quan bệnh:</td>
@@ -315,7 +338,7 @@
           <td colspan="2">+ Gia đình: <i>(Những người trong gia đình: bệnh đã mắc, đời sống, tinh thần, vật chất v.v...).</i></td>
         </tr>
         <tr>
-          <td colspan="2">{{ $hospitalHistory->disease_out }}</td>
+          <td colspan="2">{!! nl2br(e($hospitalHistory->disease_out)) !!}</td>
         </tr>
         <tr>
           <td colspan="2">
@@ -328,32 +351,32 @@
           </td>
         </tr>
         <tr>
-          <td width="70%">{!! nl2br(e($patientVital->note)) !!}</td>
+          <td width="50%">{!! nl2br(e($vital->note)) !!}</td>
           <td>
             <table width="100%">
               <tr>
                 <td>Mạch</td>
-                <td>{{ $patientVital->pulse }}</td>
+                <td>{{ $vital->pulse }}</td>
                 <td style="text-align: right">lần/ph</td>
               </tr>
               <tr>
                 <td>Nhiệt độ</td>
-                <td>{{ $patientVital->temperature }}</td>
+                <td>{{ $vital->temperature }}</td>
                 <td style="text-align: right">°C</td>
               </tr>
               <tr>
                 <td>Huyết áp</td>
-                <td>{{ $patientVital->systolic }} / {{ $patientVital->diastolic }}</td>
+                <td>{{ $vital->systolic }} / {{ $vital->diastolic }}</td>
                 <td style="text-align: right">mmHg</td>
               </tr>
               <tr>
                 <td>Nhịp thở</td>
-                <td>{{ $patientVital->respiration }}</td>
+                <td>{{ $vital->respiration }}</td>
                 <td style="text-align: right">lần/phút</td>
               </tr>
               <tr>
                 <td>Cân nặng</td>
-                <td>{{ $patientVital->weight }}</td>
+                <td>{{ $vital->weight }}</td>
                 <td style="text-align: right">kg</td>
               </tr>
             </table>
@@ -365,31 +388,31 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2">+ Tuần hoàn: {{ $patientBody->diagnosis_tuanhoan }}</td>
+          <td colspan="2">+ Tuần hoàn: {!! nl2br(e($body->diagnosis_tuanhoan)) !!}</td>
         </tr>
         <tr>
-          <td colspan="2">+ Hô hấp: {{ $patientBody->diagnosis_hohap }}</td>
+          <td colspan="2">+ Hô hấp: {!! nl2br(e($body->diagnosis_hohap)) !!}</td>
         </tr>
         <tr>
-          <td colspan="2">+ Tiêu hóa: {{ $patientBody->diagnosis_tieuhoa }}</td>
+          <td colspan="2">+ Tiêu hóa: {!! nl2br(e($body->diagnosis_tieuhoa)) !!}</td>
         </tr>
         <tr>
-          <td colspan="2">+ Thận- Tiết niệu- Sinh dục: {{ $patientBody->diagnosis_than_tietnieu_sinhduc }}</td>
+          <td colspan="2">+ Thận- Tiết niệu- Sinh dục: {!! nl2br(e($body->diagnosis_than_tietnieu_sinhduc)) !!}</td>
         </tr>
         <tr>
-          <td colspan="2">+ Thần Kinh: {{ $patientBody->diagnosis_thankinh }}</td>
+          <td colspan="2">+ Thần Kinh: {!! nl2br(e($body->diagnosis_thankinh)) !!}</td>
         </tr>
         <tr>
-          <td colspan="2">+ Cơ- Xương- Khớp: {{ $patientBody->diagnosis_coxuongkhop }}</td>
+          <td colspan="2">+ Cơ- Xương- Khớp: {!! nl2br(e($body->diagnosis_coxuongkhop)) !!}</td>
         </tr>
         <tr>
-          <td colspan="2">+ Tai- Mũi- Họng: {{ $patientBody->diagnosis_taimuihong }}</td>
+          <td colspan="2">+ Tai- Mũi- Họng: {!! nl2br(e($body->diagnosis_taimuihong)) !!}</td>
         </tr>
         <tr>
-          <td colspan="2">+ Mắt: {{ $patientBody->diagnosis_mat }}</td>
+          <td colspan="2">+ Mắt: {!! nl2br(e($body->diagnosis_mat)) !!}</td>
         </tr>
         <tr>
-          <td colspan="2">+ Nội tiết, dinh dưỡng và các bệnh lý khác: {{ $patientBody->diagnosis_noitiet_dinhduong_khac }}</td>
+          <td colspan="2">+ Nội tiết, dinh dưỡng và các bệnh lý khác: {!! nl2br(e($body->diagnosis_noitiet_dinhduong_khac)) !!}</td>
         </tr>
         <tr>
           <td colspan="2">
@@ -397,7 +420,7 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2">{{ $patientLab->type }}</td>
+          <td colspan="2">{{ $lab->type }}</td>
         </tr>
         <tr>
           <td colspan="2">
@@ -409,7 +432,7 @@
             Người bệnh {{ $patientInfo->full_name }} <br />
             Nhập viện vì {{ $hospitalHistory->reason }}, vào ngày thứ {{ $hospitalHistory->reason_date }} của bệnh <br />
             Qua thăm hỏi và khám bệnh phát hiện các triệu chứng và hội chứng sau: <br />
-            + {{ $hospitalHistory->symptoms }} <br />
+            + {!! nl2br(e($hospitalHistory->symptoms)) !!}<br />
           </td>
         </tr>
         <tr>
@@ -418,29 +441,29 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2">+ Bệnh chính: {{ $patientTreatment->disease_main }}</td>
+          <td colspan="2">+ Bệnh chính: {{ $treatment->disease_main }}</td>
         </tr>
         <tr>
-          <td colspan="2">+ Bệnh kèm theo: <i>(nếu có)</i>: {{ $patientTreatment->disease_sub }}</td>
+          <td colspan="2">+ Bệnh kèm theo: <i>(nếu có)</i>: {{ $treatment->disease_sub }}</td>
         </tr>
         <tr>
-          <td colspan="2">+ Phân biệt: {{ $patientTreatment->disease_difference }}</td>
+          <td colspan="2">+ Phân biệt: {{ $treatment->disease_difference }}</td>
         </tr>
         <tr>
           <td colspan="2">
             <b>V. Tiên lượng:</b> <br />
-            {{ $patientTreatment->disease_prognosis }}
+            {!! nl2br(e($treatment->disease_prognosis)) !!}
           </td>
         </tr>
         <tr>
           <td colspan="2">
             <b>VI. Hướng điều trị:</b> <br />
-            {{ $patientTreatment->disease_plan }}
+            {!! nl2br(e($treatment->disease_plan)) !!}
           </td>
         </tr>
         <tr>
           <td width="60%"></td>
-          <td colspan="2">
+          <td >
             <table width="100%" style="text-align: center">
               <tr>
                 <td colspan="2"><i>Ngày......tháng......năm</i></td>
@@ -452,48 +475,49 @@
                 <td colspan="2"><br /><br /><br /><br /><br /></td>
               </tr>
               <tr>
-                <td colspan="2"><i>Họ và tên</i></td>
+                <td colspan="2"><i>Họ và tên</i> <b>
+                {{ $data->medical_user_name }}
+                </b></td>
               </tr>
             </table>
           </td>
         </tr>
-        <tr colspan="2">
+        <tr width="100%" colspan="2">
           <td colspan="2">
             <b>B. TỔNG KẾT BỆNH ÁN </b>
           </td>
         </tr>
-        <tr>
+        <tr width="100%">
           <td colspan="2">
             <table width="100%" border="1px solid black">
-              <tr>
+              <tr width="100%">
                 <td colspan="4">
                   <b>1. Quá trình bệnh lý và diễn biến lâm sàng: </b> <br />
-                  {!! nl2br(e($hospitalHistory->symptoms)) !!}
-                  {!! nl2br(e($patientBody->diagnosis_syndrome)) !!}
+                  {!! nl2br(e($hospitalHistory->symptoms)) !!} {!! nl2br(e($body->diagnosis_syndrome)) !!}
                 </td>
               </tr>
               <tr>
                 <td colspan="4">
                   <b>2. Tóm tắt kết quả xét nghiệm cận lâm sàng có giá trị chẩn đoán:</b> <br />
-                  {!! nl2br(e($patientLab->comment)) !!}
+                  {!! nl2br(e($lab->comment)) !!}
                 </td>
               </tr>
               <tr>
                 <td colspan="4">
                   <b>3. Phương pháp điều trị: </b> <br />
-                  {!! nl2br(e($patientSummary->therapy)) !!}
+                  {!! nl2br(e($summary->therapy)) !!}
                 </td>
               </tr>
               <tr>
                 <td colspan="4">
                   <b>4. Tình trạng người bệnh ra viện:</b> <br />
-                  {!! nl2br(e($patientSummary->patient_condition)) !!}
+                  {!! nl2br(e($summary->patient_condition)) !!}
                 </td>
               </tr>
               <tr>
                 <td colspan="4">
                   <b>5. Hướng điều trị và các chế độ tiếp theo:</b> <br />
-                  {!! nl2br(e($patientSummary->therapy_plan)) !!}
+                  {!! nl2br(e($summary->therapy_plan)) !!}
                 </td>
               </tr>
               <tr>
@@ -518,7 +542,7 @@
                   <br />
                   <br />
                   <br />
-                  <br />Họ tên
+                  <br />Họ tên <b>{{ $data->treatment_user_name }}</b>
                 </td>
               </tr>
               <tr>

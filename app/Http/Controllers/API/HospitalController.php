@@ -79,6 +79,10 @@ class HospitalController extends Controller
         //     'icd10_name' => $icd10->name,
         // ]);
 
+        Emr::where('patient_id', $data->patient_id)->update([
+            'hospital_histories_id' => $data->id
+        ]);
+
         Diagnose::create([
             'patient_id' => $data->patient_id,
             'hospital_id' => $data->id,

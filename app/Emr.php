@@ -58,4 +58,10 @@ class Emr extends Model
     {
         return $this->hasOne('App\Diagnose', 'id', 'diagnosis_id');
     }
+
+    protected $primaryKey = 'patient_id'; // or null
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
 }

@@ -60,9 +60,9 @@ class ImagingResultController extends Controller
             'imaging_name' => $imaging->name,
         ]);
 
-        // Emr::where('patient_id', $data->patient_id)->update([
-        //     'imaging_id' => $data->id
-        // ]);
+        Emr::where('patient_id', $data->patient_id)->update([
+            'imaging_id' => $data->id
+        ]);
 
         return response()->json(['data' => $data], 200);
     }
