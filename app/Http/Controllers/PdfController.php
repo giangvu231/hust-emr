@@ -69,7 +69,7 @@ class PdfController extends Controller
 
         $name = $datetime;
 
-        if($data->emr_type == 'NoiKhoa') {
+        if($data->emr_type == 'Bệnh án Nội khoa') {
             $template = "pdf.NoiKhoa";
         }else{
             $template = "pdf.NgoaiKhoa";

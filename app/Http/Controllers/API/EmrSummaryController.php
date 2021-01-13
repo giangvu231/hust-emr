@@ -42,13 +42,14 @@ class EmrSummaryController extends Controller
 
         $data = EmrSummary::create($request->all());
         Emr::where('patient_id', $data->patient_id)->update([
-            'emr_summary_id' => $data->id
+            'emr_summary_id' => $data->id,
+            'emr_type' => $data->emr_type,
         ]);
 
         $userData= $request->user();
         Emr::where('patient_id', $data->patient_id)->update([
             'treatment_user_id' => $userData->id,
-            'treatment_user_name' => $userData->name
+            'treatment_user_name' => $userData->name,
         ]);
 
         $icd10_maindisease = Icd10::findOrFail($data->discharge_maindisease_id);

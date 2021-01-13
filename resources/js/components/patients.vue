@@ -8,14 +8,21 @@
                 style="color:#fff;"
                 >Thêm mới</router-link
             >
-            <!-- <button
-                type="button"
-                @click="pdfExport()"
-                class="btn btn-rounded btn-info"
-                style="color:#fff;"
-            >
-                Print TEST
-            </button> -->
+        </div>
+        <br /><br />
+        <div class="row">
+            <div class="col-md-9">
+                <input
+                    type="file"
+                    v-on:change="onImageChange"
+                    class="form-control"
+                />
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-success btn-block" @click="uploadImage">
+                    Upload Image
+                </button>
+            </div>
         </div>
         <br /><br />
         <div class="row justify-content-center">
@@ -67,9 +74,8 @@
                             <tr>
                                 <th>Mã bệnh nhân</th>
                                 <th>Họ tên</th>
-                                <th>Tình trạng</th>
-                                <!-- <th>Số điện thoại</th>
-                  <th>Nghề nghiệp</th> -->
+                                <th>Điện thoại</th>
+                                <th>Nghề nghiệp</th>
                                 <th>Giới tính</th>
                                 <th>Thông tin đầy đủ</th>
                                 <th>Tác vụ</th>
@@ -79,9 +85,8 @@
                             <tr v-for="patient in patients" :key="patient.id">
                                 <td>{{ patient.id }}</td>
                                 <td>{{ patient.full_name }}</td>
-                                <td>{{ patient.reason }}</td>
-                                <!-- <td>{{patient.phone_number}}</td>
-                  <td>{{patient.occupation}}</td> -->
+                                <td>{{ patient.phone_number }}</td>
+                                <td>{{ patient.job_name }}</td>
                                 <td>{{ patient.sex }}</td>
                                 <td>
                                     <button
@@ -111,7 +116,7 @@
                                                         class="modal-title"
                                                         id="exampleModalLongTitle"
                                                     >
-                                                        Lý lịch bệnh nhân
+                                                        Thông tin bệnh nhân
                                                     </h5>
                                                     <button
                                                         type="button"
@@ -126,8 +131,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>
-                                                        <b>Họ tên: </b
-                                                        >{{ patient.title }}
+                                                        <b>Họ tên: </b>
                                                         {{ patient.full_name }}
                                                     </p>
                                                     <p>
@@ -172,6 +176,12 @@
                                                         <b>Địa chỉ nhà: </b
                                                         >{{
                                                             patient.home_address
+                                                        }},
+                                                        {{
+                                                            patient.district_name
+                                                        }},
+                                                        {{
+                                                            patient.nation_name
                                                         }}
                                                     </p>
                                                     <p>
@@ -211,6 +221,35 @@
                                                         >{{
                                                             patient.phone_next_of_kin
                                                         }}
+                                                    </p>
+                                                    <p>
+                                                        <b>Loại KCB:</b
+                                                        >{{
+                                                            patient.type_of_object
+                                                        }}
+                                                    </p>
+                                                    <p>
+                                                        <b>Số thẻ BHYT:</b
+                                                        >{{
+                                                            patient.health_insurance_id
+                                                        }}
+                                                    </p>
+                                                    <p>
+                                                        <b>Hạn BHYT:</b
+                                                        >{{
+                                                            patient.health_insurance_date
+                                                        }}
+                                                    </p>
+                                                    <p>
+                                                        <b
+                                                            >TEST Browse
+                                                            Image:</b
+                                                        >
+                                                        <img
+                                                            :src="
+                                                                `data:image/png;base64,${patient.img_base64}`
+                                                            "
+                                                        />
                                                     </p>
                                                 </div>
                                                 <div class="modal-footer">
@@ -769,6 +808,8 @@
 export default {
     data() {
         return {
+            image: "",
+            props: ["img"],
             patients: {},
             search: "",
             //   loading: false,
@@ -903,6 +944,26 @@ export default {
                         title: "Xuất dữ liệu thất bại!"
                     });
                 });
+        },
+        onImageChange(e) {
+            let files = e.target.files || e.dataTransfer.files;
+            if (!files.length) return;
+            this.createImage(files[0]);
+        },
+        createImage(file) {
+            let reader = new FileReader();
+            let vm = this;
+            reader.onload = e => {
+                vm.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        uploadImage() {
+            axios.post("/image/store", { image: this.image }).then(response => {
+                if (response.data.success) {
+                    alert(response.data.success);
+                }
+            });
         }
     },
     mounted() {

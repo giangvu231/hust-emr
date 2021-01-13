@@ -47,6 +47,14 @@ class EmrSummary extends Model
 
         'autopsy',
 
+        'dx_count',
+        'ct_count',
+        'us_count',
+        'lab_count',
+        'other_count',
+        'total_count',
+
+        'emr_type',
     ];
 
    public function patient(){

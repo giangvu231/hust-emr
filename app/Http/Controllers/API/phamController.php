@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Pham;
+use App\addPatient;
+use App\Emr;
 
 class phamController extends Controller
 {
@@ -41,16 +43,22 @@ class phamController extends Controller
             'comment' => 'required',
             'unit' => 'required',
         ]);
-        $pham = new Pham;
-        $pham->patient_id = $request->patient_id;
-        $pham->diagnose_id = $request->diagnose_id;
-        $pham->type = $request->type;
-        $pham->comment = $request->comment;
-        $pham->nurse = $request->nurse;
-        $pham->unit = $request->unit;
+        // $pham = new Pham;
+        // $pham->patient_id = $request->patient_id;
+        // $pham->diagnose_id = $request->diagnose_id;
+        // $pham->type = $request->type;
+        // $pham->comment = $request->comment;
+        // $pham->nurse = $request->nurse;
+        // $pham->unit = $request->unit;
         // $diagnose->modal_id = strtolower(str_random(8));
 
-        $pham->save();
+        // $pham->save();
+
+        $data = Pham::create($request->all());
+        Emr::where('patient_id', $data->patient_id)->update([
+            'pham_id' => $data->id
+        ]);
+        return response()->json(['data' => $data], 200);
 
     }
 

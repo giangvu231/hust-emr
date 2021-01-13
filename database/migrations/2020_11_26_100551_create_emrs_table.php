@@ -28,11 +28,14 @@ class CreateEmrsTable extends Migration
             $table->string('treatment_id')->nullable();
             $table->string('emr_summary_id')->nullable();
             $table->string('medicine_id')->nullable();
+            $table->string('pham_id')->nullable();
 
             $table->string('medical_user_id')->nullable();
             $table->string('medical_user_name')->nullable();
             $table->string('treatment_user_id')->nullable();
             $table->string('treatment_user_name')->nullable();
+
+            $table->string('emr_type')->nullable();
 
             $table->timestamps();
         });

@@ -51,6 +51,15 @@ class CreateEmrSummariesTable extends Migration
             $table->longText('death_time_range')->nullable();
             $table->longText('autopsy')->nullable();
 
+            $table->longText('dx_count')->nullable();
+            $table->longText('ct_count')->nullable();
+            $table->longText('us_count')->nullable();
+            $table->longText('lab_count')->nullable();
+            $table->longText('other_count')->nullable();
+            $table->longText('total_count')->nullable();
+
+            $table->string('emr_type')->nullable();
+
             $table->timestamps();
         });
     }

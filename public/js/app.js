@@ -6228,7 +6228,7 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function () {
         toast.fire({
           type: "error",
-          title: "Data not correctly inputed"
+          title: "Dữ liệu không đúng!"
         });
         $(".pay").html("Pay");
       });
@@ -6259,12 +6259,12 @@ __webpack_require__.r(__webpack_exports__);
               console.log(data);
               $(".info_s").html();
               $(".almost_done").hide();
-              $(".done").html("<div>Thanh toán thành công, Tạo thanh toán khác</div>");
+              $(".done").html("<div>Giao dịch thành công. Tạo giao dịch khác!</div>");
               $("#addpayment").show();
               $(".pay").html("Submit");
             }
           });
-          alert("success. transaction ref is " + response.reference);
+          alert("Thanh toán thành công. Số giao dịch (reference): " + response.reference);
         },
         onClose: function onClose() {
           alert("window closed");
@@ -9341,6 +9341,201 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -9379,7 +9574,14 @@ __webpack_require__.r(__webpack_exports__);
         death_type: "",
         death_time: "",
         death_time_range: "",
-        autopsy: ""
+        autopsy: "",
+        dx_count: "",
+        ct_count: "",
+        us_count: "",
+        lab_count: "",
+        other_count: "",
+        total_count: "",
+        emr_type: ""
       })
     };
   },
@@ -12972,9 +13174,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      image: "",
+      props: ["img"],
       patients: {},
       search: "",
       //   loading: false,
@@ -13098,6 +13341,30 @@ __webpack_require__.r(__webpack_exports__);
           type: "error",
           title: "Xuất dữ liệu thất bại!"
         });
+      });
+    },
+    onImageChange: function onImageChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage: function createImage(file) {
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.image = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
+    uploadImage: function uploadImage() {
+      axios.post("/image/store", {
+        image: this.image
+      }).then(function (response) {
+        if (response.data.success) {
+          alert(response.data.success);
+        }
       });
     }
   },
@@ -88982,6 +89249,94 @@ var render = function() {
                         "div",
                         { staticClass: "form-group" },
                         [
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.emr_type,
+                                  expression: "form.emr_type"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("emr_type")
+                              },
+                              attrs: { name: "emr_type" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "emr_type",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                {
+                                  staticStyle: { "font-weight": "700" },
+                                  attrs: { disabled: "", value: "" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                                Loại bệnh án\n                                            "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "Bệnh án Nội khoa" } },
+                                [
+                                  _vm._v(
+                                    "\n                                                1. Bệnh án Nội khoa\n                                            "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "Bệnh án Ngoại Khoa" } },
+                                [
+                                  _vm._v(
+                                    "\n                                                2. Bệnh án Ngoại Khoa\n                                            "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "emr_type" }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
                           _c("textarea", {
                             directives: [
                               {
@@ -90506,6 +90861,330 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _vm._v(
+                        "\n                                    Hồ sơ, phim, ảnh\n                                    "
+                      ),
+                      _c(
+                        "table",
+                        { attrs: { width: "100%", border: "1px solid black" } },
+                        [
+                          _vm._m(6),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v(" - X - quang")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                { staticClass: "form-group" },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.dx_count,
+                                        expression:
+                                          "\n                                                            form.dx_count\n                                                        "
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.form.errors.has(
+                                        "dx_count"
+                                      )
+                                    },
+                                    attrs: { type: "text", name: "dx_count" },
+                                    domProps: { value: _vm.form.dx_count },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.form,
+                                          "dx_count",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    attrs: { form: _vm.form, field: "dx_count" }
+                                  })
+                                ],
+                                1
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v(" - CT Scanner")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                { staticClass: "form-group" },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.ct_count,
+                                        expression:
+                                          "\n                                                            form.ct_count\n                                                        "
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.form.errors.has(
+                                        "ct_count"
+                                      )
+                                    },
+                                    attrs: { type: "text", name: "ct_count" },
+                                    domProps: { value: _vm.form.ct_count },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.form,
+                                          "ct_count",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    attrs: { form: _vm.form, field: "ct_count" }
+                                  })
+                                ],
+                                1
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v(" - Siêu âm")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                { staticClass: "form-group" },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.us_count,
+                                        expression:
+                                          "\n                                                            form.us_count\n                                                        "
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.form.errors.has(
+                                        "us_count"
+                                      )
+                                    },
+                                    attrs: { type: "text", name: "us_count" },
+                                    domProps: { value: _vm.form.us_count },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.form,
+                                          "us_count",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    attrs: { form: _vm.form, field: "us_count" }
+                                  })
+                                ],
+                                1
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v(" - Xét nghiệm")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                { staticClass: "form-group" },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.lab_count,
+                                        expression:
+                                          "\n                                                            form.lab_count\n                                                        "
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.form.errors.has(
+                                        "lab_count"
+                                      )
+                                    },
+                                    attrs: { type: "text", name: "lab_count" },
+                                    domProps: { value: _vm.form.lab_count },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.form,
+                                          "lab_count",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    attrs: {
+                                      form: _vm.form,
+                                      field: "lab_count"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v(" - Khác.......")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                { staticClass: "form-group" },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.other_count,
+                                        expression:
+                                          "\n                                                            form.other_count\n                                                        "
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.form.errors.has(
+                                        "other_count"
+                                      )
+                                    },
+                                    attrs: {
+                                      type: "text",
+                                      name: "other_count"
+                                    },
+                                    domProps: { value: _vm.form.other_count },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.form,
+                                          "other_count",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    attrs: {
+                                      form: _vm.form,
+                                      field: "other_count"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v(" - Toàn bộ hồ sơ")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                { staticClass: "form-group" },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.total_count,
+                                        expression:
+                                          "\n                                                            form.total_count\n                                                        "
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.form.errors.has(
+                                        "total_count"
+                                      )
+                                    },
+                                    attrs: {
+                                      type: "text",
+                                      name: "total_count"
+                                    },
+                                    domProps: { value: _vm.form.total_count },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.form,
+                                          "total_count",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    attrs: {
+                                      form: _vm.form,
+                                      field: "total_count"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            ])
+                          ])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
                     _c(
                       "td",
                       { attrs: { colspan: "2" } },
@@ -90591,6 +91270,16 @@ var staticRenderFns = [
       _c("td", { attrs: { colspan: "2" } }, [
         _c("b", [_vm._v("Chẩn đoán giải phẫu tử thi")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", { attrs: { width: "50%" } }, [_vm._v("Loại")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Số tờ")])
     ])
   }
 ]
@@ -95210,6 +95899,30 @@ var render = function() {
     _c("br"),
     _c("br"),
     _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-9" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "file" },
+          on: { change: _vm.onImageChange }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success btn-block",
+            on: { click: _vm.uploadImage }
+          },
+          [_vm._v("\n                Upload Image\n            ")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _c("br"),
+    _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "card", staticStyle: { width: "100%" } }, [
         _c("div", { staticClass: "card-header" }, [
@@ -95303,7 +96016,9 @@ var render = function() {
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(patient.full_name))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(patient.reason))]),
+                        _c("td", [_vm._v(_vm._s(patient.phone_number))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(patient.job_name))]),
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(patient.sex))]),
                         _vm._v(" "),
@@ -95353,8 +96068,7 @@ var render = function() {
                                       _c("p", [
                                         _c("b", [_vm._v("Họ tên: ")]),
                                         _vm._v(
-                                          _vm._s(patient.title) +
-                                            "\n                                                    " +
+                                          "\n                                                    " +
                                             _vm._s(patient.full_name) +
                                             "\n                                                "
                                         )
@@ -95433,6 +96147,10 @@ var render = function() {
                                         _c("b", [_vm._v("Địa chỉ nhà: ")]),
                                         _vm._v(
                                           _vm._s(patient.home_address) +
+                                            ",\n                                                    " +
+                                            _vm._s(patient.district_name) +
+                                            ",\n                                                    " +
+                                            _vm._s(patient.nation_name) +
                                             "\n                                                "
                                         )
                                       ]),
@@ -95494,6 +96212,48 @@ var render = function() {
                                           _vm._s(patient.phone_next_of_kin) +
                                             "\n                                                "
                                         )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _c("b", [_vm._v("Loại KCB:")]),
+                                        _vm._v(
+                                          _vm._s(patient.type_of_object) +
+                                            "\n                                                "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _c("b", [_vm._v("Số thẻ BHYT:")]),
+                                        _vm._v(
+                                          _vm._s(patient.health_insurance_id) +
+                                            "\n                                                "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _c("b", [_vm._v("Hạn BHYT:")]),
+                                        _vm._v(
+                                          _vm._s(
+                                            patient.health_insurance_date
+                                          ) +
+                                            "\n                                                "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _c("b", [
+                                          _vm._v(
+                                            "TEST Browse\n                                                        Image:"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("img", {
+                                          attrs: {
+                                            src:
+                                              "data:image/png;base64," +
+                                              patient.img_base64
+                                          }
+                                        })
                                       ])
                                     ]),
                                     _vm._v(" "),
@@ -96721,7 +97481,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Họ tên")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Tình trạng")]),
+        _c("th", [_vm._v("Điện thoại")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nghề nghiệp")]),
         _vm._v(" "),
         _c("th", [_vm._v("Giới tính")]),
         _vm._v(" "),
@@ -96741,7 +97503,7 @@ var staticRenderFns = [
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
         [
           _vm._v(
-            "\n                                                    Lý lịch bệnh nhân\n                                                "
+            "\n                                                    Thông tin bệnh nhân\n                                                "
           )
         ]
       ),

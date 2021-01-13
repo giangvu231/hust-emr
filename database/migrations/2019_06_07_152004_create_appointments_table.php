@@ -17,7 +17,7 @@ class CreateAppointmentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('patient_id');
             $table->string('reason')->nullable();
-            $table->string('date')->unique();
+            $table->string('date');
             $table->timestamps();
         });
     }

@@ -175,8 +175,6 @@ class EmrController extends Controller
         EmrSummary::where('patient_id',$id)->delete();
 
         $patient->delete();
-
-
     }
 
     public function search()

@@ -254,7 +254,7 @@ export default {
                 .catch(() => {
                     toast.fire({
                         type: "error",
-                        title: "Data not correctly inputed"
+                        title: "Dữ liệu không đúng!"
                     });
                     $(".pay").html("Pay");
                 });
@@ -286,13 +286,16 @@ export default {
                             $(".info_s").html();
                             $(".almost_done").hide();
                             $(".done").html(
-                                "<div>Thanh toán thành công, Tạo thanh toán khác</div>"
+                                "<div>Giao dịch thành công. Tạo giao dịch khác!</div>"
                             );
                             $("#addpayment").show();
                             $(".pay").html("Submit");
                         }
                     });
-                    alert("success. transaction ref is " + response.reference);
+                    alert(
+                        "Thanh toán thành công. Số giao dịch (reference): " +
+                            response.reference
+                    );
                 },
                 onClose: function() {
                     alert("window closed");

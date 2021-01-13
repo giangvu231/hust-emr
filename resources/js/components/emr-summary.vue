@@ -40,7 +40,44 @@
                                         </div>
                                     </td>
                                 </tr>
-
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="form-group">
+                                            <select
+                                                v-model="form.emr_type"
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'emr_type'
+                                                    )
+                                                }"
+                                                name="emr_type"
+                                            >
+                                                <option
+                                                    disabled
+                                                    value=""
+                                                    style="font-weight:700;"
+                                                >
+                                                    Loại bệnh án
+                                                </option>
+                                                <option
+                                                    value="Bệnh án Nội khoa"
+                                                >
+                                                    1. Bệnh án Nội khoa
+                                                </option>
+                                                <option
+                                                    value="Bệnh án Ngoại Khoa"
+                                                >
+                                                    2. Bệnh án Ngoại Khoa
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="emr_type"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
@@ -694,6 +731,164 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
+                                        Hồ sơ, phim, ảnh
+                                        <table
+                                            width="100%"
+                                            border="1px solid black"
+                                        >
+                                            <tr>
+                                                <td width="50%">Loại</td>
+                                                <td>Số tờ</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;- X - quang</td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input
+                                                            v-model="
+                                                                form.dx_count
+                                                            "
+                                                            type="text"
+                                                            name="dx_count"
+                                                            class="form-control"
+                                                            :class="{
+                                                                'is-invalid': form.errors.has(
+                                                                    'dx_count'
+                                                                )
+                                                            }"
+                                                        />
+                                                        <has-error
+                                                            :form="form"
+                                                            field="dx_count"
+                                                        ></has-error>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;- CT Scanner</td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input
+                                                            v-model="
+                                                                form.ct_count
+                                                            "
+                                                            type="text"
+                                                            name="ct_count"
+                                                            class="form-control"
+                                                            :class="{
+                                                                'is-invalid': form.errors.has(
+                                                                    'ct_count'
+                                                                )
+                                                            }"
+                                                        />
+                                                        <has-error
+                                                            :form="form"
+                                                            field="ct_count"
+                                                        ></has-error>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;- Siêu âm</td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input
+                                                            v-model="
+                                                                form.us_count
+                                                            "
+                                                            type="text"
+                                                            name="us_count"
+                                                            class="form-control"
+                                                            :class="{
+                                                                'is-invalid': form.errors.has(
+                                                                    'us_count'
+                                                                )
+                                                            }"
+                                                        />
+                                                        <has-error
+                                                            :form="form"
+                                                            field="us_count"
+                                                        ></has-error>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;- Xét nghiệm</td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input
+                                                            v-model="
+                                                                form.lab_count
+                                                            "
+                                                            type="text"
+                                                            name="lab_count"
+                                                            class="form-control"
+                                                            :class="{
+                                                                'is-invalid': form.errors.has(
+                                                                    'lab_count'
+                                                                )
+                                                            }"
+                                                        />
+                                                        <has-error
+                                                            :form="form"
+                                                            field="lab_count"
+                                                        ></has-error>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;- Khác.......</td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input
+                                                            v-model="
+                                                                form.other_count
+                                                            "
+                                                            type="text"
+                                                            name="other_count"
+                                                            class="form-control"
+                                                            :class="{
+                                                                'is-invalid': form.errors.has(
+                                                                    'other_count'
+                                                                )
+                                                            }"
+                                                        />
+                                                        <has-error
+                                                            :form="form"
+                                                            field="other_count"
+                                                        ></has-error>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;- Toàn bộ hồ sơ</td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input
+                                                            v-model="
+                                                                form.total_count
+                                                            "
+                                                            type="text"
+                                                            name="total_count"
+                                                            class="form-control"
+                                                            :class="{
+                                                                'is-invalid': form.errors.has(
+                                                                    'total_count'
+                                                                )
+                                                            }"
+                                                        />
+                                                        <has-error
+                                                            :form="form"
+                                                            field="total_count"
+                                                        ></has-error>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
                                         <center width="100%">
                                             <button
                                                 type="submit"
@@ -763,7 +958,16 @@ export default {
                 death_type: "",
                 death_time: "",
                 death_time_range: "",
-                autopsy: ""
+                autopsy: "",
+
+                dx_count: "",
+                ct_count: "",
+                us_count: "",
+                lab_count: "",
+                other_count: "",
+                total_count: "",
+
+                emr_type: ""
             })
         };
     },
