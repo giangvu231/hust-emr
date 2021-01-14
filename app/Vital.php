@@ -11,7 +11,20 @@ class Vital extends Model
     use Notifiable, HasApiTokens;
 
     protected $fillable = [
-        'patient_id', 'temperature', 'blood_pressure', 'height', 'weight',  'pulse', 'blood_group', 'blood_type', 'immunization', 'systolic', 'diastolic', 'respiration', 'note'
+        'patient_id',
+        'temperature',
+        'blood_pressure',
+        'height',
+        'weight',
+        'pulse',
+        'blood_group',
+        'blood_type',
+        'immunization',
+        'systolic',
+        'diastolic',
+        'respiration',
+        'note',
+        'NgoaiKhoaNote',
     ];
 
    public function patient(){

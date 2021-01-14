@@ -32,6 +32,84 @@
                                     field="patient_id"
                                 ></has-error>
                             </div>
+                            <div>
+                                <label for="">Chẩn đoán trước phẫu thuật</label>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    style="width: 100%;"
+                                    placeholder="Tìm bệnh theo bảng mã ICD-10"
+                                    type="text"
+                                    v-model="searchBeforeProcedureText"
+                                    @keyup="searchForBeforeProcedure()"
+                                />
+                                <select
+                                    v-model="form.id_before_procedure"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'id_before_procedure'
+                                        )
+                                    }"
+                                    name="id_before_procedure"
+                                >
+                                    <option disabled selected value=""
+                                        >Bảng mã ICD 10</option
+                                    >
+                                    <option
+                                        v-for="searchBeforeProcedureArr in searchBeforeProcedureArrs"
+                                        :key="searchBeforeProcedureArr.id"
+                                        :value="searchBeforeProcedureArr.id"
+                                    >
+                                        {{ searchBeforeProcedureArr.code }}
+                                        -
+                                        {{ searchBeforeProcedureArr.name }}
+                                    </option>
+                                </select>
+                                <has-error
+                                    :form="form"
+                                    field="id_before_procedure"
+                                ></has-error>
+                            </div>
+                            <div>
+                                <label for="">Chẩn đoán sau phẫu thuật</label>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    style="width: 100%;"
+                                    placeholder="Tìm bệnh theo bảng mã ICD-10"
+                                    type="text"
+                                    v-model="searchAfterProcedureText"
+                                    @keyup="searchForAfterProcedure()"
+                                />
+                                <select
+                                    v-model="form.id_after_procedure"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'id_after_procedure'
+                                        )
+                                    }"
+                                    name="id_after_procedure"
+                                >
+                                    <option disabled selected value=""
+                                        >Bảng mã ICD 10</option
+                                    >
+                                    <option
+                                        v-for="searchAfterProcedureArr in searchAfterProcedureArrs"
+                                        :key="searchAfterProcedureArr.id"
+                                        :value="searchAfterProcedureArr.id"
+                                    >
+                                        {{ searchAfterProcedureArr.code }}
+                                        -
+                                        {{ searchAfterProcedureArr.name }}
+                                    </option>
+                                </select>
+                                <has-error
+                                    :form="form"
+                                    field="id_after_procedure"
+                                ></has-error>
+                            </div>
                             <div class="form-group">
                                 <textarea
                                     v-model="form.operations"
@@ -72,12 +150,15 @@
                                     field="date_of_operation"
                                 ></has-error>
                             </div>
+                            <div>
+                                <label for="">Ê-kíp phẫu thuật</label>
+                            </div>
                             <div class="form-group">
                                 <input
                                     v-model="form.surgeon"
                                     type="text"
                                     name="surgeon"
-                                    placeholder="Bác sĩ phẫu thuật"
+                                    placeholder="Bác sĩ Phẫu thuật"
                                     class="form-control"
                                     :class="{
                                         'is-invalid': form.errors.has('surgeon')
@@ -86,6 +167,24 @@
                                 <has-error
                                     :form="form"
                                     field="surgeon"
+                                ></has-error>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    v-model="form.anesthetist"
+                                    type="text"
+                                    name="anesthetist"
+                                    placeholder="Bác sĩ Gây mê"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'anesthetist'
+                                        )
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="anesthetist"
                                 ></has-error>
                             </div>
                             <center>
@@ -110,12 +209,20 @@
 export default {
     data() {
         return {
+            searchBeforeProcedureText: "",
+            searchBeforeProcedureArrs: [],
+            searchAfterProcedureText: "",
+            searchAfterProcedureArrs: [],
             patients: {},
             form: new Form({
                 patient_id: "",
                 operations: "",
                 date_of_operation: "",
-                surgeon: ""
+                surgeon: "",
+                anesthetist: "",
+
+                id_before_procedure: "",
+                id_after_procedure: ""
             })
         };
     },
@@ -149,6 +256,26 @@ export default {
                 }, 1000);
                 this.patients = response.data;
             });
+        },
+        searchForBeforeProcedure() {
+            axios
+                .post("/search", {
+                    name: this.searchBeforeProcedureText
+                })
+                .then(response => {
+                    this.searchBeforeProcedureArrs = response.data;
+                })
+                .catch(() => {});
+        },
+        searchForAfterProcedure() {
+            axios
+                .post("/search", {
+                    name: this.searchAfterProcedureText
+                })
+                .then(response => {
+                    this.searchAfterProcedureArrs = response.data;
+                })
+                .catch(() => {});
         }
     },
     mounted() {

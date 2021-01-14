@@ -30,6 +30,7 @@ class CreateVitalsTable extends Migration
             $table->string('diastolic')->nullable();
             $table->string('respiration')->nullable();
             $table->longText('note')->nullable();
+            $table->longText('NgoaiKhoaNote')->nullable();
 
             $table->timestamps();
         });

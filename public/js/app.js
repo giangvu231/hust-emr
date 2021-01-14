@@ -4126,15 +4126,121 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      searchBeforeProcedureText: "",
+      searchBeforeProcedureArrs: [],
+      searchAfterProcedureText: "",
+      searchAfterProcedureArrs: [],
       patients: {},
       form: new Form({
         patient_id: "",
         operations: "",
         date_of_operation: "",
-        surgeon: ""
+        surgeon: "",
+        anesthetist: "",
+        id_before_procedure: "",
+        id_after_procedure: ""
       })
     };
   },
@@ -4166,6 +4272,24 @@ __webpack_require__.r(__webpack_exports__);
         }, 1000);
         _this.patients = response.data;
       });
+    },
+    searchForBeforeProcedure: function searchForBeforeProcedure() {
+      var _this2 = this;
+
+      axios.post("/search", {
+        name: this.searchBeforeProcedureText
+      }).then(function (response) {
+        _this2.searchBeforeProcedureArrs = response.data;
+      })["catch"](function () {});
+    },
+    searchForAfterProcedure: function searchForAfterProcedure() {
+      var _this3 = this;
+
+      axios.post("/search", {
+        name: this.searchAfterProcedureText
+      }).then(function (response) {
+        _this3.searchAfterProcedureArrs = response.data;
+      })["catch"](function () {});
     }
   },
   mounted: function mounted() {
@@ -5298,9 +5422,93 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      isHidden: false,
+      isHiddenNoiKhoa: false,
       patients: {},
       form: new Form({
         patient_id: "",
@@ -5311,6 +5519,8 @@ __webpack_require__.r(__webpack_exports__);
         pulse: "",
         blood_group: "",
         blood_type: "",
+        note: "",
+        NgoaiKhoaNote: "",
         immunization: []
       })
     };
@@ -9536,6 +9746,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -9581,6 +9839,7 @@ __webpack_require__.r(__webpack_exports__);
         lab_count: "",
         other_count: "",
         total_count: "",
+        reason_of_stroke_complication: "",
         emr_type: ""
       })
     };
@@ -12331,18 +12590,126 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       medications: {},
       user: {},
       form: new Form({
-        id: '',
-        type: '',
-        comment: '',
-        unit: '',
-        nurse: '',
-        injection: ''
+        id: "",
+        type: "",
+        comment: "",
+        unit: "",
+        nurse: "",
+        injection: ""
       })
     };
   },
@@ -12357,40 +12724,40 @@ __webpack_require__.r(__webpack_exports__);
         _this.medications = response.data;
       }); //  axios.get('api/uploadpham').then(({data}) => (this.medications = data));
 
-      axios.get('api/user').then(function (response) {
+      axios.get("api/user").then(function (response) {
         console.log(response.data);
         _this.user = response.data;
       });
     },
     editModal: function editModal(medication) {
-      $('#editmedications').modal('show');
+      $("#editmedications").modal("show");
       this.form.fill(medication);
     },
     updatemedications: function updatemedications() {
-      $('.updatemedications').html('<i class="fa fa-spin fa-spinner"></i>');
-      this.form.put('api/uploadpham/' + this.form.id).then(function () {
-        Fire.$emit('afterAction');
-        $('#editmedications').modal('hide');
+      $(".updatemedications").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.put("api/uploadpham/" + this.form.id).then(function () {
+        Fire.$emit("afterAction");
+        $("#editmedications").modal("hide");
         toast.fire({
-          type: 'success',
-          title: 'Cập nhật thuốc thành công!'
+          type: "success",
+          title: "Cập nhật thuốc thành công!"
         });
-        $('.updatemedications').html('Update Lab Result');
+        $(".updatemedications").html("Update Lab Result");
       })["catch"](function () {
         toast.fire({
-          type: 'error',
-          title: 'Dữ liệu nhập vào chưa đúng!'
+          type: "error",
+          title: "Dữ liệu nhập vào chưa đúng!"
         });
-        $('.updatemedications').html('Update Lab Result');
+        $(".updatemedications").html("Update Lab Result");
       });
     }
   },
   mounted: function mounted() {
     var _this2 = this;
 
-    console.log('Component mounted.');
+    console.log("Component mounted.");
     this.LoadLabresult();
-    Fire.$on('afterAction', function () {
+    Fire.$on("afterAction", function () {
       _this2.LoadLabresult();
     });
   }
@@ -14706,16 +15073,125 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       surgeries: {},
       form: new Form({
-        id: '',
-        patient_id: '',
-        operations: '',
-        date_of_operation: '',
-        surgeon: ''
+        id: "",
+        patient_id: "",
+        operations: "",
+        date_of_operation: "",
+        surgeon: ""
       })
     };
   },
@@ -14735,69 +15211,69 @@ __webpack_require__.r(__webpack_exports__);
     //      axios.get('api/surgery').then(({data}) => (this.surgeries = data));
     // },
     editModal: function editModal(surgery) {
-      $('#editsurgery').modal('show');
+      $("#editsurgery").modal("show");
       this.form.fill(surgery);
     },
     deleteSurgery: function deleteSurgery(id) {
       var _this2 = this;
 
       swal.fire({
-        title: 'Bạn đã chắc chắn muốn xóa?',
+        title: "Bạn đã chắc chắn muốn xóa?",
         text: "Bạn sẽ không được phép hoàn tác sau khi thực hiện!",
-        type: 'warning',
+        type: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Đồng ý, hãy xóa!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Đồng ý, hãy xóa!"
       }).then(function (result) {
         //delete qury below
         if (result.value) {
           swal.fire({
-            position: 'center',
-            type: 'info',
-            title: 'Processing Delete',
+            position: "center",
+            type: "info",
+            title: "Processing Delete",
             showConfirmButton: false,
             timer: 1000
           });
 
-          _this2.form["delete"]('api/surgery/' + id).then(function () {
-            swal.fire('Đã xóa!', 'Đã xóa thành công.', 'success');
-            Fire.$emit('afterAction');
+          _this2.form["delete"]("api/surgery/" + id).then(function () {
+            swal.fire("Đã xóa!", "Đã xóa thành công.", "success");
+            Fire.$emit("afterAction");
           })["catch"](function () {
             swal.fire({
-              type: 'error',
-              title: 'Oops...',
-              text: 'Đã xảy ra sự cố!'
+              type: "error",
+              title: "Oops...",
+              text: "Đã xảy ra sự cố!"
             });
           });
         }
       });
     },
     updateSurgery: function updateSurgery() {
-      $('.updatesurgery').html('<i class="fa fa-spin fa-spinner"></i>');
-      this.form.put('api/surgery/' + this.form.id).then(function () {
-        Fire.$emit('afterAction');
-        $('#editsurgery').modal('hide');
+      $(".updatesurgery").html('<i class="fa fa-spin fa-spinner"></i>');
+      this.form.put("api/surgery/" + this.form.id).then(function () {
+        Fire.$emit("afterAction");
+        $("#editsurgery").modal("hide");
         toast.fire({
-          type: 'success',
-          title: 'Lịch sử phẫu thuật của bệnh nhân được cập nhật thành công!'
+          type: "success",
+          title: "Lịch sử phẫu thuật của bệnh nhân được cập nhật thành công!"
         });
-        $('.updatesurgery').html('Add Patient');
+        $(".updatesurgery").html("Add Patient");
       })["catch"](function () {
         toast.fire({
-          type: 'error',
-          title: 'Dữ liệu nhập vào chưa đúng!'
+          type: "error",
+          title: "Dữ liệu nhập vào chưa đúng!"
         });
-        $('.updatesurgery').html('Add Patient');
+        $(".updatesurgery").html("Add Patient");
       });
     }
   },
   mounted: function mounted() {
     var _this3 = this;
 
-    console.log('Component mounted.');
+    console.log("Component mounted.");
     this.LoadSurgeries();
-    Fire.$on('afterAction', function () {
+    Fire.$on("afterAction", function () {
       _this3.LoadSurgeries();
     });
   }
@@ -81516,6 +81992,226 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.searchBeforeProcedureText,
+                          expression: "searchBeforeProcedureText"
+                        }
+                      ],
+                      staticStyle: { width: "100%" },
+                      attrs: {
+                        placeholder: "Tìm bệnh theo bảng mã ICD-10",
+                        type: "text"
+                      },
+                      domProps: { value: _vm.searchBeforeProcedureText },
+                      on: {
+                        keyup: function($event) {
+                          return _vm.searchForBeforeProcedure()
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.searchBeforeProcedureText = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.id_before_procedure,
+                            expression: "form.id_before_procedure"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid": _vm.form.errors.has(
+                            "id_before_procedure"
+                          )
+                        },
+                        attrs: { name: "id_before_procedure" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.form,
+                              "id_before_procedure",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { disabled: "", selected: "", value: "" } },
+                          [_vm._v("Bảng mã ICD 10")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.searchBeforeProcedureArrs, function(
+                          searchBeforeProcedureArr
+                        ) {
+                          return _c(
+                            "option",
+                            {
+                              key: searchBeforeProcedureArr.id,
+                              domProps: { value: searchBeforeProcedureArr.id }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(searchBeforeProcedureArr.code) +
+                                  "\n                                    -\n                                    " +
+                                  _vm._s(searchBeforeProcedureArr.name) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "id_before_procedure" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.searchAfterProcedureText,
+                          expression: "searchAfterProcedureText"
+                        }
+                      ],
+                      staticStyle: { width: "100%" },
+                      attrs: {
+                        placeholder: "Tìm bệnh theo bảng mã ICD-10",
+                        type: "text"
+                      },
+                      domProps: { value: _vm.searchAfterProcedureText },
+                      on: {
+                        keyup: function($event) {
+                          return _vm.searchForAfterProcedure()
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.searchAfterProcedureText = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.id_after_procedure,
+                            expression: "form.id_after_procedure"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid": _vm.form.errors.has(
+                            "id_after_procedure"
+                          )
+                        },
+                        attrs: { name: "id_after_procedure" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.form,
+                              "id_after_procedure",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { disabled: "", selected: "", value: "" } },
+                          [_vm._v("Bảng mã ICD 10")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.searchAfterProcedureArrs, function(
+                          searchAfterProcedureArr
+                        ) {
+                          return _c(
+                            "option",
+                            {
+                              key: searchAfterProcedureArr.id,
+                              domProps: { value: searchAfterProcedureArr.id }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(searchAfterProcedureArr.code) +
+                                  "\n                                    -\n                                    " +
+                                  _vm._s(searchAfterProcedureArr.name) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "id_after_procedure" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
                 _c(
                   "div",
                   { staticClass: "form-group" },
@@ -81604,6 +82300,8 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
                 _c(
                   "div",
                   { staticClass: "form-group" },
@@ -81624,7 +82322,7 @@ var render = function() {
                       attrs: {
                         type: "text",
                         name: "surgeon",
-                        placeholder: "Bác sĩ phẫu thuật"
+                        placeholder: "Bác sĩ Phẫu thuật"
                       },
                       domProps: { value: _vm.form.surgeon },
                       on: {
@@ -81639,6 +82337,46 @@ var render = function() {
                     _vm._v(" "),
                     _c("has-error", {
                       attrs: { form: _vm.form, field: "surgeon" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.anesthetist,
+                          expression: "form.anesthetist"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has("anesthetist")
+                      },
+                      attrs: {
+                        type: "text",
+                        name: "anesthetist",
+                        placeholder: "Bác sĩ Gây mê"
+                      },
+                      domProps: { value: _vm.form.anesthetist },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "anesthetist", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "anesthetist" }
                     })
                   ],
                   1
@@ -81668,7 +82406,34 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("label", { attrs: { for: "" } }, [
+        _vm._v("Chẩn đoán trước phẫu thuật")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("label", { attrs: { for: "" } }, [_vm._v("Chẩn đoán sau phẫu thuật")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("label", { attrs: { for: "" } }, [_vm._v("Ê-kíp phẫu thuật")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -83512,7 +84277,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("tr", [
-                    _c("td", [
+                    _c("td", { attrs: { width: "50%" } }, [
                       _c(
                         "div",
                         { staticClass: "form-group" },
@@ -83881,51 +84646,209 @@ var render = function() {
                         1
                       )
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", { attrs: { width: "100%" } }, [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c("div", { attrs: { width: "100%" } }, [
+                        _c("div", [
+                          _c(
+                            "label",
+                            {
+                              attrs: { border: "1px solid black" },
+                              on: {
+                                click: function($event) {
+                                  _vm.isHiddenNoiKhoa = !_vm.isHiddenNoiKhoa
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                                Phần dành cho bệnh án Nội\n                                                Khoa\n                                            "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.isHiddenNoiKhoa
+                            ? _c(
+                                "h1",
+                                [
+                                  _c("textarea", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.note,
+                                        expression: "form.note"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.form.errors.has("note")
+                                    },
+                                    attrs: {
+                                      type: "text",
+                                      name: "note",
+                                      placeholder:
+                                        "Nội dung khám (ý thức, da niêm mạc, hệ thống mạch, tuyến giáp, vị trí, kích thước, số lượng, di động v.v...)",
+                                      cols: "10",
+                                      rows: "5"
+                                    },
+                                    domProps: { value: _vm.form.note },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.form,
+                                          "note",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    attrs: { form: _vm.form, field: "note" }
+                                  })
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "2" } }, [
+                      _c("div", [
+                        _c("div", [
+                          _c(
+                            "label",
+                            {
+                              attrs: { border: "1px solid black" },
+                              on: {
+                                click: function($event) {
+                                  _vm.isHidden = !_vm.isHidden
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                                Phần dành cho bệnh án Ngoại\n                                                Khoa\n                                            "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.isHidden
+                            ? _c(
+                                "h1",
+                                [
+                                  _c("textarea", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.note,
+                                        expression: "form.note"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.form.errors.has("note")
+                                    },
+                                    attrs: {
+                                      type: "text",
+                                      name: "note",
+                                      placeholder:
+                                        "Nội dung khám (ý thức, da niêm mạc, hệ thống mạch, tuyến giáp, vị trí, kích thước, số lượng, di động v.v...)",
+                                      cols: "10",
+                                      rows: "5"
+                                    },
+                                    domProps: { value: _vm.form.note },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.form,
+                                          "note",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    attrs: { form: _vm.form, field: "note" }
+                                  })
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.isHidden
+                            ? _c(
+                                "h1",
+                                [
+                                  _c("textarea", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.NgoaiKhoaNote,
+                                        expression:
+                                          "\n                                                        form.NgoaiKhoaNote\n                                                    "
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.form.errors.has(
+                                        "NgoaiKhoaNote"
+                                      )
+                                    },
+                                    attrs: {
+                                      type: "text",
+                                      name: "NgoaiKhoaNote",
+                                      placeholder: "Khám ngoại khoa",
+                                      cols: "10",
+                                      rows: "5"
+                                    },
+                                    domProps: { value: _vm.form.NgoaiKhoaNote },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.form,
+                                          "NgoaiKhoaNote",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    attrs: {
+                                      form: _vm.form,
+                                      field: "NgoaiKhoaNote"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        ])
+                      ])
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.note,
-                          expression: "form.note"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.form.errors.has("note")
-                      },
-                      attrs: {
-                        type: "text",
-                        name: "note",
-                        placeholder:
-                          "Nội dung khám (ý thức, da niêm mạc, hệ thống mạch, tuyến giáp, vị trí, kích thước, số lượng, di động v.v...)",
-                        cols: "10",
-                        rows: "5"
-                      },
-                      domProps: { value: _vm.form.note },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "note", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "note" }
-                    })
-                  ],
-                  1
-                ),
+                _c("br"),
                 _vm._v(" "),
                 _c("center", [
                   _c(
@@ -89964,7 +90887,116 @@ var render = function() {
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(" "),
-                  _vm._m(3),
+                  _c("tr", [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.reason_of_stroke_complication,
+                                  expression:
+                                    "\n                                                form.reason_of_stroke_complication\n                                            "
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has(
+                                  "reason_of_stroke_complication"
+                                )
+                              },
+                              attrs: { name: "reason_of_stroke_complication" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "reason_of_stroke_complication",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "",
+                                    disabled: "",
+                                    selected: ""
+                                  }
+                                },
+                                [_vm._v("Nguyên nhân")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "Do phẫu thuật" } },
+                                [
+                                  _vm._v(
+                                    "\n                                                1. Do phẫu thuật\n                                            "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "Do gây mê" } }, [
+                                _vm._v(
+                                  "\n                                                2. Do gây mê\n                                            "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "Do nhiễm khuẩn" } },
+                                [
+                                  _vm._v(
+                                    "\n                                                3. Do nhiễm khuẩn\n                                            "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "Khác" } }, [
+                                _vm._v(
+                                  "\n                                                4. Khác\n                                            "
+                                )
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.form,
+                              field: "reason_of_stroke_complication"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _vm._m(4),
                   _vm._v(" "),
                   _c("tr", [
                     _c("td", [
@@ -90485,7 +91517,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(4),
+                  _vm._m(5),
                   _vm._v(" "),
                   _c("tr", [
                     _c("td", { attrs: { colspan: "2" } }, [
@@ -90702,7 +91734,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(5),
+                  _vm._m(6),
                   _vm._v(" "),
                   _c("tr", [
                     _c("td", { attrs: { colspan: "2" } }, [
@@ -90869,7 +91901,7 @@ var render = function() {
                         "table",
                         { attrs: { width: "100%", border: "1px solid black" } },
                         [
-                          _vm._m(6),
+                          _vm._m(7),
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", [_vm._v(" - X - quang")]),
@@ -91239,6 +92271,18 @@ var staticRenderFns = [
     return _c("tr", [
       _c("td", { attrs: { colspan: "2" } }, [
         _c("b", [_vm._v("Bệnh kèm theo")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("label", { attrs: { for: "" } }, [
+        _vm._v(
+          "\n                                        Nguyễn nhân Tai biến/Biến\n                                        chứng"
+        )
       ])
     ])
   },
@@ -95402,8 +96446,6 @@ var render = function() {
                   _vm._v(" "),
                   _c("th", [_vm._v("Họ tên")]),
                   _vm._v(" "),
-                  _c("th", [_vm._v("Thông tin chỉ định")]),
-                  _vm._v(" "),
                   _c("th", [_vm._v("Ngày dùng thuốc")]),
                   _vm._v(" "),
                   _c("th", [_vm._v("Thông tin thuốc")]),
@@ -95423,13 +96465,13 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
-                          _vm._s(medication.patient.title) +
-                            " " +
-                            _vm._s(medication.patient.full_name)
+                          "\n                                " +
+                            _vm._s(medication.patient.title) +
+                            "\n                                " +
+                            _vm._s(medication.patient.full_name) +
+                            "\n                            "
                         )
                       ]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(medication.diagnose.diagnosis))]),
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
@@ -95438,11 +96480,23 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("td", [
-                        _vm._v(_vm._s(medication.type) + " "),
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(medication.type) +
+                            " "
+                        ),
                         _c("br"),
-                        _vm._v(" " + _vm._s(medication.unit) + " đơn vị "),
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(medication.unit) +
+                            " đơn vị "
+                        ),
                         _c("br"),
-                        _vm._v(" " + _vm._s(medication.comment))
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(medication.comment) +
+                            "\n                            "
+                        )
                       ]),
                       _vm._v(" "),
                       _vm.user.role == "pharm"
@@ -95568,7 +96622,11 @@ var render = function() {
                                             {
                                               attrs: { value: "Viên con nhộng" }
                                             },
-                                            [_vm._v("Viên con nhộng")]
+                                            [
+                                              _vm._v(
+                                                "Viên con\n                                                        nhộng"
+                                              )
+                                            ]
                                           ),
                                           _vm._v(" "),
                                           _c(
@@ -95578,7 +96636,11 @@ var render = function() {
                                                 value: "Vitamin tổng hợp"
                                               }
                                             },
-                                            [_vm._v("Vitamin tổng hợp")]
+                                            [
+                                              _vm._v(
+                                                "Vitamin tổng\n                                                        hợp"
+                                              )
+                                            ]
                                           ),
                                           _vm._v(" "),
                                           _c(
@@ -95745,7 +96807,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(
-                                    " Sửa chỉ định tiêm\n\n                        "
+                                    "\n                                            Sửa chỉ định tiêm\n\n                                            "
                                   ),
                                   _c("center", [
                                     _c(
@@ -95756,7 +96818,11 @@ var render = function() {
                                         staticStyle: { color: "#fff" },
                                         attrs: { type: "submit" }
                                       },
-                                      [_vm._v("Cập nhật kết quả xét nghiệm")]
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Cập nhật kết quả xét\n                                                    nghiệm\n                                                "
+                                        )
+                                      ]
                                     )
                                   ])
                                 ],
@@ -95779,8 +96845,6 @@ var render = function() {
                   _c("th", [_vm._v("Mã bệnh nhân")]),
                   _vm._v(" "),
                   _c("th", [_vm._v("Họ tên")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Thông tin chỉ định")]),
                   _vm._v(" "),
                   _c("th", [_vm._v("Ngày cấp thuốc")]),
                   _vm._v(" "),
@@ -95825,7 +96889,11 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Sửa kết quả xét nghiệm")]
+        [
+          _vm._v(
+            "\n                                            Sửa kết quả xét nghiệm\n                                        "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -95853,7 +96921,11 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Đóng")]
+        [
+          _vm._v(
+            "\n                                            Đóng\n                                        "
+          )
+        ]
       )
     ])
   }
@@ -99470,21 +100542,19 @@ var render = function() {
                 [
                   _vm._l(_vm.surgeries, function(surgery) {
                     return _c("tr", { key: surgery.id }, [
-                      _c("td", [_vm._v(_vm._s(surgery.patient.unique_id))]),
+                      _c("td", [_vm._v(_vm._s(surgery.patient.id))]),
                       _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(surgery.patient.title) +
-                            " " +
-                            _vm._s(surgery.patient.full_name)
-                        )
-                      ]),
+                      _c("td", [_vm._v(_vm._s(surgery.patient.full_name))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(surgery.operations))]),
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
-                          _vm._s(_vm._f("humanDate")(surgery.date_of_operation))
+                          "\n                                " +
+                            _vm._s(
+                              _vm._f("humanDate")(surgery.date_of_operation)
+                            ) +
+                            "\n                            "
                         )
                       ]),
                       _vm._v(" "),
@@ -99567,7 +100637,9 @@ var render = function() {
                                     { staticClass: "form-group" },
                                     [
                                       _c("label", [
-                                        _vm._v("Sửa thông tin phẫu thuật")
+                                        _vm._v(
+                                          "Sửa thông tin phẫu\n                                                    thuật"
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c("textarea", {
@@ -99576,7 +100648,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.operations,
-                                            expression: "form.operations"
+                                            expression:
+                                              "\n                                                        form.operations\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -99624,7 +100697,9 @@ var render = function() {
                                     { staticClass: "form-group" },
                                     [
                                       _c("label", [
-                                        _vm._v("Sửa ngày phẫu thuật")
+                                        _vm._v(
+                                          "Sửa ngày phẫu\n                                                    thuật"
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c("input", {
@@ -99633,7 +100708,8 @@ var render = function() {
                                             name: "model",
                                             rawName: "v-model",
                                             value: _vm.form.date_of_operation,
-                                            expression: "form.date_of_operation"
+                                            expression:
+                                              "\n                                                        form.date_of_operation\n                                                    "
                                           }
                                         ],
                                         staticClass: "form-control",
@@ -99679,7 +100755,9 @@ var render = function() {
                                     { staticClass: "form-group" },
                                     [
                                       _c("label", [
-                                        _vm._v("Sửa bác sĩ phẫu thuật")
+                                        _vm._v(
+                                          "Sửa bác sĩ phẫu\n                                                    thuật"
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c("input", {
@@ -99736,7 +100814,11 @@ var render = function() {
                                         staticStyle: { color: "#fff" },
                                         attrs: { type: "submit" }
                                       },
-                                      [_vm._v("Cập nhật lịch sử phẫu thuật")]
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Cập nhật lịch sử phẫu\n                                                    thuật\n                                                "
+                                        )
+                                      ]
                                     )
                                   ])
                                 ],
@@ -99799,7 +100881,11 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Sửa lịch sử phẫu thuật của bệnh nhân")]
+        [
+          _vm._v(
+            "\n                                            Sửa lịch sử phẫu thuật của bệnh\n                                            nhân\n                                        "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -99827,7 +100913,11 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Đóng")]
+        [
+          _vm._v(
+            "\n                                            Đóng\n                                        "
+          )
+        ]
       )
     ])
   },
@@ -116247,6 +117337,9 @@ Vue.component("example-component", __webpack_require__(/*! ./components/ExampleC
 
 var app = new Vue({
   el: "#app",
+  data: {
+    isHidden: false
+  },
   router: router // data: {
   //   search: ''
   // },

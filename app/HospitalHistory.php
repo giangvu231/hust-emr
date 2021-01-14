@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon;
 
 class HospitalHistory extends Model
 {
@@ -47,4 +48,10 @@ class HospitalHistory extends Model
    public function diagnose(){
         return $this->hasOne('App\Diagnose');
    }
+
+   public function getAgeAttribute()
+    {
+        // return Carbon::parse($this->attributes['date_admitted'])->age;
+        return Carbon::parse($this->attributes['date_admitted'])->diff(\Carbon\Carbon::now())->format('%y năm, %m tháng và %d ngày');
+    }
 }

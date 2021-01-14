@@ -14,6 +14,7 @@ use App\ImagingResult;
 use App\Treatment;
 use App\EmrSummary;
 use App\Emr;
+use App\SurgeryHistory;
 
 class PdfController extends Controller
 {
@@ -61,6 +62,8 @@ class PdfController extends Controller
         $vital = Vital::findOrFail($data->vital_id);
         $body = Diagnosishealth::findOrFail($data->diagnosishealth_id);
         $lab = LabResult::findOrFail($data->lab_id);
+        $imaging = ImagingResult::findOrFail($data->imaging_id);
+        $surgery = SurgeryHistory::findOrFail($data->surgery_id);
 
         $datetime = now();
         $datetime = str_replace(" ", "", $datetime);
@@ -84,6 +87,8 @@ class PdfController extends Controller
             'vital' => $vital,
             'body' => $body,
             'lab' => $lab,
+            'imaging' => $imaging,
+            'surgery' => $surgery,
 
             ])->setPaper('A4', 'Portrait');
         $pdf->save(public_path("pdf/" . $name . ".pdf"));

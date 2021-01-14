@@ -39,7 +39,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td width="50%">
                                         <div class="form-group">
                                             <input
                                                 v-model="form.pulse"
@@ -206,27 +206,109 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <tr width="100%">
+                                    <td colspan="2">
+                                        <div width="100%">
+                                            <div>
+                                                <label
+                                                    v-on:click="
+                                                        isHiddenNoiKhoa = !isHiddenNoiKhoa
+                                                    "
+                                                    border="1px solid black"
+                                                >
+                                                    Phần dành cho bệnh án Nội
+                                                    Khoa
+                                                </label>
+
+                                                <h1 v-if="isHiddenNoiKhoa">
+                                                    <textarea
+                                                        v-model="form.note"
+                                                        type="text"
+                                                        name="note"
+                                                        placeholder="Nội dung khám (ý thức, da niêm mạc, hệ thống mạch, tuyến giáp, vị trí, kích thước, số lượng, di động v.v...)"
+                                                        cols="10"
+                                                        rows="5"
+                                                        class="form-control"
+                                                        :class="{
+                                                            'is-invalid': form.errors.has(
+                                                                'note'
+                                                            )
+                                                        }"
+                                                    >
+                                                    </textarea>
+                                                    <has-error
+                                                        :form="form"
+                                                        field="note"
+                                                    ></has-error>
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div>
+                                            <div>
+                                                <label
+                                                    v-on:click="
+                                                        isHidden = !isHidden
+                                                    "
+                                                    border="1px solid black"
+                                                >
+                                                    Phần dành cho bệnh án Ngoại
+                                                    Khoa
+                                                </label>
+                                                <h1 v-if="isHidden">
+                                                    <textarea
+                                                        v-model="form.note"
+                                                        type="text"
+                                                        name="note"
+                                                        placeholder="Nội dung khám (ý thức, da niêm mạc, hệ thống mạch, tuyến giáp, vị trí, kích thước, số lượng, di động v.v...)"
+                                                        cols="10"
+                                                        rows="5"
+                                                        class="form-control"
+                                                        :class="{
+                                                            'is-invalid': form.errors.has(
+                                                                'note'
+                                                            )
+                                                        }"
+                                                    >
+                                                    </textarea>
+                                                    <has-error
+                                                        :form="form"
+                                                        field="note"
+                                                    ></has-error>
+                                                </h1>
+                                                <h1 v-if="isHidden">
+                                                    <textarea
+                                                        v-model="
+                                                            form.NgoaiKhoaNote
+                                                        "
+                                                        type="text"
+                                                        name="NgoaiKhoaNote"
+                                                        placeholder="Khám ngoại khoa"
+                                                        cols="10"
+                                                        rows="5"
+                                                        class="form-control"
+                                                        :class="{
+                                                            'is-invalid': form.errors.has(
+                                                                'NgoaiKhoaNote'
+                                                            )
+                                                        }"
+                                                    >
+                                                    </textarea>
+                                                    <has-error
+                                                        :form="form"
+                                                        field="NgoaiKhoaNote"
+                                                    ></has-error>
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
                             </table>
 
-                            <div class="form-group">
-                                <textarea
-                                    v-model="form.note"
-                                    type="text"
-                                    name="note"
-                                    placeholder="Nội dung khám (ý thức, da niêm mạc, hệ thống mạch, tuyến giáp, vị trí, kích thước, số lượng, di động v.v...)"
-                                    cols="10"
-                                    rows="5"
-                                    class="form-control"
-                                    :class="{
-                                        'is-invalid': form.errors.has('note')
-                                    }"
-                                >
-                                </textarea>
-                                <has-error
-                                    :form="form"
-                                    field="note"
-                                ></has-error>
-                            </div>
+                            <br />
                             <center>
                                 <button
                                     type="submit"
@@ -248,6 +330,8 @@
 export default {
     data() {
         return {
+            isHidden: false,
+            isHiddenNoiKhoa: false,
             patients: {},
             form: new Form({
                 patient_id: "",
@@ -258,6 +342,8 @@ export default {
                 pulse: "",
                 blood_group: "",
                 blood_type: "",
+                note: "",
+                NgoaiKhoaNote: "",
                 immunization: []
             })
         };

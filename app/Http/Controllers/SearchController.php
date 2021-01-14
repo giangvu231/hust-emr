@@ -14,6 +14,7 @@ use App\LabOrder;
 use App\Imaging;
 use App\Treatment;
 use App\HospitalHistory;
+use App\SurgeryHistory;
 
 class SearchController extends Controller
 {

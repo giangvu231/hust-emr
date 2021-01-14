@@ -310,6 +310,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
+            <router-link to="/add-surgery" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+              Chỉ định phẫu thuật
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/surgery" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+              Kết quả phẫu thuật
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/give-injection" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+              Chỉ định tiêm
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
             <router-link to="/add-treatment" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>

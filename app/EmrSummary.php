@@ -54,6 +54,8 @@ class EmrSummary extends Model
         'other_count',
         'total_count',
 
+        'reason_of_stroke_complication',
+
         'emr_type',
     ];
 

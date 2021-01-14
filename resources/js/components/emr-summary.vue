@@ -340,6 +340,54 @@
                                 </tr>
                                 <br />
                                 <tr>
+                                    <td>
+                                        <label for="">
+                                            Nguyễn nhân Tai biến/Biến
+                                            chứng</label
+                                        >
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <select
+                                                v-model="
+                                                    form.reason_of_stroke_complication
+                                                "
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'reason_of_stroke_complication'
+                                                    )
+                                                }"
+                                                name="reason_of_stroke_complication"
+                                            >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                    >Nguyên nhân</option
+                                                >
+                                                <option value="Do phẫu thuật">
+                                                    1. Do phẫu thuật
+                                                </option>
+                                                <option value="Do gây mê">
+                                                    2. Do gây mê
+                                                </option>
+                                                <option value="Do nhiễm khuẩn">
+                                                    3. Do nhiễm khuẩn
+                                                </option>
+                                                <option value="Khác">
+                                                    4. Khác
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="reason_of_stroke_complication"
+                                            ></has-error>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <br />
+                                <tr>
                                     <td width="50%">Kết quả điều trị</td>
                                     <td>Giải phẫu bệnh (khi có sinh thiết)</td>
                                 </tr>
@@ -966,6 +1014,8 @@ export default {
                 lab_count: "",
                 other_count: "",
                 total_count: "",
+
+                reason_of_stroke_complication: "",
 
                 emr_type: ""
             })
