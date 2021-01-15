@@ -61,11 +61,10 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'unique_id' => 'required | unique:add_patients',
-            'pid' => 'required | unique:add_patients',
-
+            'unique_id' => 'required',
+            'pid' => 'required',
             'full_name' => 'required | string | max:191',
-            'email' => 'required | string | email | max:191 | unique:add_patients',
+            'email' => 'required | string | email | max:191',
             'title' => 'required',
             'phone_number' => 'required',
 
@@ -81,17 +80,23 @@ class PatientController extends Controller
             'patient_id' => $data->id,
         ]);
 
-        $job = Job::findOrFail($data->job_id);
-        addPatient::where('job_id', $job->id)->update([
-            'job_code' => $job->code,
-            'job_name' => $job->name,
-        ]);
+        if ( $data->job_id ) {
+            $job = Job::findOrFail($data->job_id);
+            addPatient::where('job_id', $job->id)->update([
+                'job_code' => $job->code,
+                'job_name' => $job->name,
+            ]);
+        };
 
-        $race = Race::findOrFail($data->race_id);
-        addPatient::where('race_id', $race->id)->update([
-            'race_code' => $race->code,
-            'race_name' => $race->name,
-        ]);
+        if ($data->race_id) {
+            $race = Race::findOrFail($data->race_id);
+            addPatient::where('race_id', $race->id)->update([
+                'race_code' => $race->code,
+                'race_name' => $race->name,
+            ]);
+        };
+
+        if ($)
 
         $city = City::findOrFail($data->city_id);
         addPatient::where('city_id', $city->id)->update([

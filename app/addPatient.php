@@ -21,19 +21,19 @@ class addPatient extends Model
         'occupation',
         'sex',
         'dob',
-        'role',
+        // 'role',
         'religion',
         'nationality',
         'home_address',
+        'work_address',
         'place_of_birth',
         'marital_status',
-        'home_next_of_kin',
-        'phone_next_of_kin',
         'name_next_of_kin',
-        'work_address',
+        'phone_next_of_kin',
+        'home_next_of_kin',
         'type_of_object',
         'race',
-        'foreign',
+        // 'foreign',
         'health_insurance_id',
         'health_insurance_date',
         'job_id',
@@ -51,7 +51,6 @@ class addPatient extends Model
         'nation_id',
         'nation_code',
         'nation_name',
-        'username'
     ];
 
     public function emrs()
