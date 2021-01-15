@@ -96,25 +96,31 @@ class PatientController extends Controller
             ]);
         };
 
-        if ($)
+        if ($data->city_id) {
+            $city = City::findOrFail($data->city_id);
+            addPatient::where('city_id', $city->id)->update([
+                'city_code' => $city->code,
+                'city_name' => $city->name,
+            ]);
+        };
 
-        $city = City::findOrFail($data->city_id);
-        addPatient::where('city_id', $city->id)->update([
-            'city_code' => $city->code,
-            'city_name' => $city->name,
-        ]);
 
-        $district = District::findOrFail($data->district_id);
-        addPatient::where('district_id', $district->id)->update([
-            'district_code' => $district->code,
-            'district_name' => $district->name,
-        ]);
+        if ($data->district_id) {
+            $district = District::findOrFail($data->district_id);
+            addPatient::where('district_id', $district->id)->update([
+                'district_code' => $district->code,
+                'district_name' => $district->name,
+            ]);
+        };
 
-        $nation = Nation::findOrFail($data->nation_id);
-        addPatient::where('nation_id', $nation->id)->update([
-            'nation_code' => $nation->code,
-            'nation_name' => $nation->name,
-        ]);
+        if ($data->nation_id) {
+            $nation = Nation::findOrFail($data->nation_id);
+            addPatient::where('nation_id', $nation->id)->update([
+                'nation_code' => $nation->code,
+                'nation_name' => $nation->name,
+            ]);
+        };
+
 
         return response()->json(['data' => $data], 200);
     }
