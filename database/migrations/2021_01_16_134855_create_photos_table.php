@@ -15,7 +15,6 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('patient_id');
             $table->string('unique_id');
             $table->string('url');
             $table->timestamps();

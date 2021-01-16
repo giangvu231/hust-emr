@@ -8773,7 +8773,579 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8889,12 +9461,14 @@ __webpack_require__.r(__webpack_exports__);
       $.each(this.photos, function (key, photo) {
         formData.append("photos[".concat(key, "]"), photo);
       });
-      axios.post("image_upload", formData, {
+      axios.post("image_upload/" + this.form.unique_id, formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
       }).then(function (response) {
-        console.log(response);
+        swal.fire("Upload ảnh", "Upload ảnh thành công.", "success");
+        Fire.$emit("afterAction");
+        $("#uploadPicture").modal("hide");
       });
     },
     fakeData: function fakeData() {// axios.get("api/emr-mngt").then(res => console.log(res));
@@ -8929,755 +9503,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     uploadPictureModal: function uploadPictureModal(patient) {
       $("#uploadPicture").modal("show");
-    },
-    deletePatient: function deletePatient(id) {
-      var _this3 = this;
-
-      swal.fire({
-        title: "Bạn đã chắc chắn muốn xóa?",
-        text: "Bạn sẽ không được phép hoàn tác sau khi thực hiện!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Đồng ý, hãy xóa!"
-      }).then(function (result) {
-        //delete qury below
-        if (result.value) {
-          swal.fire({
-            position: "center",
-            type: "info",
-            title: "Đang xóa",
-            showConfirmButton: false,
-            timer: 1000
-          });
-
-          _this3.form["delete"]("api/patient/" + id).then(function () {
-            swal.fire("Đã xóa!", "Đã xóa thành công.", "success");
-            Fire.$emit("afterAction");
-          })["catch"](function () {
-            swal.fire({
-              type: "error",
-              title: "Oops...",
-              text: "Đã xảy ra sự cố!"
-            });
-          });
-        }
-      });
-    },
-    updatePatient: function updatePatient() {
-      $(".updatepatient").html('<i class="fa fa-spin fa-spinner"></i>');
-      this.form.put("api/patient/" + this.form.id).then(function () {
-        Fire.$emit("afterAction");
-        $("#editpatient").modal("hide");
-        toast.fire({
-          type: "success",
-          title: "Lý lịch của bệnh nhân được cập nhật thành công!"
-        });
-        $(".updatepatient").html("Update Patient");
-      })["catch"](function () {
-        toast.fire({
-          type: "error",
-          title: "Dữ liệu nhập vào chưa đúng!"
-        });
-        $(".updatepatient").html("Update Patient");
-      });
-    },
-    pdfExport: function pdfExport() {
-      var _this4 = this;
-
-      axios.get("/pdf_export").then(function (response) {
-        window.open("/pdf_export/");
-      })["catch"](function (error) {
-        _this4.errors = "Lỗi in";
-      });
-    },
-    vitalPDF: function vitalPDF(id) {
-      var _this5 = this;
-
-      axios.get("/vital_pdf_export/" + id).then(function (response) {
-        window.open("/vital_pdf_export/" + id);
-      })["catch"](function (error) {
-        _this5.errors = "Lỗi in";
-      });
-    },
-    addPatientPDF: function addPatientPDF(id) {
-      var _this6 = this;
-
-      axios.get("/add_patient_pdf_export/" + id).then(function (response) {
-        window.open("/add_patient_pdf_export/" + id);
-      })["catch"](function (error) {
-        _this6.errors = "Lỗi in";
-      });
-    },
-    xmlExport: function xmlExport(id) {
-      axios.get("/xml_export/" + id).then(function (response) {
-        toast.fire({
-          type: "success",
-          title: "Xuất XML thành công!"
-        });
-      })["catch"](function (err) {
-        toast.fire({
-          type: "error",
-          title: "Xuất dữ liệu thất bại!"
-        });
-      });
-    }
-  },
-  mounted: function mounted() {
-    var _this7 = this;
-
-    console.log("Component mounted."); // this.loading = true;
-
-    this.loadPatients();
-    this.fakeData();
-    Fire.$on("afterAction", function () {
-      _this7.loadPatients();
-    });
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/emr-summary.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/emr-summary.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-=======
->>>>>>> 2348fb1b76d182595e3597815d7f9d1182ec573d
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      patients: {},
-      search: "",
-      form: new Form({
-        id: "",
-        unique_id: "PID" + Math.floor(Math.random() * 10000000000 + 1),
-        title: "",
-        full_name: "",
-        email: "",
-        phone_number: "",
-        occupation: "",
-        sex: "",
-        dob: "",
-        religion: "",
-        nationality: "",
-        state_of_origin: "",
-        home_address: "",
-        place_of_birth: "",
-        marital_status: "",
-        home_next_of_kin: "",
-        phone_next_of_kin: ""
-      })
-    };
-  },
-  methods: {
-    fakeData: function fakeData() {// axios.get("api/emr-mngt").then(res => console.log(res));
-    },
-    loadPatients: function loadPatients() {
-      var _this = this;
-
-      // this.loading = true;
-      axios.get("api/patient").then(function (response) {
-        setTimeout(function () {
-          NProgress.done();
-        }, 1000);
-        _this.patients = response.data;
-      });
-    },
-    searchit: function searchit() {
-      var _this2 = this;
-
-      var query = this.search;
-      axios.get("api/findPatient?q=" + query).then(function (data) {
-        console.log(data.data.data);
-        _this2.patients = data.data.data;
-      })["catch"](function () {});
-    },
-    editModal: function editModal(patient) {
-      $("#editpatient").modal("show");
-      this.form.fill(patient);
-    },
-    showModel: function showModel(patient) {
-      $("#" + patient.unique_id).modal("show");
       this.form.fill(patient);
     },
     deletePatient: function deletePatient(id) {

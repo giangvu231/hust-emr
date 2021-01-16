@@ -100,6 +100,11 @@ class addPatient extends Model
     public function emrsummary(){
         return $this->hasMany('App\EmrSummary');
     }
+
+    public function photos(){
+        return $this->hasMany('App\Photo', 'unique_id', 'unique_id');
+    }
+    
     /**
      * Accessor for Age.
      */

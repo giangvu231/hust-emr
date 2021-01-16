@@ -1357,15 +1357,17 @@ export default {
             let formData = new FormData();
 
             $.each(this.photos, (key, photo) => {
-                formData.append(`photos[${key}]`, photo)
-            })
-            
+                formData.append(`photos[${key}]`, photo);
+            });
+
             axios
-                .post("image_upload", formData, {
+                .post("image_upload/" + this.form.unique_id, formData, {
                     headers: { "Content-Type": "multipart/form-data" }
                 })
                 .then(response => {
-                    console.log(response);
+                    swal.fire("Upload ảnh", "Upload ảnh thành công.", "success");
+                    Fire.$emit("afterAction");
+                    $("#uploadPicture").modal("hide");
                 });
         },
         fakeData() {
@@ -1400,6 +1402,7 @@ export default {
         },
         uploadPictureModal(patient) {
             $("#uploadPicture").modal("show");
+            this.form.fill(patient);
         },
         deletePatient(id) {
             swal.fire({
