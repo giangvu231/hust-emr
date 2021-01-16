@@ -29,6 +29,8 @@ Route::get('add_patient_pdf_export/{id}', 'PdfController@addPatientPDF');
 
 Route::get('xml_export/{id}', 'XMLController@index');
 
+Route::post('/image_upload', 'PhotoController@store');
+
 Route::get('/{vue_capture?}', function () {
     return view('layouts.master');
 })->where('vue_capture', '[\/\w\.-]*')->middleware('auth');

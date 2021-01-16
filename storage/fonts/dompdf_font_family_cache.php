@@ -79,8 +79,8 @@
   ),
   'times new roman' => array(
     'normal' => $fontDir . '/times-new-roman-normal_d8e4b2a649ffa20064f51caee8b2c9fb',
-    'bold' => $fontDir . '/times-new-roman-bold_54fd7a35718ba0c015b6b6ae175f43a7',
-    'italic' => $fontDir . '/times-new-roman-italic_be38f1ff6b5c38a62b012f5b0f89e13e',
-    'bold_italic' => $fontDir . '/times-new-roman-bold-italic_6bc3ba04e310acaef726e1ca9c5807d7',
+    'bold' => $fontDir . '/times-new-roman-bold_55a1248b560b98db314c92aabb55bbbd',
+    'italic' => $fontDir . '/times-new-roman-italic_a6e1758e2219a9ed519fe7e9ff84d7da',
+    'bold_italic' => $fontDir . '/times-new-roman-bold-italic_25e8440c788f4a3d524510842051de08',
   ),
 ) ?>

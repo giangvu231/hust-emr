@@ -696,7 +696,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <button
                                                 @click="editModal(patient)"
                                                 class="text-primary"
@@ -704,7 +704,7 @@
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <button
                                                 @click="
                                                     deletePatient(patient.id)
@@ -714,13 +714,25 @@
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <button
                                                 @click="xmlExport(patient.id)"
                                                 class="text-primary"
                                             >
                                                 <i
                                                     class="fas fa-file-export"
+                                                ></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <button
+                                                @click="
+                                                    uploadPictureModal(patient)
+                                                "
+                                                class="text-primary"
+                                            >
+                                                <i
+                                                    class="fas fa-file-image"
                                                 ></i>
                                             </button>
                                         </div>
@@ -1211,6 +1223,73 @@
                                     </div>
                                 </div>
                             </div>
+                            <div
+                                class="modal fade"
+                                id="uploadPicture"
+                                tabindex="-1"
+                                role="dialog"
+                                aria-labelledby="biodataTitle"
+                                aria-hidden="true"
+                            >
+                                <div
+                                    class="modal-dialog modal-dialog-centered"
+                                    role="document"
+                                >
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <!-- <h5 class="modal-title" id="exampleModalLongTitle">Patient Biodata</h5> -->
+                                            <h5
+                                                class="modal-title"
+                                                id="exampleModalLongTitle"
+                                            >
+                                                Hình ảnh
+                                            </h5>
+                                            <button
+                                                type="button"
+                                                class="close"
+                                                data-dismiss="modal"
+                                                aria-label="Close"
+                                            >
+                                                <span aria-hidden="true"
+                                                    >&times;</span
+                                                >
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form @submit.prevent="uploadImage">
+                                                <div class="form-group">
+                                                    <!-- <label>Vui lòng chọn hình ảnh</label> -->
+                                                    <input
+                                                        type="file"
+                                                        @change="selectFile"
+                                                        name="images[]"
+                                                        accept="image/*"
+                                                        multiple
+                                                    />
+                                                </div>
+                                                <center>
+                                                    <button
+                                                        type="submit"
+                                                        class="updatepatient btn-block btn btn-info"
+                                                        style="color:#fff;"
+                                                    >
+                                                        Cập nhật hình ảnh
+                                                    </button>
+                                                </center>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button
+                                                type="button"
+                                                class="btn btn-secondary"
+                                                data-dismiss="modal"
+                                            >
+                                                Đóng
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tbody>
                         <tfoot>
                             <tr>
@@ -1248,6 +1327,7 @@ export default {
         return {
             patients: {},
             search: "",
+            photos: null,
             form: new Form({
                 id: "",
                 unique_id: "PID" + Math.floor(Math.random() * 10000000000 + 1),
@@ -1270,6 +1350,24 @@ export default {
         };
     },
     methods: {
+        selectFile(event) {
+            this.photos = event.target.files;
+        },
+        uploadImage() {
+            let formData = new FormData();
+
+            $.each(this.photos, (key, photo) => {
+                formData.append(`photos[${key}]`, photo)
+            })
+            
+            axios
+                .post("image_upload", formData, {
+                    headers: { "Content-Type": "multipart/form-data" }
+                })
+                .then(response => {
+                    console.log(response);
+                });
+        },
         fakeData() {
             // axios.get("api/emr-mngt").then(res => console.log(res));
         },
@@ -1299,6 +1397,9 @@ export default {
         showModel(patient) {
             $("#" + patient.unique_id).modal("show");
             this.form.fill(patient);
+        },
+        uploadPictureModal(patient) {
+            $("#uploadPicture").modal("show");
         },
         deletePatient(id) {
             swal.fire({

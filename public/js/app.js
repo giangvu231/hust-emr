@@ -8660,11 +8660,91 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       patients: {},
       search: "",
+      photos: null,
       form: new Form({
         id: "",
         unique_id: "PID" + Math.floor(Math.random() * 10000000000 + 1),
@@ -8687,6 +8767,22 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    selectFile: function selectFile(event) {
+      this.photos = event.target.files;
+    },
+    uploadImage: function uploadImage() {
+      var formData = new FormData();
+      $.each(this.photos, function (key, photo) {
+        formData.append("photos[".concat(key, "]"), photo);
+      });
+      axios.post("image_upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      }).then(function (response) {
+        console.log(response);
+      });
+    },
     fakeData: function fakeData() {// axios.get("api/emr-mngt").then(res => console.log(res));
     },
     loadPatients: function loadPatients() {
@@ -8716,6 +8812,9 @@ __webpack_require__.r(__webpack_exports__);
     showModel: function showModel(patient) {
       $("#" + patient.unique_id).modal("show");
       this.form.fill(patient);
+    },
+    uploadPictureModal: function uploadPictureModal(patient) {
+      $("#uploadPicture").modal("show");
     },
     deletePatient: function deletePatient(id) {
       var _this3 = this;
@@ -88512,7 +88611,7 @@ var render = function() {
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-sm-4" }, [
+                            _c("div", { staticClass: "col-sm-3" }, [
                               _c(
                                 "button",
                                 {
@@ -88527,7 +88626,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "col-sm-4" }, [
+                            _c("div", { staticClass: "col-sm-3" }, [
                               _c(
                                 "button",
                                 {
@@ -88542,7 +88641,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "col-sm-4" }, [
+                            _c("div", { staticClass: "col-sm-3" }, [
                               _c(
                                 "button",
                                 {
@@ -88554,6 +88653,21 @@ var render = function() {
                                   }
                                 },
                                 [_c("i", { staticClass: "fas fa-file-export" })]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-sm-3" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "text-primary",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.uploadPictureModal(patient)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fas fa-file-image" })]
                               )
                             ])
                           ])
@@ -89686,12 +89800,87 @@ var render = function() {
                           ]
                         )
                       ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: {
+                          id: "uploadPicture",
+                          tabindex: "-1",
+                          role: "dialog",
+                          "aria-labelledby": "biodataTitle",
+                          "aria-hidden": "true"
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "modal-dialog modal-dialog-centered",
+                            attrs: { role: "document" }
+                          },
+                          [
+                            _c("div", { staticClass: "modal-content" }, [
+                              _vm._m(22),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "modal-body" }, [
+                                _c(
+                                  "form",
+                                  {
+                                    on: {
+                                      submit: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.uploadImage($event)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("div", { staticClass: "form-group" }, [
+                                      _c("input", {
+                                        attrs: {
+                                          type: "file",
+                                          name: "images[]",
+                                          accept: "image/*",
+                                          multiple: ""
+                                        },
+                                        on: { change: _vm.selectFile }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("center", [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "updatepatient btn-block btn btn-info",
+                                          staticStyle: { color: "#fff" },
+                                          attrs: { type: "submit" }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Cập nhật hình ảnh\n                                                "
+                                          )
+                                        ]
+                                      )
+                                    ])
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(23)
+                            ])
+                          ]
+                        )
+                      ]
                     )
                   ],
                   2
                 ),
                 _vm._v(" "),
-                _vm._m(22)
+                _vm._m(24)
               ]
             )
           ],
@@ -89994,6 +90183,54 @@ var staticRenderFns = [
         [
           _vm._v(
             "\n                                            Lý lịch bệnh nhân\n                                        "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [
+          _vm._v(
+            "\n                                            Đóng\n                                        "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
+        [
+          _vm._v(
+            "\n                                            Hình ảnh\n                                        "
           )
         ]
       ),
@@ -119578,8 +119815,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\emr-dev\emr-v.20.12.30\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\emr-dev\emr-v.20.12.30\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Work\Telemed\hust-emr\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Work\Telemed\hust-emr\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
