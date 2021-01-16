@@ -39,9 +39,9 @@ class SurgeryController extends Controller
         //
         $this->validate($request, [
             'patient_id' => 'required',
-            'operations' => 'required',
-            'date_of_operation' => 'required',
-            'surgeon' => 'required',
+            // 'operations' => 'required',
+            // 'date_of_operation' => 'required',
+            // 'surgeon' => 'required',
         ]);
         // $surgery = new SurgeryHistory;
         // $surgery->patient_id = $request->patient_id;
@@ -98,9 +98,9 @@ class SurgeryController extends Controller
 
         $this->validate($request, [
             'patient_id' => 'required',
-            'operations' => 'required',
-            'date_of_operation' => 'required',
-            'surgeon' => 'required',
+            // 'operations' => 'required',
+            // 'date_of_operation' => 'required',
+            // 'surgeon' => 'required',
         ]);
         $surgery->update($request->all());
     }

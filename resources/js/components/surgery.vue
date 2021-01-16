@@ -6,14 +6,13 @@
                 type="button"
                 class="btn btn-rounded btn-info"
                 style="color:#fff;"
-                >Thêm lịch sử phẫu thuật</router-link
+                >Thêm thông tin</router-link
             >
         </div>
         <br /><br />
         <div class="row justify-content-center">
             <div class="card" style="width:100%;">
                 <div class="card-header">
-                    <!-- <h3 class="card-title">Patients Surgery History</h3> -->
                     <h3 class="card-title">Lịch sử phẫu thuật</h3>
                 </div>
                 <!-- /.card-header -->
@@ -23,33 +22,136 @@
                         class="table table-bordered table-striped"
                     >
                         <thead>
-                            <!-- <tr>
-                  <th>Unique ID</th>
-                  <th>Name</th>
-                  <th>Operation Details</th>
-                  <th>Date of Operation</th>
-                  <th>Surgeon</th>
-                  <th>Action</th>
-                </tr> -->
-
                             <tr>
                                 <th>Mã bệnh nhân</th>
                                 <th>Họ tên</th>
-                                <th>Chi tiết phẫu thuật</th>
                                 <th>Ngày phẫu thuật</th>
                                 <th>Bác sĩ phẫu thuật</th>
+                                <th>Thông tin chi tiết</th>
                                 <th>Tác vụ</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="surgery in surgeries" :key="surgery.id">
-                                <td>{{ surgery.patient.id }}</td>
+                                <td>{{ surgery.patient.unique_id }}</td>
                                 <td>{{ surgery.patient.full_name }}</td>
-                                <td>{{ surgery.operations }}</td>
                                 <td>
                                     {{ surgery.date_of_operation | humanDate }}
                                 </td>
                                 <td>{{ surgery.surgeon }}</td>
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    data-toggle="modal"
+                                    :data-target="
+                                        '#' + surgery.patient.unique_id
+                                    "
+                                >
+                                    Bảng surgery
+                                </button>
+                                <div
+                                    class="modal fade"
+                                    :id="surgery.patient.unique_id"
+                                    tabindex="-1"
+                                    role="dialog"
+                                    aria-labelledby="biodataTitle"
+                                    aria-hidden="true"
+                                >
+                                    <div
+                                        class="modal-dialog modal-dialog-centered"
+                                        role="document"
+                                    >
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5
+                                                    class="modal-title"
+                                                    id="exampleModalLongTitle"
+                                                >
+                                                    Thông tin chi tiết
+                                                </h5>
+                                                <button
+                                                    type="button"
+                                                    class="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close"
+                                                >
+                                                    <span aria-hidden="true"
+                                                        >&times;</span
+                                                    >
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>
+                                                    <b>Bệnh nhân: </b>
+                                                    <br />
+                                                    {{
+                                                        surgery.patient
+                                                            .full_name
+                                                    }}
+                                                    -
+                                                    {{
+                                                        surgery.patient
+                                                            .unique_id
+                                                    }}
+                                                </p>
+                                                <p>
+                                                    <b
+                                                        >Thông tin phẫu thuật:
+                                                    </b>
+                                                    <br />
+                                                    {{ surgery.operations }}
+                                                </p>
+                                                <p>
+                                                    <b>Ngày phẫu thuật: </b>
+                                                    <br />
+                                                    {{
+                                                        surgery.date_of_operation
+                                                            | humanDate
+                                                    }}
+                                                </p>
+                                                <p>
+                                                    <b>Bác sỹ phẫu thuật: </b>
+                                                    <br />
+                                                    {{ surgery.surgeon }}
+                                                </p>
+                                                <p>
+                                                    <b>Bác sỹ gây mê: </b>
+                                                    <br />
+                                                    {{ surgery.anesthetist }}
+                                                </p>
+                                                <p>
+                                                    <b
+                                                        >Chẩn đoán trước phẫu
+                                                        thuật:
+                                                    </b>
+                                                    <br />
+                                                    {{
+                                                        surgery.icd10_before_procedure
+                                                    }}
+                                                </p>
+                                                <p>
+                                                    <b
+                                                        >Chẩn đoán sau phẫu
+                                                        thuật:
+                                                    </b>
+                                                    <br />
+                                                    {{
+                                                        surgery.icd10_after_procedure
+                                                    }}
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-secondary"
+                                                    data-dismiss="modal"
+                                                >
+                                                    Đóng
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <td>
                                     <div class="row">
                                         <div class="col-sm-6">
@@ -165,7 +267,6 @@
                                                     ></has-error>
                                                 </div>
                                                 <div class="form-group">
-                                                    <!-- <label>Edit Surgeon</label>                         -->
                                                     <label
                                                         >Sửa bác sĩ phẫu
                                                         thuật</label
@@ -227,9 +328,9 @@
                             <tr>
                                 <th>Mã bệnh nhân</th>
                                 <th>Họ tên</th>
-                                <th>Chi tiết phẫu thuật</th>
                                 <th>Ngày phẫu thuật</th>
                                 <th>Bác sĩ phẫu thuật</th>
+                                <th>Thông tin chi tiết</th>
                                 <th>Tác vụ</th>
                             </tr>
                         </tfoot>
@@ -252,21 +353,30 @@ export default {
                 patient_id: "",
                 operations: "",
                 date_of_operation: "",
-                surgeon: ""
+                surgeon: "",
+                anesthetist: "",
+                icd10_before_procedure: "",
+                code_before_procedure: "",
+                id_before_procedure: "",
+                icd10_after_procedure: "",
+                code_after_procedure: "",
+                id_after_procedure: ""
             })
         };
     },
     methods: {
-        LoadSurgeries() {
+        loadSurgeries() {
             // this.loading = true;
             axios.get("api/surgery").then(response => {
                 setTimeout(function() {
                     NProgress.done();
                 }, 1000);
-                this.staff = response.data;
+                // this.staff = response.data;
+                this.surgeries = response.data;
+                console.log(response);
             });
         },
-        // LoadSurgeries(){
+        // loadSurgeries(){
         //      axios.get('api/surgery').then(({data}) => (this.surgeries = data));
         // },
         editModal(surgery) {
@@ -337,9 +447,9 @@ export default {
     },
     mounted() {
         console.log("Component mounted.");
-        this.LoadSurgeries();
+        this.loadSurgeries();
         Fire.$on("afterAction", () => {
-            this.LoadSurgeries();
+            this.loadSurgeries();
         });
     }
 };

@@ -6,15 +6,14 @@
                 type="button"
                 class="btn btn-rounded btn-info"
                 style="color:#fff;"
-                >Add Vital</router-link
+                >Thêm thông tin</router-link
             >
         </div>
         <br /><br />
         <div class="row justify-content-center">
             <div class="card" style="width:100%;">
                 <div class="card-header">
-                    <!-- <h3 class="card-title">All Patients Vitals</h3> -->
-                    <h3 class="card-title">Danh sách bệnh án có sinh hiệu</h3>
+                    <h3 class="card-title">Danh sách bệnh nhân</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -23,17 +22,6 @@
                         class="table table-bordered table-striped"
                     >
                         <thead>
-                            <!-- <tr>
-                  <th>Unique ID</th>
-                  <th>Name</th>
-                  <th>Temperature</th>
-                  <th>Blood Pressure</th>
-                  <th>Height </th>
-                  <th>Weight</th>
-                  <th>Other Information</th>
-                  <th>Action</th>
-                </tr> -->
-
                             <tr>
                                 <th>Mã bệnh nhân</th>
                                 <th>Họ tên</th>
@@ -41,7 +29,7 @@
                                 <th>Huyết áp (mmHg)</th>
                                 <th>Chiều cao (cm)</th>
                                 <th>Cân nặng (kg)</th>
-                                <th>Các thông tin khác</th>
+                                <th>Thông tin khám bệnh</th>
                                 <th>Tác vụ</th>
                             </tr>
                         </thead>
@@ -49,11 +37,12 @@
                             <tr v-for="vital in vitals" :key="vital.id">
                                 <td>{{ vital.patient.unique_id }}</td>
                                 <td>
-                                    {{ vital.patient.title }}
                                     {{ vital.patient.full_name }}
                                 </td>
                                 <td>{{ vital.temperature }}</td>
-                                <td>{{ vital.blood_pressure }}</td>
+                                <td>
+                                    {{ vital.systolic }}/{{ vital.diastolic }}
+                                </td>
                                 <td>{{ vital.height }}</td>
                                 <td>{{ vital.weight }}</td>
                                 <td>
@@ -82,12 +71,11 @@
                                         >
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <!-- <h5 class="modal-title" id="exampleModalLongTitle">Other Information</h5> -->
                                                     <h5
                                                         class="modal-title"
                                                         id="exampleModalLongTitle"
                                                     >
-                                                        Các thông tin khác
+                                                        Thông tin khám bệnh
                                                     </h5>
                                                     <button
                                                         type="button"
@@ -101,48 +89,16 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <!-- <p><b>Blood Group: </b>{{vital.blood_group}}</p>
-                             <p><b>Blood Type(Rhesus Type): </b> {{vital.blood_type}}</p>
-                             <h4>Immunization Status</h4>
-                             <i>Immunization status consist of Small Pox, Yellow Fever, TAB, Tetanus, Poliomyelitis, Dysthera <br> The ones listed are positive</i>
-                             <p v-for="vite in vital.immunization" :key="vite"> <b>{{vite}}</b> </p> -->
-
                                                     <p>
                                                         <b>Nhóm máu: </b
                                                         >{{ vital.blood_group }}
                                                     </p>
                                                     <p>
-                                                        <b
-                                                            >Loại máu (Phân loại
-                                                            theo hệ thống
-                                                            Rhesus):
-                                                        </b>
-                                                        {{ vital.blood_type }}
+                                                        <b>Nội dung khám: </b
+                                                        >{{ vital.note }}
                                                     </p>
-                                                    <h4>
-                                                        Tình trạng tiêm chủng
-                                                    </h4>
-                                                    <i
-                                                        >Đã tiêm phòng: đậu mùa,
-                                                        sốt vàng, TAB, uốn ván,
-                                                        bại liệt, bạch hầu
-                                                        <br />
-                                                        Danh sách đã tiêm phòng
-                                                        bên dưới</i
-                                                    >
-                                                    <p
-                                                        v-for="vite in vital.immunization"
-                                                        :key="vite"
-                                                    >
-                                                        <b>{{ vite }}</b>
-                                                    </p>
-
-                                                    <!-- <div v-for="vite in vital.immunization" :key="vite">
-                                 <p v-if = vite[0] == ""> Positive </p>
-                             </div> -->
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                                                     <button
                                                         type="button"
                                                         class="btn btn-secondary"
@@ -191,12 +147,11 @@
                                 >
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <!-- <h5 class="modal-title" id="exampleModalLongTitle">Patient Vitals</h5> -->
                                             <h5
                                                 class="modal-title"
                                                 id="exampleModalLongTitle"
                                             >
-                                                Sinh hiệu bệnh nhân
+                                                Thông tin bệnh nhân
                                             </h5>
                                             <button
                                                 type="button"
@@ -217,7 +172,7 @@
                                                 <div class="form-group">
                                                     <!-- <label>Temperature</label>                        -->
                                                     <label
-                                                        >Thân nhiệt (°C)(</label
+                                                        >Thân nhiệt (°C)</label
                                                     >
                                                     <input
                                                         v-model="
@@ -225,7 +180,7 @@
                                                         "
                                                         type="text"
                                                         name="temperature"
-                                                        placeholder="Nhập nhiệt độ (°C)"
+                                                        placeholder="Thêm nhiệt độ (°C)"
                                                         class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
@@ -240,36 +195,13 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label
-                                                        >Huyết áp (mmHg)</label
-                                                    >
-                                                    <input
-                                                        v-model="
-                                                            form.blood_pressure
-                                                        "
-                                                        type="text"
-                                                        name="blood_pressure"
-                                                        placeholder="Nhập Huyết áp (mmHg)"
-                                                        class="form-control"
-                                                        :class="{
-                                                            'is-invalid': form.errors.has(
-                                                                'blood_pressure'
-                                                            )
-                                                        }"
-                                                    />
-                                                    <has-error
-                                                        :form="form"
-                                                        field="blood_pressure"
-                                                    ></has-error>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label
                                                         >Chiều cao (cm)</label
                                                     >
                                                     <input
                                                         v-model="form.height"
                                                         type="text"
                                                         name="height"
-                                                        placeholder="Nhập Chiều cao (cm)"
+                                                        placeholder="Thêm Chiều cao (cm)"
                                                         class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
@@ -288,7 +220,7 @@
                                                         v-model="form.weight"
                                                         type="text"
                                                         name="weight"
-                                                        placeholder="Nhập Cân nặng (kg)"
+                                                        placeholder="Thêm Cân nặng (kg)"
                                                         class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
@@ -303,14 +235,13 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label
-                                                        >Nhịp tim
-                                                        (nhịp/phút)</label
+                                                        >Mạch (lần/phút)</label
                                                     >
                                                     <input
                                                         v-model="form.pulse"
                                                         type="text"
                                                         name="pulse"
-                                                        placeholder="Nhập Nhịp tim (nhịp/phút)"
+                                                        placeholder="Thêm Mạch (lần/phút)"
                                                         class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
@@ -331,7 +262,7 @@
                                                         "
                                                         type="text"
                                                         name="blood_group"
-                                                        placeholder="Nhập nhóm máu (O, A, B, AB)"
+                                                        placeholder="Thêm nhóm máu (O, A, B, AB)"
                                                         class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
@@ -345,69 +276,105 @@
                                                     ></has-error>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Loại máu</label>
+                                                    <label
+                                                        >Huyết áp tâm thu
+                                                        (mmHg)</label
+                                                    >
                                                     <input
-                                                        v-model="
-                                                            form.blood_type
-                                                        "
+                                                        v-model="form.systolic"
                                                         type="text"
-                                                        name="blood_type"
-                                                        placeholder="Nhập loại máu (O+, O-, A+, A-, B+, B-, AB+, AB- )"
+                                                        name="systolic"
+                                                        placeholder="Thêm HA tâm thu (mmHg)"
                                                         class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
-                                                                'blood_type'
+                                                                'systolic'
                                                             )
                                                         }"
                                                     />
                                                     <has-error
                                                         :form="form"
-                                                        field="blood_type"
+                                                        field="systolic"
                                                     ></has-error>
                                                 </div>
                                                 <div class="form-group">
                                                     <label
-                                                        >Tình trạng tiêm
-                                                        chủng</label
+                                                        >Huyết áp tâm trương
+                                                        (mmHg)</label
                                                     >
-                                                    <br />
-                                                    <select
-                                                        v-model="
-                                                            form.immunization
-                                                        "
-                                                        class="form-control immunization"
-                                                        multiple
+                                                    <input
+                                                        v-model="form.diastolic"
+                                                        type="text"
+                                                        name="diastolic"
+                                                        placeholder="Thêm HA tâm trương (mmHg)"
+                                                        class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
-                                                                'immunization'
+                                                                'diastolic'
                                                             )
                                                         }"
-                                                        name="immunization[]"
-                                                    >
-                                                        <option value="Đậu mùa"
-                                                            >Đậu mùa</option
-                                                        >
-                                                        <option value="Sốt vàng"
-                                                            >Sốt vàng</option
-                                                        >
-                                                        <option value="TAB"
-                                                            >TAB</option
-                                                        >
-                                                        <option value="Uốn ván"
-                                                            >Uốn ván</option
-                                                        >
-                                                        <option value="Bại liệt"
-                                                            >Bại liệt</option
-                                                        >
-                                                        <option value="Bạch hầu"
-                                                            >Bạch hầu</option
-                                                        >
-                                                    </select>
+                                                    />
                                                     <has-error
                                                         :form="form"
-                                                        field="immunization"
+                                                        field="diastolic"
                                                     ></has-error>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for=""
+                                                        >Nội dung khám</label
+                                                    >
+                                                    <textarea
+                                                        v-model="form.note"
+                                                        type="text"
+                                                        name="note"
+                                                        placeholder="Nội dung khám (ý thức, da niêm mạc, hệ thống mạch, tuyến giáp, vị trí, kích thước, số lượng, di động v.v...)"
+                                                        cols="10"
+                                                        rows="5"
+                                                        class="form-control"
+                                                        :class="{
+                                                            'is-invalid': form.errors.has(
+                                                                'note'
+                                                            )
+                                                        }"
+                                                    >
+                                                    </textarea>
+                                                    <has-error
+                                                        :form="form"
+                                                        field="note"
+                                                    ></has-error>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        v-on:click="
+                                                            isHidden = !isHidden
+                                                        "
+                                                        >Phần dành cho Ngoại
+                                                        Khoa</label
+                                                    >
+                                                    <textarea
+                                                        v-if="isHidden"
+                                                        v-model="
+                                                            form.NgoaiKhoaNote
+                                                        "
+                                                        type="text"
+                                                        name="NgoaiKhoaNote"
+                                                        placeholder="Khám ngoại khoa"
+                                                        cols="10"
+                                                        rows="5"
+                                                        class="form-control"
+                                                        :class="{
+                                                            'is-invalid': form.errors.has(
+                                                                'NgoaiKhoaNote'
+                                                            )
+                                                        }"
+                                                    >
+                                                    </textarea>
+                                                    <has-error
+                                                        :form="form"
+                                                        field="NgoaiKhoaNote"
+                                                    ></has-error>
+                                                </div>
+
                                                 <center>
                                                     <!-- <button type="submit" class="updatevital btn-block btn btn-info" style="color:#fff;">Update Patient Vitals</button> -->
                                                     <button
@@ -415,14 +382,12 @@
                                                         class="updatevital btn-block btn btn-info"
                                                         style="color:#fff;"
                                                     >
-                                                        Cập nhật thông tin sinh
-                                                        hiệu
+                                                        Cập nhật thông tin!
                                                     </button>
                                                 </center>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                                             <button
                                                 type="button"
                                                 class="btn btn-secondary"
@@ -436,17 +401,6 @@
                             </div>
                         </tbody>
                         <tfoot>
-                            <!-- <tr>
-                  <th>Unique ID</th>
-                  <th>Name</th>
-                  <th>Temperature</th>
-                  <th>Blood Pressure</th>
-                  <th>Height </th>
-                  <th>Weight</th>
-                  <th>Other Information</th>
-                  <th>Action</th>
-                </tr> -->
-
                             <tr>
                                 <th>Mã bệnh nhân</th>
                                 <th>Họ tên</th>
@@ -454,7 +408,7 @@
                                 <th>Huyết áp (mmHg)</th>
                                 <th>Chiều cao (cm)</th>
                                 <th>Cân nặng (kg)</th>
-                                <th>Các thông tin khác</th>
+                                <th>Thông tin khám bệnh</th>
                                 <th>Tác vụ</th>
                             </tr>
                         </tfoot>
@@ -471,18 +425,18 @@
 export default {
     data() {
         return {
+            isHidden: false,
             vitals: {},
             form: new Form({
                 id: "",
                 patient_id: "",
                 temperature: "",
-                blood_pressure: "",
                 height: "",
                 weight: "",
                 pulse: "",
                 blood_group: "",
-                blood_type: "",
-                immunization: []
+                note: "",
+                NgoaiKhoaNote: ""
             })
         };
     },
