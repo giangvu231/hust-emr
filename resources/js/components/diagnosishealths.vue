@@ -2,18 +2,18 @@
     <div class="container">
         <div>
             <router-link
-                to="/add-hospital"
+                to="/add-diagnosishealth"
                 type="button"
                 class="btn btn-rounded btn-info"
                 style="color:#fff;"
-                >Thêm mới</router-link
+                >Thêm thông tin</router-link
             >
         </div>
         <br /><br />
         <div class="row justify-content-center">
             <div class="card" style="width:100%;">
                 <div class="card-header">
-                    <h3 class="card-title">Tiền sử của bệnh nhân</h3>
+                    <h3 class="card-title">Danh sách bệnh nhân</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -23,50 +23,35 @@
                     >
                         <thead>
                             <tr>
-                                <th>Mã bệnh án</th>
-                                <th>Họ tên</th>
-                                <th>Ngày đến viện</th>
-                                <th>Ngày nhập viện</th>
-                                <th>Ngày thanh toán</th>
-                                <th>Thu ngân</th>
-                                <th>Thông tin đầy đủ</th>
+                                <th>Mã BA</th>
+                                <th>Tên BN</th>
+                                <th>Thông tin khám bệnh</th>
                                 <th>Tác vụ</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr
-                                v-for="hospital in hospitals"
-                                :key="hospital.id"
+                                v-for="diagnosishealth in diagnosishealths"
+                                :key="diagnosishealth.id"
                             >
-                                <td>{{ hospital.patient.unique_id }}</td>
-                                <td>
-                                    {{ hospital.patient.full_name }}
-                                </td>
-                                <td>
-                                    {{ hospital.date_attented | humanDate }}
-                                </td>
-                                <td>
-                                    {{ hospital.date_admitted | humanDate }}
-                                </td>
-                                <td>
-                                    {{ hospital.date_discharged | humanDate }}
-                                </td>
-                                <td>{{ hospital.discharged_to }}</td>
+                                <td>{{ diagnosishealth.patient.unique_id }}</td>
+                                <td>{{ diagnosishealth.patient.full_name }}</td>
                                 <td>
                                     <button
                                         type="button"
                                         class="btn btn-primary"
                                         data-toggle="modal"
                                         :data-target="
-                                            '#' + hospital.patient.unique_id
+                                            '#' +
+                                                diagnosishealth.patient
+                                                    .unique_id
                                         "
                                     >
-                                        Hiển thị
+                                        Thông tin chi tiết
                                     </button>
-
                                     <div
                                         class="modal fade"
-                                        :id="hospital.patient.unique_id"
+                                        :id="diagnosishealth.patient.unique_id"
                                         tabindex="-1"
                                         role="dialog"
                                         aria-labelledby="biodataTitle"
@@ -82,7 +67,7 @@
                                                         class="modal-title"
                                                         id="exampleModalLongTitle"
                                                     >
-                                                        Thêm thông tin
+                                                        Thông tin chi tiết
                                                     </h5>
                                                     <button
                                                         type="button"
@@ -97,59 +82,105 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>
-                                                        <b>Ngày đến viện: </b
-                                                        >{{
-                                                            hospital.date_attented
-                                                                | humanDate
+                                                        <b>Bệnh nhân: </b>
+                                                        <br />
+                                                        {{
+                                                            diagnosishealth
+                                                                .patient
+                                                                .full_name
+                                                        }}
+                                                        -
+                                                        {{
+                                                            diagnosishealth
+                                                                .patient
+                                                                .unique_id
                                                         }}
                                                     </p>
                                                     <p>
-                                                        <b>Ngày nhập viện: </b
-                                                        >{{
-                                                            hospital.date_admitted
-                                                                | humanDate
+                                                        <b>Tuần hoàn: </b>
+                                                        <br />
+                                                        {{
+                                                            diagnosishealth.diagnosis_tuanhoan
                                                         }}
                                                     </p>
                                                     <p>
-                                                        <b>Nguyên nhân: </b
-                                                        >{{ hospital.reason }}
-                                                    </p>
-                                                    <p>
-                                                        <b>Vào ngày thứ: </b
-                                                        >{{ hospital.reason }}
-                                                    </p>
-                                                    <p>
-                                                        <b>Khoa đón tiếp: </b
-                                                        >{{
-                                                            hospital.admit_dept
+                                                        <b>Hô hấp: </b>
+                                                        <br />
+                                                        {{
+                                                            diagnosishealth.diagnosis_hohap
                                                         }}
                                                     </p>
                                                     <p>
-                                                        <b>Nơi giới thiệu: </b
-                                                        >{{
-                                                            hospital.refer_dept
+                                                        <b>Tiêu hóa: </b>
+                                                        <br />
+                                                        {{
+                                                            diagnosishealth.diagnosis_tieuhoa
                                                         }}
                                                     </p>
                                                     <p>
-                                                        <b>Bệnh sử: </b
-                                                        >{{ hospital.symptoms }}
-                                                    </p>
-                                                    <p>
-                                                        <b>Bệnh sử: </b
-                                                        >{{
-                                                            hospital.comment_box
+                                                        <b
+                                                            >Thận- Tiết niệu-
+                                                            Sinh dục:
+                                                        </b>
+                                                        <br />
+                                                        {{
+                                                            diagnosishealth.diagnosis_than_tietnieu_sinhduc
                                                         }}
                                                     </p>
                                                     <p>
-                                                        <b>Tiền sử bản thân: </b
-                                                        >{{
-                                                            hospital.disease_in
+                                                        <b>Thần Kinh: </b>
+                                                        <br />
+                                                        {{
+                                                            diagnosishealth.diagnosis_thankinh
                                                         }}
                                                     </p>
                                                     <p>
-                                                        <b>Tiền sử gia đình: </b
-                                                        >{{
-                                                            hospital.disease_out
+                                                        <b>Cơ- Xương- Khớp: </b>
+                                                        <br />
+                                                        {{
+                                                            diagnosishealth.diagnosis_coxuongkhop
+                                                        }}
+                                                    </p>
+                                                    <p>
+                                                        <b>Tai- Mũi- Họng: </b>
+                                                        <br />
+                                                        {{
+                                                            diagnosishealth.diagnosis_taimuihong
+                                                        }}
+                                                    </p>
+                                                    <p>
+                                                        <b>Răng- Hàm- Mặt: </b>
+                                                        <br />
+                                                        {{
+                                                            diagnosishealth.diagnosis_ranghammat
+                                                        }}
+                                                    </p>
+                                                    <p>
+                                                        <b>Mắt: </b>
+                                                        <br />
+                                                        {{
+                                                            diagnosishealth.mat
+                                                        }}
+                                                    </p>
+                                                    <p>
+                                                        <b
+                                                            >Nội tiết, dinh
+                                                            dưỡng và các bệnh lý
+                                                            khác:
+                                                        </b>
+                                                        <br />
+                                                        {{
+                                                            diagnosishealth.diagnosis_noitiet_dinhduong_khac
+                                                        }}
+                                                    </p>
+                                                    <p>
+                                                        <b
+                                                            >Các triệu chứng và
+                                                            hội chứng lâm sàng:
+                                                        </b>
+                                                        <br />
+                                                        {{
+                                                            diagnosishealth.diagnosis_syndrome
                                                         }}
                                                     </p>
                                                 </div>
@@ -170,7 +201,9 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <button
-                                                @click="editModal(hospital)"
+                                                @click="
+                                                    editModal(diagnosishealth)
+                                                "
                                                 class="text-primary"
                                             >
                                                 <i class="fa fa-edit"></i>
@@ -179,7 +212,9 @@
                                         <div class="col-sm-6">
                                             <button
                                                 @click="
-                                                    deleteHospital(hospital.id)
+                                                    deleteDiagnosishealth(
+                                                        diagnosishealth.id
+                                                    )
                                                 "
                                                 class="text-danger"
                                             >
@@ -189,10 +224,10 @@
                                     </div>
                                 </td>
                             </tr>
-                            <!--Biodata Modal -->
+                            <!--Diagnosishealth biodata Modal -->
                             <div
                                 class="modal fade"
-                                id="edithospital"
+                                id="editdiagnosishealth"
                                 tabindex="-1"
                                 role="dialog"
                                 aria-labelledby="biodataTitle"
@@ -204,12 +239,11 @@
                                 >
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <!-- <h5 class="modal-title" id="exampleModalLongTitle">Edit Patient Hospital History</h5> -->
                                             <h5
                                                 class="modal-title"
                                                 id="exampleModalLongTitle"
                                             >
-                                                Sửa lịch sử khám
+                                                Thông tin bệnh nhân
                                             </h5>
                                             <button
                                                 type="button"
@@ -224,282 +258,285 @@
                                         </div>
                                         <div class="modal-body">
                                             <form
-                                                @submit.prevent="updateHospital"
-                                                id="edit-hospital"
+                                                @submit.prevent="
+                                                    updateDiagnosishealth
+                                                "
+                                                id="add-diagnosishealth"
                                             >
                                                 <div class="form-group">
-                                                    <!-- <label>Enter Date Attented</label>                         -->
                                                     <label
-                                                        >Nhập ngày có mặt</label
+                                                        >Khám tuần hoàn</label
                                                     >
-                                                    <input
+                                                    <textarea
                                                         v-model="
-                                                            form.date_attented
+                                                            form.diagnosis_tuanhoan
                                                         "
-                                                        type="date"
-                                                        name="date_attented"
-                                                        placeholder="Enter Date Attented"
-                                                        class="form-control"
-                                                        :class="{
-                                                            'is-invalid': form.errors.has(
-                                                                'date_attented'
-                                                            )
-                                                        }"
-                                                    />
-                                                    <has-error
-                                                        :form="form"
-                                                        field="date_attented"
-                                                    ></has-error>
-                                                </div>
-                                                <div class="form-group">
-                                                    <!-- <label>Enter Date Admitted</label>   -->
-                                                    <label
-                                                        >Điền ngày nhập
-                                                        viện</label
-                                                    >
-
-                                                    <input
-                                                        v-model="
-                                                            form.date_admitted
-                                                        "
-                                                        type="date"
-                                                        name="date_admitted"
-                                                        placeholder="Enter Date Admitted"
-                                                        class="form-control"
-                                                        :class="{
-                                                            'is-invalid': form.errors.has(
-                                                                'date_admitted'
-                                                            )
-                                                        }"
-                                                    />
-                                                    <has-error
-                                                        :form="form"
-                                                        field="date_admitted"
-                                                    ></has-error>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Khoa đón tiếp</label>
-                                                    <select
-                                                        v-model="
-                                                            form.admit_dept
-                                                        "
-                                                        class="form-control"
-                                                        :class="{
-                                                            'is-invalid': form.errors.has(
-                                                                'admit_dept'
-                                                            )
-                                                        }"
-                                                        name="admit_dept"
-                                                    >
-                                                        <option
-                                                            value="nul"
-                                                            style="font-weight:700;"
-                                                            >Khoa đón
-                                                            tiếp</option
-                                                        >
-                                                        <option value="Cấp cứu"
-                                                            >1. Cấp cứu</option
-                                                        >
-                                                        <option value="KKB"
-                                                            >2. KKB</option
-                                                        >
-                                                        <option
-                                                            value="Khoa điều trị"
-                                                            >3. Khoa điều
-                                                            trị</option
-                                                        >
-                                                    </select>
-                                                    <has-error
-                                                        :form="form"
-                                                        field="admit_dept"
-                                                    ></has-error>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label
-                                                        >Nơi giới thiệu</label
-                                                    >
-                                                    <select
-                                                        v-model="
-                                                            form.refer_dept
-                                                        "
-                                                        class="form-control"
-                                                        :class="{
-                                                            'is-invalid': form.errors.has(
-                                                                'refer_dept'
-                                                            )
-                                                        }"
-                                                        name="refer_dept"
-                                                    >
-                                                        <option
-                                                            value="nul"
-                                                            style="font-weight:700;"
-                                                            >Khoa đón
-                                                            tiếp</option
-                                                        >
-                                                        <option
-                                                            value="Cơ quan Y tế"
-                                                            >1. Cơ quan Y
-                                                            tế</option
-                                                        >
-                                                        <option value="Tự đến"
-                                                            >2. Tự đến</option
-                                                        >
-                                                        <option value="Khác"
-                                                            >3. Khác</option
-                                                        >
-                                                    </select>
-                                                    <has-error
-                                                        :form="form"
-                                                        field="refer_dept"
-                                                    ></has-error>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label
-                                                        ><b
-                                                            >Nguyên nhân vào
-                                                            viện</b
-                                                        ></label
-                                                    >
-                                                    <input
-                                                        v-model="form.reason"
                                                         type="text"
-                                                        name="reason"
-                                                        placeholder="Nguyên nhân?"
+                                                        rows="5"
+                                                        name="diagnosis_tuanhoan"
+                                                        placeholder="Khám tuần hoàn"
                                                         class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
-                                                                'reason'
+                                                                'diagnosis_tuanhoan'
                                                             )
                                                         }"
-                                                    />
+                                                    ></textarea>
                                                     <has-error
                                                         :form="form"
-                                                        field="reason"
+                                                        field="diagnosis_tuanhoan"
+                                                    ></has-error>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Khám hô hấp</label>
+                                                    <textarea
+                                                        v-model="
+                                                            form.diagnosis_hohap
+                                                        "
+                                                        type="text"
+                                                        rows="5"
+                                                        name="diagnosis_hohap"
+                                                        placeholder="Khám hô hấp"
+                                                        class="form-control"
+                                                        :class="{
+                                                            'is-invalid': form.errors.has(
+                                                                'diagnosis_hohap'
+                                                            )
+                                                        }"
+                                                    ></textarea>
+                                                    <has-error
+                                                        :form="form"
+                                                        field="diagnosis_hohap"
+                                                    ></has-error>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Khám tiêu hóa</label>
+                                                    <textarea
+                                                        v-model="
+                                                            form.diagnosis_tieuhoa
+                                                        "
+                                                        type="text"
+                                                        rows="5"
+                                                        name="diagnosis_tieuhoa"
+                                                        placeholder="Khám tiêu hóa"
+                                                        class="form-control"
+                                                        :class="{
+                                                            'is-invalid': form.errors.has(
+                                                                'diagnosis_tieuhoa'
+                                                            )
+                                                        }"
+                                                    ></textarea>
+                                                    <has-error
+                                                        :form="form"
+                                                        field="diagnosis_tieuhoa"
                                                     ></has-error>
                                                 </div>
                                                 <div class="form-group">
                                                     <label
-                                                        >Vào ngày thứ bao nhiêu
-                                                        của bênh?</label
+                                                        >Khám Thận- Tiết niệu-
+                                                        Sinh dục</label
                                                     >
-                                                    <input
+                                                    <textarea
                                                         v-model="
-                                                            form.reason_date
+                                                            form.diagnosis_than_tietnieu_sinhduc
                                                         "
-                                                        placeholder="Vào ngày thứ bao nhiêu của bệnh?"
-                                                        name="reason_date"
+                                                        type="text"
+                                                        rows="5"
+                                                        name="diagnosis_than_tietnieu_sinhduc"
+                                                        placeholder="Khám Thận- Tiết niệu- Sinh dục"
                                                         class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
-                                                                'reason_date'
+                                                                'diagnosis_than_tietnieu_sinhduc'
                                                             )
                                                         }"
-                                                    />
+                                                    ></textarea>
                                                     <has-error
                                                         :form="form"
-                                                        field="reason_date"
+                                                        field="diagnosis_than_tietnieu_sinhduc"
                                                     ></has-error>
                                                 </div>
                                                 <div class="form-group">
                                                     <label
-                                                        >Các triệu chứng</label
+                                                        >Khám Thần Kinh</label
                                                     >
                                                     <textarea
-                                                        v-model="form.symptoms"
-                                                        placeholder="Nhập triệu chứng"
-                                                        name="symptoms"
-                                                        id=""
-                                                        cols="10"
+                                                        v-model="
+                                                            form.diagnosis_thankinh
+                                                        "
+                                                        type="text"
                                                         rows="5"
+                                                        name="diagnosis_thankinh"
+                                                        placeholder="Khám Thần Kinh"
                                                         class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
-                                                                'symptoms'
+                                                                'diagnosis_thankinh'
                                                             )
                                                         }"
                                                     ></textarea>
                                                     <has-error
                                                         :form="form"
-                                                        field="symptoms"
+                                                        field="diagnosis_thankinh"
                                                     ></has-error>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Nhận xét</label>
+                                                    <label
+                                                        >Khám Cơ- Xương-
+                                                        Khớp</label
+                                                    >
                                                     <textarea
                                                         v-model="
-                                                            form.comment_box
+                                                            form.diagnosis_coxuongkhop
                                                         "
-                                                        placeholder="Nhập triệu chứng"
-                                                        name="comment_box"
-                                                        id=""
-                                                        cols="10"
+                                                        type="text"
                                                         rows="5"
+                                                        name="diagnosis_coxuongkhop"
+                                                        placeholder="Khám Cơ- Xương- Khớp"
                                                         class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
-                                                                'comment_box'
+                                                                'diagnosis_coxuongkhop'
                                                             )
                                                         }"
                                                     ></textarea>
                                                     <has-error
                                                         :form="form"
-                                                        field="comment_box"
+                                                        field="diagnosis_coxuongkhop"
                                                     ></has-error>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Nhận xét</label>
+                                                    <label
+                                                        >Khám Tai- Mũi-
+                                                        Họng</label
+                                                    >
                                                     <textarea
                                                         v-model="
-                                                            form.disease_in
+                                                            form.diagnosis_taimuihong
                                                         "
-                                                        placeholder="Tiền sử cá nhân"
-                                                        name="disease_in"
-                                                        id=""
-                                                        cols="10"
+                                                        type="text"
                                                         rows="5"
+                                                        name="diagnosis_taimuihong"
+                                                        placeholder="Khám Tai- Mũi- Họng"
                                                         class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
-                                                                'disease_in'
+                                                                'diagnosis_taimuihong'
                                                             )
                                                         }"
                                                     ></textarea>
                                                     <has-error
                                                         :form="form"
-                                                        field="disease_in"
+                                                        field="diagnosis_taimuihong"
                                                     ></has-error>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Nhận xét</label>
+                                                    <label
+                                                        >Khám Răng- Hàm-
+                                                        Mặt</label
+                                                    >
                                                     <textarea
                                                         v-model="
-                                                            form.disease_out
+                                                            form.diagnosis_ranghammat
                                                         "
-                                                        placeholder="Tiền sử gia đình"
-                                                        name="disease_out"
-                                                        id=""
-                                                        cols="10"
+                                                        type="text"
                                                         rows="5"
+                                                        name="diagnosis_ranghammat"
+                                                        placeholder="Khám Răng- Hàm- Mặt"
                                                         class="form-control"
                                                         :class="{
                                                             'is-invalid': form.errors.has(
-                                                                'disease_out'
+                                                                'diagnosis_ranghammat'
                                                             )
                                                         }"
                                                     ></textarea>
                                                     <has-error
                                                         :form="form"
-                                                        field="disease_out"
+                                                        field="diagnosis_ranghammat"
+                                                    ></has-error>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Khám Mắt</label>
+                                                    <textarea
+                                                        v-model="
+                                                            form.diagnosis_mat
+                                                        "
+                                                        type="text"
+                                                        rows="5"
+                                                        name="diagnosis_mat"
+                                                        placeholder="Khám Mắt"
+                                                        class="form-control"
+                                                        :class="{
+                                                            'is-invalid': form.errors.has(
+                                                                'diagnosis_mat'
+                                                            )
+                                                        }"
+                                                    ></textarea>
+                                                    <has-error
+                                                        :form="form"
+                                                        field="diagnosis_mat"
+                                                    ></has-error>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        >Khám Nội tiết, dinh
+                                                        dưỡng và các bệnh lý
+                                                        khác</label
+                                                    >
+                                                    <textarea
+                                                        v-model="
+                                                            form.diagnosis_noitiet_dinhduong_khac
+                                                        "
+                                                        type="text"
+                                                        rows="5"
+                                                        name="diagnosis_noitiet_dinhduong_khac"
+                                                        placeholder="Khám Nội tiết, dinh dưỡng và các bệnh lý khác"
+                                                        class="form-control"
+                                                        :class="{
+                                                            'is-invalid': form.errors.has(
+                                                                'diagnosis_noitiet_dinhduong_khac'
+                                                            )
+                                                        }"
+                                                    ></textarea>
+                                                    <has-error
+                                                        :form="form"
+                                                        field="diagnosis_noitiet_dinhduong_khac"
+                                                    ></has-error>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        >Các triệu chứng và hội
+                                                        chứng lâm sàng</label
+                                                    >
+                                                    <textarea
+                                                        v-model="
+                                                            form.diagnosis_syndrome
+                                                        "
+                                                        type="text"
+                                                        rows="5"
+                                                        name="diagnosis_syndrome"
+                                                        placeholder="Các triệu chứng và hội chứng lâm sàng"
+                                                        class="form-control"
+                                                        :class="{
+                                                            'is-invalid': form.errors.has(
+                                                                'diagnosis_syndrome'
+                                                            )
+                                                        }"
+                                                    ></textarea>
+                                                    <has-error
+                                                        :form="form"
+                                                        field="diagnosis_syndrome"
                                                     ></has-error>
                                                 </div>
 
                                                 <center>
                                                     <button
                                                         type="submit"
-                                                        class="updatehospital btn-block btn btn-info"
+                                                        class="updatediagnosishealth btn-block btn btn-info"
                                                         style="color:#fff;"
                                                     >
-                                                        Cập nhật thông tin
+                                                        Cập nhật thông tin!
                                                     </button>
                                                 </center>
                                             </form>
@@ -519,13 +556,9 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Mã bệnh án</th>
-                                <th>Họ tên</th>
-                                <th>Ngày vào viện</th>
-                                <th>Ngày nhập viện</th>
-                                <th>Ngày thanh toán</th>
-                                <th>Thu ngân</th>
-                                <th>Thông tin đầy đủ</th>
+                                <th>Mã BA</th>
+                                <th>Tên BN</th>
+                                <th>Thông tin khám bệnh</th>
                                 <th>Tác vụ</th>
                             </tr>
                         </tfoot>
@@ -542,41 +575,40 @@
 export default {
     data() {
         return {
-            hospitals: {},
+            diagnosishealths: {},
             form: new Form({
                 id: "",
                 patient_id: "",
-                date_attented: "",
-                date_admitted: "",
-                symptoms: "",
-                comment_box: "",
-                admit_dept: "",
-                refer_dept: "",
-                reason: "",
-                reason_date: "",
-                disease_in: "",
-                disease_out: ""
+
+                diagnosis_tuanhoan: "",
+                diagnosis_hohap: "",
+                diagnosis_tieuhoa: "",
+                diagnosis_than_tietnieu_sinhduc: "",
+                diagnosis_thankinh: "",
+                diagnosis_coxuongkhop: "",
+                diagnosis_taimuihong: "",
+                diagnosis_ranghammat: "",
+                diagnosis_mat: "",
+                diagnosis_noitiet_dinhduong_khac: "",
+                diagnosis_syndrome: ""
             })
         };
     },
     methods: {
-        LoadHospitals() {
+        loadDiagnosishealths() {
             // this.loading = true;
-            axios.get("api/hospital").then(response => {
+            axios.get("api/diagnosishealth").then(response => {
                 setTimeout(function() {
                     NProgress.done();
                 }, 1000);
-                this.hospitals = response.data;
+                this.diagnosishealths = response.data;
             });
         },
-        // LoadHospitals(){
-        //      axios.get('api/hospital').then(({data}) => (this.hospitals = data));
-        // },
-        editModal(hospital) {
-            $("#edithospital").modal("show");
-            this.form.fill(hospital);
+        editModal(diagnosishealth) {
+            $("#editdiagnosishealth").modal("show");
+            this.form.fill(diagnosishealth);
         },
-        deleteHospital(id) {
+        deleteDiagnosishealth(id) {
             swal.fire({
                 title: "Bạn đã chắc chắn muốn xóa?",
                 text: "Bạn sẽ không được phép hoàn tác sau khi thực hiện!",
@@ -596,7 +628,7 @@ export default {
                         timer: 1000
                     });
                     this.form
-                        .delete("api/hospital/" + id)
+                        .delete("api/diagnosishealth/" + id)
                         .then(() => {
                             swal.fire(
                                 "Đã xóa!",
@@ -615,33 +647,35 @@ export default {
                 }
             });
         },
-        updateHospital() {
-            $(".updatehospital").html('<i class="fa fa-spin fa-spinner"></i>');
+        updateDiagnosishealth() {
+            $(".updatediagnosishealth").html(
+                '<i class="fa fa-spin fa-spinner"></i>'
+            );
             this.form
-                .put("api/hospital/" + this.form.id)
+                .put("api/diagnosishealth/" + this.form.id)
                 .then(() => {
                     Fire.$emit("afterAction");
-                    $("#edithospital").modal("hide");
+                    $("#editdiagnosishealth").modal("hide");
                     toast.fire({
                         type: "success",
-                        title: "Cập nhật tiền sử bệnh nhân thành công!"
+                        title: "Sinh hiệu được cập nhật thành công!"
                     });
-                    $(".updatehospital").html("Add Patient");
+                    $(".updatediagnosishealth").html("Add Patient");
                 })
                 .catch(() => {
                     toast.fire({
                         type: "error",
-                        title: "Dữ liệu nhập vào chưa đúng!"
+                        title: "Dữ liệu nhập vào chưa đúng"
                     });
-                    $(".updatehospital").html("Add Patient");
+                    $(".updatediagnosishealth").html("Add Patient");
                 });
         }
     },
     mounted() {
         console.log("Component mounted.");
-        this.LoadHospitals();
+        this.loadDiagnosishealths();
         Fire.$on("afterAction", () => {
-            this.LoadHospitals();
+            this.loadDiagnosishealths();
         });
     }
 };

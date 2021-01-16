@@ -208,10 +208,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
 
             <li class="nav-item">
+                <router-link to="/diagnosishealths" class="nav-link">
+                    <i class="nav-icon fas fa-heartbeat"></i>
+                    <p>
+                        Quản lý Khám cơ quan
+                    </p>
+                </router-link>
+            </li>
+
+            <li class="nav-item">
                 <router-link to="/add-diagnosishealth" class="nav-link">
                     <i class="nav-icon fas fa-heartbeat"></i>
                     <p>
-                        Khám các cơ quan
+                        Khám cơ quan
                     </p>
                 </router-link>
             </li>
@@ -332,6 +341,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <i class="nav-icon fas fa-vial"></i>
               <p>
               Chỉ định tiêm
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/treatments" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+                Quản lý chẩn đoán
               </p>
             </router-link>
           </li>

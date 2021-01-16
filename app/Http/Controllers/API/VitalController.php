@@ -83,14 +83,14 @@ class VitalController extends Controller
 
         $this->validate($request, [
             'patient_id' => 'required',
-            'temperature' => 'required',
-            'blood_pressure' => 'required',
-            'height' => 'required',
-            'weight' => 'required',
-            'pulse' => 'required',
-            'blood_group' => 'required',
-            'blood_type' => 'required',
-            'immunization' => 'required',
+            // 'temperature' => 'required',
+            // 'blood_pressure' => 'required',
+            // 'height' => 'required',
+            // 'weight' => 'required',
+            // 'pulse' => 'required',
+            // 'blood_group' => 'required',
+            // 'blood_type' => 'required',
+            // 'immunization' => 'required',
         ]);
         $vital->update($request->all());
     }

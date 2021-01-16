@@ -170,6 +170,16 @@ const routes = [
         component: require("./components/soaps.vue").default
     },
     {
+        name: "diagnosishealths",
+        path: "/diagnosishealths",
+        component: require("./components/diagnosishealths.vue").default
+    },
+    {
+        name: "treatments",
+        path: "/treatments",
+        component: require("./components/treatments.vue").default
+    },
+    {
         name: "add-diagnosishealth",
         path: "/add-diagnosishealth",
         component: require("./components/add-diagnosishealth.vue").default

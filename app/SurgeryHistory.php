@@ -17,7 +17,7 @@ class SurgeryHistory extends Model
         'date_of_operation',
         'surgeon',
         'anesthetist',
-        'modal_id',
+        // 'modal_id',
         'icd10_before_procedure',
         'code_before_procedure',
         'id_before_procedure',

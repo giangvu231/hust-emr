@@ -10,21 +10,6 @@
             >
         </div>
         <br /><br />
-        <div class="row">
-            <div class="col-md-9">
-                <input
-                    type="file"
-                    v-on:change="onImageChange"
-                    class="form-control"
-                />
-            </div>
-            <div class="col-md-3">
-                <button class="btn btn-success btn-block" @click="uploadImage">
-                    Upload Image
-                </button>
-            </div>
-        </div>
-        <br /><br />
         <div class="row justify-content-center">
             <div class="card" style="width:100%;">
                 <div class="card-header">
@@ -61,11 +46,6 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <center>
-                        <!-- <div v-if="loading" class="test">
-                    <img src="images/Interwind-1s-100px.svg" alt="">
-                </div> -->
-                    </center>
                     <table
                         id="example1"
                         class="table table-bordered table-striped"
@@ -239,17 +219,6 @@
                                                         >{{
                                                             patient.health_insurance_date
                                                         }}
-                                                    </p>
-                                                    <p>
-                                                        <b
-                                                            >TEST Browse
-                                                            Image:</b
-                                                        >
-                                                        <img
-                                                            :src="
-                                                                `data:image/png;base64,${patient.img_base64}`
-                                                            "
-                                                        />
                                                     </p>
                                                 </div>
                                                 <div class="modal-footer">
@@ -764,7 +733,7 @@
                                                         class="updatepatient btn-block btn btn-info"
                                                         style="color:#fff;"
                                                     >
-                                                        Cập nhật bệnh nhân
+                                                        Cập nhật thông tin
                                                     </button>
                                                 </center>
                                             </form>
@@ -808,8 +777,6 @@
 export default {
     data() {
         return {
-            image: "",
-            props: ["img"],
             patients: {},
             search: "",
             //   loading: false,
@@ -825,7 +792,6 @@ export default {
                 dob: "",
                 religion: "",
                 nationality: "",
-                state_of_origin: "",
                 home_address: "",
                 place_of_birth: "",
                 marital_status: "",
@@ -907,16 +873,16 @@ export default {
                     $("#editpatient").modal("hide");
                     toast.fire({
                         type: "success",
-                        title: "Lý lịch của bệnh nhân được cập nhật thành công!"
+                        title: "Cập nhật thành công!"
                     });
-                    $(".updatepatient").html("Update Patient");
+                    $(".updatepatient").html("Cập nhật thông tin!");
                 })
                 .catch(() => {
                     toast.fire({
                         type: "error",
                         title: "Dữ liệu nhập vào chưa đúng!"
                     });
-                    $(".updatepatient").html("Update Patient");
+                    $(".updatepatient").html("Cập nhật thông tin!");
                 });
         },
         pdfExport() {
@@ -944,26 +910,6 @@ export default {
                         title: "Xuất dữ liệu thất bại!"
                     });
                 });
-        },
-        onImageChange(e) {
-            let files = e.target.files || e.dataTransfer.files;
-            if (!files.length) return;
-            this.createImage(files[0]);
-        },
-        createImage(file) {
-            let reader = new FileReader();
-            let vm = this;
-            reader.onload = e => {
-                vm.image = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        },
-        uploadImage() {
-            axios.post("/image/store", { image: this.image }).then(response => {
-                if (response.data.success) {
-                    alert(response.data.success);
-                }
-            });
         }
     },
     mounted() {

@@ -151,7 +151,7 @@ class PatientController extends Controller
         $this->validate($request, [
             'unique_id' => 'required | unique:add_patients',
             'full_name' => 'required | string | max:191',
-            'email' => 'required | string | email | max:191 | unique:add_patients',
+            // 'email' => 'required | string | email | max:191 | unique:add_patients',
             'title' => 'required',
             'phone_number' => 'required',
             // 'occupation' => 'required',
