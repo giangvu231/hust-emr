@@ -24,7 +24,7 @@ class TreatmentController extends Controller
      */
     public function index()
     {
-        return Vital::with('patient')->get();
+        return Treatment::with('patient')->get();
     }
 
     /**

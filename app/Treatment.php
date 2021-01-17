@@ -50,8 +50,6 @@ class Treatment extends Model
         'icd10_treatment_id',
         'icd10_treatment_code',
         'icd10_treatment_name',
-
-
     ];
 
    public function patient(){

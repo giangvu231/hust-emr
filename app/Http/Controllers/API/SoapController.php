@@ -34,10 +34,10 @@ class SoapController extends Controller
     {
         $this->validate($request, [
             'patient_id' => 'required',
-            'subjective' => 'required',
-            'objective' => 'required',
-            'assessment' => 'required',
-            'plan' => 'required',
+            // 'subjective' => 'required',
+            // 'objective' => 'required',
+            // 'assessment' => 'required',
+            // 'plan' => 'required',
         ]);
         $data = Soap::create($request->all());
         Emr::where('patient_id', $data->patient_id)->update([

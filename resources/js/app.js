@@ -174,11 +174,7 @@ const routes = [
         path: "/diagnosishealths",
         component: require("./components/diagnosishealths.vue").default
     },
-    {
-        name: "treatments",
-        path: "/treatments",
-        component: require("./components/treatments.vue").default
-    },
+
     {
         name: "add-diagnosishealth",
         path: "/add-diagnosishealth",
@@ -195,9 +191,19 @@ const routes = [
         component: require("./components/add-treatment.vue").default
     },
     {
+        name: "treatments",
+        path: "/treatments",
+        component: require("./components/treatments.vue").default
+    },
+    {
         name: "emr-summary",
         path: "/emr-summary",
         component: require("./components/emr-summary.vue").default
+    },
+    {
+        name: "emr-summaries",
+        path: "/emr-summaries",
+        component: require("./components/emr-summaries.vue").default
     }
 ];
 
@@ -243,10 +249,10 @@ Vue.component(
 
 const app = new Vue({
     el: "#app",
-    data: {
-        isHidden: false
-    },
     router
+    // data: {
+    //     isHidden: false
+    // },
     // data: {
     //   search: ''
     // },

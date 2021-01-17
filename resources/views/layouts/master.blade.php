@@ -364,10 +364,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <router-link to="/emr-summary" class="nav-link">
+            <router-link to="/emr-summaries" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
                 Tổng kết bệnh án
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/emr-summary" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+                Nhập Tổng kết bệnh án
               </p>
             </router-link>
           </li>
