@@ -9425,6 +9425,65 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -9448,7 +9507,8 @@ __webpack_require__.r(__webpack_exports__);
         place_of_birth: "",
         marital_status: "",
         home_next_of_kin: "",
-        phone_next_of_kin: ""
+        phone_next_of_kin: "",
+        photos: []
       })
     };
   },
@@ -9492,6 +9552,11 @@ __webpack_require__.r(__webpack_exports__);
         console.log(data.data.data);
         _this2.patients = data.data.data;
       })["catch"](function () {});
+    },
+    pictureModal: function pictureModal(patient) {
+      $("#picture").modal("show");
+      console.log(patient);
+      this.form.fill(patient);
     },
     editModal: function editModal(patient) {
       $("#editpatient").modal("show");
@@ -90776,7 +90841,7 @@ var render = function() {
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-sm-3" }, [
+                            _c("div", { staticClass: "col-sm-2" }, [
                               _c(
                                 "button",
                                 {
@@ -90791,7 +90856,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "col-sm-3" }, [
+                            _c("div", { staticClass: "col-sm-2" }, [
                               _c(
                                 "button",
                                 {
@@ -90806,7 +90871,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "col-sm-3" }, [
+                            _c("div", { staticClass: "col-sm-2" }, [
                               _c(
                                 "button",
                                 {
@@ -90821,7 +90886,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "col-sm-3" }, [
+                            _c("div", { staticClass: "col-sm-2" }, [
                               _c(
                                 "button",
                                 {
@@ -90833,6 +90898,21 @@ var render = function() {
                                   }
                                 },
                                 [_c("i", { staticClass: "fas fa-file-image" })]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-sm-2" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "text-primary",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.pictureModal(patient)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fas fa-image" })]
                               )
                             ])
                           ])
@@ -92040,12 +92120,55 @@ var render = function() {
                           ]
                         )
                       ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: {
+                          id: "picture",
+                          tabindex: "-1",
+                          role: "dialog",
+                          "aria-labelledby": "biodataTitle",
+                          "aria-hidden": "true"
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "modal-dialog modal-dialog-centered",
+                            attrs: { role: "document" }
+                          },
+                          [
+                            _c("div", { staticClass: "modal-content" }, [
+                              _vm._m(24),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "modal-body" },
+                                _vm._l(_vm.form.photos, function(photo) {
+                                  return _c("img", {
+                                    key: photo.id,
+                                    staticStyle: { width: "50vh" },
+                                    attrs: { src: photo.url }
+                                  })
+                                }),
+                                0
+                              ),
+                              _vm._v(" "),
+                              _vm._m(25)
+                            ])
+                          ]
+                        )
+                      ]
                     )
                   ],
                   2
                 ),
                 _vm._v(" "),
-                _vm._m(24)
+                _vm._m(26)
               ]
             )
           ],
@@ -92348,6 +92471,54 @@ var staticRenderFns = [
         [
           _vm._v(
             "\n                                            Lý lịch bệnh nhân\n                                        "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [
+          _vm._v(
+            "\n                                            Đóng\n                                        "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
+        [
+          _vm._v(
+            "\n                                            Cập nhật hình ảnh\n                                        "
           )
         ]
       ),

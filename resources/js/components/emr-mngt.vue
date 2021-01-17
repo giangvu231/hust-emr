@@ -696,7 +696,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
                                             <button
                                                 @click="editModal(patient)"
                                                 class="text-primary"
@@ -704,7 +704,7 @@
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
                                             <button
                                                 @click="
                                                     deletePatient(patient.id)
@@ -714,7 +714,7 @@
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
                                             <button
                                                 @click="xmlExport(patient.id)"
                                                 class="text-primary"
@@ -724,7 +724,7 @@
                                                 ></i>
                                             </button>
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
                                             <button
                                                 @click="
                                                     uploadPictureModal(patient)
@@ -734,6 +734,14 @@
                                                 <i
                                                     class="fas fa-file-image"
                                                 ></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <button
+                                                @click="pictureModal(patient)"
+                                                class="text-primary"
+                                            >
+                                                <i class="fas fa-image"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -1242,7 +1250,7 @@
                                                 class="modal-title"
                                                 id="exampleModalLongTitle"
                                             >
-                                                Hình ảnh
+                                                Cập nhật hình ảnh
                                             </h5>
                                             <button
                                                 type="button"
@@ -1277,6 +1285,57 @@
                                                     </button>
                                                 </center>
                                             </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button
+                                                type="button"
+                                                class="btn btn-secondary"
+                                                data-dismiss="modal"
+                                            >
+                                                Đóng
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="modal fade"
+                                id="picture"
+                                tabindex="-1"
+                                role="dialog"
+                                aria-labelledby="biodataTitle"
+                                aria-hidden="true"
+                            >
+                                <div
+                                    class="modal-dialog modal-dialog-centered"
+                                    role="document"
+                                >
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5
+                                                class="modal-title"
+                                                id="exampleModalLongTitle"
+                                            >
+                                                Hình ảnh
+                                            </h5>
+                                            <button
+                                                type="button"
+                                                class="close"
+                                                data-dismiss="modal"
+                                                aria-label="Close"
+                                            >
+                                                <span aria-hidden="true"
+                                                    >&times;</span
+                                                >
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img
+                                                v-for="photo in form.photos"
+                                                :src="photo.url"
+                                                :key="photo.id"
+                                                style="width: 50vh"
+                                            />
                                         </div>
                                         <div class="modal-footer">
                                             <button
@@ -1345,7 +1404,8 @@ export default {
                 place_of_birth: "",
                 marital_status: "",
                 home_next_of_kin: "",
-                phone_next_of_kin: ""
+                phone_next_of_kin: "",
+                photos: []
             })
         };
     },
@@ -1365,7 +1425,11 @@ export default {
                     headers: { "Content-Type": "multipart/form-data" }
                 })
                 .then(response => {
-                    swal.fire("Upload ảnh", "Upload ảnh thành công.", "success");
+                    swal.fire(
+                        "Upload ảnh",
+                        "Upload ảnh thành công.",
+                        "success"
+                    );
                     Fire.$emit("afterAction");
                     $("#uploadPicture").modal("hide");
                 });
@@ -1391,6 +1455,11 @@ export default {
                     this.patients = data.data.data;
                 })
                 .catch(() => {});
+        },
+        pictureModal(patient) {
+            $("#picture").modal("show");
+            console.log(patient);
+            this.form.fill(patient);
         },
         editModal(patient) {
             $("#editpatient").modal("show");
