@@ -47,7 +47,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return addPatient::all();
+        return addPatient::with("photos")->get();
     }
 
     /**
