@@ -1298,10 +1298,11 @@
                                         </div>
                                         <div class="modal-body">
                                             <img
+                                                v-img:group
                                                 v-for="photo in form.photos"
                                                 :src="photo.url"
                                                 :key="photo.id"
-                                                style="width: 50vh"
+                                                style="width: 20vh"
                                             />
                                         </div>
                                         <div class="modal-footer">
@@ -1337,6 +1338,11 @@
 </template>
 
 <script>
+import Vue from "vue";
+import VueImg from "v-img";
+
+Vue.use(VueImg);
+
 export default {
     data() {
         return {
