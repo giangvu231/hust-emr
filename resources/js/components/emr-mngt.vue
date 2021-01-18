@@ -49,38 +49,18 @@
                     >
                         <thead>
                             <tr>
-                                <!-- <th>Mã BN</th> -->
-                                <!-- col 1 -->
                                 <th>Mã HSBA</th>
                                 <th>Họ tên</th>
-                                <!-- col 2 -->
-                                <!-- col 3 -->
-                                <th>Ngày khám</th>
-                                <!-- col 4 -->
-                                <th>
-                                    Lý do
-                                </th>
-                                <!-- col 5 -->
-                                <th>Giới tính</th>
-                                <th>Hồ sơ</th>
-                                <!-- col 6 -->
+                                <th>Hồ sơ bệnh án</th>
+                                <th>Tệp dữ liệu</th>
+                                <th>Tệp hình ảnh</th>
                                 <th>Tác vụ</th>
-                                <!-- col 7 -->
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="patient in patients" :key="patient.id">
-                                <!-- <td>{{ patient.id }}</td> -->
-                                <!-- col 1 -->
                                 <td>{{ patient.unique_id }}</td>
                                 <td>{{ patient.full_name }}</td>
-                                <!-- col 2 -->
-                                <!-- col 3 -->
-                                <td>{{ patient.created_at }}</td>
-                                <!-- col 4 -->
-                                <td>{{ patient.reason }}</td>
-                                <!-- col 4 -->
-                                <td>{{ patient.sex }}</td>
                                 <td>
                                     <button
                                         type="button"
@@ -91,6 +71,24 @@
                                         Xem hồ sơ
                                     </button>
                                     <!--Biodata Modal -->
+                                </td>
+                                <td>
+                                    <button
+                                        type="button"
+                                        class="btn btn-primary"
+                                        @click="xmlExport(patient.id)"
+                                    >
+                                        Xuất dữ liệu
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        type="button"
+                                        class="btn btn-primary"
+                                        @click="uploadPictureModal(patient)"
+                                    >
+                                        Lưu hình ảnh
+                                    </button>
                                 </td>
                                 <td>
                                     <div
@@ -148,12 +146,12 @@
                                                                 <button
                                                                     type="submit"
                                                                     @click="
-                                                                        addPatientPDF(
-                                                                            patient.id
+                                                                        pictureModal(
+                                                                            patient
                                                                         )
                                                                     "
                                                                 >
-                                                                    Scan bệnh án
+                                                                    Xem hình ảnh
                                                                 </button>
                                                             </td>
                                                         </tr>
@@ -694,9 +692,8 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-4">
                                             <button
                                                 @click="editModal(patient)"
                                                 class="text-primary"
@@ -704,7 +701,7 @@
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                         </div>
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-4">
                                             <button
                                                 @click="
                                                     deletePatient(patient.id)
@@ -712,36 +709,6 @@
                                                 class="text-danger"
                                             >
                                                 <i class="fa fa-trash"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <button
-                                                @click="xmlExport(patient.id)"
-                                                class="text-primary"
-                                            >
-                                                <i
-                                                    class="fas fa-file-export"
-                                                ></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <button
-                                                @click="
-                                                    uploadPictureModal(patient)
-                                                "
-                                                class="text-primary"
-                                            >
-                                                <i
-                                                    class="fas fa-file-image"
-                                                ></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <button
-                                                @click="pictureModal(patient)"
-                                                class="text-primary"
-                                            >
-                                                <i class="fas fa-image"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -1352,23 +1319,12 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <!-- <th>Mã BN</th> -->
-                                <!-- col 1 -->
                                 <th>Mã HSBA</th>
                                 <th>Họ tên</th>
-                                <!-- col 2 -->
-                                <!-- col 3 -->
-                                <th>Ngày khám</th>
-                                <!-- col 4 -->
-                                <th>
-                                    Lý do
-                                </th>
-                                <!-- col 5 -->
-                                <th>Giới tính</th>
-                                <th>Hồ sơ</th>
-                                <!-- col 6 -->
+                                <th>Hồ sơ bệnh án</th>
+                                <th>Tệp dữ liệu</th>
+                                <th>Tệp hình ảnh</th>
                                 <th>Tác vụ</th>
-                                <!-- col 7 -->
                             </tr>
                         </tfoot>
                     </table>

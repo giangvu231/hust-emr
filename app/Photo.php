@@ -8,6 +8,7 @@ class Photo extends Model
 {
     protected $fillable = [
         'unique_id',
+        'name',
         'url'
     ];
 }

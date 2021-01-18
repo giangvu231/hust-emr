@@ -26,17 +26,50 @@ class XMLController extends Controller
     public function index($id)
     {
         $emr = Emr::findOrFail($id);
-        $patientInfo = addPatient::findOrFail($emr->patient_id);
-        $treatment = Treatment::findOrFail($emr->treatment_id);
-        $hospital_histories = HospitalHistory::findOrFail($emr->hospital_histories_id);
-        $emr_summary = EmrSummary::findOrFail($emr->emr_summary_id);
-        $vitals = Vital::findOrFail($emr->vital_id);
-        $diagnosishealths = Diagnosishealth::findOrFail($emr->diagnosishealth_id);
-        $lab_results = LabResult::findOrFail($emr->lab_id);
-        $imaging_results = ImagingResult::findOrFail($emr->imaging_id);
-        $appointments = Appointment::findOrFail($emr->appointment_id);
-        $phams = Pham::findOrFail($emr->pham_id);
-        $soaps = Soap::findOrFail($emr->soap_id);
+
+        if ($emr->patient_id) {
+            $patientInfo = addPatient::findOrFail($emr->patient_id);
+        };
+
+        if ($emr->treatment_id) {
+            $treatment = Treatment::findOrFail($emr->treatment_id);
+        };
+
+        if ($emr->hospital_histories_id) {
+            $hospital_histories = HospitalHistory::findOrFail($emr->hospital_histories_id);
+        };
+
+        if ($emr->emr_summary_id) {
+            $emr_summary = EmrSummary::findOrFail($emr->emr_summary_id);
+        };
+
+        if ($emr->vital_id) {
+            $vitals = Vital::findOrFail($emr->vital_id);
+        };
+
+        if ($emr->diagnosishealth_id) {
+            $diagnosishealths = Diagnosishealth::findOrFail($emr->diagnosishealth_id);
+        };
+
+        if ($emr->lab_id) {
+            $lab_results = LabResult::findOrFail($emr->lab_id);
+        };
+
+        if ($emr->imaging_id) {
+            $imaging_results = ImagingResult::findOrFail($emr->imaging_id);
+        };
+
+        if ($emr->appointment_id) {
+            $appointments = Appointment::findOrFail($emr->appointment_id);
+        };
+
+        if ($emr->pham_id) {
+            $phams = Pham::findOrFail($emr->pham_id);
+        };
+
+        if ($emr->soap_id) {
+            $soaps = Soap::findOrFail($emr->soap_id);
+        };
 
         createXML(
         $emr,
