@@ -23,7 +23,7 @@ class EmrSummaryController extends Controller
      */
     public function index()
     {
-        return Vital::with('patient')->get();
+        return EmrSummary::with('patient')->get();
     }
 
 

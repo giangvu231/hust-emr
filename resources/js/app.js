@@ -249,10 +249,10 @@ Vue.component(
 
 const app = new Vue({
     el: "#app",
+    data: {
+        isHidden: false
+    },
     router
-    // data: {
-    //     isHidden: false
-    // },
     // data: {
     //   search: ''
     // },
