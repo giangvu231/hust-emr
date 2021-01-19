@@ -64,6 +64,8 @@ Route::post('/searchnation', 'SearchController@searchNation');
 
 Route::post('/searchlab', 'SearchController@searchLab');
 
+Route::post('/searchpatient', 'SearchController@searchPatient');
+
 Route::post('/searchimagingorder', 'SearchController@searchImaging');
 
 Route::post('/image/store', 'ImageController@store');

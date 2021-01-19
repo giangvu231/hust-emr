@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\addPatient;
 use App\Icd10;
 use App\Lab;
 use App\Job;
@@ -78,6 +79,13 @@ class SearchController extends Controller
     {
     	$search = $request->name;
     	$dataName = Race::where('name', 'LIKE', "%$search%")->get();
+        return $dataName;
+    }
+
+    public function searchPatient(Request $request)
+    {
+    	$search = $request->name;
+    	$dataName = addPatient::where('full_name', 'LIKE', "%$search%")->get();
         return $dataName;
     }
 }

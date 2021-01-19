@@ -11,6 +11,13 @@
                                     <td colspan="2">
                                         <div class="form-group">
                                             <label>Chọn bệnh nhân</label>
+                                            <input
+                                                style="width: 100%;"
+                                                placeholder="Nhập tên bệnh nhân"
+                                                type="text"
+                                                v-model="searchPatient"
+                                                @keyup="searchForPatient()"
+                                            />
                                             <select
                                                 v-model="form.patient_id"
                                                 class="form-control"
@@ -22,11 +29,11 @@
                                                 name="patient_id"
                                             >
                                                 <option
-                                                    v-for="patient in patients"
-                                                    :key="patient.id"
-                                                    :value="patient.id"
+                                                    v-for="searchPatient in searchPatients"
+                                                    :key="searchPatient.id"
+                                                    :value="searchPatient.id"
                                                     >{{
-                                                        patient.full_name
+                                                        searchPatient.full_name
                                                     }}</option
                                                 >
                                             </select>
@@ -269,14 +276,24 @@
                                     <td colspan="2">
                                         <table
                                             width="100%"
+                                            style="border-collapse: collapse; text-align: center;"
                                             border="1px solid black"
                                         >
                                             <tr>
-                                                <td width="10%"><b>TT</b></td>
-                                                <td width="20%"></td>
-                                                <td width="10%">Ký hiệu</td>
-                                                <td width="40%">
-                                                    Thời gian (tính theo tháng)
+                                                <td width="10%">
+                                                    <b>Thứ tự</b>
+                                                </td>
+                                                <td width="50%">
+                                                    <b>Đặc điểm</b>
+                                                </td>
+                                                <td width="10%">
+                                                    <b>Ký hiệu</b>
+                                                </td>
+                                                <td width="30%">
+                                                    <b
+                                                        >Thời gian (tính theo
+                                                        tháng)</b
+                                                    >
                                                 </td>
                                             </tr>
                                             <tr>
@@ -296,7 +313,7 @@
                                                 </td>
                                                 <td width="40%">
                                                     <input
-                                                        width="100%"
+                                                        style="width:100%; border:0px; text-align: center;"
                                                         v-model="
                                                             form.disease_diung_time
                                                         "
@@ -320,7 +337,7 @@
                                                 </td>
                                                 <td>
                                                     <input
-                                                        width="100%"
+                                                        style="width:100%; border:0px; text-align: center;"
                                                         v-model="
                                                             form.disease_matuy_time
                                                         "
@@ -344,7 +361,7 @@
                                                 </td>
                                                 <td>
                                                     <input
-                                                        width="100%"
+                                                        style="width:100%; border:0px; text-align: center;"
                                                         v-model="
                                                             form.disease_ruoubia_time
                                                         "
@@ -368,7 +385,7 @@
                                                 </td>
                                                 <td>
                                                     <input
-                                                        width="100%"
+                                                        style="width:100%; border:0px; text-align: center;"
                                                         v-model="
                                                             form.disease_thuocla_time
                                                         "
@@ -392,7 +409,7 @@
                                                 </td>
                                                 <td>
                                                     <input
-                                                        width="100%"
+                                                        style="width:100%; border:0px; text-align: center;"
                                                         v-model="
                                                             form.disease_thuoclao_time
                                                         "
@@ -416,7 +433,7 @@
                                                 </td>
                                                 <td>
                                                     <input
-                                                        width="100%"
+                                                        style="width:100%; border:0px; text-align: center;"
                                                         v-model="
                                                             form.disease_khac_time
                                                         "
@@ -515,6 +532,8 @@ export default {
             query: "",
             icd10s: {},
             patients: {},
+            searchPatient: "",
+            searchPatients: [],
             form: new Form({
                 patient_id: "",
                 date_attented: "",
@@ -583,6 +602,17 @@ export default {
                 })
                 .then(response => {
                     this.searchArrs = response.data;
+                })
+                .catch(() => {});
+        },
+        searchForPatient() {
+            axios
+                .post("/searchpatient", {
+                    name: this.searchPatient
+                })
+                .then(response => {
+                    this.searchPatients = response.data;
+                    console.log(response);
                 })
                 .catch(() => {});
         }
