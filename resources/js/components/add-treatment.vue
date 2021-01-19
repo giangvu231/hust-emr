@@ -14,6 +14,18 @@
                                     <td colspan="2">
                                         <div class="form-group">
                                             <label>Chọn bệnh nhân</label>
+                                            <input
+                                                style="width: 100%; padding: 12px 20px;
+                                                        margin: 8px 0;
+                                                        display: inline-block;
+                                                        border: 1px solid #ccc;
+                                                        border-radius: 4px;
+                                                        box-sizing: border-box;"
+                                                placeholder="Nhập tên bệnh nhân"
+                                                type="text"
+                                                v-model="searchPatient"
+                                                @keyup="searchForPatient()"
+                                            />
                                             <select
                                                 v-model="form.patient_id"
                                                 class="form-control"
@@ -25,11 +37,11 @@
                                                 name="patient_id"
                                             >
                                                 <option
-                                                    v-for="patient in patients"
-                                                    :key="patient.id"
-                                                    :value="patient.id"
+                                                    v-for="searchPatient in searchPatients"
+                                                    :key="searchPatient.id"
+                                                    :value="searchPatient.id"
                                                     >{{
-                                                        patient.full_name
+                                                        searchPatient.full_name
                                                     }}</option
                                                 >
                                             </select>
@@ -758,7 +770,8 @@ export default {
             searchEmergencyArrs: [],
             searchTreatmentText: "",
             searchTreatmentArrs: [],
-
+            searchPatient: "",
+            searchPatients: [],
             patients: {},
             form: new Form({
                 patient_id: "",
@@ -857,6 +870,17 @@ export default {
                 })
                 .then(response => {
                     this.searchTreatmentArrs = response.data;
+                })
+                .catch(() => {});
+        },
+        searchForPatient() {
+            axios
+                .post("/searchpatient", {
+                    name: this.searchPatient
+                })
+                .then(response => {
+                    this.searchPatients = response.data;
+                    console.log(response);
                 })
                 .catch(() => {});
         }

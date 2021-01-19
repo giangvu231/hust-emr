@@ -12,7 +12,12 @@
                                         <div class="form-group">
                                             <label>Chọn bệnh nhân</label>
                                             <input
-                                                style="width: 100%;"
+                                                style="width: 100%; padding: 12px 20px;
+                                                        margin: 8px 0;
+                                                        display: inline-block;
+                                                        border: 1px solid #ccc;
+                                                        border-radius: 4px;
+                                                        box-sizing: border-box;"
                                                 placeholder="Nhập tên bệnh nhân"
                                                 type="text"
                                                 v-model="searchPatient"

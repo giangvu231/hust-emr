@@ -10,9 +10,21 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Chọn bệnh nhân</label>
+                                            <input
+                                                style="width: 100%; padding: 12px 20px;
+                                                        margin: 8px 0;
+                                                        display: inline-block;
+                                                        border: 1px solid #ccc;
+                                                        border-radius: 4px;
+                                                        box-sizing: border-box;"
+                                                placeholder="Nhập tên bệnh nhân"
+                                                type="text"
+                                                v-model="searchPatient"
+                                                @keyup="searchForPatient()"
+                                            />
                                             <select
                                                 v-model="form.patient_id"
-                                                aria-placeholder="Chon benh nhan"
                                                 class="form-control"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
@@ -22,12 +34,11 @@
                                                 name="patient_id"
                                             >
                                                 <option
-                                                    v-for="patient in patients"
-                                                    :key="patient.id"
-                                                    :value="patient.id"
+                                                    v-for="searchPatient in searchPatients"
+                                                    :key="searchPatient.id"
+                                                    :value="searchPatient.id"
                                                     >{{
-                                                        patient.full_name +
-                                                            patient.id
+                                                        searchPatient.full_name
                                                     }}</option
                                                 >
                                             </select>
@@ -333,6 +344,8 @@ export default {
             isHidden: false,
             isHiddenNoiKhoa: false,
             patients: {},
+            searchPatient: "",
+            searchPatients: [],
             form: new Form({
                 patient_id: "",
                 temperature: "",
@@ -377,6 +390,17 @@ export default {
                 }, 1000);
                 this.patients = response.data;
             });
+        },
+        searchForPatient() {
+            axios
+                .post("/searchpatient", {
+                    name: this.searchPatient
+                })
+                .then(response => {
+                    this.searchPatients = response.data;
+                    console.log(response);
+                })
+                .catch(() => {});
         }
     },
     mounted() {
