@@ -25,6 +25,14 @@ Route::get('pdf_export', 'PdfController@index');
 
 Route::get('vital_pdf_export/{id}', 'PdfController@vitalPDF');
 
+Route::get('phieuchamsoc_pdf_export/{id}', 'PdfController@phieuChamSocPDF');
+Route::get('phieutruyendich_pdf_export/{id}', 'PdfController@phieuTruyenDichPDF');
+Route::get('phieuthuthuoc_pdf_export/{id}', 'PdfController@phieuThuThuocPDF');
+Route::get('phieuhoichan_pdf_export/{id}', 'PdfController@phieuHoiChanPDF');
+Route::get('phieuphauthuat_pdf_export/{id}', 'PdfController@phieuPhauThuatPDF');
+Route::get('phieuhinhanh_pdf_export/{id}', 'PdfController@phieuHinhAnhPDF');
+Route::get('phieuxetnghiem_pdf_export/{id}', 'PdfController@phieuXetNghiemPDF');
+
 Route::get('add_patient_pdf_export/{id}', 'PdfController@addPatientPDF');
 
 Route::get('xml_export/{id}', 'XMLController@index');

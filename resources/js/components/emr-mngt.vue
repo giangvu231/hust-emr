@@ -46,15 +46,16 @@
                     <table
                         id="example1"
                         class="table table-bordered table-striped"
+                        style="text-align:center"
                     >
-                        <thead>
+                        <thead style="text-align:center">
                             <tr>
-                                <th>Mã HSBA</th>
-                                <th>Họ tên</th>
-                                <th>Hồ sơ bệnh án</th>
-                                <th>Tệp dữ liệu</th>
-                                <th>Tệp hình ảnh</th>
-                                <th>Tác vụ</th>
+                                <th width="15%">Mã HSBA</th>
+                                <th width="30%">Họ tên</th>
+                                <th width="15%">Hồ sơ bệnh án</th>
+                                <th width="15%">Tệp dữ liệu</th>
+                                <th width="15%">Tệp hình ảnh</th>
+                                <th width="10%">Tác vụ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,6 +64,7 @@
                                 <td>{{ patient.full_name }}</td>
                                 <td>
                                     <button
+                                        style="width:100%"
                                         type="button"
                                         class="btn btn-primary"
                                         data-toggle="modal"
@@ -74,6 +76,7 @@
                                 </td>
                                 <td>
                                     <button
+                                        style="width:100%"
                                         type="button"
                                         class="btn btn-primary"
                                         @click="xmlExport(patient.id)"
@@ -83,6 +86,7 @@
                                 </td>
                                 <td>
                                     <button
+                                        style="width:100%"
                                         type="button"
                                         class="btn btn-primary"
                                         @click="uploadPictureModal(patient)"
@@ -128,9 +132,11 @@
                                                             style="width:100%; height:auto;"
                                                         >
                                                             <td colspan="2">
-                                                                <b
-                                                                    >[1] Bệnh án
-                                                                </b>
+                                                                <h4>
+                                                                    <b
+                                                                        >BỆNH ÁN
+                                                                    </b>
+                                                                </h4>
                                                             </td>
                                                         </tr>
                                                         <tr
@@ -140,6 +146,7 @@
                                                                 <button
                                                                     class="btn btn-primary"
                                                                     type="submit"
+                                                                    style="width:100%"
                                                                     @click="
                                                                         addPatientPDF(
                                                                             patient.id
@@ -152,6 +159,7 @@
                                                             <td colspan="">
                                                                 <button
                                                                     class="btn btn-primary"
+                                                                    style="width:100%"
                                                                     type="submit"
                                                                     @click="
                                                                         pictureModal(
@@ -165,10 +173,13 @@
                                                         </tr>
                                                         <tr>
                                                             <td colspan="2">
-                                                                <b
-                                                                    >[2] Giấy tờ
-                                                                    lâm sàng</b
-                                                                >
+                                                                <h4>
+                                                                    <b
+                                                                        >GIẤY TỜ
+                                                                        LÂM
+                                                                        SÀNG</b
+                                                                    >
+                                                                </h4>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -181,6 +192,8 @@
                                                             </td>
                                                             <td colspan="2">
                                                                 <button
+                                                                    class="btn btn-primary"
+                                                                    style="width:100%"
                                                                     type="submit"
                                                                     @click="
                                                                         vitalPDF(
@@ -188,10 +201,7 @@
                                                                         )
                                                                     "
                                                                 >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
+                                                                    Xem phiếu
                                                                 </button>
                                                             </td>
                                                         </tr>
@@ -205,17 +215,16 @@
                                                             </td>
                                                             <td colspan="2">
                                                                 <button
+                                                                    class="btn btn-primary"
+                                                                    style="width:100%"
                                                                     type="submit"
                                                                     @click="
-                                                                        vitalPDF(
+                                                                        phieuChamSocPDF(
                                                                             patient.id
                                                                         )
                                                                     "
                                                                 >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
+                                                                    Xem phiếu
                                                                 </button>
                                                             </td>
                                                         </tr>
@@ -229,17 +238,16 @@
                                                             </td>
                                                             <td colspan="2">
                                                                 <button
+                                                                    class="btn btn-primary"
+                                                                    style="width:100%"
                                                                     type="submit"
                                                                     @click="
-                                                                        vitalPDF(
+                                                                        phieuTruyenDichPDF(
                                                                             patient.id
                                                                         )
                                                                     "
                                                                 >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
+                                                                    Xem phiếu
                                                                 </button>
                                                             </td>
                                                         </tr>
@@ -253,17 +261,16 @@
                                                             </td>
                                                             <td colspan="2">
                                                                 <button
+                                                                    class="btn btn-primary"
+                                                                    style="width:100%"
                                                                     type="submit"
                                                                     @click="
-                                                                        vitalPDF(
+                                                                        phieuThuThuocPDF(
                                                                             patient.id
                                                                         )
                                                                     "
                                                                 >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
+                                                                    Xem phiếu
                                                                 </button>
                                                             </td>
                                                         </tr>
@@ -271,222 +278,102 @@
                                                             <td>
                                                                 <b
                                                                     >Biên bản
-                                                                    hội chẩn,
-                                                                    giấy duyệt
-                                                                    mổ
+                                                                    hội chẩn
                                                                 </b>
                                                             </td>
                                                             <td colspan="2">
                                                                 <button
+                                                                    class="btn btn-primary"
+                                                                    style="width:100%"
                                                                     type="submit"
                                                                     @click="
-                                                                        vitalPDF(
+                                                                        phieuHoiChanPDF(
                                                                             patient.id
                                                                         )
                                                                     "
                                                                 >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
+                                                                    Xem phiếu
                                                                 </button>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <b
-                                                                    >Giấy chuyển
-                                                                    viện
+                                                                    >Giấy phẫu
+                                                                    thuật/thủ
+                                                                    thuật
                                                                 </b>
                                                             </td>
                                                             <td colspan="2">
                                                                 <button
+                                                                    class="btn btn-primary"
+                                                                    style="width:100%"
                                                                     type="submit"
                                                                     @click="
-                                                                        vitalPDF(
+                                                                        phieuPhauThuatPDF(
                                                                             patient.id
                                                                         )
                                                                     "
                                                                 >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
+                                                                    Xem phiếu
                                                                 </button>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <b
-                                                                    >Biên bản
-                                                                    nhận xét tử
-                                                                    vong:
-                                                                </b>
-                                                            </td>
-                                                            <td colspan="2">
-                                                                <button
-                                                                    type="submit"
-                                                                    @click="
-                                                                        vitalPDF(
-                                                                            patient.id
-                                                                        )
-                                                                    "
-                                                                >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <b
-                                                                    >Phiếu xin
-                                                                    máu
-                                                                </b>
-                                                            </td>
-                                                            <td colspan="2">
-                                                                <button
-                                                                    type="submit"
-                                                                    @click="
-                                                                        vitalPDF(
-                                                                            patient.id
-                                                                        )
-                                                                    "
-                                                                >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+
                                                         <tr>
                                                             <td colspan="3">
-                                                                <b
-                                                                    >[2] Giấy tờ
-                                                                    cận lâm
-                                                                    sàng</b
-                                                                >
+                                                                <h4>
+                                                                    <b
+                                                                        >GIẤY TỜ
+                                                                        CẬN LÂM
+                                                                        SÀNG</b
+                                                                    >
+                                                                </h4>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <b
-                                                                    >Giấy xét
+                                                                    >Phiếu kết
+                                                                    quả chụp
+                                                                    hình:
+                                                                </b>
+                                                            </td>
+                                                            <td colspan="2">
+                                                                <button
+                                                                    class="btn btn-primary"
+                                                                    style="width:100%"
+                                                                    type="submit"
+                                                                    @click="
+                                                                        phieuHinhAnhPDF(
+                                                                            patient.id
+                                                                        )
+                                                                    "
+                                                                >
+                                                                    Xem phiếu
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b
+                                                                    >Phiếu kết
+                                                                    quả xét
                                                                     nghiệm:
                                                                 </b>
                                                             </td>
                                                             <td colspan="2">
                                                                 <button
+                                                                    class="btn btn-primary"
+                                                                    style="width:100%"
                                                                     type="submit"
                                                                     @click="
-                                                                        vitalPDF(
+                                                                        phieuXetNghiemPDF(
                                                                             patient.id
                                                                         )
                                                                     "
                                                                 >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <b
-                                                                    >Phiếu kết
-                                                                    quả chụp
-                                                                    Xquang:
-                                                                </b>
-                                                            </td>
-                                                            <td colspan="2">
-                                                                <button
-                                                                    type="submit"
-                                                                    @click="
-                                                                        vitalPDF(
-                                                                            patient.id
-                                                                        )
-                                                                    "
-                                                                >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <b
-                                                                    >Phiếu kết
-                                                                    quả chụp
-                                                                    cộng hưởng
-                                                                    từ:
-                                                                </b>
-                                                            </td>
-                                                            <td colspan="2">
-                                                                <button
-                                                                    type="submit"
-                                                                    @click="
-                                                                        vitalPDF(
-                                                                            patient.id
-                                                                        )
-                                                                    "
-                                                                >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <b
-                                                                    >Phiếu kết
-                                                                    quả chụp cắt
-                                                                    lớp vi tính:
-                                                                </b>
-                                                            </td>
-                                                            <td colspan="2">
-                                                                <button
-                                                                    type="submit"
-                                                                    @click="
-                                                                        vitalPDF(
-                                                                            patient.id
-                                                                        )
-                                                                    "
-                                                                >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <b
-                                                                    >Phiếu kết
-                                                                    quả siêu âm:
-                                                                </b>
-                                                            </td>
-                                                            <td colspan="2">
-                                                                <button
-                                                                    type="submit"
-                                                                    @click="
-                                                                        vitalPDF(
-                                                                            patient.id
-                                                                        )
-                                                                    "
-                                                                >
-                                                                    <i
-                                                                        >Xem
-                                                                        phiếu</i
-                                                                    >
+                                                                    Xem phiếu
                                                                 </button>
                                                             </td>
                                                         </tr>
@@ -1114,7 +1001,7 @@
                                                 v-for="photo in form.photos"
                                                 :src="photo.url"
                                                 :key="photo.id"
-                                                style="width: 20vh"
+                                                style="width: 14.9vh; height: 14.9vh; vertical-align:middle;margin:10px 10px 10px 10px; border: 1px solid #3490dc;"
                                             />
                                         </div>
                                         <div class="modal-footer">
@@ -1325,6 +1212,83 @@ export default {
                 })
                 .catch(error => {
                     this.errors = "Lỗi in";
+                });
+        },
+        phieuChamSocPDF(id) {
+            axios
+                .get("/phieuchamsoc_pdf_export/" + id)
+                .then(response => {
+                    window.open("/phieuchamsoc_pdf_export/" + id);
+                })
+                .catch(error => {
+                    this.errors = "Lỗi in";
+                    console.log(error);
+                });
+        },
+        phieuTruyenDichPDF(id) {
+            axios
+                .get("/phieutruyendich_pdf_export/" + id)
+                .then(response => {
+                    window.open("/phieutruyendich_pdf_export/" + id);
+                })
+                .catch(error => {
+                    this.errors = "Lỗi in";
+                    console.log(error);
+                });
+        },
+        phieuThuThuocPDF(id) {
+            axios
+                .get("/phieuthuthuoc_pdf_export/" + id)
+                .then(response => {
+                    window.open("/phieuthuthuoc_pdf_export/" + id);
+                })
+                .catch(error => {
+                    this.errors = "Lỗi in";
+                    console.log(error);
+                });
+        },
+        phieuHoiChanPDF(id) {
+            axios
+                .get("/phieuhoichan_pdf_export/" + id)
+                .then(response => {
+                    window.open("/phieuhoichan_pdf_export/" + id);
+                })
+                .catch(error => {
+                    this.errors = "Lỗi in";
+                    console.log(error);
+                });
+        },
+        phieuPhauThuatPDF(id) {
+            axios
+                .get("/phieuphauthuat_pdf_export/" + id)
+                .then(response => {
+                    window.open("/phieuphauthuat_pdf_export/" + id);
+                })
+                .catch(error => {
+                    this.errors = "Lỗi in";
+                    console.log(error);
+                });
+        },
+        phieuHinhAnhPDF(id) {
+            axios
+                .get("/phieuhinhanh_pdf_export/" + id)
+                .then(response => {
+                    window.open("/phieuhinhanh_pdf_export/" + id);
+                })
+                .catch(error => {
+                    this.errors = "Lỗi in";
+                    console.log(error);
+                });
+        },
+        phieuXetNghiemPDF(id) {
+            axios
+                .get("/phieuxetnghiem_pdf_export/" + id)
+                .then(response => {
+                    window.open("/phieuxetnghiem_pdf_export/" + id);
+                })
+                .catch(error => {
+                    this.errors = "Lỗi in";
+                    console.log(error);
                 });
         },
         addPatientPDF(id) {

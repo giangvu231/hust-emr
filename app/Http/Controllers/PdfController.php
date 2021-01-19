@@ -39,7 +39,16 @@ class PdfController extends Controller
     public function vitalPDF($id)
     {
         $vitalData = Emr::findOrFail($id);
-        $patientInfo = addPatient::findOrFail($vitalData->patient_id);
+
+        if ($vitalData->patient_id) {
+            $patientInfo = addPatient::findOrFail($vitalData->patient_id);
+        }
+        if ($vitalData->vital_id) {
+            $vital = Vital::findOrFail($vitalData->vital_id);
+        }
+        if ($vitalData->treatment_id) {
+            $treatment = Treatment::findOrFail($vitalData->treatment_id);
+        }
 
         $datetime = now();
         $datetime = str_replace(" ", "", $datetime);
@@ -47,7 +56,13 @@ class PdfController extends Controller
         $datetime = str_replace(":", "", $datetime);
 
         $name = $datetime;
-        $pdf = PDF::loadView("pdf.SinhHieu", ['data' => $vitalData->vital, 'patientInfo' => $patientInfo])->setPaper('A4', 'Portrait');
+        $pdf = PDF::loadView("pdf.SinhHieu", [
+            'data' => $vitalData->vital,
+            'patientInfo' => $patientInfo,
+            'vital' => $vital,
+            'treatment' => $treatment,
+
+            ])->setPaper('A4', 'Portrait');
         $pdf->save(public_path("pdf/" . $name . ".pdf"));
         return response()->file(public_path("pdf/" . $name . ".pdf"));
     }
@@ -89,6 +104,231 @@ class PdfController extends Controller
             'lab' => $lab,
             'imaging' => $imaging,
             'surgery' => $surgery,
+
+            ])->setPaper('A4', 'Portrait');
+        $pdf->save(public_path("pdf/" . $name . ".pdf"));
+        return response()->file(public_path("pdf/" . $name . ".pdf"));
+    }
+
+    public function phieuChamSocPDF($id)
+    {
+        $vitalData = Emr::findOrFail($id);
+
+        if ($vitalData->patient_id) {
+            $patientInfo = addPatient::findOrFail($vitalData->patient_id);
+        }
+        if ($vitalData->vital_id) {
+            $vital = Vital::findOrFail($vitalData->vital_id);
+        }
+        if ($vitalData->treatment_id) {
+            $treatment = Treatment::findOrFail($vitalData->treatment_id);
+        }
+
+        $datetime = now();
+        $datetime = str_replace(" ", "", $datetime);
+        $datetime = str_replace("-", "", $datetime);
+        $datetime = str_replace(":", "", $datetime);
+
+        $name = $datetime;
+        $pdf = PDF::loadView("pdf.PhieuChamSoc", [
+            'data' => $vitalData->vital,
+            'patientInfo' => $patientInfo,
+            'vital' => $vital,
+            'treatment' => $treatment,
+
+            ])->setPaper('A4', 'Portrait');
+        $pdf->save(public_path("pdf/" . $name . ".pdf"));
+        return response()->file(public_path("pdf/" . $name . ".pdf"));
+    }
+
+    public function phieuTruyenDichPDF($id)
+    {
+        $vitalData = Emr::findOrFail($id);
+
+        if ($vitalData->patient_id) {
+            $patientInfo = addPatient::findOrFail($vitalData->patient_id);
+        }
+        if ($vitalData->vital_id) {
+            $vital = Vital::findOrFail($vitalData->vital_id);
+        }
+        if ($vitalData->treatment_id) {
+            $treatment = Treatment::findOrFail($vitalData->treatment_id);
+        }
+
+        $datetime = now();
+        $datetime = str_replace(" ", "", $datetime);
+        $datetime = str_replace("-", "", $datetime);
+        $datetime = str_replace(":", "", $datetime);
+
+        $name = $datetime;
+        $pdf = PDF::loadView("pdf.PhieuTruyenDich", [
+            'data' => $vitalData->vital,
+            'patientInfo' => $patientInfo,
+            'vital' => $vital,
+            'treatment' => $treatment,
+
+            ])->setPaper('A4', 'Landscape');
+        $pdf->save(public_path("pdf/" . $name . ".pdf"));
+        return response()->file(public_path("pdf/" . $name . ".pdf"));
+    }
+
+    public function phieuThuThuocPDF($id)
+    {
+        $vitalData = Emr::findOrFail($id);
+
+        if ($vitalData->patient_id) {
+            $patientInfo = addPatient::findOrFail($vitalData->patient_id);
+        }
+        if ($vitalData->vital_id) {
+            $vital = Vital::findOrFail($vitalData->vital_id);
+        }
+        if ($vitalData->treatment_id) {
+            $treatment = Treatment::findOrFail($vitalData->treatment_id);
+        }
+
+        $datetime = now();
+        $datetime = str_replace(" ", "", $datetime);
+        $datetime = str_replace("-", "", $datetime);
+        $datetime = str_replace(":", "", $datetime);
+
+        $name = $datetime;
+        $pdf = PDF::loadView("pdf.PhieuThuThuoc", [
+            'data' => $vitalData->vital,
+            'patientInfo' => $patientInfo,
+            'vital' => $vital,
+            'treatment' => $treatment,
+
+            ])->setPaper('A4', 'Landscape');
+        $pdf->save(public_path("pdf/" . $name . ".pdf"));
+        return response()->file(public_path("pdf/" . $name . ".pdf"));
+    }
+
+    public function phieuHoiChanPDF($id)
+    {
+        $vitalData = Emr::findOrFail($id);
+
+        if ($vitalData->patient_id) {
+            $patientInfo = addPatient::findOrFail($vitalData->patient_id);
+        }
+        if ($vitalData->vital_id) {
+            $vital = Vital::findOrFail($vitalData->vital_id);
+        }
+        if ($vitalData->treatment_id) {
+            $treatment = Treatment::findOrFail($vitalData->treatment_id);
+        }
+
+        $datetime = now();
+        $datetime = str_replace(" ", "", $datetime);
+        $datetime = str_replace("-", "", $datetime);
+        $datetime = str_replace(":", "", $datetime);
+
+        $name = $datetime;
+        $pdf = PDF::loadView("pdf.PhieuHoiChan", [
+            'data' => $vitalData->vital,
+            'patientInfo' => $patientInfo,
+            'vital' => $vital,
+            'treatment' => $treatment,
+
+            ])->setPaper('A4', 'Portrait');
+        $pdf->save(public_path("pdf/" . $name . ".pdf"));
+        return response()->file(public_path("pdf/" . $name . ".pdf"));
+    }
+
+    public function phieuPhauThuatPDF($id)
+    {
+        $vitalData = Emr::findOrFail($id);
+
+        if ($vitalData->patient_id) {
+            $patientInfo = addPatient::findOrFail($vitalData->patient_id);
+        }
+        if ($vitalData->vital_id) {
+            $vital = Vital::findOrFail($vitalData->vital_id);
+        }
+        if ($vitalData->treatment_id) {
+            $treatment = Treatment::findOrFail($vitalData->treatment_id);
+        }
+
+        $datetime = now();
+        $datetime = str_replace(" ", "", $datetime);
+        $datetime = str_replace("-", "", $datetime);
+        $datetime = str_replace(":", "", $datetime);
+
+        $name = $datetime;
+        $pdf = PDF::loadView("pdf.PhieuPhauThuat", [
+            'data' => $vitalData->vital,
+            'patientInfo' => $patientInfo,
+            'vital' => $vital,
+            'treatment' => $treatment,
+
+            ])->setPaper('A4', 'Portrait');
+        $pdf->save(public_path("pdf/" . $name . ".pdf"));
+        return response()->file(public_path("pdf/" . $name . ".pdf"));
+    }
+
+    public function phieuHinhAnhPDF($id)
+    {
+        $vitalData = Emr::findOrFail($id);
+
+        if ($vitalData->patient_id) {
+            $patientInfo = addPatient::findOrFail($vitalData->patient_id);
+        }
+        if ($vitalData->vital_id) {
+            $vital = Vital::findOrFail($vitalData->vital_id);
+        }
+        if ($vitalData->treatment_id) {
+            $treatment = Treatment::findOrFail($vitalData->treatment_id);
+        }
+        if ($vitalData->imaging_id) {
+            $imaging = ImagingResult::findOrFail($vitalData->imaging_id);
+        }
+
+        $datetime = now();
+        $datetime = str_replace(" ", "", $datetime);
+        $datetime = str_replace("-", "", $datetime);
+        $datetime = str_replace(":", "", $datetime);
+
+        $name = $datetime;
+        $pdf = PDF::loadView("pdf.PhieuHinhAnh", [
+            'data' => $vitalData->vital,
+            'patientInfo' => $patientInfo,
+            'vital' => $vital,
+            'treatment' => $treatment,
+            'imaging' => $imaging,
+
+            ])->setPaper('A4', 'Portrait');
+        $pdf->save(public_path("pdf/" . $name . ".pdf"));
+        return response()->file(public_path("pdf/" . $name . ".pdf"));
+    }
+
+    public function phieuXetNghiemPDF($id)
+    {
+        $vitalData = Emr::findOrFail($id);
+
+        if ($vitalData->patient_id) {
+            $patientInfo = addPatient::findOrFail($vitalData->patient_id);
+        }
+        if ($vitalData->vital_id) {
+            $vital = Vital::findOrFail($vitalData->vital_id);
+        }
+        if ($vitalData->treatment_id) {
+            $treatment = Treatment::findOrFail($vitalData->treatment_id);
+        }
+        if ($vitalData->lab_id) {
+            $lab = LabResult::findOrFail($vitalData->lab_id);
+        }
+
+        $datetime = now();
+        $datetime = str_replace(" ", "", $datetime);
+        $datetime = str_replace("-", "", $datetime);
+        $datetime = str_replace(":", "", $datetime);
+
+        $name = $datetime;
+        $pdf = PDF::loadView("pdf.PhieuXetNghiem", [
+            'data' => $vitalData->vital,
+            'patientInfo' => $patientInfo,
+            'vital' => $vital,
+            'treatment' => $treatment,
+            'lab' => $lab,
 
             ])->setPaper('A4', 'Portrait');
         $pdf->save(public_path("pdf/" . $name . ".pdf"));
