@@ -52,21 +52,20 @@
                     >
                         <thead>
                             <tr>
-                                <th>Mã bệnh nhân</th>
+                                <th>Mã HSBA</th>
                                 <th>Họ tên</th>
                                 <th>Điện thoại</th>
-                                <th>Nghề nghiệp</th>
-                                <th>Giới tính</th>
-                                <th>Thông tin đầy đủ</th>
+
+                                <th width="10%">Giới tính</th>
+                                <th>Chi tiết</th>
                                 <th>Tác vụ</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="patient in patients" :key="patient.id">
-                                <td>{{ patient.id }}</td>
+                                <td>{{ patient.unique_id }}</td>
                                 <td>{{ patient.full_name }}</td>
                                 <td>{{ patient.phone_number }}</td>
-                                <td>{{ patient.job_name }}</td>
                                 <td>{{ patient.sex }}</td>
                                 <td>
                                     <button
@@ -754,13 +753,12 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Mã bệnh nhân</th>
+                                <th>Mã HSBA</th>
                                 <th>Họ tên</th>
-                                <th>Tình trạng</th>
-                                <!-- <th>Số điện thoại</th>
-                  <th>Nghề nghiệp</th> -->
+                                <th>Điện thoại</th>
+
                                 <th>Giới tính</th>
-                                <th>Thông tin đầy đủ</th>
+                                <th>Chi tiết</th>
                                 <th>Tác vụ</th>
                             </tr>
                         </tfoot>
@@ -772,7 +770,6 @@
         </div>
     </div>
 </template>
-
 <script>
 export default {
     data() {

@@ -14,11 +14,11 @@
                         <thead>
                             <tr>
                                 <th>Mã bệnh nhân</th>
-                                <th>Họ tên</th>
+                                <th width="20%">Họ tên</th>
                                 <th>Thông tin chẩn đoán</th>
-                                <th>Nhận xét của bác sĩ</th>
+                                <th width="25%">Nhận xét</th>
                                 <th>Các triệu chứng</th>
-                                <th>Tác vụ</th>
+                                <th width="15%">Tác vụ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -110,7 +110,12 @@
                                                         Xác nhận trước
                                                         <div class="form-group">
                                                             <input
-                                                                style="width: 100%;"
+                                                                style="width: 100%; padding: 12px 20px;
+                                                        margin: 8px 0;
+                                                        display: inline-block;
+                                                        border: 1px solid #ccc;
+                                                        border-radius: 4px;
+                                                        box-sizing: border-box;"
                                                                 placeholder="Yêu cầu CDHA"
                                                                 type="text"
                                                                 v-model="
@@ -167,8 +172,9 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label
-                                                                >Chọn loại
-                                                                CDHA</label
+                                                                >Chọn loại chẩn
+                                                                đoán hình
+                                                                ảnh</label
                                                             >
                                                             <select
                                                                 v-model="
@@ -183,50 +189,38 @@
                                                                 name="type"
                                                             >
                                                                 <option
-                                                                    value="Công thức máu"
-                                                                    >Công thức
-                                                                    máu</option
+                                                                    value="X-Quang"
+                                                                    >X-Quang</option
                                                                 >
                                                                 <option
-                                                                    value="Xét nghiệm nước tiểu"
-                                                                    >Xét nghiệm
-                                                                    nước
-                                                                    tiểu</option
+                                                                    value="Cắt lớp vi tính"
+                                                                    >Cắt lớp vi
+                                                                    tính</option
                                                                 >
                                                                 <option
-                                                                    value="Sốt rét"
-                                                                    >Sốt
-                                                                    rét</option
+                                                                    value="Cộng hưởng từ"
+                                                                    >Cộng hưởng
+                                                                    từ</option
                                                                 >
                                                                 <option
-                                                                    value="HIV I - II"
-                                                                    >HIV I -
-                                                                    II</option
+                                                                    value="Siêu âm đen trắng"
+                                                                    >Siêu âm
+                                                                    màu</option
                                                                 >
                                                                 <option
-                                                                    value="Nhóm máu"
-                                                                    >Nhóm
-                                                                    máu</option
+                                                                    value="Điện tim"
+                                                                    >Điện
+                                                                    tim</option
                                                                 >
                                                                 <option
-                                                                    value="Kiểu Gen"
-                                                                    >Kiểu
-                                                                    Gen</option
+                                                                    value="Điện não"
+                                                                    >Điện
+                                                                    não</option
                                                                 >
                                                                 <option
-                                                                    value="Đường huyết"
-                                                                    >Đường
-                                                                    huyết</option
-                                                                >
-                                                                <option
-                                                                    value="Thử thai"
-                                                                    >Thử
-                                                                    thai</option
-                                                                >
-                                                                <option
-                                                                    value="Lao phổi"
-                                                                    >Lao
-                                                                    phổi</option
+                                                                    value="Nội soi"
+                                                                    >Nội
+                                                                    soi</option
                                                                 >
                                                             </select>
 
@@ -236,11 +230,27 @@
                                                             ></has-error>
                                                         </div>
                                                         <div class="form-group">
+                                                            <div
+                                                                type="submit"
+                                                                class="btn-block btn btn-info"
+                                                                style="color:#fff;"
+                                                                @click="
+                                                                    openUrl()
+                                                                "
+                                                            >
+                                                                Mở hình ảnh bệnh
+                                                                lý
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for=""
+                                                                >Kết luận</label
+                                                            >
                                                             <textarea
                                                                 v-model="
                                                                     form.comment
                                                                 "
-                                                                placeholder="Comment"
+                                                                placeholder="Kết luận của bác sỹ"
                                                                 name="comment"
                                                                 id=""
                                                                 cols="10"
@@ -258,7 +268,6 @@
                                                             ></has-error>
                                                         </div>
                                                         <center>
-                                                            <!-- <button type="submit" class="imagingtestresult btn-block btn btn-info" style="color:#fff;">Upload Test Result</button> -->
                                                             <button
                                                                 type="submit"
                                                                 class="imagingtestresult btn-block btn btn-info"
@@ -288,11 +297,11 @@
                         <tfoot>
                             <tr>
                                 <th>Mã bệnh nhân</th>
-                                <th>Họ tên</th>
+                                <th width="20%">Họ tên</th>
                                 <th>Thông tin chẩn đoán</th>
-                                <th>Nhận xét của bác sĩ</th>
+                                <th width="25%">Nhận xét</th>
                                 <th>Các triệu chứng</th>
-                                <th>Tác vụ</th>
+                                <th width="15%">Tác vụ</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -376,6 +385,12 @@ export default {
                     this.searchImagingArrs = response.data;
                 })
                 .catch(() => {});
+        },
+        openUrl() {
+            window.open(
+                "http://117.4.35.79:8000/clinicalstudio/integration/viewer?mrn=129781&acc=13417454",
+                "_blank"
+            );
         }
     },
     mounted() {

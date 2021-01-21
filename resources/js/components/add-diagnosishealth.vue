@@ -55,6 +55,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Khám tuần hoàn</label>
                                             <textarea
                                                 v-model="
                                                     form.diagnosis_tuanhoan
@@ -80,6 +81,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Khám hô hấp</label>
                                             <textarea
                                                 v-model="form.diagnosis_hohap"
                                                 type="text"
@@ -103,6 +105,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Khám tiêu hóa</label>
                                             <textarea
                                                 v-model="form.diagnosis_tieuhoa"
                                                 type="text"
@@ -126,6 +129,10 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label
+                                                >Khám Thận- Tiết niệu- Sinh
+                                                dục</label
+                                            >
                                             <textarea
                                                 v-model="
                                                     form.diagnosis_than_tietnieu_sinhduc
@@ -151,6 +158,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Khám thần kinh</label>
                                             <textarea
                                                 v-model="
                                                     form.diagnosis_thankinh
@@ -176,6 +184,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Khám Cơ- Xương- Khớp</label>
                                             <textarea
                                                 v-model="
                                                     form.diagnosis_coxuongkhop
@@ -201,6 +210,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Khám Tai- mũi- họng</label>
                                             <textarea
                                                 v-model="
                                                     form.diagnosis_taimuihong
@@ -226,6 +236,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Khám Răng- Hàm- Mặt</label>
                                             <textarea
                                                 v-model="
                                                     form.diagnosis_ranghammat
@@ -251,6 +262,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Khám mắt</label>
                                             <textarea
                                                 v-model="form.diagnosis_mat"
                                                 type="text"
@@ -274,6 +286,10 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label
+                                                >Khám Nội tiết- Dinh dưỡng-
+                                                Khác</label
+                                            >
                                             <textarea
                                                 v-model="
                                                     form.diagnosis_noitiet_dinhduong_khac
@@ -299,6 +315,10 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label
+                                                >Triệu chứng và hội chứng lâm
+                                                sàng</label
+                                            >
                                             <textarea
                                                 v-model="
                                                     form.diagnosis_syndrome

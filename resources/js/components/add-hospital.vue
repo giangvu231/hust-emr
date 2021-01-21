@@ -275,7 +275,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    Đặc điểm liên quan bệnh:
+                                    <b>Đặc điểm liên quan bệnh</b>
                                 </tr>
                                 <tr>
                                     <td colspan="2">

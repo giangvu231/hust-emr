@@ -87,11 +87,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                {{ __('Electronic Patients Medical Record System') }}
+                <b>PHẦN MỀM QUẢN LÝ <br>
+                HỒ SƠ BỆNH ÁN ĐIỆN TỬ</b>
                 </div>
                 <div class="links">
                    <p>
-                    V20.08.26
+                    HUST-2021
                    </p>
                 </div>
             </div>

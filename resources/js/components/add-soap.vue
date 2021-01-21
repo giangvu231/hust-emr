@@ -44,6 +44,9 @@
                             </div>
                             <!-- --- -->
                             <div class="form-group">
+                                <label for=""
+                                    >Dấu chứng chủ quan (Subjective)</label
+                                >
                                 <textarea
                                     v-model="form.subjective"
                                     type="text"
@@ -65,6 +68,9 @@
                                 ></has-error>
                             </div>
                             <div class="form-group">
+                                <label for=""
+                                    >Dấu chứng khách quan (Objective)</label
+                                >
                                 <textarea
                                     v-model="form.objective"
                                     type="text"
@@ -86,6 +92,9 @@
                                 ></has-error>
                             </div>
                             <div class="form-group">
+                                <label for=""
+                                    >Hướng chẩn đoán (Assessment)</label
+                                >
                                 <textarea
                                     v-model="form.assessment"
                                     type="text"
@@ -106,6 +115,7 @@
                                 ></has-error>
                             </div>
                             <div class="form-group">
+                                <label for="">Hướng điều trị (Plan)</label>
                                 <textarea
                                     v-model="form.plan"
                                     type="text"

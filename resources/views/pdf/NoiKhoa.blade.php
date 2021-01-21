@@ -28,7 +28,6 @@
     }
     * {
       font-family: "Times New Roman" !important;
-      border: solid black 1px;
     }
     .font-bold {
       font-weight: bold;
@@ -43,8 +42,11 @@
       page-break-before: always;
     }
     .center {
-  text-align: center;
-}
+    text-align: center;
+    }
+    table {
+    border-collapse: collapse;
+    }
   </style>
 
   <body style="font-family: Times New Roman; font-size: 12px">
@@ -52,15 +54,15 @@
     <div class="header">
       <table width="100%">
         <tr>
-          <td width="30%">Sở Y tế:</td>
+          <td width="30%">Sở Y tế tỉnh Phú Thọ</td>
           <td width="40%" rowspan="3" style="text-align: center; font-size: 25px">
             <b>BỆNH ÁN NỘI KHOA</b>
           </td>
-          <td width="30%">Số lưu trữ: {{ $patientInfo->unique_id }}</td>
+          <td width="30%">Mã HSBA: {{ $patientInfo->unique_id }}</td>
         </tr>
         <tr>
-          <td width="30%">Bệnh viện:</td>
-          <td width="30%">Mã YT</td>
+          <td width="30%">TTYT Huyện Cẩm Khê</td>
+          <td width="30%">Mã BN: {{ $patientInfo->pid }}</td>
         </tr>
 
         <tr>
@@ -135,17 +137,16 @@
       <br />
       <table width="100%" style="border: 1px solid black">
         <tr>
-          <td width="50%">12. Vào viện: {{ $hospitalHistory->date_admitted }}</td>
+          <td style="border-right: 1px solid black" width="50%">12. Vào viện: {{ $hospitalHistory->date_admitted }}</td>
           <td>14. Nơi giới thiệu: {{ $hospitalHistory->refer_dept }}</td>
         </tr>
         <tr>
-          <td>13. Trực tiếp vào: {{ $hospitalHistory->admit_dept }}</td>
-          <td>- Vào viện do bệnh này lần thứ: {{ $treatment->reason_count }}</td>
+          <td style="border-right: 1px solid black; border-bottom: 1px solid black">13. Trực tiếp vào: {{ $hospitalHistory->admit_dept }}</td>
+          <td style="border-bottom: 1px solid black">- Vào viện do bệnh này lần thứ: {{ $treatment->reason_count }}</td>
         </tr>
-      </table>
-      <table width="100%" style="border: 1px solid black">
+
         <tr>
-          <td width="50%">15. Vào Khoa: {{ $treatment->department }}</td>
+          <td width="50%" style="border-right: 1px solid black;">15. Vào Khoa: {{ $treatment->department }}</td>
           <td>
             17. Chuyển viện: {{ $treatment->hosp_transfer_type }}
             <br />
@@ -153,22 +154,22 @@
           </td>
         </tr>
         <tr>
-          <td>16. Chuyển khoa lần 1: {{ $treatment->dept_name_2nd }}</td>
+          <td style="border-right: 1px solid black;">16. Chuyển khoa lần 1: {{ $treatment->dept_name_2nd }}</td>
           <td>18. Ra viện:</td>
         </tr>
         <tr>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chuyển khoa lần 2: {{ $treatment->dept_name_3rd }}</td>
+          <td style="border-right: 1px solid black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chuyển khoa lần 2: {{ $treatment->dept_name_3rd }}</td>
           <td>19. Tổng số ngày điều trị: {{ $hospitalHistory->age }}</td>
         </tr>
         <tr>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chuyển khoa lần 3: {{ $treatment->dept_name_4th }}</td>
+          <td style="border-right: 1px solid black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chuyển khoa lần 3: {{ $treatment->dept_name_4th }}</td>
           <td></td>
         </tr>
       </table>
     </div>
     <!-- Chẩn đoán -->
     <div>
-      <table width="100%" style="border: 1px solid black">
+      <table width="100%" style="border-bottom: 1px solid black">
         <tr>
           <td width="40%"><b> III. CHẨN ĐOÁN </b></td>
           <td width="10%" class="center">MÃ</td>
@@ -176,36 +177,36 @@
           <td width="10%" class="center">MÃ</td>
         </tr>
         <tr>
-          <td>
+          <td style="border-top: 1px solid black; border-left: 1px solid black;">
             20. Nơi chuyển đến: <br />
             {{ $treatment->icd10_admit_name }}
           </td>
-          <td class="center"><br />[{{ $treatment->icd10_admit_code }}]</td>
-          <td rowspan="2" style="vertical-align: text-top">
+          <td style="border-top: 1px solid black; border-right: 1px solid black;" class="center"><br />[{{ $treatment->icd10_admit_code }}]</td>
+          <td style="border-top: 1px solid black; " rowspan="2" style="vertical-align: text-top">
             23. Ra viện: <br />
             + Bệnh chính: {{ $summary->discharge_maindisease_name }}
           </td>
-          <td rowspan="2" class="center"><br />[{{ $summary->discharge_maindisease_code}}]</td>
+          <td style="border-right: 1px solid black; border-top: 1px solid black;" rowspan="2" class="center"><br />[{{ $summary->discharge_maindisease_code}}]</td>
         </tr>
         <tr>
-          <td>
+          <td style="border-left: 1px solid black;">
             21. KKB, cấp cứu: <br />
             {{ $treatment->icd10_emergency_name }}
           </td>
-          <td class="center"><br />[ {{ $treatment->icd10_emergency_code }}]</td>
+          <td style="border-right: 1px solid black;" class="center"><br />[ {{ $treatment->icd10_emergency_code }}]</td>
         </tr>
         <tr>
-          <td>
+          <td style="border-left: 1px solid black;">
             22. Khi vào khoa điều trị: <br />
             {{ $treatment->icd10_treatment_name }}
           </td>
-          <td class="center"><br />[{{ $treatment->icd10_treatment_code }}]</td>
-          <td>+ Bệnh kèm theo: {{ $summary->discharge_subdisease_name }}<br /></td>
-          <td class="center"><br />[{{ $summary->discharge_subdisease_code }}]</td>
+          <td style="border-right: 1px solid black;" class="center"><br />[{{ $treatment->icd10_treatment_code }}]</td>
+          <td >+ Bệnh kèm theo: {{ $summary->discharge_subdisease_name }}<br /></td>
+          <td style="border-right: 1px solid black;" class="center"><br />[{{ $summary->discharge_subdisease_code }}]</td>
         </tr>
-        <tr>
-          <td colspan="2">+ Thủ thuật: [{{ $treatment->diagnosis_procedure }}]&nbsp;&nbsp; + Phẫu thuật: [{{ $treatment->diagnosis_surgery }}]</td>
-          <td colspan="2">+ Tai biến: [{{ $summary->discharge_stroke }}] &nbsp;&nbsp; + Biến chứng: [{{ $summary->discharge_complication }}]</td>
+        <tr style="border-right: 1px solid black; border-left: 1px solid black;">
+          <td style="border-left: 1px solid black;" colspan="2">+ Thủ thuật: [{{ $treatment->diagnosis_procedure }}]&nbsp;&nbsp; + Phẫu thuật: [{{ $treatment->diagnosis_surgery }}]</td>
+          <td style="border-left: 1px solid black; border-right: 1px solid black;" style="border-right: 1px solid black;" colspan="2">+ Tai biến: [{{ $summary->discharge_stroke }}] &nbsp;&nbsp; + Biến chứng: [{{ $summary->discharge_complication }}]</td>
         </tr>
       </table>
     </div>
@@ -214,33 +215,34 @@
       <b> IV. TÌNH TRẠNG RA VIỆN </b>
       <table width="100%" style="border: 1px solid black">
         <tr>
-          <td width="30%" style="vertical-align: text-top">
+          <td style="border-right: 1px solid black;" width="30%" style="vertical-align: text-top">
             24. Kết quả điều trị: <br />
             {{ $summary->treatment_result }}
           </td>
-          <td>
-            26. Tình hình tử vong: {{ \Carbon\Carbon::parse($summary->death_time)->format('H \g\i\ờ m \p\h, \n\g\à\y d \t\h\á\n\g m \n\ă\m Y') }}
+          <td >
+            26. Tình hình tử vong:
+            <!-- {{ \Carbon\Carbon::parse($summary->death_time)->format('H \g\i\ờ m \p\h, \n\g\à\y d \t\h\á\n\g m \n\ă\m Y') }} -->
             <br />
             {{ $summary->death_type }} <br />
             {{ $summary->death_time_range }}
           </td>
         </tr>
         <tr>
-          <td></td>
+          <td style="border-right: 1px solid black;"></td>
           <td>
             27. Nguyên nhân chính tử vong: <br />
             {{ $summary->death_reason_name }}
           </td>
         </tr>
         <tr>
-          <td>
+          <td style="border-right: 1px solid black;">
             25. Giải phẫu bệnh <i>(khi có sinh thiết)</i>: <br />
             {{ $summary->anapath }}
           </td>
           <td>28. Khám nghiệm tử thi: [{{ $summary->autopsy }}]</td>
         </tr>
         <tr>
-          <td></td>
+          <td style="border-right: 1px solid black;"></td>
           <td>29. Chẩn đoán giải phẫu tử thi: {{ $summary->autopsy_diagnosis_name }}</td>
         </tr>
       </table>
@@ -325,52 +327,52 @@
         </tr>
         <tr>
           <td colspan="2">
-            <table width="100%" border="1px solid black" style="text-align: center">
-              <tr>
-                <td width="5%"><b>TT</b></td>
-                <td width="10%"></td>
-                <td width="10%">Ký hiệu</td>
-                <td width="20%">
+            <table width="100%"  style="text-align: center; border:1px solid black;">
+              <tr >
+                <td style="border-bottom:1px solid black; border-right:1px solid black;" width="5%"><b>TT</b></td>
+                <td style="border:1px solid black;" width="10%"></td>
+                <td style="border:1px solid black;" width="10%">Ký hiệu</td>
+                <td style="border:1px solid black;" width="20%">
                   Thời gian <br />
                   (tính theo tháng)
                 </td>
-                <td width="5%"><b>TT</b></td>
-                <td width="10%"></td>
-                <td width="10%">Ký hiệu</td>
-                <td width="20%">
+                <td style="border:1px solid black;" width="5%"><b>TT</b></td>
+                <td style="border:1px solid black;" width="10%"></td>
+                <td style="border:1px solid black;" width="10%">Ký hiệu</td>
+                <td style="border:1px solid black;" width="20%">
                   Thời gian <br />
                   (tính theo tháng)
                 </td>
               </tr>
               <tr>
-                <td>01</td>
-                <td>Dị ứng</td>
-                <td>{{ $hospitalHistory->disease_diung }}</td>
-                <td><i>(dị nguyên)</i> {{ $hospitalHistory->disease_diung_time }}</td>
-                <td>04</td>
-                <td>Thuốc lá</td>
-                <td>{{ $hospitalHistory->disease_thuocla }}</td>
-                <td>{{ $hospitalHistory->disease_thuocla_time }}</td>
+                <td style="border:1px solid black;" style="border:1px solid black;">01</td>
+                <td style="border:1px solid black;">Dị ứng</td>
+                <td style="border:1px solid black;">{{ $hospitalHistory->disease_diung }}</td>
+                <td style="border:1px solid black;"><i>(dị nguyên)</i> {{ $hospitalHistory->disease_diung_time }}</td>
+                <td style="border:1px solid black;">04</td>
+                <td style="border:1px solid black;">Thuốc lá</td>
+                <td style="border:1px solid black;">{{ $hospitalHistory->disease_thuocla }}</td>
+                <td style="border:1px solid black;">{{ $hospitalHistory->disease_thuocla_time }}</td>
               </tr>
               <tr>
-                <td>02</td>
-                <td>Ma túy</td>
-                <td>{{ $hospitalHistory->disease_matuy }}</td>
-                <td>{{ $hospitalHistory->disease_matuy_time }}</td>
-                <td>05</td>
-                <td>Thuốc lào</td>
-                <td>{{ $hospitalHistory->disease_thuoclao }}</td>
-                <td>{{ $hospitalHistory->disease_thuoclao_time }}</td>
+                <td style="border-bottom:1px solid black; border-right:1px solid black;">02</td>
+                <td style="border:1px solid black;">Ma túy</td>
+                <td style="border:1px solid black;">{{ $hospitalHistory->disease_matuy }}</td>
+                <td style="border:1px solid black;">{{ $hospitalHistory->disease_matuy_time }}</td>
+                <td style="border:1px solid black;">05</td>
+                <td style="border:1px solid black;">Thuốc lào</td>
+                <td style="border:1px solid black;">{{ $hospitalHistory->disease_thuoclao }}</td>
+                <td style="border:1px solid black;">{{ $hospitalHistory->disease_thuoclao_time }}</td>
               </tr>
               <tr>
-                <td>03</td>
-                <td>Rượu bia</td>
-                <td>{{ $hospitalHistory->disease_ruoubia }}</td>
-                <td>{{ $hospitalHistory->disease_ruoubia_time }}</td>
-                <td>06</td>
-                <td>Khác</td>
-                <td>{{ $hospitalHistory->disease_khac }}</td>
-                <td>{{ $hospitalHistory->disease_khac_time }}</td>
+                <td style="border-bottom:1px solid black; border-right:1px solid black;">03</td>
+                <td style="border:1px solid black;">Rượu bia</td>
+                <td style="border:1px solid black;">{{ $hospitalHistory->disease_ruoubia }}</td>
+                <td style="border:1px solid black;">{{ $hospitalHistory->disease_ruoubia_time }}</td>
+                <td style="border:1px solid black;">06</td>
+                <td style="border:1px solid black;">Khác</td>
+                <td style="border:1px solid black;">{{ $hospitalHistory->disease_khac }}</td>
+                <td style="border:1px solid black;">{{ $hospitalHistory->disease_khac_time }}</td>
               </tr>
             </table>
           </td>
@@ -527,7 +529,7 @@
         </tr>
         <tr width="100%">
           <td colspan="2">
-            <table width="100%" border="1px solid black" class="page_break">
+            <table width="100%" class="page_break">
               <tr width="100%" class="page_break">
                 <td colspan="2">
                   <b>B. TỔNG KẾT BỆNH ÁN </b>
@@ -565,8 +567,8 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: center"><b>Hồ sơ, phim ảnh</b></td>
-                <td width="30%" rowspan="4" style="text-align: center">
+                <td style="border:1px solid black; text-align: center;" colspan="2" style=""><b>Hồ sơ, phim ảnh</b></td>
+                <td style="border:1px solid black; text-align: center;" width="30%" rowspan="4" >
                   <b> Người giao hồ sơ</b> <br />
                   <br />
                   <br />
@@ -576,7 +578,7 @@
                   <br />
                   Họ tên
                 </td>
-                <td width="30%" rowspan="8" style="text-align: center">
+                <td style="border:1px solid black; text-align: center;" width="30%" rowspan="8" >
                   Ngày.....tháng.....năm..... <br />
                   <b>Bác sỹ điều trị</b>
                   <br />
@@ -590,25 +592,25 @@
                 </td>
               </tr>
               <tr>
-                <td style="text-align: center">
+                <td style="border:1px solid black; text-align: center">
                   <b>Loại</b>
                 </td>
-                <td style="text-align: center">
+                <td style="border:1px solid black; text-align: center">
                   <b>Số tờ</b>
                 </td>
               </tr>
               <tr>
-                <td>&nbsp;- X-quang</td>
-                <td class="center">{{ $summary->dx_count }}</td>
+                <td style="border:1px solid black;">&nbsp;- X-quang</td>
+                <td style="border:1px solid black;" class="center">{{ $summary->dx_count }}</td>
               </tr>
               <tr>
-                <td>&nbsp;- CT Scanner</td>
-                <td class="center">{{ $summary->ct_count }}</td>
+                <td style="border:1px solid black;">&nbsp;- CT Scanner</td>
+                <td style="border:1px solid black;" class="center">{{ $summary->ct_count }}</td>
               </tr>
               <tr>
-                <td>&nbsp;- Siêu âm</td>
-                <td class="center">{{ $summary->us_count }}</td>
-                <td width="30%" rowspan="4" style="text-align: center">
+                <td style="border:1px solid black;">&nbsp;- Siêu âm</td>
+                <td style="border:1px solid black;" class="center">{{ $summary->us_count }}</td>
+                <td style="border:1px solid black; text-align: center;" width="30%" rowspan="4">
                   <b> Người nhận hồ sơ</b> <br />
                   <br />
                   <br />
@@ -620,16 +622,16 @@
                 </td>
               </tr>
               <tr>
-                <td>&nbsp;- Xét nghiệm</td>
-                <td class="center">{{ $summary->lab_count }}</td>
+                <td style="border:1px solid black;">&nbsp;- Xét nghiệm</td>
+                <td style="border:1px solid black;" class="center">{{ $summary->lab_count }}</td>
               </tr>
               <tr>
-                <td>&nbsp;- Khác............</td>
-                <td class="center">{{ $summary->other_count }}</td>
+                <td style="border:1px solid black;">&nbsp;- Khác............</td>
+                <td style="border:1px solid black;" class="center">{{ $summary->other_count }}</td>
               </tr>
               <tr>
-                <td>&nbsp;- Toàn bộ hồ sơ</td>
-                <td class="center">{{ $summary->total_count }}</td>
+                <td style="border:1px solid black;">&nbsp;- Toàn bộ hồ sơ</td>
+                <td style="border:1px solid black;" class="center">{{ $summary->total_count }}</td>
               </tr>
             </table>
           </td>

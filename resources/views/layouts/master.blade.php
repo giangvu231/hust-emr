@@ -86,17 +86,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 Quản lý HSBA
               </p>
             </router-link>
-
-              <!-- <ul id="_drop1" data-tongle="1">
-                <li class="nav-item" >
-                    <router-link to="/emr-mngt" class="nav-link">
-                    <i class="nav-icon fas fa-database"></i>
-                    <p>
-                    Danh sách HSBA
-                    </p>
-                    </router-link>
-                </li>
-              </ul> -->
           </li>
 
             <li class="nav-item" >
@@ -115,7 +104,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 Danh sách bệnh nhân
                 </p>
                 </router-link>
-                <li>
+</li>
 
                 <li class="nav-item">
                     <router-link to="/hospital" class="nav-link">
@@ -192,7 +181,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <li class="nav-item">
                 <router-link to="/soaps" class="nav-link">
-                    <i class="nav-icon fas fa-heartbeat"></i>
+                    <i class="nav-icon fas fa-file-alt"></i>
                     <p>
                         Quản lý SOAP
                     </p>
@@ -200,7 +189,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
             <li class="nav-item">
                 <router-link to="/add-soap" class="nav-link">
-                    <i class="nav-icon fas fa-heartbeat"></i>
+                    <i class="nav-icon fas fa-file-alt"></i>
                     <p>
                         Nhập SOAP
                     </p>
@@ -209,7 +198,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <li class="nav-item">
                 <router-link to="/diagnosishealths" class="nav-link">
-                    <i class="nav-icon fas fa-heartbeat"></i>
+                    <i class="nav-icon fas fad fa-child"></i>
                     <p>
                         Quản lý Khám cơ quan
                     </p>
@@ -218,7 +207,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <li class="nav-item">
                 <router-link to="/add-diagnosishealth" class="nav-link">
-                    <i class="nav-icon fas fa-heartbeat"></i>
+                    <i class="nav-icon fas fad fa-child"></i>
                     <p>
                         Khám cơ quan
                     </p>
@@ -240,7 +229,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <li class="nav-item">
                 <router-link to="/diagnosed" class="nav-link">
-                    <i class="nav-icon fas fa-vials"></i>
+                    <i class="nav-icon fas fad fa-diagnoses"></i>
                     <p>
                         Quản lý lâm sàng
                     </p>
@@ -286,7 +275,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/lab-test" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
-                Chỉ định xét nghiệm
+                Nhập KQ xét nghiệm
               </p>
             </router-link>
           </li>
@@ -302,16 +291,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <router-link to="/imaging-test" class="nav-link">
-              <i class="nav-icon fas fa-vial"></i>
+              <i class="nav-icon fas fa-images"></i>
               <p>
-                Chỉ định CDHA
+                Nhập KQ CDHA
               </p>
             </router-link>
           </li>
 
           <li class="nav-item">
             <router-link to="/imagingresult" class="nav-link">
-              <i class="nav-icon fas fa-vial"></i>
+              <i class="nav-icon fas fa-images"></i>
               <p>
               Kết quả CDHA
               </p>
@@ -320,7 +309,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <router-link to="/add-surgery" class="nav-link">
-              <i class="nav-icon fas fa-vial"></i>
+              <i class="nav-icon fas fa-procedures"></i>
               <p>
               Chỉ định phẫu thuật
               </p>
@@ -329,7 +318,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <router-link to="/surgery" class="nav-link">
-              <i class="nav-icon fas fa-vial"></i>
+              <i class="nav-icon fas fa-procedures"></i>
               <p>
               Kết quả phẫu thuật
               </p>
@@ -338,7 +327,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <router-link to="/give-injection" class="nav-link">
-              <i class="nav-icon fas fa-vial"></i>
+              <i class="nav-icon fas fa-syringe"></i>
               <p>
               Chỉ định tiêm
               </p>
@@ -347,7 +336,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <router-link to="/treatments" class="nav-link">
-              <i class="nav-icon fas fa-vial"></i>
+              <i class="nav-icon fas fa-user-md"></i>
               <p>
                 Quản lý chẩn đoán
               </p>
@@ -356,7 +345,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <router-link to="/add-treatment" class="nav-link">
-              <i class="nav-icon fas fa-vial"></i>
+              <i class="nav-icon fas fa-user-md"></i>
               <p>
                 Nhập chẩn đoán
               </p>
@@ -365,7 +354,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <router-link to="/emr-summaries" class="nav-link">
-              <i class="nav-icon fas fa-vial"></i>
+              <i class="nav-icon fas fad fa-book-medical"></i>
               <p>
                 Tổng kết bệnh án
               </p>
@@ -374,7 +363,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <router-link to="/emr-summary" class="nav-link">
-              <i class="nav-icon fas fa-vial"></i>
+              <i class="nav-icon fas fad fa-book-medical"></i>
               <p>
                 Nhập Tổng kết bệnh án
               </p>
@@ -486,21 +475,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           {{-- Condition to show for receptionist --}}
           @if (Auth::user()->role == "recept" )
-
-          <li class="nav-item">
-            <router-link to="/patients" class="nav-link">
-              <i class="nav-icon fas fa-procedures"></i>
+          <li class="nav-item" >
+                <router-link to="/patients" class="nav-link">
+                <i class="nav-icon fas fa-procedures"></i>
+                <p>
+                Danh sách bệnh nhân
+                </p>
+                </router-link>
+            </li>
+            <li class="nav-item" >
+                    <router-link to="/add-biodata" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>
+                        Nhập bệnh nhân mới
+                    </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+            <router-link to="/appointment" class="nav-link">
+              <i class="nav-icon fas fa-calendar-check"></i>
               <p>
-              {{ __('All Patients') }}
+              Quản lý lịch hẹn
               </p>
             </router-link>
           </li>
-
           <li class="nav-item">
-            <router-link to="/add-biodata" class="nav-link">
-              <i class="nav-icon fas fa-database"></i>
+            <router-link to="/billing" class="nav-link">
+              <i class="nav-icon fas fa-info-circle"></i>
               <p>
-              {{ __('Add Patient Biodata') }}
+              Thanh toán ra viện
               </p>
             </router-link>
           </li>
@@ -509,60 +512,204 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           {{-- Condition to show for nurse --}}
           @if (Auth::user()->role == "nurse" )
-          <li class="nav-item">
-            <router-link to="/patients" class="nav-link">
-              <i class="nav-icon fas fa-procedures"></i>
+          <li class="nav-item" >
+                <router-link to="/patients" class="nav-link">
+                <i class="nav-icon fas fa-procedures"></i>
+                <p>
+                Danh sách bệnh nhân
+                </p>
+                </router-link>
+</li>
+<li class="nav-item" >
+                    <router-link to="/add-biodata" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>
+                        Nhập bệnh nhân mới
+                    </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/add-hospital" class="nav-link">
+                        <i class="nav-icon fas fa-hospital-symbol"></i>
+                        <p>
+                            Nhập quá trình khám bệnh
+                        </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                <router-link to="/add-vital" class="nav-link">
+                    <i class="nav-icon fas fa-heartbeat"></i>
+                    <p>
+                        Khám toàn thân
+                    </p>
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/soaps" class="nav-link">
+                    <i class="nav-icon fas fa-file-alt"></i>
+                    <p>
+                        Quản lý SOAP
+                    </p>
+                </router-link>
+                </li>
+            <li class="nav-item">
+                <router-link to="/add-soap" class="nav-link">
+                    <i class="nav-icon fas fa-file-alt"></i>
+                    <p>
+                        Nhập SOAP
+                    </p>
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/add-diagnosishealth" class="nav-link">
+                    <i class="nav-icon fas fad fa-child"></i>
+                    <p>
+                        Khám cơ quan
+                    </p>
+                </router-link>
+            </li>
+            <li class="nav-item">
+            <router-link to="/give-injection" class="nav-link">
+              <i class="nav-icon fas fa-syringe"></i>
               <p>
-              {{ __('All Patients') }}
+              Chỉ định tiêm
               </p>
             </router-link>
           </li>
 
+          @endif
+          {{-- End Condition to show for nurse --}}
+
+          {{-- Condition to show for doctor --}}
+          @if (Auth::user()->role == "doc"  )
           <li class="nav-item">
-            <router-link to="/vitals" class="nav-link">
-              <i class="nav-icon fas fa-heartbeat"></i>
+            <router-link to="/emr-mngt" class="nav-link _click1" >
+              <i class="nav-icon fas fa-database"></i>
               <p>
-              {{ __('Patient Vitals') }}
+                Quản lý HSBA
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item" >
+                <router-link to="/patients" class="nav-link">
+                <i class="nav-icon fas fa-procedures"></i>
+                <p>
+                Danh sách bệnh nhân
+                </p>
+                </router-link>
+            <li>
+            <li class="nav-item">
+                    <router-link to="/hospital" class="nav-link">
+                        <i class="nav-icon fas fa-hospital-symbol"></i>
+                        <p>
+                            Quá trình khám
+                        </p>
+                    </router-link>
+                </li>
+                <li class="nav-item" >
+                    <router-link to="/add-biodata" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>
+                        Nhập bệnh nhân mới
+                    </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/add-hospital" class="nav-link">
+                        <i class="nav-icon fas fa-hospital-symbol"></i>
+                        <p>
+                            Nhập quá trình khám bệnh
+                        </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                <router-link to="/vitals" class="nav-link">
+                    <i class="nav-icon fas fa-heartbeat"></i>
+                    <p>
+                        Quản lý khám toàn thân
+                    </p>
+                </router-link>
+                </li>
+            <li class="nav-item">
+                <router-link to="/add-vital" class="nav-link">
+                    <i class="nav-icon fas fa-heartbeat"></i>
+                    <p>
+                        Khám toàn thân
+                    </p>
+                </router-link>
+            </li>
+
+            <li class="nav-item">
+                <router-link to="/soaps" class="nav-link">
+                    <i class="nav-icon fas fa-file-alt"></i>
+                    <p>
+                        Quản lý SOAP
+                    </p>
+                </router-link>
+                </li>
+            <li class="nav-item">
+                <router-link to="/add-soap" class="nav-link">
+                    <i class="nav-icon fas fa-file-alt"></i>
+                    <p>
+                        Nhập SOAP
+                    </p>
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/diagnosishealths" class="nav-link">
+                    <i class="nav-icon fas fad fa-child"></i>
+                    <p>
+                        Quản lý Khám cơ quan
+                    </p>
+                </router-link>
+            </li>
+
+            <li class="nav-item">
+                <router-link to="/add-diagnosishealth" class="nav-link">
+                    <i class="nav-icon fas fad fa-child"></i>
+                    <p>
+                        Khám cơ quan
+                    </p>
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/diagnosed" class="nav-link">
+                    <i class="nav-icon fas fad fa-diagnoses"></i>
+                    <p>
+                        Quản lý lâm sàng
+                    </p>
+                </router-link>
+            </li>
+            <li class="nav-item">
+            <router-link to="/labresult" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+              Kết quả xét nghiệm
               </p>
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/add-vital" class="nav-link">
-              <i class="nav-icon fas fa-heartbeat"></i>
+            <router-link to="/imagingresult" class="nav-link">
+              <i class="nav-icon fas fa-images"></i>
               <p>
-              {{ __('Add Patient Vitals') }}
-              </p>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/hospital" class="nav-link">
-              <i class="nav-icon fas fa-hospital-symbol"></i>
-              <p>
-              {{ __('Hospital History') }}
-              </p>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/add-hospital" class="nav-link">
-              <i class="nav-icon fas fa-hospital-symbol"></i>
-              <p>
-              {{ __('Add Hospital History') }}
+              Kết quả CDHA
               </p>
             </router-link>
           </li>
           <li class="nav-item">
             <router-link to="/add-surgery" class="nav-link">
-              <i class="nav-icon fas fa-user-md"></i>
+              <i class="nav-icon fas fa-procedures"></i>
               <p>
-              {{ __('Add Surgery History') }}
+              Chỉ định phẫu thuật
               </p>
             </router-link>
           </li>
+
           <li class="nav-item">
             <router-link to="/surgery" class="nav-link">
-              <i class="nav-icon fas fa-user-md"></i>
+              <i class="nav-icon fas fa-procedures"></i>
               <p>
-              {{ __('Surgery History') }}
+              Kết quả phẫu thuật
               </p>
             </router-link>
           </li>
@@ -570,61 +717,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/give-injection" class="nav-link">
               <i class="nav-icon fas fa-syringe"></i>
               <p>
-              {{ __('Give Injection') }}
-              </p>
-            </router-link>
-          </li>
-          @endif
-          {{-- End Condition to show for nurse --}}
-
-          {{-- Condition to show for doctor --}}
-          @if (Auth::user()->role == "doc"  )
-          <li class="nav-item">
-            <router-link to="/patients" class="nav-link">
-              <i class="nav-icon fas fa-procedures"></i>
-              <p>
-              {{ __('All Patients') }}
+              Chỉ định tiêm
               </p>
             </router-link>
           </li>
 
           <li class="nav-item">
-              <router-link to="/vitals" class="nav-link">
-                <i class="nav-icon fas fa-heartbeat"></i>
-                <p>
-                {{ __('Patient Vitals') }}
-                </p>
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/hospital" class="nav-link">
-                <i class="nav-icon fas fa-hospital-symbol"></i>
-                <p>
-                {{ __('Hospital History') }}
-                </p>
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/surgery" class="nav-link">
-                <i class="nav-icon fas fa-user-md"></i>
-                <p>
-                {{ __('Surgery History') }}
-                </p>
-              </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link to="/complain" class="nav-link">
-                  <i class="nav-icon fas fa-diagnoses"></i>
-                  <p>
-                  {{ __('Fill Patient Diagnosis') }}
-                  </p>
-                </router-link>
-              </li>
-          <li class="nav-item">
-            <router-link to="/diagnosed" class="nav-link">
-              <i class="nav-icon fas fa-vials"></i>
+            <router-link to="/treatments" class="nav-link">
+              <i class="nav-icon fas fa-user-md"></i>
               <p>
-              Quản lý cận lâm sàng
+                Quản lý chẩn đoán
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/add-treatment" class="nav-link">
+              <i class="nav-icon fas fa-user-md"></i>
+              <p>
+                Nhập chẩn đoán
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/emr-summaries" class="nav-link">
+              <i class="nav-icon fas fad fa-book-medical"></i>
+              <p>
+                Tổng kết bệnh án
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/emr-summary" class="nav-link">
+              <i class="nav-icon fas fad fa-book-medical"></i>
+              <p>
+                Nhập Tổng kết bệnh án
               </p>
             </router-link>
           </li>
@@ -632,58 +761,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/appointment" class="nav-link">
               <i class="nav-icon fas fa-calendar-check"></i>
               <p>
-              {{ __('Schedule Appointment') }}
-              </p>
-            </router-link>
-          </li>
-          <li class="nav-item">
-              <router-link to="/labresult" class="nav-link">
-                <i class="nav-icon fas fa-vial"></i>
-                <p>
-                {{ __('Lab Result') }}
-                </p>
-              </router-link>
-            </li>
-          @endif
-          {{-- End Condition to show for doctor --}}
-
-           {{-- Condition to show for lab --}}
-           @if (Auth::user()->role == "lab" )
-           <li class="nav-item">
-            <router-link to="/patients" class="nav-link">
-              <i class="nav-icon fas fa-procedures"></i>
-              <p>
-              {{ __('All Patients') }}
-              </p>
-            </router-link>
-          </li>
-
-           <li class="nav-item">
-            <router-link to="/lab-test" class="nav-link">
-              <i class="nav-icon fas fa-vial"></i>
-              <p>
-              {{ __('Refered Details from Doctor') }}
-              </p>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/labresult" class="nav-link">
-              <i class="nav-icon fas fa-vial"></i>
-              <p>
-              {{ __('Lab Result') }}
-              </p>
-            </router-link>
-          </li>
-          @endif
-          {{-- End Condition to show for lab --}}
-
-          {{-- Condition to show for pharmacy --}}
-          @if (Auth::user()->role == "pharm" )
-          <li class="nav-item">
-            <router-link to="/patients" class="nav-link">
-              <i class="nav-icon fas fa-procedures"></i>
-              <p>
-              {{ __('All Patients') }}
+              Quản lý lịch hẹn
               </p>
             </router-link>
           </li>
@@ -692,7 +770,80 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/pham-test" class="nav-link">
               <i class="nav-icon fas fa-info-circle"></i>
               <p>
-              {{ __('Get Refered Details') }}
+                Thông tin yêu cầu thuốc
+              </p>
+            </router-link>
+          </li>
+
+            <li class="nav-item">
+            <router-link to="/medication" class="nav-link">
+              <i class="nav-icon fas fa-comment-medical"></i>
+              <p>
+                Đơn thuốc
+              </p>
+            </router-link>
+          </li>
+
+
+          @endif
+          {{-- End Condition to show for doctor --}}
+
+           {{-- Condition to show for lab --}}
+           @if (Auth::user()->role == "lab" )
+           <li class="nav-item">
+            <router-link to="/lab-test" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+                Nhập KQ xét nghiệm
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/labresult" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+              Kết quả xét nghiệm
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/imaging-test" class="nav-link">
+              <i class="nav-icon fas fa-images"></i>
+              <p>
+                Nhập KQ CDHA
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/imagingresult" class="nav-link">
+              <i class="nav-icon fas fa-images"></i>
+              <p>
+              Kết quả CDHA
+              </p>
+            </router-link>
+          </li>
+
+          @endif
+          {{-- End Condition to show for lab --}}
+
+          {{-- Condition to show for pharmacy --}}
+          @if (Auth::user()->role == "pharm" )
+          <li class="nav-item">
+            <router-link to="/give-injection" class="nav-link">
+              <i class="nav-icon fas fa-syringe"></i>
+              <p>
+              Chỉ định tiêm
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/pham-test" class="nav-link">
+              <i class="nav-icon fas fa-info-circle"></i>
+              <p>
+                Thông tin yêu cầu thuốc
               </p>
             </router-link>
           </li>
@@ -700,7 +851,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <router-link to="/medication" class="nav-link">
               <i class="nav-icon fas fa-comment-medical"></i>
               <p>
-              {{ __('Patients on medication') }}
+                Đơn thuốc
               </p>
             </router-link>
           </li>

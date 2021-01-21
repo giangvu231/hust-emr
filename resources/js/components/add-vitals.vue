@@ -52,6 +52,7 @@
                                 <tr>
                                     <td width="50%">
                                         <div class="form-group">
+                                            <label>Mạch (lần/phút)</label>
                                             <input
                                                 v-model="form.pulse"
                                                 type="text"
@@ -72,6 +73,7 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
+                                            <label>Thân nhiệt (°C)</label>
                                             <input
                                                 v-model="form.temperature"
                                                 type="text"
@@ -94,6 +96,9 @@
                                 <tr>
                                     <td>
                                         <div class="form-group">
+                                            <label
+                                                >Huyết áp tâm thu (mmHg)</label
+                                            >
                                             <input
                                                 v-model="form.systolic"
                                                 type="text"
@@ -114,6 +119,10 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
+                                            <label
+                                                >Huyết áp tâm trương
+                                                (mmHg)</label
+                                            >
                                             <input
                                                 v-model="form.diastolic"
                                                 type="text"
@@ -136,6 +145,7 @@
                                 <tr>
                                     <td>
                                         <div class="form-group">
+                                            <label>Nhịp thở (lần/phút)</label>
                                             <input
                                                 v-model="form.respiration"
                                                 type="text"
@@ -156,6 +166,7 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
+                                            <label>Cân nặng (kg)</label>
                                             <input
                                                 v-model="form.weight"
                                                 type="text"
@@ -178,6 +189,7 @@
                                 <tr>
                                     <td>
                                         <div class="form-group">
+                                            <label>Chiều cao (cm)</label>
                                             <input
                                                 v-model="form.height"
                                                 type="text"
@@ -198,6 +210,7 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
+                                            <label>Nhóm máu</label>
                                             <input
                                                 v-model="form.blood_group"
                                                 type="text"

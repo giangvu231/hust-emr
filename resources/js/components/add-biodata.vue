@@ -14,6 +14,7 @@
                                 </tr>
                                 <tr>
                                     <td width="30%">
+                                        <label>Chức danh</label>
                                         <div class="form-group">
                                             <select
                                                 v-model="form.title"
@@ -46,6 +47,7 @@
                                         </div>
                                     </td>
                                     <td width="70%">
+                                        <label>Họ tên bệnh nhân</label>
                                         <div class="form-group">
                                             <input
                                                 v-model="form.full_name"
@@ -69,6 +71,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Email</label>
                                             <input
                                                 v-model="form.email"
                                                 type="email"
@@ -91,6 +94,7 @@
                                 <tr>
                                     <td width="50%">
                                         <div class="form-group">
+                                            <label>Số điện thoại cá nhân</label>
                                             <input
                                                 v-model="form.phone_number"
                                                 type="number"
@@ -116,6 +120,7 @@
                                                 v-model="searchText"
                                                 @keyup="searchForJob()"
                                             /> -->
+                                            <label>Nghề nghiệp</label>
                                             <select
                                                 @mouseover="searchForJob()"
                                                 v-model="form.job_id"
@@ -157,6 +162,7 @@
                                                 v-model="searchText"
                                                 @keyup="searchForJob()"
                                             /> -->
+                                            <label>Dân tộc</label>
                                             <select
                                                 @mouseover="searchForRace()"
                                                 v-model="form.race_id"
@@ -234,6 +240,7 @@
                                                 v-model="searchText"
                                                 @keyup="searchForJob()"
                                             /> -->
+                                            <label>Ngoại Kiều</label>
                                             <select
                                                 @mouseover="searchForNation()"
                                                 v-model="form.nation_id"
@@ -317,6 +324,7 @@
                                 <tr>
                                     <td width="50%">
                                         <div class="form-group">
+                                            <label>Tôn giáo</label>
                                             <input
                                                 v-model="form.religion"
                                                 type="text"
@@ -337,6 +345,7 @@
                                     </td>
                                     <td width="50%">
                                         <div class="form-group">
+                                            <label>Quốc tịch</label>
                                             <input
                                                 v-model="form.nationality"
                                                 type="text"
@@ -359,6 +368,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Địa chỉ</label>
                                             <textarea
                                                 v-model="form.home_address"
                                                 placeholder="Nhập Số nhà - Thôn, phố - Xã, phường"
@@ -383,6 +393,7 @@
                                 <tr>
                                     <td>
                                         <div class="form-group">
+                                            <label>Huyện (Quận, thị xã)</label>
                                             <input
                                                 style="width: 100%;"
                                                 placeholder="Huyện (Q, Tx)"
@@ -426,6 +437,7 @@
 
                                     <td>
                                         <div class="form-group">
+                                            <label>Tỉnh, thành phố</label>
                                             <input
                                                 style="width: 100%;"
                                                 placeholder="Tỉnh, thành phố"
@@ -470,6 +482,7 @@
                                 <tr>
                                     <td width="50%">
                                         <div class="form-group">
+                                            <label>Nơi sinh</label>
                                             <input
                                                 v-model="form.place_of_birth"
                                                 type="text"
@@ -490,6 +503,7 @@
                                     </td>
                                     <td width="50%">
                                         <div class="form-group">
+                                            <label>Tình trạng hôn nhân</label>
                                             <input
                                                 v-model="form.marital_status"
                                                 type="text"
@@ -512,6 +526,7 @@
                                 <tr>
                                     <td width="50%">
                                         <div class="form-group">
+                                            <label>Nơi làm việc</label>
                                             <input
                                                 v-model="form.work_address"
                                                 type="text"
@@ -532,6 +547,7 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
+                                            <label>Loại Khám- chữa bệnh</label>
                                             <select
                                                 v-model="form.type_of_object"
                                                 class="form-control"
@@ -569,8 +585,8 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>BHYT giá trị đến ngày</td>
-                                    <td>Số thẻ BHYT</td>
+                                    <label>BHYT giá trị đến ngày</label>
+                                    <label>Số thẻ BHYT</label>
                                 </tr>
                                 <tr>
                                     <td>
@@ -624,6 +640,7 @@
                                 <tr>
                                     <td width="50%">
                                         <div class="form-group">
+                                            <label>Tên người thân</label>
                                             <input
                                                 v-model="form.name_next_of_kin"
                                                 type="text"
@@ -644,6 +661,7 @@
                                     </td>
                                     <td width="50%">
                                         <div class="form-group">
+                                            <label>Điện thoại người thân</label>
                                             <input
                                                 v-model="form.phone_next_of_kin"
                                                 type="number"
@@ -666,6 +684,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Địa chỉ người thân</label>
                                             <textarea
                                                 v-model="form.home_next_of_kin"
                                                 placeholder="Nhập địa chỉ người thân"

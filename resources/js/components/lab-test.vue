@@ -13,12 +13,12 @@
                     >
                         <thead>
                             <tr>
-                                <th>Mã bệnh nhân</th>
-                                <th>Họ tên</th>
-                                <th>Thông tin chẩn đoán</th>
+                                <th>Mã HSBA</th>
+                                <th width="20%">Họ tên</th>
+                                <th>Chẩn đoán</th>
                                 <th>Nhận xét của bác sĩ</th>
                                 <th>Các triệu chứng</th>
-                                <th>Tác vụ</th>
+                                <th width="20%">Tác vụ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -110,7 +110,12 @@
                                                         Xác nhận trước
                                                         <div class="form-group">
                                                             <input
-                                                                style="width: 100%;"
+                                                                style="width: 100%; padding: 12px 20px;
+                                                        margin: 8px 0;
+                                                        display: inline-block;
+                                                        border: 1px solid #ccc;
+                                                        border-radius: 4px;
+                                                        box-sizing: border-box;"
                                                                 placeholder="Yêu cầu xét nghiệm"
                                                                 type="text"
                                                                 v-model="
@@ -185,50 +190,19 @@
                                                                 name="type"
                                                             >
                                                                 <option
-                                                                    value="Công thức máu"
-                                                                    >Công thức
-                                                                    máu</option
+                                                                    value="Huyết học"
+                                                                    >Huyết
+                                                                    học</option
                                                                 >
                                                                 <option
-                                                                    value="Xét nghiệm nước tiểu"
-                                                                    >Xét nghiệm
-                                                                    nước
-                                                                    tiểu</option
+                                                                    value="Hóa sinh"
+                                                                    >Hóa
+                                                                    sinh</option
                                                                 >
                                                                 <option
-                                                                    value="Sốt rét"
-                                                                    >Sốt
-                                                                    rét</option
-                                                                >
-                                                                <option
-                                                                    value="HIV I - II"
-                                                                    >HIV I -
-                                                                    II</option
-                                                                >
-                                                                <option
-                                                                    value="Nhóm máu"
-                                                                    >Nhóm
-                                                                    máu</option
-                                                                >
-                                                                <option
-                                                                    value="Kiểu Gen"
-                                                                    >Kiểu
-                                                                    Gen</option
-                                                                >
-                                                                <option
-                                                                    value="Đường huyết"
-                                                                    >Đường
-                                                                    huyết</option
-                                                                >
-                                                                <option
-                                                                    value="Thử thai"
-                                                                    >Thử
-                                                                    thai</option
-                                                                >
-                                                                <option
-                                                                    value="Lao phổi"
-                                                                    >Lao
-                                                                    phổi</option
+                                                                    value="Vi sinh"
+                                                                    >Vi
+                                                                    sinh</option
                                                                 >
                                                             </select>
 
@@ -238,11 +212,15 @@
                                                             ></has-error>
                                                         </div>
                                                         <div class="form-group">
+                                                            <label for=""
+                                                                >Kết luận của
+                                                                bác sỹ</label
+                                                            >
                                                             <textarea
                                                                 v-model="
                                                                     form.comment
                                                                 "
-                                                                placeholder="Comment"
+                                                                placeholder="Kết luận của bác sỹ"
                                                                 name="comment"
                                                                 id=""
                                                                 cols="10"
@@ -289,9 +267,9 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Mã bệnh nhân</th>
+                                <th>Mã HSBA</th>
                                 <th>Họ tên</th>
-                                <th>Thông tin chẩn đoán</th>
+                                <th>Chẩn đoán</th>
                                 <th>Nhận xét của bác sĩ</th>
                                 <th>Các triệu chứng</th>
                                 <th>Tác vụ</th>

@@ -403,9 +403,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <label for="chandoan"
-                                        >Chẩn đoán khi vào khoa điều trị</label
-                                    >
+                                    <td colspan="2">
+                                        <label for="chandoan"
+                                            >Chẩn đoán khi vào khoa điều
+                                            trị</label
+                                        >
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">

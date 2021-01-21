@@ -118,11 +118,38 @@
                                                             >Chọn chức
                                                             danh</option
                                                         >
-                                                        <option value="Bà"
-                                                            >Bà</option
+                                                        <option value="BSCK I"
+                                                            >BSCK I</option
                                                         >
-                                                        <option value="Ông"
-                                                            >Ông</option
+                                                        <option value="BSCK II"
+                                                            >BSCK II</option
+                                                        >
+                                                        <option value="BS"
+                                                            >Bác sỹ</option
+                                                        >
+                                                        <option value="KTV"
+                                                            >KTV</option
+                                                        >
+                                                        <option value="ĐD"
+                                                            >Điều dưỡng</option
+                                                        >
+                                                        <option value="ĐD"
+                                                            >Dược sỹ</option
+                                                        >
+                                                        <option
+                                                            value="Trưởng khoa"
+                                                            >Trưởng khoa</option
+                                                        >
+                                                        <option value="Phó khoa"
+                                                            >Phó khoa</option
+                                                        >
+                                                        <option value="Giám đốc"
+                                                            >Giám đốc</option
+                                                        >
+                                                        <option
+                                                            value="Phó giám đốc"
+                                                            >Phó giám
+                                                            đốc</option
                                                         >
                                                     </select>
                                                     <has-error

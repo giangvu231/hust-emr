@@ -122,6 +122,7 @@
                                 ></has-error>
                             </div>
                             <div class="form-group">
+                                <label>Thông tin phẫu thuật</label>
                                 <textarea
                                     v-model="form.operations"
                                     placeholder="Thông tin phẫu thuật"
@@ -165,6 +166,7 @@
                                 <label for="">Ê-kíp phẫu thuật</label>
                             </div>
                             <div class="form-group">
+                                <label>Bác sỹ Phẫu thuật</label>
                                 <input
                                     v-model="form.surgeon"
                                     type="text"
@@ -181,6 +183,7 @@
                                 ></has-error>
                             </div>
                             <div class="form-group">
+                                <label>Bác sỹ gây mê</label>
                                 <input
                                     v-model="form.anesthetist"
                                     type="text"
@@ -205,7 +208,7 @@
                                     class="surgery btn-block btn btn-info"
                                     style="color:#fff;"
                                 >
-                                    Thêm lịch sử phẫu thuật
+                                    Thêm thông tin
                                 </button>
                             </center>
                         </form>
@@ -250,7 +253,7 @@ export default {
                         title:
                             "Lịch sử phẫu thuật của bệnh nhân được thêm thành công!"
                     });
-                    $(".surgery").html("Add Patient Surgery History ");
+                    $(".surgery").html("Thêm thông tin");
                     $("#add-surgery").trigger("reset");
                 })
                 .catch(() => {
@@ -258,7 +261,7 @@ export default {
                         type: "error",
                         title: "Dữ liệu thêm vào không đúng!"
                     });
-                    $(".surgery").html("Add Patient surgery History ");
+                    $(".surgery").html("Thêm thông tin");
                 });
         },
         loadPatients() {

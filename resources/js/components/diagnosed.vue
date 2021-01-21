@@ -38,7 +38,7 @@
                                 <td>{{ diagnose.diagnosis }}</td>
                                 <td>{{ diagnose.comment }}</td>
                                 <td>{{ diagnose.hospital.symptoms }}</td>
-                                <td>
+                                <td width="12%">
                                     <p v-if="diagnose.refer_imaging == 1">
                                         Đã yêu cầu
                                     </p>
@@ -51,7 +51,7 @@
                                         Yêu cầu CDHA
                                     </button>
                                 </td>
-                                <td>
+                                <td width="12%">
                                     <p v-if="diagnose.refer_lab == 1">
                                         Đã yêu cầu
                                     </p>
@@ -64,7 +64,7 @@
                                         Yêu cầu xét nghiệm
                                     </button>
                                 </td>
-                                <td>
+                                <td width="12%">
                                     <p v-if="diagnose.refer_pham == 1">
                                         Đã yêu cầu
                                     </p>

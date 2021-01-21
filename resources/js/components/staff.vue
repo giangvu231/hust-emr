@@ -16,8 +16,23 @@
                                     }"
                                     name="title"
                                 >
-                                    <option value="Bà">Bà</option>
-                                    <option value="Ông">Ông</option>
+                                    <option value="nul" style="font-weight:700;"
+                                        >Chọn chức danh</option
+                                    >
+                                    <option value="BSCK I">BSCK I</option>
+                                    <option value="BSCK II">BSCK II</option>
+                                    <option value="BS">Bác sỹ</option>
+                                    <option value="KTV">KTV</option>
+                                    <option value="ĐD">Điều dưỡng</option>
+                                    <option value="ĐD">Dược sỹ</option>
+                                    <option value="Trưởng khoa"
+                                        >Trưởng khoa</option
+                                    >
+                                    <option value="Phó khoa">Phó khoa</option>
+                                    <option value="Giám đốc">Giám đốc</option>
+                                    <option value="Phó giám đốc"
+                                        >Phó giám đốc</option
+                                    >
                                 </select>
                                 <has-error
                                     :form="form"
@@ -69,12 +84,10 @@
                                         >Chọn chức vụ</option
                                     >
                                     <option value="recept">Lễ tân</option>
-                                    <option value="nurse">Y tá</option>
-                                    <option value="doc">Bác sĩ</option>
-                                    <option value="lab"
-                                        >Nhân viên xét nghiệm</option
-                                    >
-                                    <option value="pharm">Dược sĩ</option>
+                                    <option value="nurse">Điều dưỡng</option>
+                                    <option value="doc">Bác sỹ</option>
+                                    <option value="lab">Kỹ thuật viên</option>
+                                    <option value="pharm">Dược sỹ</option>
                                     <option value="admin">Quản trị viên</option>
                                 </select>
                                 <has-error

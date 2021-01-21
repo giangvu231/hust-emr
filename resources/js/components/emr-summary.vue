@@ -55,6 +55,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Loại bệnh án</label>
                                             <select
                                                 v-model="form.emr_type"
                                                 class="form-control"
@@ -93,6 +94,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label>Phương pháp điều trị</label>
                                             <textarea
                                                 v-model="form.therapy"
                                                 type="text"
@@ -121,6 +123,7 @@
                                 <tr>
                                     <td>
                                         <div class="form-group">
+                                            <label>Loại xuất viện</label>
                                             <select
                                                 v-model="form.discharge_type"
                                                 class="form-control"
@@ -158,6 +161,7 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
+                                            <label>Thời điểm xuất viện</label>
                                             <input
                                                 v-model="form.discharge_time"
                                                 type="datetime-local"
@@ -400,12 +404,10 @@
                                 </tr>
                                 <br />
                                 <tr>
-                                    <td width="50%">Kết quả điều trị</td>
-                                    <td>Giải phẫu bệnh (khi có sinh thiết)</td>
-                                </tr>
-                                <tr>
                                     <td>
                                         <div class="form-group">
+                                            <label>Kết quả điều trị</label>
+
                                             <select
                                                 v-model="form.treatment_result"
                                                 class="form-control"
@@ -447,6 +449,8 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
+                                            <label>Giải phẫu bệnh</label>
+
                                             <select
                                                 v-model="form.anapath"
                                                 class="form-control"
@@ -484,6 +488,11 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label
+                                                >Tình trạng người bệnh khi ra
+                                                viện</label
+                                            >
+
                                             <textarea
                                                 v-model="form.patient_condition"
                                                 type="text"
@@ -509,6 +518,11 @@
                                 <tr>
                                     <td colspan="2">
                                         <div class="form-group">
+                                            <label
+                                                >Hướng điều trị và các chế độ
+                                                tiếp theo</label
+                                            >
+
                                             <textarea
                                                 v-model="form.therapy_plan"
                                                 type="text"
@@ -532,9 +546,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Tình hình tử vong</td>
+                                    <td><b>Tình hình tử vong</b></td>
                                     <td>
                                         <div class="form-group">
+                                            <label>Loại tử vong</label>
                                             <select
                                                 v-model="form.death_type"
                                                 class="form-control"
@@ -573,6 +588,7 @@
                                 <tr>
                                     <td>
                                         <div class="form-group">
+                                            <label>Thời điểm tử vong</label>
                                             <input
                                                 v-model="form.death_time"
                                                 type="datetime-local"
@@ -592,6 +608,7 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
+                                            <label>Khoảng thời gian</label>
                                             <select
                                                 v-model="form.death_time_range"
                                                 class="form-control"
@@ -791,20 +808,23 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        Hồ sơ, phim, ảnh
+                                        <label>Hồ sơ, phim, ảnh</label>
+
                                         <table
                                             width="100%"
+                                            style="border-collapse: collapse; text-align: center;"
                                             border="1px solid black"
                                         >
                                             <tr>
-                                                <td width="50%">Loại</td>
-                                                <td>Số tờ</td>
+                                                <td width="50%"><b>Loại</b></td>
+                                                <td><b>Số tờ</b></td>
                                             </tr>
                                             <tr>
                                                 <td>&nbsp;- X - quang</td>
                                                 <td>
                                                     <div class="form-group">
                                                         <input
+                                                            style="width:100%; border:0px; text-align: center;"
                                                             v-model="
                                                                 form.dx_count
                                                             "
@@ -829,6 +849,7 @@
                                                 <td>
                                                     <div class="form-group">
                                                         <input
+                                                            style="width:100%; height:100%; border:0px; text-align: center;"
                                                             v-model="
                                                                 form.ct_count
                                                             "
@@ -853,6 +874,7 @@
                                                 <td>
                                                     <div class="form-group">
                                                         <input
+                                                            style="width:100%; border:0px; text-align: center;"
                                                             v-model="
                                                                 form.us_count
                                                             "
@@ -877,6 +899,7 @@
                                                 <td>
                                                     <div class="form-group">
                                                         <input
+                                                            style="width:100%; border:0px; text-align: center;"
                                                             v-model="
                                                                 form.lab_count
                                                             "
@@ -901,6 +924,7 @@
                                                 <td>
                                                     <div class="form-group">
                                                         <input
+                                                            style="width:100%; border:0px; text-align: center;"
                                                             v-model="
                                                                 form.other_count
                                                             "
@@ -925,6 +949,7 @@
                                                 <td>
                                                     <div class="form-group">
                                                         <input
+                                                            style="width:100%; border:0px; text-align: center;"
                                                             v-model="
                                                                 form.total_count
                                                             "

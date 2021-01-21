@@ -17,12 +17,12 @@
                     >
                         <thead>
                             <tr>
-                                <th>Mã bệnh nhân</th>
-                                <th>Họ tên</th>
+                                <th>Mã HSBA</th>
+                                <th width="20%">Họ tên</th>
                                 <th>Thông tin chẩn đoán</th>
                                 <th>Nhận xét của bác sĩ</th>
                                 <th>Các triệu chứng</th>
-                                <th>Tác vụ</th>
+                                <th width="20%">Tác vụ</th>
                             </tr>
                         </thead>
                         <tbody>
